@@ -9,4 +9,4 @@ project (TACTICALSTRIKE)
 # cause another cmake executable to run. The same process will walk through
 # the project's entire directory structure.
 
-add_executable (tacticalStrike src/tacticalStrike.cpp)
+add_executable (FantasyWorld src/fantasyWorld.cpp)
