@@ -9,4 +9,6 @@ project (FANTASY_WORLD)
 # cause another cmake executable to run. The same process will walk through
 # the project's entire directory structure.
 
-add_executable (FantasyWorld src/fantasyWorld.cpp)
+file(MAKE_DIRECTORY bin)
+add_executable (../bin/FantasyWorld src/fantasyWorld.cpp)
+
