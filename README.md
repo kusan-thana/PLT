@@ -1,4 +1,4 @@
 # PLT
 Dofus like
 
-Welcome on Tactical Strike project ;)
+Welcome on Fantasy World project ;)
