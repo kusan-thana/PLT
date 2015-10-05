@@ -1,21 +1,24 @@
-#include <iostream>
-#include "playerCharacter.hpp"
+#include <SFML/Graphics.hpp>
 
-int main(){
-	
-	std::cout << "Fantasy World project" << std::endl;
-	
-	//~ Element e;
-	//~ switch(e.getDirection())
-	//~ {
-		//~ case NONE  : std::cout << "NONE\n";   break;
-		//~ case NORTH: std::cout << "NORTH\n"; break;
-		//~ case SOUTH : std::cout << "SOUTH\n";  break;
-	//~ }
-	//MobileElement me;
-	//std::cout << me.getNbAction() << std::endl;
-	PlayerCharacter p(HERO);
-	//std::cout << p.isSelected() << std::endl;
-	
-	return 0;
+int main()
+{
+    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+    sf::CircleShape shape(100.f);
+    shape.setFillColor(sf::Color::Green);
+
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+
+        window.clear();
+        window.draw(shape);
+        window.display();
+    }
+
+    return 0;
 }
