@@ -15,7 +15,7 @@ int main(){
 	//MobileElement me;
 	//std::cout << me.getNbAction() << std::endl;
 	PlayerCharacter p(HERO);
-	std::cout << p.isSelected() << std::endl;
+	//std::cout << p.isSelected() << std::endl;
 	
 	return 0;
 }

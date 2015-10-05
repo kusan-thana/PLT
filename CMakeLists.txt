@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 2.8.11)
+cmake_minimum_required (VERSION 2.6.4)
 project (FANTASY_WORLD)
 
 include_directories ("${PROJECT_SOURCE_DIR}/lib")
