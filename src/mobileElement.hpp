@@ -23,7 +23,7 @@ class MobileElement : public Element{
 		int getNbStep() const;
 		int getNbAction() const;
 		void setNbAction(int nbAction);
-		virtual bool isPlayerCharacter() =0;
+		virtual bool isPlayerCharacter() const =0;
 };
 
 #endif

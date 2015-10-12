@@ -5,10 +5,10 @@
  * PlayerCharacter Class
 **/
 
-PlayerCharacter::PlayerCharacter(TypeID IDElement) : mana(0), selected(false), status(DEAD) {
+PlayerCharacter::PlayerCharacter(TypeID IDElement) : mana(0), selected(false), status(NORMAL) {
 	//Need to look after "TypeID" argument to initialize "Element" class...
 }
-bool PlayerCharacter::isPlayerCharacter() {
+bool PlayerCharacter::isPlayerCharacter() const {
 	
 	return true;
 }
@@ -56,7 +56,6 @@ void PlayerCharacter::doAction(MobileElement& target, TypeAction action){
 				}
 			break;
 	}
-	
 }
 Status PlayerCharacter::getStatus() const{
 	
