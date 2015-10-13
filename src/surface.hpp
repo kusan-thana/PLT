@@ -1,6 +1,7 @@
 #ifndef Surface_H
 #define Surface_H
 #include <SFML/Graphics.hpp>
+
 class Surface {
 	
 	protected:

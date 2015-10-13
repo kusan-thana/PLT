@@ -3,7 +3,8 @@
 #include "surface.hpp"
 #include "layer.hpp"
 #include <iostream>
-
+#include "scene.hpp"
+#include <vector>
 using namespace std;
 
 int main()
