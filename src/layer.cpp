@@ -8,7 +8,7 @@ Layer::Layer() {
 }
 Layer::~Layer(){
 }
-void Layer::setSurface(Surface surface){
+void Layer::setSurface(Surface* surface){
 	
 	this->surface = surface;
 }

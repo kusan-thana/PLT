@@ -4,9 +4,6 @@
  * StaticTile Class
 **/
 StaticTile::StaticTile() {
-	   
-	this->vertices.setPrimitiveType(sf::Quads);
-	this->vertices.resize(4);
 }
 bool StaticTile::isAnimated() const{
 	

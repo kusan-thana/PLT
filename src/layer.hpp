@@ -6,12 +6,12 @@
 class Layer {
 	
 	protected:
-		Surface surface;
+		Surface* surface;
 		
 	public:
 		Layer();
 		virtual ~Layer();
-		void setSurface(Surface surface);
+		void setSurface(Surface* surface);
 };
 
 #endif

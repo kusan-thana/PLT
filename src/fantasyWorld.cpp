@@ -17,11 +17,11 @@ int main()
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
     
-    Surface surface;
-	surface.loadTexture("../res/images/dungeon.gif");
+    //~ Surface surface;
+	//~ surface.loadTexture("../res/images/dungeon.gif");
 	//~ Layer layer1;
 	//~ layer1.setSurface(surface);
-	StaticTile statictile;
+	//~ StaticTile statictile;
 
     while (window.isOpen())
     {
