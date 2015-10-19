@@ -10,7 +10,12 @@ git pull
 git commit -a
 git push
 
-git add -A	(si présence de nouveaux fichiers)
+git add -A	(si présence de nouveaux fichiers, attention à ne pas push le dossier build)
 
 git checkout .      (pour annuler les modifications locales)
+
+firefox : 
+
+supprimer dossier personnel : rm -rf ~/.mozilla/
+proxy : www-cache port 3128
 
