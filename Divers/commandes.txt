@@ -18,4 +18,6 @@ firefox :
 
 supprimer dossier personnel : rm -rf ~/.mozilla/
 proxy : www-cache port 3128
+export LD_LIBRARY_PATH=/lib64:/usr/lib64:/usr/X11R6/lib
+
 
