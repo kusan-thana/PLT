@@ -12,6 +12,7 @@ class SFMLSurface : public Surface {
 	public:
 		virtual void loadTexture(const char* tileset);
 		virtual void setSpriteLocation(int i, int x, int y);
+		virtual void setSpriteTexture(int i, const StaticTile* staticTile);
 };
 
 #endif
