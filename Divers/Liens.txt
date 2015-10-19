@@ -3,6 +3,7 @@ Ressources :
 Sprites :
 http://ffhacktics.com/sprites.php
 http://www.videogamesprites.net/FinalFantasyTactics/
+http://pousse.rapiere.free.fr/tome/
 
 Musique : 
 http://opengameart.org/content/epic-fantasy-music

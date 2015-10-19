@@ -6,7 +6,6 @@ class Surface {
 	
 	protected:
 		sf::Texture	texture;
-		sf::Sprite sprite;
 
 	public:
 		void loadTexture(const char* image_file);
