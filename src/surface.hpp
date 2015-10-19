@@ -7,5 +7,5 @@ class Surface {
 	public:
 		virtual void loadTexture(const char* image_file) =0;
 };
-
+i
 #endif
