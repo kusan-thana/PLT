@@ -15,6 +15,9 @@ git add -A	(si présence de nouveaux fichiers, attention à ne pas push le dossi
 
 git checkout .      (pour annuler les modifications locales)
 
+git config --global user.email adressemail@gmail.com  //utiliser l'adresse mis dans googlegroups pour envoyer les notifs de push
+
+
 firefox : 
 
 supprimer dossier personnel : rm -rf ~/.mozilla/
