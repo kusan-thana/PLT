@@ -1,22 +1,27 @@
 #include <SFML/Graphics.hpp>
+#include <iostream>
+#include <vector>
+
 #include "playerCharacter.hpp"
 #include "surface.hpp"
 #include "layer.hpp"
-#include <iostream>
 #include "scene.hpp"
-#include <vector>
+#include "statictile.hpp"
+
+
 using namespace std;
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+    sf::RenderWindow window(sf::VideoMode(1024, 512), "SFML works!");
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
     
     Surface surface;
-	surface.loadTexture("../res/images/map.jpg");
-	Layer layer1;
-	layer1.setSurface(surface);
+	surface.loadTexture("../res/images/dungeon.gif");
+	//~ Layer layer1;
+	//~ layer1.setSurface(surface);
+	StaticTile statictile;
 
     while (window.isOpen())
     {
