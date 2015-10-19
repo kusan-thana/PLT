@@ -3,7 +3,7 @@
 /**
  * StaticTile Class
 **/
-StaticTile::StaticTile() {
+StaticTile::StaticTile(int x, int y, int width, int height) : x(x), y(y), width(width), height(height) {
 }
 bool StaticTile::isAnimated() const{
 	

@@ -11,7 +11,7 @@ class StaticTile : public Tile{
 		int height;
 
 	public:
-		StaticTile();
+		StaticTile(int x, int y, int width, int height);
 		virtual bool isAnimated() const;
 		int getX() const;
 		int getY() const;
