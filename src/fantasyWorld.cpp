@@ -3,21 +3,36 @@
 #include <vector>
 
 #include "sfmlsurface.hpp"
+#include "surface.hpp"
 #include "statictile.hpp"
+#include "layer.hpp"
+#include "scene.hpp"
+#include "tileset.hpp"
+#include "client.hpp"
+#include "sfmlclient.hpp"
 
 using namespace std;
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(1024, 512), "Fantasy World!");
+
+    Client* client = new SFMLClient();
+    //SFMLClient client;
+    
+    	
+    //sf::RenderWindow window(sf::VideoMode(1024, 512), "Fantasy World!");
+    Scene scene(1024,512);
     
     StaticTile tree(160,128,32,32);
     StaticTile water(160,160,32,32);
     StaticTile grass(0,160,32,32);
     StaticTile fir(224,128,32,32);
-	SFMLSurface sfmlSurface;
-	sfmlSurface.loadTexture("../res/images/dungeon.gif");
-	sfmlSurface.setSpriteCount(512);
+    
+    Surface* surface = new SFMLSurface();
+	//SFMLSurface sfmlSurface;
+	surface->loadTexture("../res/images/dungeon.gif");
+	surface->setSpriteCount(512);
+	
 	
 const int level[] =
     {
@@ -45,33 +60,26 @@ const int level[] =
 			{
 				switch(level[i+j*width]){
 					case(0):
-						sfmlSurface.setSpriteTexture(i+j*width, &tree);
+						surface->setSpriteTexture(i+j*width, &tree);
 					break;
 					case(1):
-						sfmlSurface.setSpriteTexture(i+j*width, &water);
+						surface->setSpriteTexture(i+j*width, &water);
 					break;
 					case(2):
-						sfmlSurface.setSpriteTexture(i+j*width, &grass);
+						surface->setSpriteTexture(i+j*width, &grass);
 					break;
 					case(3):
-						sfmlSurface.setSpriteTexture(i+j*width, &fir);
+						surface->setSpriteTexture(i+j*width, &fir);
 					break;
 				}
-				sfmlSurface.setSpriteLocation(i+j*width,i*32,j*32);	
+				surface->setSpriteLocation(i+j*width,i*32,j*32);	
 			}
-
-    while (window.isOpen())
+bool isOpen =true;
+    while (isOpen)
     {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
+		isOpen = client->acquireControls();
 
-        window.clear();
-        window.draw(sfmlSurface);
-        window.display();
+		client->updatedisplay();
     }
 
     return 0;

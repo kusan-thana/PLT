@@ -5,6 +5,8 @@
 **/
 
 Layer::Layer() {
+
+	this->surface = new SFMLSurface();
 }
 Layer::~Layer(){
 }
