@@ -2,6 +2,7 @@
 #define Layer_H
 
 #include "surface.hpp"
+#include "sfmlsurface.hpp"
 
 class Layer {
 	
