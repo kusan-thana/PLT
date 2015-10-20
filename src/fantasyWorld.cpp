@@ -4,20 +4,25 @@
 
 #include "sfmlsurface.hpp"
 #include "statictile.hpp"
+#include "layer.hpp"
+#include "scene.hpp"
 
 using namespace std;
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(1024, 512), "Fantasy World!");
+    Scene scene(1024,512);
     
     StaticTile tree(160,128,32,32);
     StaticTile water(160,160,32,32);
     StaticTile grass(0,160,32,32);
     StaticTile fir(224,128,32,32);
+    
 	SFMLSurface sfmlSurface;
 	sfmlSurface.loadTexture("../res/images/dungeon.gif");
 	sfmlSurface.setSpriteCount(512);
+	
 	
 const int level[] =
     {

@@ -6,10 +6,13 @@
 class Scene {
 	
 	protected:
+		int width;
+		int height;
 		std::vector<Layer*> layers;
 		
 	public:
 		Scene();
+		Scene(int width, int height);
 		~Scene();
 		void setLayer(Layer* layer);
 };
