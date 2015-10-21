@@ -7,6 +7,8 @@ class Client {
 		virtual bool acquireControls() =0;
 		//virtual void stateChanged() =0;
 		virtual void updateDisplay() =0;
+		
+	public:
 		void run();
 
 };

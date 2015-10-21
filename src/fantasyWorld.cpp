@@ -17,10 +17,7 @@ int main()
 {
 
     Client* client = new SFMLClient();
-    //SFMLClient client;
-    
-    	
-    //sf::RenderWindow window(sf::VideoMode(1024, 512), "Fantasy World!");
+
     Scene scene(1024,512);
     
     StaticTile tree(160,128,32,32);
@@ -74,13 +71,8 @@ const int level[] =
 				}
 				surface->setSpriteLocation(i+j*width,i*32,j*32);	
 			}
-bool isOpen =true;
-    while (isOpen)
-    {
-	//	isOpen = client->acquireControls();
 
-		//client->updatedisplay();
-    }
-
+	client->run();
+	
     return 0;
 }
