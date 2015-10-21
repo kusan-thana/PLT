@@ -5,10 +5,12 @@
 **/
 
 Layer::Layer() {
-
-	this->surface = new SFMLSurface();
 }
 Layer::~Layer(){
+}
+void Layer::setTileSet(const TileSet* tileSet){
+	
+	this->tileSet = tileSet;
 }
 void Layer::setSurface(Surface* surface){
 	

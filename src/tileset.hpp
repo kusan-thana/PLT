@@ -11,6 +11,9 @@ class TileSet {
 		std::vector<StaticTile> staticTiles;
 
 	public:
+		TileSet();
+		~TileSet();
+		void setStaticTile(StaticTile staticTile);
 		const Tile* const getElementTile(const Element* element);
 };
 

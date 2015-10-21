@@ -4,11 +4,13 @@
  * Scene Class
 **/
 
+using namespace render;
+
 Scene::Scene(){
 }
 Scene::Scene(int width, int height) : width(width), height(height){
  
-	layers.push_back(new Layer());
+	//layers.push_back(new Layer());
 }
 Scene::~Scene(){
 }

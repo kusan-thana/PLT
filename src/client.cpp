@@ -3,10 +3,18 @@
 /**
  * Client Class
 **/
+Client::Client() : scene(1024,512){
+}
+void Client::init(){
+	
+
+}
 void Client::run(){
 	
-	while(acquireControls())
-		{
+	this->init();
+
+    
+	while(acquireControls()){
 			updateDisplay();
-		}
+	}	
 }
