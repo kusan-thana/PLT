@@ -77,9 +77,9 @@ const int level[] =
 bool isOpen =true;
     while (isOpen)
     {
-		isOpen = client->acquireControls();
+	//	isOpen = client->acquireControls();
 
-		client->updatedisplay();
+		//client->updatedisplay();
     }
 
     return 0;
