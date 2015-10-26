@@ -6,14 +6,11 @@
 SFMLClient::SFMLClient() : window(sf::VideoMode(1024, 512), "Fantasy World!") {
 }
 void SFMLClient::init(){
-	
-	
+
 	sfmlSurfaces.push_back(new SFMLSurface());
 		
 	sfmlSurfaces[0]->loadTexture("../res/images/dungeon.gif");
 	sfmlSurfaces[0]->setSpriteCount(512);
-	
-
 	
 	TileSet tileSet;
 	StaticTile tree(160,128,32,32);
@@ -24,21 +21,16 @@ void SFMLClient::init(){
 	tileSet.setStaticTile(grass);
 	StaticTile fir(224,128,32,32);
 	tileSet.setStaticTile(fir);
-	
-	
-	
-	
+
 	Layer layer;
 	layer.setSurface(sfmlSurfaces[0]);
 	layer.setTileSet(&tileSet);
 	
 	scene.setLayer(&layer);
-	
-	
+
     int width = 32;
     int height = 16;
-    
-    
+
     const int etat[] = {
         0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,0, 0, 1, 0, 3, 2, 2, 2, 0, 0, 0, 0, 1, 1, 1, 1,
         0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0,2, 0, 1, 0, 3, 0, 2, 2, 2, 0, 1, 1, 1, 1, 1, 1,

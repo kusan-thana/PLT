@@ -4,8 +4,6 @@
 /**
  * SFMLSurface Class
 **/
-SFMLSurface::SFMLSurface(){
-}
 void SFMLSurface::loadTexture(const char* tileset){
 
 	if (!this->tileset.loadFromFile(tileset))

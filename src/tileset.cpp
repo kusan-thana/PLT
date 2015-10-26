@@ -4,8 +4,6 @@
  * TileSet Class
 **/
 
-TileSet::TileSet() {
-}
 TileSet::~TileSet(){
 }
 void TileSet::setStaticTile(StaticTile staticTile){
