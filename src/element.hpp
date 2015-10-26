@@ -18,7 +18,7 @@ class Element {
 		virtual ~Element();
 		int getX() const;
 		int getY() const;
-		virtual TypeID getTypeID() const;
+		TypeID getTypeID() const;
 		Direction getDirection() const;
 		void setX(int x);
 		void setY(int y);

@@ -6,7 +6,8 @@
 **/
 
 PlayerCharacter::PlayerCharacter(TypeID IDElement) : mana(0), selected(false), status(NORMAL) {
-	//Need to look after "TypeID" argument to initialize "Element" class...
+
+	this->IDElement = IDElement;
 }
 bool PlayerCharacter::isPlayerCharacter() const {
 	
@@ -19,40 +20,40 @@ void PlayerCharacter::doAction(MobileElement& target, TypeAction action){
 			switch(action){
 				case PUNCH:
 					//Need to be defined
-					break;
+				break;
 				case SWORDSTRIKE:
 					//Need to be defined
-					break;
+				break;
 			}
 			break;
 		case BRUTE:
 			switch(action){
 				case PUNCH:
 					//Need to be defined
-					break;
+				break;
 				case HAMMERSTRIKE:
 					//Need to be defined
-					break;
+				break;
 			}
 			break;
 		case HEALER:
 			switch(action){
 				case PUNCH:
 					//Need to be defined
-					break;
+				break;
 				case HEAL:
 					//Need to be defined
-					break;
+				break;
 			}
 			break;
 		case WIZARD:
 			switch(action){
 				case PUNCH:
 					//Need to be defined
-					break;
+				break;
 				case FIREBALL:
 					//Need to be defined
-					break;
+				break;
 				}
 			break;
 	}
