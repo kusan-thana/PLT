@@ -2,19 +2,21 @@
 #define Layer_H
 
 #include "surface.hpp"
-#include "tileset.hpp"
+#include "tileSet.hpp"
+
+namespace render {
 
 class Layer {
 	
 	protected:
 		Surface* surface;
-		const TileSet* tileSet;
+		const render::TileSet* tileSet;
 		
 	public:
 		Layer();
 		virtual ~Layer();
-		void setTileSet(const TileSet* tileSet);
+		void setTileSet(const render::TileSet* tileSet);
 		void setSurface(Surface* surface);
 };
-
+}
 #endif

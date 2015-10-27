@@ -6,6 +6,8 @@
 enum TypeAction{PUNCH, SWORDSTRIKE, HAMMERSTRIKE, HEAL, REINFORCEMENT, FIREBALL};
 enum Status {NORMAL=1, SUPER=2, DEAD=3};
 
+namespace state {
+
 class PlayerCharacter : public MobileElement{
 	
 	protected:
@@ -22,5 +24,5 @@ class PlayerCharacter : public MobileElement{
 		bool isSelected();
 		
 };
-
+}
 #endif

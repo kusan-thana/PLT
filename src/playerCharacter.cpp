@@ -4,6 +4,7 @@
 /**
  * PlayerCharacter Class
 **/
+using namespace state;
 
 PlayerCharacter::PlayerCharacter(TypeID IDElement) : mana(0), selected(false), status(NORMAL) {
 

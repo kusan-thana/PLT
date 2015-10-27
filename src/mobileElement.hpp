@@ -3,6 +3,8 @@
 
 #include "element.hpp"
 
+namespace state {
+
 class MobileElement : public Element{
 	
 	protected:
@@ -25,5 +27,5 @@ class MobileElement : public Element{
 		void setNbAction(int nbAction);
 		virtual bool isPlayerCharacter() const =0;
 };
-
+}
 #endif

@@ -3,6 +3,9 @@
 /**
  * Client Class
 **/
+
+using namespace client;
+
 Client::Client() : scene(1024,512){
 }
 void Client::init(){

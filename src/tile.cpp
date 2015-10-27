@@ -3,5 +3,8 @@
 /**
  * Tile Class
 **/
+
+using namespace render;
+
 Tile::~Tile(){
 }

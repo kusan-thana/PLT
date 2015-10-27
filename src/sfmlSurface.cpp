@@ -1,4 +1,4 @@
-#include "sfmlsurface.hpp"
+#include "sfmlSurface.hpp"
 
 #include <iostream>
 /**
@@ -14,6 +14,11 @@ void SFMLSurface::setSpriteCount(int n){
 	this->vertices.setPrimitiveType(sf::Quads);
     this->vertices.resize(n * 4);
 }
+/** Position du sprite dans la fenêtre.
+ *  Le sprite est défini par : 
+ *  - Quatres sommets définis à partir de l'indice i
+ *  - La position du coin haut-gauche du sprite dans la fenêtre à la position (x,y) 
+ **/
 void SFMLSurface::setSpriteLocation(int i, int x, int y){
 	
 	sf::Vertex* quad = &vertices[i * 4];
@@ -23,7 +28,10 @@ void SFMLSurface::setSpriteLocation(int i, int x, int y){
 	quad[2].position = sf::Vector2f(x + 32, y + 32);
 	quad[3].position = sf::Vector2f(x, y + 32);
 }
-void SFMLSurface::setSpriteTexture(int i, const StaticTile* staticTile){
+/** Position du sprite dans la texture.
+ * 	Coordonnées des quatres sommets sur la texture 
+ **/ 
+void SFMLSurface::setSpriteTexture(int i, const render::StaticTile* staticTile){
 
 	sf::Vertex* quad = &vertices[i * 4];
 	

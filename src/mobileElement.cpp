@@ -4,6 +4,8 @@
  * MobileElement Class
 **/
 
+using namespace state;
+
 MobileElement::MobileElement() : speed(0), HP(0), attackPt(0), defensePt(0), nbAction(1), nbStep(0),
 								 level(1), experience(0), position(0), turnPlayed(false){
 }

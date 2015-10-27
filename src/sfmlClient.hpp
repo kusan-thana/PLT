@@ -3,12 +3,13 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "client.hpp"
-#include "sfmlsurface.hpp"
-#include "statictile.hpp"
+#include "sfmlSurface.hpp"
+#include "staticTile.hpp"
 #include "layer.hpp"
 #include "surface.hpp"
-#include "tileset.hpp"
+#include "tileSet.hpp"
 
+namespace client {
 
 class SFMLClient : public Client {
 
@@ -24,5 +25,5 @@ class SFMLClient : public Client {
 	public:
 		SFMLClient();
 };
-
+}
 #endif

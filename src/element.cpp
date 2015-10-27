@@ -4,6 +4,8 @@
  * Element Class
 **/
 
+using namespace state;
+
 Element::Element() : x(0), y(0), IDElement(SPACE), orientation(NONE), active(false){
 }
 Element::~Element(){

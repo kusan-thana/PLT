@@ -4,11 +4,13 @@
  * Layer Class
 **/
 
+using namespace render;
+
 Layer::Layer() {
 }
 Layer::~Layer(){
 }
-void Layer::setTileSet(const TileSet* tileSet){
+void Layer::setTileSet(const render::TileSet* tileSet){
 	
 	this->tileSet = tileSet;
 }

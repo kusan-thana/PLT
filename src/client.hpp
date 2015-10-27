@@ -1,8 +1,11 @@
 #ifndef Client_H
 #define Client_H
-#include "sfmlsurface.hpp"
+#include "sfmlSurface.hpp"
 #include "scene.hpp"
 #include "layer.hpp"
+
+namespace client {
+
 class Client {
 	
 	protected:
@@ -18,5 +21,5 @@ class Client {
 		void run();
 
 };
-
+}
 #endif

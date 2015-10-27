@@ -2,6 +2,8 @@
 #define StaticTile_H
 #include "tile.hpp"
 
+namespace render {
+
 class StaticTile : public Tile{
 	
 	protected:
@@ -23,7 +25,7 @@ class StaticTile : public Tile{
 		void setHeight(int height);
 
 };
-
+}
 #endif
 
 
