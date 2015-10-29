@@ -2,7 +2,7 @@
 #define Obstacle_H
 #include "staticElement.hpp"
 
-enum ObstacleTypeID { WALL=1, STONE=2, TREE=3, FIR=3, WATER=4 };
+enum ObstacleTypeID { WALL=1, STONE=2, TREE=3, FIR=4, WATER=5 };
 
 namespace state {
 	
