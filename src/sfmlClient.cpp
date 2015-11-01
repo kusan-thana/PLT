@@ -8,6 +8,15 @@
 #include "element.hpp"
 #include "space.hpp"
 #include "obstacle.hpp"
+#include "levelState.hpp"
+#include "elementGrid.hpp"
+#include "levelStateEvent.hpp"
+#include "layer.hpp"
+#include "staticTile.hpp"
+#include "surface.hpp"
+#include "tileSet.hpp"
+
+
 
 /**
  * Client SFMLClass
@@ -53,25 +62,6 @@ void SFMLClient::init(){
     int width = 32;
     int height = 16;
 
-    //~ const int etat[] = {
-        //~ 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,0, 0, 1, 0, 3, 2, 2, 2, 0, 0, 0, 0, 1, 1, 1, 1,
-        //~ 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0,2, 0, 1, 0, 3, 0, 2, 2, 2, 0, 1, 1, 1, 1, 1, 1,
-        //~ 1, 1, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3,0, 0, 1, 0, 3, 0, 2, 2, 0, 0, 1, 1, 1, 1, 2, 0,
-        //~ 0, 1, 0, 0, 2, 0, 3, 3, 3, 0, 1, 1, 1, 0, 0, 0,0, 1, 1, 0, 3, 3, 3, 0, 0, 0, 1, 1, 1, 2, 0, 0,
-        //~ 0, 1, 1, 0, 3, 3, 3, 0, 0, 0, 1, 1, 1, 2, 0, 0,0, 1, 0, 0, 2, 0, 3, 3, 3, 0, 1, 1, 1, 0, 0, 0,
-        //~ 0, 0, 1, 0, 3, 0, 2, 2, 0, 0, 1, 1, 1, 1, 2, 0,1, 1, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3,
-        //~ 2, 0, 1, 0, 3, 0, 2, 2, 2, 0, 1, 1, 1, 1, 1, 1,0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0,
-        //~ 0, 0, 1, 0, 3, 2, 2, 2, 0, 0, 0, 0, 1, 1, 1, 1,0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        //~ 0, 0, 1, 0, 3, 2, 2, 2, 0, 0, 0, 0, 1, 1, 1, 1,0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        //~ 2, 0, 1, 0, 3, 0, 2, 2, 2, 0, 1, 1, 1, 1, 1, 1,0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0,
-        //~ 0, 0, 1, 0, 3, 0, 2, 2, 0, 0, 1, 1, 1, 1, 2, 0,1, 1, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3,
-        //~ 0, 1, 1, 0, 3, 3, 3, 0, 0, 0, 1, 1, 1, 2, 0, 0,0, 1, 0, 0, 2, 0, 3, 3, 3, 0, 1, 1, 1, 0, 0, 0,
-        //~ 0, 1, 0, 0, 2, 0, 3, 3, 3, 0, 1, 1, 1, 0, 0, 0,0, 1, 1, 0, 3, 3, 3, 0, 0, 0, 1, 1, 1, 2, 0, 0,
-        //~ 1, 1, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3,0, 0, 1, 0, 3, 0, 2, 2, 0, 0, 1, 1, 1, 1, 2, 0,
-        //~ 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0,2, 0, 1, 0, 3, 0, 2, 2, 2, 0, 1, 1, 1, 1, 1, 1,
-        //~ 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,0, 0, 1, 0, 3, 2, 2, 2, 0, 0, 0, 0, 1, 1, 1, 1,
-    //~ };
-
     char stateLevel[16*32];
 	std::ifstream file("../res/stateLevel.txt", std::ios::in);
 
@@ -93,43 +83,52 @@ void SFMLClient::init(){
 	else
 		std::cerr << "Failed to open the file!" << std::endl;
 
-	state::ElementList elementList;
+	state::LevelState levelState;
+	//levelState.setElementFactory(&factory);
+	//levelState.loadLevel("../res/stateLevel.txt");
 
-    for (unsigned int j = 0; j < height; ++j)
+	state::ElementGrid elementGrid = levelState.getElementGrid();
+	//state::ElementList characters = levelState.getCharacters();
+	
+	//state::LevelStateEvent levelStateEvent(levelState, ALL_CHANGED);
+	//scene.levelStateChanged(levelStateEvent);
+	
+
+    for (unsigned int i = 0; i < height; ++i)
 	{
-			for (unsigned int i = 0; i < width; ++i)
+			for (unsigned int j = 0; j < width; ++j)
 			{
-				switch(stateLevel[i+j*width]){
+				switch(stateLevel[j+i*width]){
 					case('0'):
 					{
 						state::Element* grassElem = factory.newInstance('0');	//Instanciation d'un nouvel élément
-						elementList.setElement(i+j*width, grassElem);			//Ajout du (i+j*width)ième élément dans la liste d'élément
-						sfmlSurfaces[0]->setSpriteTexture(i+j*width, &tileTree);
+						elementGrid.setElement(j+i*width, grassElem);			//Ajout du (j+i*width)ième élément dans la liste d'élément
+						sfmlSurfaces[0]->setSpriteTexture(j+i*width, &tileTree);
 					}
 					break;
 					case('1'):
 					{
 						state::Element* waterElem = factory.newInstance('1');
-						elementList.setElement(i+j*width, waterElem);
-						sfmlSurfaces[0]->setSpriteTexture(i+j*width, &tileWater);
+						elementGrid.setElement(j+i*width, waterElem);
+						sfmlSurfaces[0]->setSpriteTexture(j+i*width, &tileWater);
 					}
 					break;
 					case('2'):
 					{
 						state::Element* treeElem = factory.newInstance('2');
-						elementList.setElement(i+j*width, treeElem);
-						sfmlSurfaces[0]->setSpriteTexture(i+j*width, &tileGrass);
+						elementGrid.setElement(j+i*width, treeElem);
+						sfmlSurfaces[0]->setSpriteTexture(j+i*width, &tileGrass);
 					}
 					break;
 					case('3'):
 					{
 						state::Element* firElem = factory.newInstance('3');
-						elementList.setElement(i+j*width, firElem);
-						sfmlSurfaces[0]->setSpriteTexture(i+j*width, &tileFir);
+						elementGrid.setElement(j+i*width, firElem);
+						sfmlSurfaces[0]->setSpriteTexture(j+i*width, &tileFir);
 					}
 					break;
 				}
-				sfmlSurfaces[0]->setSpriteLocation(i+j*width,i*32,j*32);	
+				sfmlSurfaces[0]->setSpriteLocation(j+i*width,j*32,i*32);	
 			}
 	}
 }

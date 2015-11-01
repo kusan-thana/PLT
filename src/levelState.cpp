@@ -1,4 +1,5 @@
 #include "levelState.hpp"
+#include <iostream>
 
 /**
  * LevelState Class
@@ -6,11 +7,22 @@
 
 using namespace state;
 
-ElementList& LevelState::getElementList(){
+LevelState::LevelState() : characters(*this), grid(*this) {
+}
+void LevelState::setElementFactory(ElementFactory* factory){
+	
+	characters.setElementFactory(factory);
+	grid.setElementFactory(factory);
+}
+ElementGrid& LevelState::getElementGrid(){
+		
+	return grid;
+}
+ElementList& LevelState::getCharacters(){
 
-	return elementList;
+	return characters;
 }
 void LevelState::loadLevel(const char* file_name){
-	
-	//grid.load(file_name);
+
+	grid.load(file_name);
 }

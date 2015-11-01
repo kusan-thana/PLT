@@ -8,6 +8,8 @@
 
 #include "levelState.hpp"
 
+
+
 using namespace std;
 
 int main()
@@ -18,7 +20,6 @@ int main()
 	//~ std::cout << ((state::Obstacle*)element)->getObstacleTypeID() << std::endl;
 	//state::LevelState levelState;
 	//levelState.loadLevel("../res/stateLevel.txt");
-	
 	
     client::Client* client = new client::SFMLClient();
 

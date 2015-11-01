@@ -4,10 +4,6 @@
 #include <vector>
 #include "client.hpp"
 #include "sfmlSurface.hpp"
-#include "staticTile.hpp"
-#include "layer.hpp"
-#include "surface.hpp"
-#include "tileSet.hpp"
 
 namespace client {
 

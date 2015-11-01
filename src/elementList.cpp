@@ -1,13 +1,15 @@
 #include "elementList.hpp"
-
+#include "levelState.hpp"
 /**
- * Element Class
+ * ElementList Class
 **/
 
 using namespace state;
 
+ElementList::ElementList(LevelState& levelState): levelState(levelState){
+}
 int const ElementList::size(){
-		
+	
 	return elements.size();
 }
 Element* ElementList::getElement(int i){

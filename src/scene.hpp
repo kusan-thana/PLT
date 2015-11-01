@@ -1,11 +1,13 @@
 #ifndef Scene_H
 #define Scene_H
 #include <vector>
+#include "levelStateObserver.hpp"
 #include "layer.hpp"
+#include "levelStateEvent.hpp"
 
 namespace render {
 
-	class Scene {
+	class Scene : public state::LevelStateObserver{
 		
 		protected:
 			int width;
@@ -17,6 +19,7 @@ namespace render {
 			Scene(int width, int height);
 			~Scene();
 			void setLayer(Layer* layer);
+			virtual void levelStateChanged(const state::LevelStateEvent& e);
 	};
 }
 

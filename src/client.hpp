@@ -1,8 +1,6 @@
 #ifndef Client_H
 #define Client_H
-#include "sfmlSurface.hpp"
 #include "scene.hpp"
-#include "layer.hpp"
 
 namespace client {
 

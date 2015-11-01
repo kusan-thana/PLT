@@ -1,6 +1,5 @@
 #ifndef Layer_H
 #define Layer_H
-
 #include "surface.hpp"
 #include "tileSet.hpp"
 

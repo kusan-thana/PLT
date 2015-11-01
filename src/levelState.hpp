@@ -1,18 +1,23 @@
 #ifndef LevelState_H
 #define LevelState_H
-#include "elementList.hpp"
+#include "observable.hpp"
 #include "elementGrid.hpp"
+#include "elementList.hpp"
+
 
 namespace state {
 
-class LevelState {
+class LevelState : public Observable {
 
 	protected:
-		ElementList elementList;
-		ElementGrid grid;
+		state::ElementList characters;
+		state::ElementGrid grid;
 		
 	public:
-		ElementList& getElementList();
+		LevelState();
+		ElementGrid& getElementGrid();
+		ElementList& getCharacters();
+		void setElementFactory(ElementFactory* factory);
 		void loadLevel(const char* file_name);
 };
 }
