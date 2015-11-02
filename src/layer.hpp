@@ -14,6 +14,7 @@ class Layer {
 	public:
 		Layer();
 		virtual ~Layer();
+		const TileSet* getTileSet() const;
 		void setTileSet(const render::TileSet* tileSet);
 		void setSurface(Surface* surface);
 };

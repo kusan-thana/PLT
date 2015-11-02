@@ -12,6 +12,7 @@ class LevelStateEvent {
 
 	protected:
 		LevelStateEventID id;
+		
 	public:
 		const LevelState& levelState;
 		

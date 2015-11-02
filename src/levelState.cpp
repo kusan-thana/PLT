@@ -18,6 +18,10 @@ ElementGrid& LevelState::getElementGrid(){
 		
 	return grid;
 }
+const ElementGrid& LevelState::getElementGrid() const{
+	
+	return grid;
+}
 ElementList& LevelState::getCharacters(){
 
 	return characters;
