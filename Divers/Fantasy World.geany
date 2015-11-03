@@ -14,7 +14,7 @@ indent_mode=2
 
 [project]
 name=Fantasy World
-base_path=/home/lafon/Documents/git/PLT
+base_path=/users/link/benolafo/Documents/ENSEA_2015_2016/git/PLT
 description=
 file_patterns=
 
@@ -23,17 +23,19 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=1
-FILE_NAME_0=470;C++;0;EUTF-8;1;1;0;%2Fhome%2Flafon%2FDocuments%2Fgit%2FPLT%2Fsrc%2FfantasyWorld.cpp;0;4
-FILE_NAME_1=343;C++;0;EUTF-8;1;1;0;%2Fhome%2Flafon%2FDocuments%2Fgit%2FPLT%2Fsrc%2Fscene.cpp;0;4
-FILE_NAME_2=250;C++;0;EUTF-8;1;1;0;%2Fhome%2Flafon%2FDocuments%2Fgit%2FPLT%2Fsrc%2Fscene.hpp;0;4
-FILE_NAME_3=31;C++;0;EUTF-8;1;1;0;%2Fhome%2Flafon%2FDocuments%2Fgit%2FPLT%2Fsrc%2FlevelStateEvent.cpp;0;4
-FILE_NAME_4=3014;C++;0;EUTF-8;1;1;0;%2Fhome%2Flafon%2FDocuments%2Fgit%2FPLT%2Fsrc%2FsfmlClient.cpp;0;4
-FILE_NAME_5=278;C++;0;EUTF-8;1;1;0;%2Fhome%2Flafon%2FDocuments%2Fgit%2FPLT%2Fsrc%2FsfmlClient.hpp;0;4
-FILE_NAME_6=115;C++;0;EUTF-8;1;1;0;%2Fhome%2Flafon%2FDocuments%2Fgit%2FPLT%2Fsrc%2Flayer.cpp;0;4
-FILE_NAME_7=231;C++;0;EUTF-8;1;1;0;%2Fhome%2Flafon%2FDocuments%2Fgit%2FPLT%2Fsrc%2Flayer.hpp;0;4
-FILE_NAME_8=224;C++;0;EUTF-8;1;1;0;%2Fhome%2Flafon%2FDocuments%2Fgit%2FPLT%2Fsrc%2FlevelState.cpp;0;4
-FILE_NAME_9=318;C++;0;EUTF-8;1;1;0;%2Fhome%2Flafon%2FDocuments%2Fgit%2FPLT%2Fsrc%2FlevelState.hpp;0;4
+current_page=4
+FILE_NAME_0=518;C++;0;EUTF-8;1;1;0;%2Fusers%2Flink%2Fbenolafo%2FDocuments%2FENSEA_2015_2016%2Fgit%2FPLT%2Fsrc%2FfantasyWorld.cpp;0;4
+FILE_NAME_1=22;C++;0;EUTF-8;1;1;0;%2Fusers%2Flink%2Fbenolafo%2FDocuments%2FENSEA_2015_2016%2Fgit%2FPLT%2Fsrc%2Fscene.cpp;0;4
+FILE_NAME_2=285;C++;0;EUTF-8;1;1;0;%2Fusers%2Flink%2Fbenolafo%2FDocuments%2FENSEA_2015_2016%2Fgit%2FPLT%2Fsrc%2Fscene.hpp;0;4
+FILE_NAME_3=105;C++;0;EUTF-8;1;1;0;%2Fusers%2Flink%2Fbenolafo%2FDocuments%2FENSEA_2015_2016%2Fgit%2FPLT%2Fsrc%2FelementListLayer.hpp;0;4
+FILE_NAME_4=708;C++;0;EUTF-8;1;1;0;%2Fusers%2Flink%2Fbenolafo%2FDocuments%2FENSEA_2015_2016%2Fgit%2FPLT%2Fsrc%2FelementListLayer.cpp;0;4
+FILE_NAME_5=312;C++;0;EUTF-8;1;1;0;%2Fusers%2Flink%2Fbenolafo%2FDocuments%2FENSEA_2015_2016%2Fgit%2FPLT%2Fsrc%2FelementFactory.hpp;0;4
+FILE_NAME_6=1167;C++;0;EUTF-8;1;1;0;%2Fusers%2Flink%2Fbenolafo%2FDocuments%2FENSEA_2015_2016%2Fgit%2FPLT%2Fsrc%2FelementGrid.cpp;0;4
+FILE_NAME_7=443;C++;0;EUTF-8;1;1;0;%2Fusers%2Flink%2Fbenolafo%2FDocuments%2FENSEA_2015_2016%2Fgit%2FPLT%2Fsrc%2FelementGrid.hpp;0;4
+FILE_NAME_8=2356;C++;0;EUTF-8;1;1;0;%2Fusers%2Flink%2Fbenolafo%2FDocuments%2FENSEA_2015_2016%2Fgit%2FPLT%2Fsrc%2FsfmlClient.cpp;0;4
+FILE_NAME_9=327;C++;0;EUTF-8;1;1;0;%2Fusers%2Flink%2Fbenolafo%2FDocuments%2FENSEA_2015_2016%2Fgit%2FPLT%2Fsrc%2FsfmlClient.hpp;0;4
+FILE_NAME_10=326;C++;0;EUTF-8;1;1;0;%2Fusers%2Flink%2Fbenolafo%2FDocuments%2FENSEA_2015_2016%2Fgit%2FPLT%2Fsrc%2Flayer.cpp;0;4
+FILE_NAME_11=429;C++;0;EUTF-8;1;1;0;%2Fusers%2Flink%2Fbenolafo%2FDocuments%2FENSEA_2015_2016%2Fgit%2FPLT%2Fsrc%2Flayer.hpp;0;4
 
 [VTE]
 last_dir=/users/b/benolafo/Documents/structure_donnees/algorithme_huffman
@@ -70,3 +72,8 @@ EX_00_WD=%p/
 NoneFT_00_LB=
 NoneFT_00_CM=
 NoneFT_00_WD=
+
+[editor]
+line_wrapping=false
+line_break_column=72
+auto_continue_multiline=true
