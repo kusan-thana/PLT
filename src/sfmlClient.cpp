@@ -43,21 +43,21 @@ void SFMLClient::init(){
 	this->sfmlSurfaces[0]->loadTexture("../res/images/dungeon.gif");
 	this->sfmlSurfaces[0]->setSpriteCount(512);
 
-	render::TileSet tileSet;
+	//render::TileSet tileSet;
 
 	render::StaticTile tileTree(160,128,32,32);
-	tileSet.setStaticTile(tileTree);
+	//tileSet.setStaticTile(tileTree);
 	render::StaticTile tileWater(160,160,32,32);
-	tileSet.setStaticTile(tileWater);
+	//tileSet.setStaticTile(tileWater);
 	render::StaticTile tileGrass(0,160,32,32);
-	tileSet.setStaticTile(tileGrass);
+	//tileSet.setStaticTile(tileGrass);
 	render::StaticTile tileFir(224,128,32,32);
-	tileSet.setStaticTile(tileFir);
+	//tileSet.setStaticTile(tileFir);
 
 	//render::Layer layer;
 	render::ElementListLayer elementListLayer; 
 	elementListLayer.setSurface(sfmlSurfaces[0]);
-	elementListLayer.setTileSet(&tileSet);
+	//elementListLayer.setTileSet(&tileSet);
 
 	scene.setLayer(&elementListLayer);
 

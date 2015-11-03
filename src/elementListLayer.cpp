@@ -12,11 +12,11 @@ using namespace render;
 
 void ElementListLayer::levelStateChanged(const state::LevelStateEvent& e){
 	
-		//~ const render::TileSet* tileSetGrid = layers[GRID_LAYER]->getTileSet();
+		//const render::TileSet* tileSetGrid = layers[GRID_LAYER]->getTileSet();
 		//const render::TileSet* sfmlSurfaces = layers[GRID_LAYER]->getTileSet();
 		state::ElementGrid grid = e.levelState.getElementGrid();
 		//~ //sfmlSurfaces[0]->setSpriteTexture(j+i*width, &tileTree);
-		
+		this->tileSet;
 		
 		int width = grid.getWidth();
 		int height = grid.getHeight();
@@ -26,6 +26,8 @@ void ElementListLayer::levelStateChanged(const state::LevelStateEvent& e){
 			state::Element* curr_elem = grid.getElement(i);
 			int x = curr_elem->getX();
 			int y = curr_elem->getY();
+			
+			(this->tileSet)->getElementTile(curr_elem);		//Add cast TileSet1 ????
 			
 			if(curr_elem->getTypeID() == SPACE){
 				
