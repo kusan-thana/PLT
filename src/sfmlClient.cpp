@@ -15,6 +15,7 @@
 #include "staticTile.hpp"
 #include "surface.hpp"
 #include "tileSet.hpp"
+#include "elementListLayer.hpp"
 
 
 
@@ -53,11 +54,12 @@ void SFMLClient::init(){
 	render::StaticTile tileFir(224,128,32,32);
 	tileSet.setStaticTile(tileFir);
 
-	render::Layer layer;
-	layer.setSurface(sfmlSurfaces[0]);
-	layer.setTileSet(&tileSet);
+	//render::Layer layer;
+	render::ElementListLayer elementListLayer; 
+	elementListLayer.setSurface(sfmlSurfaces[0]);
+	elementListLayer.setTileSet(&tileSet);
 
-	scene.setLayer(&layer);
+	scene.setLayer(&elementListLayer);
 
     int width = 32;
     int height = 16;

@@ -1,11 +1,12 @@
 #ifndef Layer_H
 #define Layer_H
+#include "levelStateObserver.hpp"
 #include "surface.hpp"
 #include "tileSet.hpp"
 
 namespace render {
 
-class Layer {
+class Layer : public state::LevelStateObserver{
 	
 	protected:
 		Surface* surface;

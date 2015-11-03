@@ -14,10 +14,10 @@ using namespace std;
 
 int main()
 {
-	//~ state::Obstacle water(WATER);
-	//~ state::Element* element = &water;
+	//state::Obstacle water(WATER);
+	//state::Element* element = &water;
 	//~ std::cout << element->getTypeID() << std::endl;
-	//~ std::cout << ((state::Obstacle*)element)->getObstacleTypeID() << std::endl;
+	//std::cout << ((state::Obstacle*)element)->getObstacleTypeID() << std::endl;
 	//state::LevelState levelState;
 	//levelState.loadLevel("../res/stateLevel.txt");
 	
