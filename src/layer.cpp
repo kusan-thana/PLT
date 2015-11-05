@@ -1,5 +1,4 @@
 #include "layer.hpp"
-
 /**
  * Layer Class
 **/

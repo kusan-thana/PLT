@@ -12,6 +12,7 @@ namespace render {
 		protected:
 			int width;
 			int height;
+		public:
 			std::vector<Layer*> layers;
 			
 		public:

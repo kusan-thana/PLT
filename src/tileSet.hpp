@@ -12,7 +12,9 @@ class TileSet {
 
 	public:
 		~TileSet();
-		virtual const char* getImageFile() =0;
+		virtual int getCellWidth() const =0;
+		virtual int getCellHeight() const =0;
+		virtual const char* getImageFile() const =0;
 		virtual const Tile* getElementTile(const state::Element* element) const =0;
 };
 }

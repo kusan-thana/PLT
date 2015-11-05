@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 
+#include "space.hpp"
 /**
  * ElementGrid Class
 **/
@@ -62,6 +63,10 @@ void ElementGrid::load(const char* file_name){
 					grassElem->setX(i);
 					grassElem->setY(j);
 					setElement(j+i*width, grassElem);			//Ajout du (j+i*width)ième élément dans la liste d'élément
+					
+					//~ std::cout << "i : "<< i << std::endl;
+					//~ std::cout << "j : "<< j << std::endl; 
+					//~ std::cout << "GRASS : "<< ((Space*)grassElem)->getSpaceTypeID() << std::endl; 
 				}
 				break;
 				case('1'):

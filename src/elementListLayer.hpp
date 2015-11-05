@@ -7,8 +7,6 @@ namespace render {
 
 class ElementListLayer : public Layer {
 	
-	protected:
-		
 	public:
 		virtual void levelStateChanged(const state::LevelStateEvent& e);
 };

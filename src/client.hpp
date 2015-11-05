@@ -1,5 +1,6 @@
 #ifndef Client_H
 #define Client_H
+#include "tileSet.hpp"
 #include "scene.hpp"
 
 namespace client {
@@ -7,6 +8,7 @@ namespace client {
 class Client {
 	
 	protected:
+		std::vector<const render::TileSet*> tileSets;
 		render::Scene scene;
 
 		Client();

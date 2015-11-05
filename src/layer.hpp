@@ -8,8 +8,10 @@ namespace render {
 
 class Layer : public state::LevelStateObserver{
 	
-	protected:
+	public:
 		Surface* surface;
+	protected:
+		//~ Surface* surface;
 		const render::TileSet* tileSet;
 		
 	public:

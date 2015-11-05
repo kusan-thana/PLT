@@ -15,7 +15,10 @@
 #include "staticTile.hpp"
 #include "surface.hpp"
 #include "tileSet.hpp"
+#include "tileSet1.hpp"
 #include "elementListLayer.hpp"
+#include "observable.hpp"
+
 
 
 
@@ -38,10 +41,10 @@ void SFMLClient::init(){
 	factory.registerType('3', new state::ElementAlloc <state::Obstacle, ObstacleTypeID>(FIR));
 
 	/*********************************/
-	this->sfmlSurfaces.push_back(new SFMLSurface());
+	this->surfaces.push_back(new SFMLSurface());
 
-	this->sfmlSurfaces[0]->loadTexture("../res/images/dungeon.gif");
-	this->sfmlSurfaces[0]->setSpriteCount(512);
+	this->surfaces[0]->loadTexture("../res/images/dungeon.gif");
+	this->surfaces[0]->setSpriteCount(512);
 
 	//render::TileSet tileSet;
 
@@ -56,10 +59,10 @@ void SFMLClient::init(){
 
 	//render::Layer layer;
 	render::ElementListLayer elementListLayer; 
-	elementListLayer.setSurface(sfmlSurfaces[0]);
+	elementListLayer.setSurface(surfaces[0]);
 	//elementListLayer.setTileSet(&tileSet);
 
-	scene.setLayer(&elementListLayer);
+	//scene.setLayer(&elementListLayer);
 
     int width = 32;
     int height = 16;
@@ -86,13 +89,21 @@ void SFMLClient::init(){
 		std::cerr << "Failed to open the file!" << std::endl;
 
 	state::LevelState levelState;
-	//levelState.setElementFactory(&factory);
-	//levelState.loadLevel("../res/stateLevel.txt");
+	//~ levelState.setElementFactory(&factory);
+	//~ levelState.loadLevel("../res/stateLevel.txt");
+	//~ state::LevelStateEvent levelStateEvent(levelState, ALL_CHANGED);
+	//~ state::Observable observable;
+	//~ observable.registerObserver(&scene);
+	//~ observable.notifyObservers(levelStateEvent);
+	
+	//tileSets.push_back(new render::TileSet1());
+
+	
 
 	state::ElementGrid elementGrid = levelState.getElementGrid();
 	//state::ElementList characters = levelState.getCharacters();
 	
-	//state::LevelStateEvent levelStateEvent(levelState, ALL_CHANGED);
+	
 	//scene.levelStateChanged(levelStateEvent);
 	
 
@@ -105,32 +116,32 @@ void SFMLClient::init(){
 					{
 						state::Element* grassElem = factory.newInstance('0');	//Instanciation d'un nouvel élément
 						elementGrid.setElement(j+i*width, grassElem);			//Ajout du (j+i*width)ième élément dans la liste d'élément
-						sfmlSurfaces[0]->setSpriteTexture(j+i*width, &tileTree);
+						surfaces[0]->setSpriteTexture(j+i*width, &tileGrass);
 					}
 					break;
 					case('1'):
 					{
 						state::Element* waterElem = factory.newInstance('1');
 						elementGrid.setElement(j+i*width, waterElem);
-						sfmlSurfaces[0]->setSpriteTexture(j+i*width, &tileWater);
+						surfaces[0]->setSpriteTexture(j+i*width, &tileWater);
 					}
 					break;
 					case('2'):
 					{
 						state::Element* treeElem = factory.newInstance('2');
 						elementGrid.setElement(j+i*width, treeElem);
-						sfmlSurfaces[0]->setSpriteTexture(j+i*width, &tileGrass);
+						surfaces[0]->setSpriteTexture(j+i*width, &tileTree);
 					}
 					break;
 					case('3'):
 					{
 						state::Element* firElem = factory.newInstance('3');
 						elementGrid.setElement(j+i*width, firElem);
-						sfmlSurfaces[0]->setSpriteTexture(j+i*width, &tileFir);
+						surfaces[0]->setSpriteTexture(j+i*width, &tileFir);
 					}
 					break;
 				}
-				sfmlSurfaces[0]->setSpriteLocation(j+i*width,j*32,i*32);	
+				surfaces[0]->setSpriteLocation(j+i*width,j*32,i*32);	
 			}
 	}
 }
@@ -149,6 +160,7 @@ bool SFMLClient::acquireControls(){
 void SFMLClient::updateDisplay(){
 
 	this->window.clear();
-	this->window.draw(*sfmlSurfaces[0]);
+	this->window.draw(*((SFMLSurface*)surfaces[0]));
+	//this->window.draw(*((SFMLSurface*)(scene.layers[0]->surface)));
 	this->window.display();
 }

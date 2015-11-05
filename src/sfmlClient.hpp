@@ -4,6 +4,7 @@
 #include <vector>
 #include "client.hpp"
 #include "sfmlSurface.hpp"
+#include "surface.hpp"
 
 namespace client {
 
@@ -11,7 +12,7 @@ class SFMLClient : public Client {
 
 	protected:
 		sf::RenderWindow window;
-		std::vector<SFMLSurface*> sfmlSurfaces;
+		std::vector<Surface*> surfaces;
 		
 		void init();
 		virtual bool acquireControls();
