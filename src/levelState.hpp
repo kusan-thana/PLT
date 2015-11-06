@@ -15,9 +15,10 @@ class LevelState : public Observable {
 		
 	public:
 		LevelState();
-		ElementGrid& getElementGrid();
 		const ElementGrid& getElementGrid() const;
-		ElementList& getCharacters();
+		ElementGrid& getElementGrid();
+		const ElementList& getElementList() const;
+		ElementList& getElementList();
 		void setElementFactory(ElementFactory* factory);
 		void loadLevel(const char* file_name);
 };

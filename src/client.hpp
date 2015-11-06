@@ -12,6 +12,7 @@ class Client {
 		render::Scene scene;
 
 		Client();
+		void setTileSet(render::SceneLayer sceneLayer, const render::TileSet* tileSet);
 		virtual void init();
 		virtual bool acquireControls() = 0;
 		//virtual void stateChanged() = 0;

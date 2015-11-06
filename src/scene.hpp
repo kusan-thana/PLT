@@ -6,20 +6,20 @@
 #include "levelStateEvent.hpp"
 
 namespace render {
+	
+	enum SceneLayer { GRID_LAYER=0, CHARACTERS_LAYER=1, STATE_LAYER=2 };
 
 	class Scene : public state::LevelStateObserver{
 		
 		protected:
 			int width;
 			int height;
-		public:
 			std::vector<Layer*> layers;
 			
 		public:
 			Scene();
-			Scene(int width, int height);
 			~Scene();
-			void setLayer(Layer* layer);
+			void setLayer(int idx, Layer* layer);
 			virtual void levelStateChanged(const state::LevelStateEvent& e);
 	};
 }

@@ -6,33 +6,39 @@
 #include "element.hpp"
 #include "obstacle.hpp"
 #include "elementListLayer.hpp"
+#include "levelListEvent.hpp"
+
+#include <iostream>
 /**
  * Scene Class
 **/
-enum SceneLayer { GRID_LAYER=0, CHARACTERS_LAYER=1, STATE_LAYER=2 };
 
 using namespace render;
 
 Scene::Scene(){
-}
-Scene::Scene(int width, int height) : width(width), height(height){
+	
+	layers.push_back(new ElementListLayer());	//GRID_LAYER
+	layers.push_back(new ElementListLayer());	//CHARACTERS_LAYER
+	layers.push_back(new ElementListLayer());	//STATE_LAYER
 }
 Scene::~Scene(){
 }
-void Scene::setLayer(Layer* layer){
+void Scene::setLayer(int idx, Layer* layer){
 
-	this->layers.push_back(layer);
+	if(idx == GRID_LAYER)
+		this->layers[GRID_LAYER] = layer;		//Memory leak ??
+	
+	if(idx == CHARACTERS_LAYER)
+		this->layers[CHARACTERS_LAYER] = layer;
+	
+	if(idx == STATE_LAYER)
+		this->layers[STATE_LAYER] = layer;
 }
 void Scene::levelStateChanged(const state::LevelStateEvent& e){
 	
-	state::ElementGrid grid = e.levelState.getElementGrid();
-	
-	this->width = grid.getWidth();
-	this->height = grid.getHeight();
-	
 	if(e == ALL_CHANGED)
 	{
-		layers.push_back(new ElementListLayer());
 		((ElementListLayer*)layers[GRID_LAYER])->levelStateChanged(e);
+		//((ElementListLayer*)layers[CHARACTERS_LAYER])->levelStateChanged(e);
 	}
 }

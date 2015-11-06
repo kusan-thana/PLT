@@ -14,15 +14,19 @@ void LevelState::setElementFactory(ElementFactory* factory){
 	characters.setElementFactory(factory);
 	grid.setElementFactory(factory);
 }
-ElementGrid& LevelState::getElementGrid(){
-		
-	return grid;
-}
 const ElementGrid& LevelState::getElementGrid() const{
 	
 	return grid;
 }
-ElementList& LevelState::getCharacters(){
+ElementGrid& LevelState::getElementGrid(){
+		
+	return grid;
+}
+const ElementList& LevelState::getElementList() const{
+	
+	return characters;
+}
+ElementList& LevelState::getElementList(){
 
 	return characters;
 }

@@ -8,7 +8,7 @@ using namespace state;
 
 ElementList::ElementList(LevelState& levelState): levelState(levelState){
 }
-int const ElementList::size(){
+int ElementList::size() const{
 
 	return elements.size();
 }

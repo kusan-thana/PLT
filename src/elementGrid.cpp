@@ -38,14 +38,12 @@ void ElementGrid::load(const char* file_name){
 
 			if (buf !='\n'){
 				stateLevel[idx] = buf;
-//				std::cout << stateLevel[idx];
 				++idx;
 			}
 			if (buf =='\n')
 				height += 1;
 		}
 		width = idx / height;
-//		std::cout << std::endl;
 		file.close();
 	}
 	else
@@ -59,19 +57,15 @@ void ElementGrid::load(const char* file_name){
 			switch(stateLevel[j+i*width]){
 				case('0'):
 				{
-					state::Element* grassElem = factory->newInstance('0');	//Instanciation d'un nouvel élément
+					Element* grassElem = factory->newInstance('0');	//Instanciation d'un nouvel élément
 					grassElem->setX(i);
 					grassElem->setY(j);
 					setElement(j+i*width, grassElem);			//Ajout du (j+i*width)ième élément dans la liste d'élément
-					
-					//~ std::cout << "i : "<< i << std::endl;
-					//~ std::cout << "j : "<< j << std::endl; 
-					//~ std::cout << "GRASS : "<< ((Space*)grassElem)->getSpaceTypeID() << std::endl; 
 				}
 				break;
 				case('1'):
 				{
-					state::Element* waterElem = factory->newInstance('1');
+					Element* waterElem = factory->newInstance('1');
 					waterElem->setX(i);
 					waterElem->setY(j);
 					setElement(j+i*width, waterElem);
@@ -79,7 +73,7 @@ void ElementGrid::load(const char* file_name){
 				break;
 				case('2'):
 				{
-					state::Element* treeElem = factory->newInstance('2');
+					Element* treeElem = factory->newInstance('2');
 					treeElem->setX(i);
 					treeElem->setY(j);
 					setElement(j+i*width, treeElem);
@@ -87,7 +81,7 @@ void ElementGrid::load(const char* file_name){
 				break;
 				case('3'):
 				{
-					state::Element* firElem = factory->newInstance('3');
+					Element* firElem = factory->newInstance('3');
 					firElem->setX(i);
 					firElem->setY(j);
 					setElement(j+i*width, firElem);
