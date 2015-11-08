@@ -36,9 +36,11 @@ void Scene::setLayer(int idx, Layer* layer){
 }
 void Scene::levelStateChanged(const state::LevelStateEvent& e){
 	
+	((ElementListLayer*)layers[GRID_LAYER])->levelStateChanged(e);
+	//~ ((ElementListLayer*)layers[CHARACTERS_LAYER])->levelStateChanged(e);
 	if(e == ALL_CHANGED)
 	{
-		((ElementListLayer*)layers[GRID_LAYER])->levelStateChanged(e);
+		//~ ((ElementListLayer*)layers[GRID_LAYER])->levelStateChanged(e);
 		//((ElementListLayer*)layers[CHARACTERS_LAYER])->levelStateChanged(e);
 	}
 }

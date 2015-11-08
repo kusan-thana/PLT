@@ -66,8 +66,8 @@ void SFMLClient::init(){
 	state::Element* hero = factory.newInstance('H');	//Instanciation d'un nouvel élément
 	hero->setX(10);
 	hero->setY(10);
-	state::ElementList elementList(levelState);
-	elementList.setElement(0, hero);
+	state::ElementList& characters = levelState.getElementList();
+	characters.setElement(0, hero);
 	
 	render::ElementListLayer layerCharacters;
 	layerCharacters.setSurface(this->surfaces[render::CHARACTERS_LAYER]);
@@ -80,15 +80,19 @@ void SFMLClient::init(){
 	/******************************************/
 
 	state::LevelStateEvent levelStateEvent(levelState, ALL_CHANGED);
-	//~ state::Observable observable;
-	levelState.registerObserver(&scene);
-	levelState.notifyObservers(levelStateEvent);
+	//~ levelState.registerObserver(&scene);
+	//~ levelState.notifyObservers(levelStateEvent);
 	
-	//~ state::ElementGrid elementGrid = levelState.getElementGrid(); 
-	//~ state::ElementList elementList2 = levelState.getElementList(); 
-	//~ state::LevelListEvent levelListEvent(elementGrid,0);
+	levelState.registerObserver(&layerGrid);
+	state::ElementGrid elementGrid = levelState.getElementGrid();
+	state::LevelListEvent gridEvent(elementGrid,0);
+	levelState.notifyObservers(gridEvent);
 	
-	//~ levelState.notifyObservers(levelListEvent);
+	//~ levelState.registerObserver(&layerCharacters);
+	//~ state::ElementList charactersList = levelState.getElementList();
+	//~ std::cout << charactersList.size() << std::endl;		//size 0 !!!!
+	//~ state::LevelListEvent charactersEvent(charactersList,1);
+	//~ levelState.notifyObservers(charactersEvent);
 
 }
 bool SFMLClient::acquireControls(){
@@ -107,5 +111,6 @@ void SFMLClient::updateDisplay(){
 
 	this->window.clear();
 	this->window.draw(*((SFMLSurface*)surfaces[render::GRID_LAYER]));
+	this->window.draw(*((SFMLSurface*)surfaces[render::CHARACTERS_LAYER]));
 	this->window.display();
 }

@@ -15,9 +15,7 @@
 using namespace std;
 
 int main()
-{
-	
-	
+{	
 	client::Client* client = new client::SFMLClient();
 
 	client->run();

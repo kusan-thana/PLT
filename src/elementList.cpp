@@ -8,11 +8,15 @@ using namespace state;
 
 ElementList::ElementList(LevelState& levelState): levelState(levelState){
 }
+const LevelState& ElementList::getLevelState() const{
+	
+	return levelState;
+}
 int ElementList::size() const{
 
 	return elements.size();
 }
-Element* ElementList::getElement(int i){
+Element* ElementList::getElement(int i) const{
 
 	return elements[i];
 }

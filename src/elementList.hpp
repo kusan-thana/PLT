@@ -20,8 +20,9 @@ class ElementList {
 
 	public:
 		ElementList(state::LevelState& levelState);
+		const LevelState& getLevelState() const;
 		int size() const;
-		state::Element* getElement(int i);
+		state::Element* getElement(int i) const;
 		void setElementFactory(state::ElementFactory* factory);
 		void setElement(int i, state::Element* element);
 

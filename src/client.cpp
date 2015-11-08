@@ -10,7 +10,7 @@ using namespace client;
 
 Client::Client() {
 	
-	this->tileSets.push_back(new render::TileSet1()); 	//GRID_LAYER
+	this->tileSets.push_back(new render::TileSet1()); 	//GRID_LAYER			Seriously??
 	this->tileSets.push_back(new render::TileSet2());	//CHARACTERS_LAYER
 														//STATE_LAYER
 }

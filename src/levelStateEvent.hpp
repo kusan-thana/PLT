@@ -22,6 +22,3 @@ class LevelStateEvent {
 };
 }
 #endif
-
-
-
