@@ -7,7 +7,7 @@
 
 namespace render {
 	
-	enum SceneLayer { GRID_LAYER=0, CHARACTERS_LAYER=1, STATE_LAYER=2 };
+	enum SceneLayer { GRID_LAYER=0, CURSORS_LAYER=1, CHARACTERS_LAYER=2, STATE_LAYER=3 };
 
 	class Scene : public state::LevelStateObserver{
 		

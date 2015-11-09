@@ -50,9 +50,11 @@ void ElementListLayer::update(const state::ElementList& elementList, int i){
 		state::Element* curr_elem = elementList.getElement(i);
 		int x = curr_elem->getX();
 		int y = curr_elem->getY();
-
-		const render::Tile* curr_tile = (this->tileSet)->getElementTile(curr_elem);		//Add cast TileSet1 ???? 
 		
+		std::cout << (this->tileSet)->getImageFile() << std::endl;
+		
+		const render::Tile* curr_tile = (this->tileSet)->getElementTile(curr_elem);		//Add cast TileSet1 ???? 
+
 		(this->surface)->setSpriteTexture(y+x*width, (StaticTile*)curr_tile);
 		(this->surface)->setSpriteLocation(y+x*width, y*widthCell, x*heigthCell);
 	}
