@@ -1,6 +1,6 @@
 #ifndef ElementList_H
 #define ElementList_H
-
+#include "observable.hpp"
 #include "elementFactory.hpp"
 #include "element.hpp"
 
@@ -11,7 +11,7 @@ namespace state {
 // forward declared dependencies
 class LevelState;
 
-class ElementList {
+class ElementList : public Observable {
 	
 	protected:
 		state::LevelState& levelState;

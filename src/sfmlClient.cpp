@@ -64,8 +64,8 @@ void SFMLClient::init(){
 	
 	/*************CHARACTERS_LAYER*************/
 	state::Element* hero = factory.newInstance('H');	//Instanciation d'un nouvel élément
-	hero->setX(10);
-	hero->setY(10);
+	hero->setX(7);
+	hero->setY(17);
 	state::ElementList& characters = levelState.getElementList();
 	characters.setElement(0, hero);
 	
@@ -81,19 +81,20 @@ void SFMLClient::init(){
 	/******************************************/
 
 	state::LevelStateEvent levelStateEvent(levelState, ALL_CHANGED);
-	levelState.registerObserver(&scene);
-	levelState.notifyObservers(levelStateEvent);
+	//~ levelState.registerObserver(&scene);
+	//levelState.notifyObservers(levelStateEvent);
 	
-	//~ levelState.registerObserver(&layerGrid);
-	//~ state::ElementGrid elementGrid = levelState.getElementGrid();
-	//~ state::LevelListEvent gridEvent(elementGrid,0);
-	//~ levelState.notifyObservers(gridEvent);
+	levelState.registerObserver(&layerGrid);
+	state::ElementGrid elementGrid = levelState.getElementGrid();
+	state::LevelListEvent gridEvent(elementGrid,0);
+	levelState.getElementGrid().registerObserver(&layerGrid);
+	levelState.getElementGrid().notifyObservers(gridEvent);
 	
-	//~ levelState.registerObserver(&layerCharacters);
-	//~ state::ElementList charactersList = levelState.getElementList();
-	//~ std::cout << charactersList.size() << std::endl;		
-	//~ state::LevelListEvent charactersEvent(charactersList,1);
-	//~ levelState.notifyObservers(charactersEvent);
+	
+	state::ElementList charactersList = levelState.getElementList();
+	state::LevelListEvent charactersEvent(charactersList,1);
+	levelState.getElementList().registerObserver(&layerCharacters);
+	levelState.getElementList().notifyObservers(charactersEvent);
 
 }
 bool SFMLClient::acquireControls(){
@@ -112,6 +113,6 @@ void SFMLClient::updateDisplay(){
 
 	this->window.clear();
 	this->window.draw(*((SFMLSurface*)surfaces[render::GRID_LAYER]));
-	//~ this->window.draw(*((SFMLSurface*)surfaces[render::CHARACTERS_LAYER]));
+	this->window.draw(*((SFMLSurface*)surfaces[render::CHARACTERS_LAYER]));
 	this->window.display();
 }
