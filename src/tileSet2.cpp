@@ -12,7 +12,7 @@ using namespace render;
 
 TileSet2::TileSet2() : file_name("../res/images/samu.bmp"), widthCell(32), heightCell(40) {
 
-	tiles.push_back(new render::StaticTile(0,64,32,40));	//HERO
+	tiles.push_back(new render::StaticTile(64,0,32,40));	//HERO
 }
 int TileSet2::getCellWidth() const{
 	

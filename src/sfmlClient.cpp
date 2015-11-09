@@ -73,6 +73,7 @@ void SFMLClient::init(){
 	layerCharacters.setSurface(this->surfaces[render::CHARACTERS_LAYER]);
 	
 	render::TileSet2 tileSet2;
+	std::cout << tileSet2.getImageFile() << std::endl;
 	setTileSet(render::CHARACTERS_LAYER, &tileSet2);
 	layerCharacters.setTileSet(this->tileSets[render::CHARACTERS_LAYER]);
 	
@@ -80,17 +81,17 @@ void SFMLClient::init(){
 	/******************************************/
 
 	state::LevelStateEvent levelStateEvent(levelState, ALL_CHANGED);
-	//~ levelState.registerObserver(&scene);
-	//~ levelState.notifyObservers(levelStateEvent);
+	levelState.registerObserver(&scene);
+	levelState.notifyObservers(levelStateEvent);
 	
-	levelState.registerObserver(&layerGrid);
-	state::ElementGrid elementGrid = levelState.getElementGrid();
-	state::LevelListEvent gridEvent(elementGrid,0);
-	levelState.notifyObservers(gridEvent);
+	//~ levelState.registerObserver(&layerGrid);
+	//~ state::ElementGrid elementGrid = levelState.getElementGrid();
+	//~ state::LevelListEvent gridEvent(elementGrid,0);
+	//~ levelState.notifyObservers(gridEvent);
 	
 	//~ levelState.registerObserver(&layerCharacters);
 	//~ state::ElementList charactersList = levelState.getElementList();
-	//~ std::cout << charactersList.size() << std::endl;		//size 0 !!!!
+	//~ std::cout << charactersList.size() << std::endl;		
 	//~ state::LevelListEvent charactersEvent(charactersList,1);
 	//~ levelState.notifyObservers(charactersEvent);
 
@@ -111,6 +112,6 @@ void SFMLClient::updateDisplay(){
 
 	this->window.clear();
 	this->window.draw(*((SFMLSurface*)surfaces[render::GRID_LAYER]));
-	this->window.draw(*((SFMLSurface*)surfaces[render::CHARACTERS_LAYER]));
+	//~ this->window.draw(*((SFMLSurface*)surfaces[render::CHARACTERS_LAYER]));
 	this->window.display();
 }

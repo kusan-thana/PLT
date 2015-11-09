@@ -7,6 +7,7 @@
 #include "sfmlSurface.hpp"
 
 #include "tileSet1.hpp"
+#include "tileSet2.hpp"
 #include "tile.hpp"
 #include "staticTile.hpp"
 #include "scene.hpp"
@@ -48,7 +49,7 @@ void ElementListLayer::update(const state::ElementList& elementList, int i){
 	if(i == render::CHARACTERS_LAYER)
 	{
 		std::cout << "ElementListLayer : CHARACTERS_LAYER" << std::endl;
-		const state::ElementGrid& grid = static_cast<const state::ElementGrid&>(elementList);
+		//const state::ElementGrid& grid = static_cast<const state::ElementGrid&>(elementList);
 		//~ int width = grid.getWidth();
 		//~ int height = grid.getHeight();
 		int width = 32;		//awful..
@@ -59,6 +60,7 @@ void ElementListLayer::update(const state::ElementList& elementList, int i){
 		std::cout << "widthCell : " << widthCell << std::endl;
 		std::cout << "heigthCell : " << heigthCell << std::endl;
 		
+		//~ (this->surface)->loadTexture(((render::TileSet2*)(this->tileSet))->getImageFile());
 		(this->surface)->loadTexture((this->tileSet)->getImageFile());
 		std::cout << (this->tileSet)->getImageFile() << std::endl;
 		(this->surface)->setSpriteCount(512);		//Think about it..
@@ -76,7 +78,7 @@ void ElementListLayer::update(const state::ElementList& elementList, int i){
 		const render::Tile* curr_tile = (this->tileSet)->getElementTile(curr_elem);		//Add cast TileSet2 ???? 
 		std::cout << "Check3" << std::endl;
 		(this->surface)->setSpriteTexture(y+x*width, (StaticTile*)curr_tile);		//Use width and height of GRID, may have some problemes if CHARACTERS and GRID have not the same size... (boundary right and bottom)
-		(this->surface)->setSpriteLocation(y+x*width, y*widthCell, x*heigthCell);	
+		(this->surface)->setSpriteLocation(y+x*width, y*widthCell, x*heigthCell);
 		}
 	}
 }
