@@ -15,6 +15,7 @@ ElementGrid::ElementGrid(LevelState& levelState) : ElementList(levelState), widt
 }
 int ElementGrid::getWidth() const{
 		
+
 	return width;
 }
 int ElementGrid::getHeight() const{

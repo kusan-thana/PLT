@@ -88,13 +88,13 @@ void SFMLClient::init(){
 	state::ElementGrid elementGrid = levelState.getElementGrid();
 	state::LevelListEvent gridEvent(elementGrid,0);
 	levelState.getElementGrid().registerObserver(&layerGrid);
-	levelState.getElementGrid().notifyObservers(gridEvent);
+	//levelState.getElementGrid().notifyObservers(gridEvent);
 	
 	
 	state::ElementList charactersList = levelState.getElementList();
 	state::LevelListEvent charactersEvent(charactersList,1);
 	levelState.getElementList().registerObserver(&layerCharacters);
-	levelState.getElementList().notifyObservers(charactersEvent);
+	//levelState.getElementList().notifyObservers(charactersEvent);
 
 }
 bool SFMLClient::acquireControls(){
