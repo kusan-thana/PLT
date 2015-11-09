@@ -73,7 +73,6 @@ void SFMLClient::init(){
 	layerCharacters.setSurface(this->surfaces[render::CHARACTERS_LAYER]);
 	
 	render::TileSet2 tileSet2;
-	std::cout << tileSet2.getImageFile() << std::endl;
 	setTileSet(render::CHARACTERS_LAYER, &tileSet2);
 	layerCharacters.setTileSet(this->tileSets[render::CHARACTERS_LAYER]);
 	
