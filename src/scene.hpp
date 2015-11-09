@@ -14,6 +14,7 @@ namespace render {
 		protected:
 			int width;
 			int height;
+			//~ std::vector<std::unique_ptr<Layer> > layers;
 			std::vector<Layer*> layers;
 			
 		public:

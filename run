@@ -2,5 +2,5 @@
 
 LD_LIBRARY_PATH=
 cd bin
+#valgrind --leak-check=full   --show-leak-kinds=all  ./FantasyWorld
 ./FantasyWorld
-
