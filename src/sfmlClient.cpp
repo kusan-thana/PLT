@@ -18,6 +18,7 @@
 #include "element.hpp"
 #include "tileSet2.hpp"
 #include "levelListEvent.hpp"
+#include "tileSet3.hpp"
 
 
 /**
@@ -29,8 +30,8 @@ using namespace client;
 SFMLClient::SFMLClient() : window(sf::VideoMode(1024, 512), "Fantasy World!") {
 	
 	this->surfaces.push_back(new SFMLSurface());	//GRID_LAYER
+	this->surfaces.push_back(new SFMLSurface());	//CURSORS_LAYER
 	this->surfaces.push_back(new SFMLSurface());	//CHARACTERS_LAYER
-	this->surfaces.push_back(new SFMLSurface());	//STATE_LAYER
 }
 void SFMLClient::init(){
 
@@ -42,13 +43,16 @@ void SFMLClient::init(){
 	factory.registerType('2', new state::ElementAlloc <state::Obstacle, ObstacleTypeID>(TREE));
 	factory.registerType('3', new state::ElementAlloc <state::Obstacle, ObstacleTypeID>(FIR));
 	factory.registerType('H', new state::ElementAlloc <state::PlayerCharacter, TypeID>(HERO));
+	factory.registerType('R', new state::ElementAlloc <state::Space, SpaceTypeID>(RED));
+	factory.registerType('Y', new state::ElementAlloc <state::Space, SpaceTypeID>(YELLOW));
+	factory.registerType('G', new state::ElementAlloc <state::Space, SpaceTypeID>(GREEN));
 	/*********************************/
 	
 	state::LevelState levelState;
 	levelState.setElementFactory(&factory);
 	
 	/*************GRID_LAYER*************/
-	levelState.loadLevel("../res/stateLevel.txt");
+	levelState.loadLevel("../res/level1.txt");
 	
 	//~ render::ElementListLayer* layer = new render::ElementListLayer();
 	render::ElementListLayer layerGrid;
@@ -68,7 +72,7 @@ void SFMLClient::init(){
 	hero->setY(17);
 	state::ElementList& characters = levelState.getElementList();
 	characters.setElement(0, hero);
-	
+			
 	render::ElementListLayer layerCharacters;
 	layerCharacters.setSurface(this->surfaces[render::CHARACTERS_LAYER]);
 	
@@ -78,6 +82,23 @@ void SFMLClient::init(){
 	
 	scene.setLayer(render::CHARACTERS_LAYER, &layerCharacters);
 	/******************************************/
+	
+	/*************CURSOR_LAYER*************/
+	state::Element* red = factory.newInstance('R');
+	red->setX(7);
+	red->setY(19);
+	state::ElementList& cursors = levelState.getElementCursors();
+	cursors.setElement(0, red);
+	
+	render::ElementListLayer layerCursors;
+	layerCursors.setSurface(this->surfaces[render::CURSORS_LAYER]);
+	
+	render::TileSet3 tileSet3;
+	setTileSet(render::CURSORS_LAYER, &tileSet3);
+	layerCursors.setTileSet(this->tileSets[render::CURSORS_LAYER]);
+	
+	scene.setLayer(render::CURSORS_LAYER, &layerCursors);
+	/**************************************/
 
 	state::LevelStateEvent levelStateEvent(levelState, ALL_CHANGED);
 	//~ levelState.registerObserver(&scene);
@@ -85,15 +106,20 @@ void SFMLClient::init(){
 	
 	levelState.registerObserver(&layerGrid);
 	state::ElementGrid elementGrid = levelState.getElementGrid();
-	state::LevelListEvent gridEvent(elementGrid,0);
+	state::LevelListEvent gridEvent(elementGrid,-1);
 	levelState.getElementGrid().registerObserver(&layerGrid);
-	//levelState.getElementGrid().notifyObservers(gridEvent);
+	levelState.getElementGrid().notifyObservers(gridEvent);
 	
 	
 	state::ElementList charactersList = levelState.getElementList();
-	state::LevelListEvent charactersEvent(charactersList,1);
+	state::LevelListEvent charactersEvent(charactersList,-1);
 	levelState.getElementList().registerObserver(&layerCharacters);
-	//levelState.getElementList().notifyObservers(charactersEvent);
+	levelState.getElementList().notifyObservers(charactersEvent);
+	
+	state::ElementList cursorsList = levelState.getElementCursors();
+	state::LevelListEvent cursorsEvent(cursorsList,0);
+	levelState.getElementCursors().registerObserver(&layerCursors);
+	levelState.getElementCursors().notifyObservers(cursorsEvent);
 
 }
 bool SFMLClient::acquireControls(){
@@ -112,6 +138,7 @@ void SFMLClient::updateDisplay(){
 
 	this->window.clear();
 	this->window.draw(*((SFMLSurface*)surfaces[render::GRID_LAYER]));
+	this->window.draw(*((SFMLSurface*)surfaces[render::CURSORS_LAYER]));
 	this->window.draw(*((SFMLSurface*)surfaces[render::CHARACTERS_LAYER]));
 	this->window.display();
 }
