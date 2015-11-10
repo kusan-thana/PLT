@@ -2,6 +2,8 @@
 #define Command_H
 
 namespace engine {
+	enum CommandTypeId { MAIN = 1, MODE = 2, SELECTION = 3, ACTIF = 4};
+
 
 	class Command {
 	protected:

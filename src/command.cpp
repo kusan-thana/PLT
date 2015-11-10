@@ -1,4 +1,6 @@
 #include "command.hpp"
+#include "sfmlCLient.hpp"
+
 /**
 * command Class
 **/
