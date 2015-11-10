@@ -5,6 +5,7 @@
 class Surface {
 	
 	public:
+		virtual void clear() =0;
 		virtual void loadTexture(const char* tileset) =0;
 		virtual void setSpriteCount(int n) =0;
 		virtual void setSpriteLocation(int i, int x, int y) =0;

@@ -87,8 +87,13 @@ void SFMLClient::init(){
 	state::Element* red = factory.newInstance('R');
 	red->setX(7);
 	red->setY(19);
+	//~ state::Element* red2 = factory.newInstance('R');
+	//~ red2->setX(7);
+	//~ red2->setY(21);
 	state::ElementList& cursors = levelState.getElementCursors();
 	cursors.setElement(0, red);
+	//~ cursors.setElement(1, red2);
+
 	
 	render::ElementListLayer layerCursors;
 	layerCursors.setSurface(this->surfaces[render::CURSORS_LAYER]);
@@ -101,26 +106,22 @@ void SFMLClient::init(){
 	/**************************************/
 
 	state::LevelStateEvent levelStateEvent(levelState, ALL_CHANGED);
-	//~ levelState.registerObserver(&scene);
-	//levelState.notifyObservers(levelStateEvent);
 	
-	levelState.registerObserver(&layerGrid);
 	state::ElementGrid elementGrid = levelState.getElementGrid();
 	state::LevelListEvent gridEvent(elementGrid,-1);
-	levelState.getElementGrid().registerObserver(&layerGrid);
-	levelState.getElementGrid().notifyObservers(gridEvent);
-	
-	
+	elementGrid.registerObserver(&layerGrid);
+	elementGrid.state::Observable::notifyObservers(gridEvent);
+		
 	state::ElementList charactersList = levelState.getElementList();
-	state::LevelListEvent charactersEvent(charactersList,-1);
-	levelState.getElementList().registerObserver(&layerCharacters);
-	levelState.getElementList().notifyObservers(charactersEvent);
+	charactersList.registerObserver(&layerCharacters);
+	charactersList.notifyObservers(-1);
 	
-	state::ElementList cursorsList = levelState.getElementCursors();
-	state::LevelListEvent cursorsEvent(cursorsList,0);
-	levelState.getElementCursors().registerObserver(&layerCursors);
-	levelState.getElementCursors().notifyObservers(cursorsEvent);
-
+	state::ElementList& cursorsList = levelState.getElementCursors();
+	cursorsList.registerObserver(&layerCursors);
+	cursorsList.notifyObservers(-1);
+	
+	//~ cursors.getElement(0)->setY(10);
+	//~ cursorsList.notifyObservers(-1);
 }
 bool SFMLClient::acquireControls(){
 	

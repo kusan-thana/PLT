@@ -4,6 +4,10 @@
 /**
  * SFMLSurface Class
 **/
+void SFMLSurface::clear(){
+	
+	vertices.clear();
+}
 void SFMLSurface::loadTexture(const char* tileset){
 
 	if (!this->tileset.loadFromFile(tileset))

@@ -7,8 +7,8 @@ namespace engine {
 
 	class Command {
 	protected:
-		Command();
-
+		Command();	//Un constructeur pour une classe abstraite ?!
+		//Mais encore...
 	};
 }
 #endif

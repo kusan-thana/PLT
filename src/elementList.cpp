@@ -1,5 +1,6 @@
 #include "elementList.hpp"
 #include "levelState.hpp"
+#include "levelListEvent.hpp"
 /**
  * ElementList Class
 **/
@@ -28,4 +29,9 @@ void ElementList::setElement(int i, state::Element* element){
 
 	std::vector<state::Element*>::iterator it = elements.begin();
 	elements.insert (it+i,element);
+}
+void ElementList::notifyObservers(int i) {
+	
+	LevelListEvent levelListEvent(*this,i) ;
+	Observable::notifyObservers(levelListEvent);
 }
