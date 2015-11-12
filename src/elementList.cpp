@@ -1,6 +1,7 @@
 #include "elementList.hpp"
 #include "levelState.hpp"
 #include "levelListEvent.hpp"
+#include <iostream>
 /**
  * ElementList Class
 **/
@@ -32,6 +33,6 @@ void ElementList::setElement(int i, state::Element* element){
 }
 void ElementList::notifyObservers(int i) {
 	
-	LevelListEvent levelListEvent(*this,i) ;
+	LevelListEvent levelListEvent(*this,i);
 	Observable::notifyObservers(levelListEvent);
 }

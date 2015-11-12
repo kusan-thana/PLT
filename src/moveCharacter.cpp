@@ -19,7 +19,8 @@ void MoveCharacter::setDirection(state::Direction next){
 }
 void MoveCharacter::apply(state::LevelState& levelState){
 	
-	 //~ state::Element* redTile = levelState.getElementCursors().getElement(0);
-	//~ redTile->setX(redTile->getX()+1);
-	//~ levelState.getElementCursors().notifyObservers(-1);
+	 state::Element* redTile = levelState.getElementCursors().getElement(0);
+	redTile->setY((redTile->getY()+1)%32);
+	//~ std::cout << "moveCharacter getX : " << redTile->getY() << std::endl;
+	levelState.getElementCursors().notifyObservers(-1);
 }

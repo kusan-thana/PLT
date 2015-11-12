@@ -94,16 +94,21 @@ void SFMLClient::init(){
 	state::ElementList& cursors = levelState.getElementCursors();
 	cursors.setElement(0, red);
 	//~ cursors.setElement(1, red2);
-
 	
-	render::ElementListLayer layerCursors;
-	layerCursors.setSurface(this->surfaces[render::CURSORS_LAYER]);
+	//~ render::ElementListLayer layerCursors;
+	//~ layerCursors.setSurface(this->surfaces[render::CURSORS_LAYER]);
 	
-	render::TileSet3 tileSet3;
-	setTileSet(render::CURSORS_LAYER, &tileSet3);
-	layerCursors.setTileSet(this->tileSets[render::CURSORS_LAYER]);
+	render::ElementListLayer* layerCursors = new render::ElementListLayer();////////////////
+	layerCursors->setSurface(this->surfaces[render::CURSORS_LAYER]);////////////////////////
 	
-	scene.setLayer(render::CURSORS_LAYER, &layerCursors);
+	//~ render::TileSet3 tileSet3;
+	//~ setTileSet(render::CURSORS_LAYER, &tileSet3);
+	//~ layerCursors.setTileSet(this->tileSets[render::CURSORS_LAYER]);
+	render::TileSet3* tileSet3 = new render::TileSet3();
+	setTileSet(render::CURSORS_LAYER, tileSet3);
+	layerCursors->setTileSet(this->tileSets[render::CURSORS_LAYER]);////////////////////////
+	
+	//~ scene.setLayer(render::CURSORS_LAYER, &layerCursors);
 	/**************************************/
 
 	state::LevelStateEvent levelStateEvent(levelState, ALL_CHANGED);
@@ -118,7 +123,8 @@ void SFMLClient::init(){
 	charactersList.notifyObservers(-1);
 	
 	state::ElementList& cursorsList = levelState.getElementCursors();
-	cursorsList.registerObserver(&layerCursors);
+	//~ cursorsList.registerObserver(&layerCursors);
+	cursorsList.registerObserver(layerCursors);
 	cursorsList.notifyObservers(-1);
 	
 	//~ cursors.getElement(0)->setY(10);

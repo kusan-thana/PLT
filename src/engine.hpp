@@ -7,7 +7,7 @@ namespace engine {
 		
 	protected:
 		CommandSet commandSet;
-		state::LevelState levelState;
+		state::LevelState& levelState;
 		
 	public:
 		Engine(state::LevelState& levelState);
