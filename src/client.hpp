@@ -20,6 +20,7 @@ class Client {
 		virtual void updateDisplay() = 0;
 		
 	public:
+		state::LevelState levelState; 
 		void run();
 
 };

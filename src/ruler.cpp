@@ -3,17 +3,16 @@
 #include <iostream>
 #include <unordered_map>
 #include "activateCommand.hpp"
+#include "moveCharacter.hpp"
+
 using namespace engine;
 
 /* Suppresion des commandes manuellement à la fin - fonctionnement voulu ? */
 
-Ruler::Ruler(CommandSet& commandSet, const state::LevelState& levelState) : commands(commandSet), curr_LevelState(levelState)
+Ruler::Ruler(CommandSet& commandSet, state::LevelState& levelState) : commands(commandSet), curr_LevelState(levelState), actions(levelState)
 {
-	if ((int)commandSet.size() != 0)
-		std::cout << "test"; 
-		
+	
 }
-
 
 Ruler::~Ruler()
 {
@@ -21,7 +20,7 @@ Ruler::~Ruler()
 }
 
 void Ruler::apply(){
-	std::cout << "apply\n";
+	//std::cout << "apply\n";
 	
 	for (int i = 0; i < commands.size(); i++){
 		
@@ -33,8 +32,13 @@ void Ruler::apply(){
 			case engine::SELECTION:
 				break;
 			case engine::ACTIVATE:			
-				std::cout << dynamic_cast<ActivateCommand*>(commands.get(i))->getDirection();
+				std::cout << dynamic_cast<ActivateCommand*>(commands.get(i))->getDirection(); 
+				//std::cout << "test";
+				actions.add(new MoveCharacter(0));
+				
 				break;
 		}
 	}
+	std::cout << std::endl;
+	actions.apply();
 }

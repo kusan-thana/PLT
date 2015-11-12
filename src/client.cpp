@@ -11,7 +11,7 @@
 
 using namespace client;
 
-Client::Client() {
+Client::Client() : engine(levelState) {
 	
 	this->tileSets.push_back(new render::TileSet1()); 	//GRID_LAYER			Seriously??
 	this->tileSets.push_back(new render::TileSet3());	//CURSORS_LAYER         Seriously??

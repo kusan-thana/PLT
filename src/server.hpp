@@ -5,9 +5,10 @@
 namespace server {
 	class Server {
 	protected:
-		engine::Engine engine;
+//		engine::Engine engine;
 	public:
 		virtual ~Server();
 		virtual void run() = 0;
 	};
 }
+

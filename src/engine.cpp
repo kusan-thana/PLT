@@ -1,11 +1,12 @@
 #include "engine.hpp"
 #include "ruler.hpp"
 #include <iostream>
+#include "actionList.hpp"
 
 using namespace engine;
 
-Engine::Engine() {
 
+Engine::Engine(state::LevelState& levelState) : levelState(levelState) {
 
 }
 
@@ -20,6 +21,8 @@ void Engine::addCommand(Command *cmd) {
 void Engine::update(){
 
 	Ruler ruler(this->commandSet, this->levelState);
+	
+	
 	//std::cout << "benoit";
 	
 	

@@ -49,7 +49,7 @@ void SFMLClient::init(){
 	factory.registerType('G', new state::ElementAlloc <state::Space, SpaceTypeID>(GREEN));
 	/*********************************/
 	
-	state::LevelState levelState;
+	//state::LevelState levelState;
 	levelState.setElementFactory(&factory);
 	
 	/*************GRID_LAYER*************/
