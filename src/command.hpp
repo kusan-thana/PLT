@@ -8,7 +8,7 @@ namespace engine {
 	class Command {
 	public:
 		virtual ~Command();
-		virtual CommandTypeId Command::getCommandTypeId() const = 0;
+		virtual CommandTypeId getTypeId() const = 0;
 	};
 }
 #endif

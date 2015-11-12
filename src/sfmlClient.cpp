@@ -127,13 +127,16 @@ void SFMLClient::init(){
 bool SFMLClient::acquireControls(){
 	
 	sf::Event event;
-	
+
 	while (this->window.pollEvent(event))
 	{
+		
 		if (event.type == sf::Event::Closed)
 		this->window.close();
-				
+		
+	
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+
 			engine.addCommand(new engine::ActivateCommand(state::WEST));
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
@@ -145,7 +148,6 @@ bool SFMLClient::acquireControls(){
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
 			engine.addCommand(new engine::ActivateCommand(state::EAST));
 		}
-
 
 	}
 
