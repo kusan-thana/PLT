@@ -2,7 +2,7 @@
 #define Client_H
 #include "tileSet.hpp"
 #include "scene.hpp"
-
+#include "engine.hpp"
 namespace client {
 
 class Client {
@@ -10,6 +10,7 @@ class Client {
 	protected:
 		std::vector<const render::TileSet*> tileSets;
 		render::Scene scene;
+		engine::Engine engine; //A déplacer apres la modularisation 
 
 		Client();
 		void setTileSet(render::SceneLayer sceneLayer, const render::TileSet* tileSet);

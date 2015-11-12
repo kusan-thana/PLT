@@ -20,7 +20,8 @@
 #include "levelListEvent.hpp"
 #include "tileSet3.hpp"
 
-
+#include "activateCommand.hpp"
+ 
 /**
  * Client SFMLClass
 **/
@@ -131,8 +132,23 @@ bool SFMLClient::acquireControls(){
 	{
 		if (event.type == sf::Event::Closed)
 		this->window.close();
+				
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+			engine.addCommand(new engine::ActivateCommand(state::WEST));
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+			engine.addCommand(new engine::ActivateCommand(state::NORTH));
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+			engine.addCommand(new engine::ActivateCommand(state::SOUTH));
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+			engine.addCommand(new engine::ActivateCommand(state::EAST));
+		}
+
+
 	}
-	
+
 	return this->window.isOpen();
 }
 void SFMLClient::updateDisplay(){

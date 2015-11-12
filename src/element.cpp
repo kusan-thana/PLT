@@ -23,7 +23,7 @@ TypeID Element::getTypeID() const{
 	
 	return this->IDElement;
 }
-Direction Element::getDirection() const{
+state::Direction Element::getDirection() const{
 	
 	return this->orientation;
 }
@@ -35,7 +35,7 @@ void Element::setY(int y){
 	
 	this->y = y;
 }
-void Element::setDirection(Direction orientation){
+void Element::setDirection(state::Direction orientation){
 	
 	this->orientation = orientation;
 }
