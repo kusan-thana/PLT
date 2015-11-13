@@ -21,6 +21,7 @@ class ElementGrid : public ElementList{
 		int getHeight() const;
 		Element* getCell(int i, int j) const;
 		void load(const char* file_name);
+		void notifyObservers(int i, int j);
 };
 }
 #endif

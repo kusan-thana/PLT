@@ -1,9 +1,11 @@
 #ifndef Scene_H
 #define Scene_H
 #include <vector>
+#include <memory>
 #include "levelStateObserver.hpp"
 #include "layer.hpp"
 #include "levelStateEvent.hpp"
+
 
 namespace render {
 	

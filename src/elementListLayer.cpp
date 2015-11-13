@@ -28,12 +28,10 @@ void ElementListLayer::update(const state::ElementList& elementList, int i){
 	int widthCell = (this->tileSet)->getCellWidth();
 	int heigthCell = (this->tileSet)->getCellHeight();
 	
-	(this->surface)->clear();
 	(this->surface)->loadTexture((this->tileSet)->getImageFile());
-	(this->surface)->setSpriteCount(width*height);
+	(this->surface)->setSpriteCount(elementList.size());
 	
-	if(i==-1)
-	{
+	if(i<0)	{
 		for(int j = 0; j < elementList.size(); j++){
 			
 		state::Element* curr_elem = elementList.getElement(j);
@@ -42,8 +40,8 @@ void ElementListLayer::update(const state::ElementList& elementList, int i){
 
 		const render::Tile* curr_tile = (this->tileSet)->getElementTile(curr_elem);
 		
-		(this->surface)->setSpriteTexture(y+x*width, (StaticTile*)curr_tile);
-		(this->surface)->setSpriteLocation(y+x*width, y*widthCell, x*heigthCell);
+		(this->surface)->setSpriteTexture(j, (StaticTile*)curr_tile);
+		(this->surface)->setSpriteLocation(j, y*widthCell, x*heigthCell);
 		}
 	}
 	if(i>=0)
@@ -54,8 +52,8 @@ void ElementListLayer::update(const state::ElementList& elementList, int i){
 		
 		const render::Tile* curr_tile = (this->tileSet)->getElementTile(curr_elem);
 
-		(this->surface)->setSpriteTexture(y+x*width, (StaticTile*)curr_tile);
-		(this->surface)->setSpriteLocation(y+x*width, y*widthCell, x*heigthCell);
+		(this->surface)->setSpriteTexture(i, (StaticTile*)curr_tile);
+		(this->surface)->setSpriteLocation(i, y*widthCell, x*heigthCell);
 	}
 }
 void ElementListLayer::levelStateChanged(const state::LevelStateEvent& e){

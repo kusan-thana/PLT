@@ -1,5 +1,6 @@
 #include "elementGrid.hpp"
 #include "levelState.hpp"
+#include "levelListEvent.hpp"
 
 #include <iostream>
 #include <fstream>
@@ -91,4 +92,10 @@ void ElementGrid::load(const char* file_name){
 			}
 		}
 	}
+}
+/** i => height ; j => width **/
+void ElementGrid::notifyObservers(int i, int j) {
+	
+	LevelListEvent levelListEvent(*this,i*(this->width)+j);
+	Observable::notifyObservers(levelListEvent);
 }

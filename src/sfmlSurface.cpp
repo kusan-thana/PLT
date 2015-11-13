@@ -28,7 +28,7 @@ void SFMLSurface::setSpriteLocation(int i, int x, int y){
 	sf::Vertex* quad = &vertices[i * 4];
 	
 	quad[0].position = sf::Vector2f(x, y);
-	quad[1].position = sf::Vector2f(x + 32, y);
+	quad[1].position = sf::Vector2f(x + 32, y);		//Value 32 fixed !!
 	quad[2].position = sf::Vector2f(x + 32, y + 32);
 	quad[3].position = sf::Vector2f(x, y + 32);
 }
