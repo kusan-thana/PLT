@@ -21,14 +21,10 @@ void Engine::addCommand(Command *cmd) {
 void Engine::update(){
 
 	Ruler ruler(this->commandSet, this->levelState);
-	
-	
-	//std::cout << "benoit";
-	
-	
+
 	/*Appeler les methodes du Ruller pour verifier les commandes*/
 	
-	
-	
-	ruler.apply();	
+	ruler.apply();
+	commandSet.clear();
+
 }

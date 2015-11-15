@@ -5,6 +5,7 @@ using namespace engine;
 ActionList::ActionList(state::LevelState& levelState) : levelState(levelState){
 }
 int ActionList::size() const{
+
 	return this->actions.size();
 }
 Action* ActionList::get(int i) const{
@@ -13,7 +14,7 @@ Action* ActionList::get(int i) const{
 }
 void ActionList::apply(){
 		
-	for(int i=1; i<size(); i++){
+	for(int i=0; i<size(); i++){
 
 		actions[i]->apply(levelState);
 	}

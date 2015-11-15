@@ -4,7 +4,6 @@
 namespace engine {
 	enum CommandTypeId { MAIN = 1, MODE = 2, SELECTION = 3, ACTIVATE = 4};
 
-
 	class Command {
 	public:
 		virtual ~Command();

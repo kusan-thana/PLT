@@ -14,7 +14,6 @@ namespace engine {
 			int dx;
 			int dy;
 			int dpos;
-			state::Direction newOrientation;
 			state::Direction newDirection;
 			
 		public:

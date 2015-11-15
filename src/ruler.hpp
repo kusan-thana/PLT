@@ -11,7 +11,6 @@ namespace engine {
 			const CommandSet& commands;
 			const state::LevelState& curr_LevelState;
 			ActionList actions;
-			//int &a;
 			
 		public:
 			Ruler(CommandSet&, state::LevelState&);

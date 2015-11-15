@@ -104,8 +104,8 @@ void SFMLClient::init(){
 	cursorsList.registerObserver(layerCursors);
 	cursorsList.notifyObservers(-1);
 	
-	cursors.getElement(0)->setY(10);
-	cursorsList.notifyObservers(0);
+	//~ cursors.getElement(0)->setY(10);
+	//~ cursorsList.notifyObservers(0);
 }
 bool SFMLClient::acquireControls(){
 	

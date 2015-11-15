@@ -12,7 +12,7 @@ namespace engine {
 	public:
 		ActivateCommand(state::Direction dir);
 		~ActivateCommand();
-		CommandTypeId getTypeId() const;
+		virtual CommandTypeId getTypeId() const;
 		state::Direction getDirection() const;
 
 	};
