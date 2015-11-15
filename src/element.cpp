@@ -35,6 +35,10 @@ void Element::setY(int y){
 	
 	this->y = y;
 }
+void Element::setActive(bool active) {
+
+	this->active = active;
+}
 void Element::setDirection(state::Direction orientation){
 	
 	this->orientation = orientation;

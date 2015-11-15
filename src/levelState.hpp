@@ -16,7 +16,7 @@ class LevelState : public Observable {
 		
 	public:
 		LevelState();
-		void setElementFactory(ElementFactory* factory);
+		void setElementFactory(ElementFactory* factory);	
 		const ElementGrid& getElementGrid() const;
 		ElementGrid& getElementGrid();
 		const ElementList& getElementList() const;

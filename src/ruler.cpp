@@ -3,9 +3,12 @@
 #include <iostream>
 #include <unordered_map>
 #include "activateCommand.hpp"
-#include "moveCharacter.hpp"
+#include "moveElement.hpp"
+#include "command.hpp"
+#include "activerPersonnage.hpp"
 
 using namespace engine;
+using namespace std;
 
 /* Suppresion des commandes manuellement à la fin - fonctionnement voulu ? */
 
@@ -21,56 +24,69 @@ Ruler::~Ruler()
 
 void Ruler::apply(){
 	//std::cout << "apply\n";
-	
-	//~ for (int i = 0; i < commands.size(); i++){
-		//~ 
-		//~ switch (commands.get(i)->getTypeId()){
-			//~ case MAIN:
-			//~ 
-				//~ break;
-			//~ case MODE:
-			//~ 
-				//~ break;
-			//~ case SELECTION:
-			//~ 
-				//~ break;
-			//~ case ACTIVATE:
-				//~ //std::cout << dynamic_cast<ActivateCommand*>(commands.get(i))->getDirection(); 
-				//~ actions.add(new MoveCharacter(0));
-				//~ break;
-		//~ }
-	//~ }
-//~ commands.get(ACTIVATE)->getDirection();
-	
-	if(commands.size()){
-		
+	state::Element* perso = curr_LevelState.getElementList().getElement(0);
+	state::Element* redTile = curr_LevelState.getElementCursors().getElement(0);
+
+	if (commands.get(ACTIVATE)) {
 		Command* cmd = commands.get(ACTIVATE);
-		MoveCharacter* character = new MoveCharacter(0);
-		
-		switch (((ActivateCommand*)cmd)->getDirection()){
-			
+
+		//std::cout << dynamic_cast<ActivateCommand*>(commands.get(i))->getDirection(); 
+		MoveElement* moveTile = new MoveElement(curr_LevelState.getElementCursors().getElement(0));
+
+		switch (((ActivateCommand*)cmd)->getDirection()) {
 			case state::Direction::NORTH:
-				character->setDirection(state::Direction::NORTH);
-				character->setCoords(-1,0,0);
-				actions.add(character);
+				moveTile->setCoords(-1, 0);
 				break;
 			case state::Direction::SOUTH:
-				character->setDirection(state::Direction::SOUTH);
-				character->setCoords(1,0,0);
-				actions.add(character);
+				moveTile->setCoords(1, 0);
 				break;
 			case state::Direction::EAST:
-				character->setDirection(state::Direction::EAST);
-				character->setCoords(0,1,0);
-				actions.add(character);
+				moveTile->setCoords(0, 1);
 				break;
 			case state::Direction::WEST:
-				character->setDirection(state::Direction::WEST);
-				character->setCoords(0,-1,0);
-				actions.add(character);
+				moveTile->setCoords(0, -1);
+				break;
+			case state::Direction::NORTHEAST:
+				moveTile->setCoords(-1, 1);
+				break;
+			case state::Direction::NORTHWEST:
+				moveTile->setCoords(-1, -1);
+				break;
+			case state::Direction::SOUTHEAST:
+				moveTile->setCoords(1, 1);
+				break;
+			case state::Direction::SOUTHWEST:
+				moveTile->setCoords(1, -1);
 				break;
 		}
+		actions.add(moveTile);
+		if (redTile->getX() == perso->getX() && redTile->getY() == perso->getY() && perso->isActive()) {
+			MoveElement* moveChar = new MoveElement(moveTile);
+			moveChar->setTile(perso);
+			cout << "test" << endl;
+			actions.add(moveChar);
+
+
+
+		}
 	}
-	std::cout << std::endl;
+
+	if (commands.get(SELECTION)) {
+		Command* cmd = commands.get(SELECTION);
+		state::Element* redTile = curr_LevelState.getElementCursors().getElement(0);
+		state::Element* perso = curr_LevelState.getElementList().getElement(0);
+
+		//cout << redTile->getX() << " " << redTile->getY()  << endl;
+		//cout << perso->getX() << " " << perso->getY() << endl;
+
+		if (redTile->getX() == perso->getX() && redTile->getY() == perso->getY()){
+			ActiverPersonnage* activerPerso = new ActiverPersonnage(perso);
+			actions.add(activerPerso);
+		}
+
+	}
+	//std::cout << std::endl;
+
 	actions.apply();
+
 }

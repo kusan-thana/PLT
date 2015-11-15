@@ -33,15 +33,18 @@ std::cout << "cmd->getTypeId() in commandSet " << cmd->getTypeId() << std::endl;
 		break;
 		case(ACTIVATE):
 		{
-			commandList[ACTIVATE] = cmd;
+			commandList[ACTIVATE] = cmd;	
 			//~ std::cout << "cmd->getTypeId() in commandSet " << cmd->getTypeId() << std::endl;
 		}
 		break;
 	}
 }
 Command* CommandSet::get(int category) const{
-		
-	return commandList.at(category);
+	auto search = commandList.find(category);
+	if (search != commandList.end())
+		return commandList.find(category)->second;
+	else
+		return 0;
 }
 void CommandSet::clear(){
 
