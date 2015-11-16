@@ -15,9 +15,9 @@ namespace ihm
 		IHMObservable();
 		~IHMObservable();
 
-		//void registerObserver(IHMObserver* o) const;
-		//void unregisterObserver(IHMObserver* o) const;
-		//void notifyObserver(const IHMEvent& o) const;
+		void registerObserver(IHMObserver* o) const;
+		void unregisterObserver(IHMObserver* o) const;
+		void notifyObserver(const IHMEvent& o) const;
 
 	};
 }

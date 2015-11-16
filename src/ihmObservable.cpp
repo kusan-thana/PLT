@@ -12,17 +12,17 @@ IHMObservable::~IHMObservable()
 }
 
 
-void registerObserver(IHMObserver* o) const{
+void IHMObservable::registerObserver(IHMObserver* o) const{
 
 
 
 }
-void unregisterObserver(IHMObserver* o) const{
+void IHMObservable::unregisterObserver(IHMObserver* o) const{
 
 
 
 }
-void notifyObserver(const IHMEvent& o) const {
+void IHMObservable::notifyObserver(const IHMEvent& o) const {
 
 
 }
