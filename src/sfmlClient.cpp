@@ -36,7 +36,18 @@ SFMLClient::SFMLClient() : window(sf::VideoMode(1024, 512), "Fantasy World!") {
 	this->surfaces.push_back(new SFMLSurface());	//CHARACTERS_LAYER
 }
 void SFMLClient::init(){
+	
+	/************TEXT*********************/
+	// Declare and load a font
 
+	font.loadFromFile("../res/font/theminion.otf");
+	text.setFont(font);
+	text.setString("Hello");
+	text.setCharacterSize(30);
+	text.setStyle(sf::Text::Bold);
+	text.setColor(sf::Color::Red);
+	/*************************************/
+	
 	/*************FACTORY*************/
 	state::ElementFactory* factory = new state::ElementFactory();
 
@@ -53,7 +64,7 @@ void SFMLClient::init(){
 	levelState.setElementFactory(factory);
 	
 	/*************GRID_LAYER*************/
-	levelState.loadLevel("../res/level1.txt");
+	levelState.loadLevel("../res/level1.txt"); 
 	
 	render::ElementListLayer* layerGrid = new render::ElementListLayer();
 	layerGrid->setSurface(this->surfaces[render::GRID_LAYER]);
@@ -97,7 +108,7 @@ void SFMLClient::init(){
 	elementGrid.registerObserver(layerGrid);
 	elementGrid.notifyObservers(-1,-1);
 		
-	state::ElementList charactersList = levelState.getElementList();
+	state::ElementList& charactersList = levelState.getElementList();
 	charactersList.registerObserver(layerCharacters);
 	charactersList.notifyObservers(-1);
 	
@@ -147,10 +158,11 @@ bool SFMLClient::acquireControls(){
 	return this->window.isOpen();
 }
 void SFMLClient::updateDisplay(){
-
+	
 	this->window.clear();
 	this->window.draw(*((SFMLSurface*)surfaces[render::GRID_LAYER]));
 	this->window.draw(*((SFMLSurface*)surfaces[render::CURSORS_LAYER]));
 	this->window.draw(*((SFMLSurface*)surfaces[render::CHARACTERS_LAYER]));
+	this->window.draw(text);///////////////////////////////////////////////////////////////////////////
 	this->window.display();
 }

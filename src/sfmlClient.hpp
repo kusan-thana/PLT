@@ -13,6 +13,8 @@ class SFMLClient : public Client {
 	protected:
 		sf::RenderWindow window;
 		std::vector<Surface*> surfaces;
+		sf::Text text;
+		sf::Font font;
 		
 		void init();
 		virtual bool acquireControls();

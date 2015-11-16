@@ -5,6 +5,7 @@
 #include "tileSet3.hpp"
 
 #include "engine.hpp" //A supprimer après parallélisme (?)
+#include <iostream>
 /**
  * Client Class
 **/
@@ -25,7 +26,7 @@ void Client::setTileSet(render::SceneLayer sceneLayer, const render::TileSet* ti
 void Client::init(){
 }
 void Client::run(){
-
+	
 
 	this->init();
 

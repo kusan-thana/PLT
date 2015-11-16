@@ -21,10 +21,6 @@ using namespace render;
 
 void ElementListLayer::update(const state::ElementList& elementList, int i){
 
-	const state::ElementGrid& grid = elementList.getLevelState().getElementGrid();
-	int width = grid.getWidth();
-	int height = grid.getHeight();
-	
 	int widthCell = (this->tileSet)->getCellWidth();
 	int heigthCell = (this->tileSet)->getCellHeight();
 	

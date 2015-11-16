@@ -13,7 +13,7 @@ int CommandSet::size() const {
 void CommandSet::set(Command *cmd) {
 
 //~ commandList[commandList.size()] = cmd;
-std::cout << "cmd->getTypeId() in commandSet " << cmd->getTypeId() << std::endl;
+
 	switch(cmd->getTypeId())
 	{
 		case(MAIN):
@@ -34,7 +34,6 @@ std::cout << "cmd->getTypeId() in commandSet " << cmd->getTypeId() << std::endl;
 		case(ACTIVATE):
 		{
 			commandList[ACTIVATE] = cmd;	
-			//~ std::cout << "cmd->getTypeId() in commandSet " << cmd->getTypeId() << std::endl;
 		}
 		break;
 	}
