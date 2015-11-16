@@ -13,7 +13,10 @@ int CommandSet::size() const {
 void CommandSet::set(Command *cmd) {
 
 //~ commandList[commandList.size()] = cmd;
+<<<<<<< HEAD
+=======
 
+>>>>>>> d960da218e922118d50fc9859381e6d57cdf3426
 	switch(cmd->getTypeId())
 	{
 		case(MAIN):

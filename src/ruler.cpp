@@ -65,6 +65,7 @@ void Ruler::apply(){
 			moveChar->setTile(perso);
 			cout << "test" << endl;
 			actions.add(moveChar);
+			cout << perso->getX() << " " << perso->getY() << endl;
 
 
 

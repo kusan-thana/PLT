@@ -3,6 +3,8 @@
 #include "tileSet.hpp"
 #include "scene.hpp"
 #include "engine.hpp"
+#include "ihm.hpp"
+
 namespace client {
 
 class Client {
@@ -11,6 +13,7 @@ class Client {
 		std::vector<const render::TileSet*> tileSets;
 		render::Scene scene;
 		engine::Engine engine; //A déplacer apres la modularisation 
+		ihm::IHM ihm;
 
 		Client();
 		void setTileSet(render::SceneLayer sceneLayer, const render::TileSet* tileSet);

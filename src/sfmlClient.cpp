@@ -81,7 +81,7 @@ void SFMLClient::init(){
 	state::ElementList& characters = levelState.getElementList();
 	characters.setElement(0, hero);
 			
-	render::ElementListLayer* layerCharacters = new render::ElementListLayer();;
+	render::ElementListLayer* layerCharacters = new render::ElementListLayer();
 	layerCharacters->setSurface(this->surfaces[render::CHARACTERS_LAYER]);
 	
 	layerCharacters->setTileSet(this->tileSets[render::CHARACTERS_LAYER]);
@@ -104,7 +104,7 @@ void SFMLClient::init(){
 	scene.setLayer(render::CURSORS_LAYER, layerCursors);
 	/**************************************/
 
-	state::ElementGrid elementGrid = levelState.getElementGrid();
+	state::ElementGrid& elementGrid = levelState.getElementGrid();
 	elementGrid.registerObserver(layerGrid);
 	elementGrid.notifyObservers(-1,-1);
 		
@@ -125,34 +125,39 @@ bool SFMLClient::acquireControls(){
 
 	while (this->window.pollEvent(event))
 	{
-		
+
 		if (event.type == sf::Event::Closed)
-		this->window.close();
-		
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-			engine.addCommand(new engine::ActivateCommand(state::NORTHEAST));
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-			engine.addCommand(new engine::ActivateCommand(state::NORTHWEST));
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-			engine.addCommand(new engine::ActivateCommand(state::SOUTHEAST));
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-			engine.addCommand(new engine::ActivateCommand(state::SOUTHWEST));
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
-			engine.addCommand(new engine::ActivateCommand(state::WEST));
+			this->window.close();
+	
+		Cursor& cursor = ihm.getCursor();
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+			cursor.setX(cursor.getX() - 1);
+			cursor.setY(cursor.getY() + 1);
 		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-			engine.addCommand(new engine::ActivateCommand(state::NORTH));
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+			cursor.setX(cursor.getX() - 1);
+			cursor.setY(cursor.getY() + 1);
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+			cursor.setX(cursor.getX() + 1);
+			cursor.setY(cursor.getY() + 1);
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+			cursor.setX(cursor.getX() - 1);
+			cursor.setY(cursor.getY() + 1);
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-			engine.addCommand(new engine::ActivateCommand(state::SOUTH));
+			cursor.setY(cursor.getY() + 1);
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-			engine.addCommand(new engine::ActivateCommand(state::EAST));
+			cursor.setX(cursor.getX() + 1);
 		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-			engine.addCommand(new engine::SelectionCommand(true));
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+			cursor.setX(cursor.getX() - 1);
 		}
-
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+			cursor.setY(cursor.getY() + 1);
+		}
 	}
 
 	return this->window.isOpen();

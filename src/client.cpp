@@ -4,6 +4,7 @@
 #include "tileSet2.hpp"
 #include "tileSet3.hpp"
 
+#include <iostream>
 #include "engine.hpp" //A supprimer après parallélisme (?)
 #include <iostream>
 /**
