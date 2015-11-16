@@ -25,7 +25,7 @@ void MoveElement::apply(state::LevelState& levelState){
 	tile->setX((tile->getX()+dx)%16);
 	tile->setY((tile->getY()+dy)%32);
 	//~ std::cout << "moveCharacter getX : " << redTile->getY() << std::endl;
-	levelState.getElementCursors().notifyObservers(-1);
+	//~ levelState.getElementCursors().notifyObservers(-1);
 	levelState.getElementList().notifyObservers(-1);
 
 }

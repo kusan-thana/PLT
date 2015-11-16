@@ -25,51 +25,48 @@ Ruler::~Ruler()
 void Ruler::apply(){
 	//std::cout << "apply\n";
 	state::Element* perso = curr_LevelState.getElementList().getElement(0);
-	state::Element* redTile = curr_LevelState.getElementCursors().getElement(0);
+	//~ state::Element* redTile = curr_LevelState.getElementCursors().getElement(0);	/////////////////////
 
 	if (commands.get(ACTIVATE)) {
 		Command* cmd = commands.get(ACTIVATE);
 
 		//std::cout << dynamic_cast<ActivateCommand*>(commands.get(i))->getDirection(); 
-		MoveElement* moveTile = new MoveElement(curr_LevelState.getElementCursors().getElement(0));
+		//~ MoveElement* moveTile = new MoveElement(curr_LevelState.getElementCursors().getElement(0));		/////////////////
 
 		switch (((ActivateCommand*)cmd)->getDirection()) {
 			case state::Direction::NORTH:
-				moveTile->setCoords(-1, 0);
+				//~ moveTile->setCoords(-1, 0);		////////////
 				break;
 			case state::Direction::SOUTH:
-				moveTile->setCoords(1, 0);
+				//~ moveTile->setCoords(1, 0);		///////////////
 				break;
 			case state::Direction::EAST:
-				moveTile->setCoords(0, 1);
+				//~ moveTile->setCoords(0, 1);		//////////////
 				break;
 			case state::Direction::WEST:
-				moveTile->setCoords(0, -1);
+				//~ moveTile->setCoords(0, -1);		//////////////
 				break;
 			case state::Direction::NORTHEAST:
-				moveTile->setCoords(-1, 1);
+				//~ moveTile->setCoords(-1, 1);		//////////////
 				break;
 			case state::Direction::NORTHWEST:
-				moveTile->setCoords(-1, -1);
+				//~ moveTile->setCoords(-1, -1);		//////////////
 				break;
 			case state::Direction::SOUTHEAST:
-				moveTile->setCoords(1, 1);
+				//~ moveTile->setCoords(1, 1);		//////////////
 				break;
 			case state::Direction::SOUTHWEST:
-				moveTile->setCoords(1, -1);
+				//~ moveTile->setCoords(1, -1);		//////////////
 				break;
 		}
-		actions.add(moveTile);
-		if (redTile->getX() == perso->getX() && redTile->getY() == perso->getY() && perso->isActive()) {
-			MoveElement* moveChar = new MoveElement(moveTile);
-			moveChar->setTile(perso);
-			cout << "test" << endl;
-			actions.add(moveChar);
-			cout << perso->getX() << " " << perso->getY() << endl;
-
-
-
-		}
+		//~ actions.add(moveTile);				//////////////
+		//~ if (redTile->getX() == perso->getX() && redTile->getY() == perso->getY() && perso->isActive()) {
+			//~ MoveElement* moveChar = new MoveElement(moveTile);
+			//~ moveChar->setTile(perso);
+			//~ cout << "test" << endl;
+			//~ actions.add(moveChar);
+			//~ cout << perso->getX() << " " << perso->getY() << endl;
+		//~ }
 	}
 
 	if (commands.get(SELECTION)) {

@@ -22,6 +22,8 @@
 
 #include "activateCommand.hpp"
 #include "selectionCommand.hpp"
+#include "cursor.hpp"
+#include "ihmLayer.hpp"
 
 /**
  * Client SFMLClass
@@ -90,19 +92,30 @@ void SFMLClient::init(){
 	/******************************************/
 	
 	/*************CURSOR_LAYER*************/
-	state::Element* red = factory->newInstance('R');
-	red->setX(7);
-	red->setY(19);
-	state::ElementList& cursors = levelState.getElementCursors();
-	cursors.setElement(0, red);
+	//~ state::Element* red = factory->newInstance('R');
+	//~ red->setX(7);
+	//~ red->setY(19);
+	//~ state::ElementList& cursors = levelState.getElementCursors();
+	//~ cursors.setElement(0, red);
+	//~ 
+	//~ render::ElementListLayer* layerCursors = new render::ElementListLayer();
+	//~ layerCursors->setSurface(this->surfaces[render::CURSORS_LAYER]);
+	//~ 
+	//~ layerCursors->setTileSet(this->tileSets[render::CURSORS_LAYER]);
+	//~ 
+	//~ scene.setLayer(render::CURSORS_LAYER, layerCursors);
+	/**************************************/
+	/*************GUI::CURSOR_LAYER*************/
+	ihm::Cursor& cursor = ihm.getCursor();
+	cursor.setX(5);
+	cursor.setY(5);
 	
-	render::ElementListLayer* layerCursors = new render::ElementListLayer();
+	ihmRender::IHMLayer* layerCursors = new ihmRender::IHMLayer();
 	layerCursors->setSurface(this->surfaces[render::CURSORS_LAYER]);
 	
 	layerCursors->setTileSet(this->tileSets[render::CURSORS_LAYER]);
 	
-	scene.setLayer(render::CURSORS_LAYER, layerCursors);
-	/**************************************/
+	/*******************************************/
 
 	state::ElementGrid& elementGrid = levelState.getElementGrid();
 	elementGrid.registerObserver(layerGrid);
@@ -112,12 +125,12 @@ void SFMLClient::init(){
 	charactersList.registerObserver(layerCharacters);
 	charactersList.notifyObservers(-1);
 	
-	state::ElementList& cursorsList = levelState.getElementCursors();
-	cursorsList.registerObserver(layerCursors);
-	cursorsList.notifyObservers(-1);
+	//~ state::ElementList& cursorsList = levelState.getElementCursors();
+	//~ cursorsList.registerObserver(layerCursors);
+	//~ cursorsList.notifyObservers(-1);
 	
-	//~ cursors.getElement(0)->setY(10);
-	//~ cursorsList.notifyObservers(0);
+	cursor.registerObserver(layerCursors);	//New version
+	cursor.notifyObservers(-1);
 }
 bool SFMLClient::acquireControls(){
 	
@@ -129,7 +142,7 @@ bool SFMLClient::acquireControls(){
 		if (event.type == sf::Event::Closed)
 			this->window.close();
 	
-		Cursor& cursor = ihm.getCursor();
+		ihm::Cursor& cursor = ihm.getCursor();
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
 			cursor.setX(cursor.getX() - 1);
 			cursor.setY(cursor.getY() + 1);
@@ -163,7 +176,9 @@ bool SFMLClient::acquireControls(){
 	return this->window.isOpen();
 }
 void SFMLClient::updateDisplay(){
-	
+	ihm::Cursor& cursor = ihm.getCursor();	////////////////////////////////
+	cursor.setY((cursor.getY() + 1)%32);	/////////////////////////////////
+	cursor.notifyObservers(-1);		///////////////////////////////
 	this->window.clear();
 	this->window.draw(*((SFMLSurface*)surfaces[render::GRID_LAYER]));
 	this->window.draw(*((SFMLSurface*)surfaces[render::CURSORS_LAYER]));

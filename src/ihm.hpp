@@ -1,20 +1,25 @@
-#pragma once
+#ifndef IHM_H
+#define IHM_H
 
-#include "cursor.hpp"
 #include "ihmObservable.hpp"
+#include "levelState.hpp"
+#include "cursor.hpp"
 
 namespace ihm
 { 
 	class IHM : public IHMObservable
 	{
 	protected:
+		state::LevelState& levelState;
 		Cursor cursor;
+		
 	public:
-		IHM();
+		IHM(state::LevelState& levelState);
 		~IHM();
 		Cursor& getCursor();
-		void setCursor(Cursor&);
+		void setCursor(const Cursor& cursor);
 
 
 	};
 }
+#endif

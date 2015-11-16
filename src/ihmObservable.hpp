@@ -1,11 +1,13 @@
-#pragma once
+#ifndef IHMObservable_H
+#define IHMObservable_H
 
 #include <vector>
 #include "ihmObserver.hpp"
-#include "ihmEvent.hpp"
 
 namespace ihm
 {
+class IHMEvent;
+	
 	class IHMObservable
 	{
 	protected:
@@ -15,9 +17,10 @@ namespace ihm
 		IHMObservable();
 		~IHMObservable();
 
-		void registerObserver(IHMObserver* o) const;
-		void unregisterObserver(IHMObserver* o) const;
-		void notifyObserver(const IHMEvent& o) const;
+		void registerObserver(IHMObserver* o);
+		void unregisterObserver(IHMObserver* o);
+		void notifyObservers(const IHMEvent& o);
 
 	};
 }
+#endif

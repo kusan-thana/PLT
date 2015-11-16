@@ -2,11 +2,8 @@
 
 using namespace ihm;
 
-
-IHM::IHM() : cursor (0,0){
+IHM::IHM(state::LevelState& levelState) : levelState(levelState), cursor(*this) {
 }
-
-
 IHM::~IHM(){
 }
 
@@ -15,8 +12,8 @@ Cursor& IHM::getCursor()
 	return cursor;
 }
 
-void IHM::setCursor(Cursor&)
+void IHM::setCursor(const Cursor& cursor)
 {
-	this->cursor = cursor;
+	//~ this->cursor = cursor;
 }
 

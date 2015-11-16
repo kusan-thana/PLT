@@ -2,7 +2,7 @@
 
 using namespace ihm;
 
-IHMEvent::IHMEvent()
+IHMEvent::IHMEvent(Cursor& cursor, int idx) : ihm(cursor.getIhm()), cursor(cursor), idx(idx)
 {
 }
 
