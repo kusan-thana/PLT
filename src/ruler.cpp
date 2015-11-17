@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <unordered_map>
-#include "activateCommand.hpp"
 #include "moveElement.hpp"
 #include "command.hpp"
 #include "activerPersonnage.hpp"
@@ -24,6 +23,7 @@ Ruler::~Ruler()
 
 void Ruler::apply(){
 	//std::cout << "apply\n";
+/*
 	state::Element* perso = curr_LevelState.getElementList().getElement(0);
 	//~ state::Element* redTile = curr_LevelState.getElementCursors().getElement(0);	/////////////////////
 
@@ -86,5 +86,5 @@ void Ruler::apply(){
 	//std::cout << std::endl;
 
 	actions.apply();
-
+	*/
 }

@@ -20,8 +20,6 @@
 #include "levelListEvent.hpp"
 #include "tileSet3.hpp"
 
-#include "activateCommand.hpp"
-#include "selectionCommand.hpp"
 #include "cursor.hpp"
 #include "guiLayer.hpp"
 
@@ -132,8 +130,8 @@ void SFMLClient::init(){
 	cursor.registerObserver(layerCursors);	//New version
 	cursor.notifyObservers(-1);
 }
-bool SFMLClient::acquireControls(){
-	
+bool SFMLClient::acquireControls() {
+
 	sf::Event event;
 
 	while (this->window.pollEvent(event))
@@ -141,44 +139,46 @@ bool SFMLClient::acquireControls(){
 
 		if (event.type == sf::Event::Closed)
 			this->window.close();
-	
+
 		gui::Cursor& cursor = gui.getCursor();
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-			cursor.setX(cursor.getX() - 1);
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
 			cursor.setY(cursor.getY() + 1);
-		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
 			cursor.setX(cursor.getX() - 1);
-			cursor.setY(cursor.getY() + 1);
 		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+			cursor.setY(cursor.getY() - 1);
+			cursor.setX(cursor.getX() - 1);
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+			cursor.setY(cursor.getY() + 1);
 			cursor.setX(cursor.getX() + 1);
-			cursor.setY(cursor.getY() + 1);
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-			cursor.setX(cursor.getX() - 1);
-			cursor.setY(cursor.getY() + 1);
-		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-			cursor.setY(cursor.getY() + 1);
-		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+			cursor.setY(cursor.getY() - 1);
 			cursor.setX(cursor.getX() + 1);
 		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-			cursor.setX(cursor.getX() - 1);
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+			cursor.setX(cursor.getX() + 1);
 		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
 			cursor.setY(cursor.getY() + 1);
 		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+			cursor.setY(cursor.getY() - 1);
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+			cursor.setX(cursor.getX() - 1);
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+			cursor.setActive(true);
+		}
+		cursor.notifyObservers(-1);		//On met a jour le GUI a chaque changement d etat du gui
+		//gui.commander();
 	}
 
 	return this->window.isOpen();
 }
 void SFMLClient::updateDisplay(){
-	gui::Cursor& cursor = gui.getCursor();	////////////////////////////////
-	cursor.setY((cursor.getY() + 1)%32);	/////////////////////////////////
-	cursor.notifyObservers(-1);		///////////////////////////////
 	this->window.clear();
 	this->window.draw(*((SFMLSurface*)surfaces[render::GRID_LAYER]));
 	this->window.draw(*((SFMLSurface*)surfaces[render::CURSORS_LAYER]));

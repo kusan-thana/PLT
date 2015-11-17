@@ -13,7 +13,7 @@
 
 using namespace client;
 
-Client::Client() : engine(levelState), gui(levelState) {
+Client::Client() : engine(levelState), gui(levelState, engine) {
 	
 	this->tileSets.push_back(new render::TileSet1()); 	//GRID_LAYER			
 	this->tileSets.push_back(new render::TileSet3());	//CURSORS_LAYER       

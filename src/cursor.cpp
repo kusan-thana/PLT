@@ -4,7 +4,7 @@
 
 using namespace gui;
 
-Cursor::Cursor(GUI& gui) : gui(gui), x(0), y(0)
+Cursor::Cursor(GUI& gui,state::LevelState& levelState) : gui(gui), x(0), y(0), levelState(levelState)
 {
 }
 Cursor::~Cursor()
@@ -23,12 +23,14 @@ int Cursor::getY()
 
 void Cursor::setX(int x)
 {
-	this->x = x;
+	if (x < levelState.getElementGrid().getHeight() && x >= 0)
+		this->x = x;
 }
 
 void Cursor::setY(int y)
 {
-	this->y = y;
+	if (y < levelState.getElementGrid().getWidth() && y >= 0)
+		this->y = y;
 }
 GUI& Cursor::getGUI() {
 
@@ -38,5 +40,13 @@ void Cursor::notifyObservers(int i) {
 	
 	GUIEvent GUIEvent(*this,i);
 	GUIObservable::notifyObservers(GUIEvent);
+}
+
+bool Cursor::getActive() {
+	return active;
+}
+
+void Cursor::setActive(bool active) {
+	this->active = active;
 }
 
