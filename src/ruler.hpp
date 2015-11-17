@@ -9,7 +9,7 @@ namespace engine {
 	{
 		protected:
 			const CommandSet& commands;
-			const state::LevelState& curr_LevelState;
+			state::LevelState& curr_LevelState;
 			ActionList actions;
 			
 		public:

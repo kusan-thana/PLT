@@ -11,15 +11,14 @@ namespace gui
 	{
 	protected:
 		state::LevelState& levelState;
-		engine::Engine& engine;
 		Cursor cursor;
 		
 	public:
-		GUI(state::LevelState& levelState, engine::Engine&);
+		GUI(state::LevelState& levelState);
 		~GUI();
 		Cursor& getCursor();
 		void setCursor(const Cursor& cursor);
-		void commander(); //Creer les commandes pour le moteur de jeu par rapport a l'etat gui
+		void commander(engine::Engine& engine); //Creer les commandes pour le moteur de jeu par rapport a l'etat gui
 
 
 	};

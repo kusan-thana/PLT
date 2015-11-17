@@ -171,9 +171,11 @@ bool SFMLClient::acquireControls() {
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 			cursor.setActive(true);
+			//std::cout << "test";
+			gui.commander(engine);
 		}
 		cursor.notifyObservers(-1);		//On met a jour le GUI a chaque changement d etat du gui
-		//gui.commander();
+		
 	}
 
 	return this->window.isOpen();
