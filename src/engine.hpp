@@ -2,7 +2,7 @@
 #include "commandSet.hpp"
 #include "levelState.hpp"
 namespace engine {
-	enum EngineMode { PLAY = 1, RECORD = 2 };
+	enum EngineMode { PLAY = 1, RECORD = 2};
 
 	class Engine {
 		
