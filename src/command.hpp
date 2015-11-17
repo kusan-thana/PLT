@@ -6,7 +6,7 @@ namespace engine {
 
 	class Command {
 	public:
-		virtual ~Command();
+		virtual ~Command() {};
 		virtual CommandTypeId getTypeId() const = 0;
 	};
 }

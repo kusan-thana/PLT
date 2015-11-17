@@ -1,6 +1,6 @@
 #ifndef Cursor_H
 #define Cursor_H
-#include "GUIObservable.hpp"
+#include "guiObservable.hpp"
 
 namespace gui {
 	

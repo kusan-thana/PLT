@@ -23,7 +23,7 @@
 #include "activateCommand.hpp"
 #include "selectionCommand.hpp"
 #include "cursor.hpp"
-#include "GUILayer.hpp"
+#include "guiLayer.hpp"
 
 /**
  * Client SFMLClass

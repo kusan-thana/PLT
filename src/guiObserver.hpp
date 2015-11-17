@@ -8,8 +8,7 @@ class GUIEvent;
 	class GUIObserver
 	{
 		public:
-			GUIObserver::~GUIObserver() {};
-
+			~GUIObserver() {};
 			virtual void guiChanged(const GUIEvent& e) =0;
 			
 	};

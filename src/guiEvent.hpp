@@ -10,7 +10,7 @@ class GUI;
 	{
 
 		public:
-			GUI& GUI;
+			GUI& gui;
 			Cursor& cursor;
 			int idx;
 

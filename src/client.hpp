@@ -3,7 +3,7 @@
 #include "tileSet.hpp"
 #include "scene.hpp"
 #include "engine.hpp"
-#include "GUI.hpp"
+#include "gui.hpp"
 
 namespace client {
 

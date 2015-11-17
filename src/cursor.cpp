@@ -1,6 +1,6 @@
 #include "cursor.hpp"
-#include "GUI.hpp"
-#include "GUIEvent.hpp"
+#include "gui.hpp"
+#include "guiEvent.hpp"
 
 using namespace gui;
 
