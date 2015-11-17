@@ -1,26 +1,26 @@
 #ifndef Cursor_H
 #define Cursor_H
-#include "ihmObservable.hpp"
+#include "GUIObservable.hpp"
 
-namespace ihm{
+namespace gui {
 	
-class IHM;
+class GUI;
 
-	class Cursor : public IHMObservable {
+	class Cursor : public GUIObservable {
 		
 		protected:
-			IHM& ihm;
+			GUI& gui;
 			int x;
 			int y;
 
 		public:
-			Cursor(IHM& ihm);
+			Cursor(GUI& gui);
 			~Cursor();
 			int getX();
 			int getY();
 			void setX(int x);
 			void setY(int y);
-			IHM& getIhm();
+			GUI& getGUI();
 			void notifyObservers(int i);
 	};
 }

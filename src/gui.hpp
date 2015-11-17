@@ -1,21 +1,21 @@
-#ifndef IHM_H
-#define IHM_H
+#ifndef GUI_H
+#define GUI_H
 
-#include "ihmObservable.hpp"
+#include "guiObservable.hpp"
 #include "levelState.hpp"
 #include "cursor.hpp"
 
-namespace ihm
+namespace gui
 { 
-	class IHM : public IHMObservable
+	class GUI : public GUIObservable
 	{
 	protected:
 		state::LevelState& levelState;
 		Cursor cursor;
 		
 	public:
-		IHM(state::LevelState& levelState);
-		~IHM();
+		GUI(state::LevelState& levelState);
+		~GUI();
 		Cursor& getCursor();
 		void setCursor(const Cursor& cursor);
 

@@ -1,25 +1,25 @@
-#ifndef IHMLayer_H
-#define IHMLayer_H
-#include "ihmObserver.hpp"
+#ifndef GUILayer_H
+#define GUILayer_H
+#include "guiObserver.hpp"
 #include "surface.hpp"
 #include "tileSet.hpp"
-#include "ihmEvent.hpp"
+#include "guiEvent.hpp"
 
-namespace ihmRender {
+namespace guiRender {
 	
-class IHMLayer : public ihm::IHMObserver{
+class GUILayer : public gui::GUIObserver{
 	
 	protected:
 		Surface* surface;
 		const render::TileSet* tileSet;
 		
 	public:
-		IHMLayer();
-		virtual ~IHMLayer();
+		GUILayer();
+		virtual ~GUILayer();
 		const render::TileSet* getTileSet() const;
 		void setTileSet(const render::TileSet* tileSet);
 		void setSurface(Surface* surface);
-		virtual void ihmChanged(const ihm::IHMEvent& e);
+		virtual void guiChanged(const gui::GUIEvent& e);
 };
 }
 #endif

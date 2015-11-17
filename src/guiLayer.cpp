@@ -1,26 +1,26 @@
-#include "ihmLayer.hpp"
+#include "guiLayer.hpp"
 #include <iostream>
 #include "staticTile.hpp"
 
 /**
- * IHMLayer Class
+ * GUILayer Class
 **/
 
-using namespace ihmRender;
+using namespace guiRender;
 
-IHMLayer::IHMLayer() {
+GUILayer::GUILayer() {
 }
-IHMLayer::~IHMLayer(){
+GUILayer::~GUILayer(){
 }
-const render::TileSet* IHMLayer::getTileSet() const{
+const render::TileSet* GUILayer::getTileSet() const{
 
 	return tileSet;
 }
-void IHMLayer::setTileSet(const render::TileSet* tileSet){
+void GUILayer::setTileSet(const render::TileSet* tileSet){
 	
 	this->tileSet = tileSet;
 }
-void IHMLayer::setSurface(Surface* surface){
+void GUILayer::setSurface(Surface* surface){
 	
 	this->surface = surface;
 }
@@ -58,7 +58,7 @@ void IHMLayer::setSurface(Surface* surface){
 		//~ (this->surface)->setSpriteLocation(i, y*widthCell, x*heigthCell);
 	//~ }
 //~ }
-void IHMLayer::ihmChanged(const ihm::IHMEvent& e){
+void GUILayer::guiChanged(const gui::GUIEvent& e){
 	
 	int widthCell = (this->tileSet)->getCellWidth();
 	int heigthCell = (this->tileSet)->getCellHeight();
@@ -71,7 +71,7 @@ void IHMLayer::ihmChanged(const ihm::IHMEvent& e){
 	int y = e.cursor.getY();
 	
 	const render::Tile* curr_tile =	new render::StaticTile(0,0,32,32);
-	//~ const render::Tile* curr_tile = (this->tileSet)->getElementTile(curr_elem);		//Need to code TileSet class for IHM
+	//~ const render::Tile* curr_tile = (this->tileSet)->getElementTile(curr_elem);		//Need to code TileSet class for GUI
 	//~ 
 	(this->surface)->setSpriteTexture(0, (render::StaticTile*)curr_tile);
 	(this->surface)->setSpriteLocation(0, y*widthCell, x*heigthCell);

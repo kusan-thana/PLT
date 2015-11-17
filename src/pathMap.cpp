@@ -20,6 +20,7 @@ int PathMap::getHeight() const{
 	return height;
 }
 int PathMap::getWeight(int x, int y, state::Direction) const{
+	return 0;
 }
 int* PathMap::getWeights() const{
 	

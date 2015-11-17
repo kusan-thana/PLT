@@ -23,7 +23,7 @@
 #include "activateCommand.hpp"
 #include "selectionCommand.hpp"
 #include "cursor.hpp"
-#include "ihmLayer.hpp"
+#include "GUILayer.hpp"
 
 /**
  * Client SFMLClass
@@ -106,11 +106,11 @@ void SFMLClient::init(){
 	//~ scene.setLayer(render::CURSORS_LAYER, layerCursors);
 	/**************************************/
 	/*************GUI::CURSOR_LAYER*************/
-	ihm::Cursor& cursor = ihm.getCursor();
+	gui::Cursor& cursor = gui.getCursor();
 	cursor.setX(5);
 	cursor.setY(5);
 	
-	ihmRender::IHMLayer* layerCursors = new ihmRender::IHMLayer();
+	guiRender::GUILayer* layerCursors = new guiRender::GUILayer();
 	layerCursors->setSurface(this->surfaces[render::CURSORS_LAYER]);
 	
 	layerCursors->setTileSet(this->tileSets[render::CURSORS_LAYER]);
@@ -142,7 +142,7 @@ bool SFMLClient::acquireControls(){
 		if (event.type == sf::Event::Closed)
 			this->window.close();
 	
-		ihm::Cursor& cursor = ihm.getCursor();
+		gui::Cursor& cursor = gui.getCursor();
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
 			cursor.setX(cursor.getX() - 1);
 			cursor.setY(cursor.getY() + 1);
@@ -176,7 +176,7 @@ bool SFMLClient::acquireControls(){
 	return this->window.isOpen();
 }
 void SFMLClient::updateDisplay(){
-	ihm::Cursor& cursor = ihm.getCursor();	////////////////////////////////
+	gui::Cursor& cursor = gui.getCursor();	////////////////////////////////
 	cursor.setY((cursor.getY() + 1)%32);	/////////////////////////////////
 	cursor.notifyObservers(-1);		///////////////////////////////
 	this->window.clear();

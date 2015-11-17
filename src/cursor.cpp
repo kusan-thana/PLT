@@ -1,10 +1,10 @@
 #include "cursor.hpp"
-#include "ihm.hpp"
-#include "ihmEvent.hpp"
+#include "GUI.hpp"
+#include "GUIEvent.hpp"
 
-using namespace ihm;
+using namespace gui;
 
-Cursor::Cursor(IHM& ihm) : ihm(ihm), x(0), y(0)
+Cursor::Cursor(GUI& gui) : gui(gui), x(0), y(0)
 {
 }
 Cursor::~Cursor()
@@ -30,13 +30,13 @@ void Cursor::setY(int y)
 {
 	this->y = y;
 }
-IHM& Cursor::getIhm() {
+GUI& Cursor::getGUI() {
 
-	return ihm;
+	return gui;
 }
 void Cursor::notifyObservers(int i) {
 	
-	IHMEvent ihmEvent(*this,i);
-	IHMObservable::notifyObservers(ihmEvent);
+	GUIEvent GUIEvent(*this,i);
+	GUIObservable::notifyObservers(GUIEvent);
 }
 
