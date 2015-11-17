@@ -141,6 +141,13 @@ bool SFMLClient::acquireControls() {
 			this->window.close();
 
 		gui::Cursor& cursor = gui.getCursor();
+
+		if (event.type == sf::Event::MouseMoved){
+			cursor.setY(sf::Mouse::getPosition(window).x * levelState.getElementGrid().getWidth() / window.getSize().x); //Merci benoit pour avoir inverser les axes x et y !
+			cursor.setX(sf::Mouse::getPosition(window).y * levelState.getElementGrid().getHeight() / window.getSize().y); //Merci benoit pour avoir inverser les axes x et y !
+		}
+		//std::cout << (sf::Mouse::getPosition().x * levelState.getElementGrid().getWidth() / window.getSize().x) << std::endl;
+
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
 			cursor.setY(cursor.getY() + 1);
 			cursor.setX(cursor.getX() - 1);
@@ -169,11 +176,11 @@ bool SFMLClient::acquireControls() {
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
 			cursor.setX(cursor.getX() - 1);
 		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) || sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 			cursor.setActive(true);
-			//std::cout << "test";
 			gui.commander(engine);
 		}
+
 		cursor.notifyObservers(-1);		//On met a jour le GUI a chaque changement d etat du gui
 		
 	}
