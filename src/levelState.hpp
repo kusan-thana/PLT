@@ -13,6 +13,7 @@ class LevelState : public Observable {
 		state::ElementList characters;
 		state::ElementGrid grid;
 		state::ElementList cursors;
+		int epoch;
 		
 	public:
 		LevelState();
@@ -24,6 +25,8 @@ class LevelState : public Observable {
 		const ElementList& getElementCursors() const;
 		ElementList& getElementCursors();
 		void loadLevel(const char* file_name);
+		int getEpoch();
+		void setEpoch(int epoch);
 };
 }
 #endif

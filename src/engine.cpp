@@ -28,3 +28,10 @@ void Engine::update(){
 	commandSet.clear();
 
 }
+
+void Engine::setMode(EngineMode mode) {
+	enginemode = mode;
+}
+EngineMode Engine::getMode(){
+	return enginemode;
+}

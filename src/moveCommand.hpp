@@ -4,20 +4,18 @@
 #include "levelState.hpp"
 
 namespace engine {
-	class PositionCommand : public Command
+	class MoveCommand : public Command
 	{
 	protected:
 		int x;
 		int y;
 
 	public:
-		PositionCommand(int x, int y);
-		~PositionCommand();
+		MoveCommand(int x, int y);
+		~MoveCommand();
 		virtual CommandTypeId getTypeId() const;
 		int getPositionX() const;
 		int getPositionY() const;
 		void setPosition(int x, int y);
-
-
 	};
 }

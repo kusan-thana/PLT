@@ -9,11 +9,15 @@ namespace engine {
 	protected:
 		CommandSet commandSet;
 		state::LevelState& levelState;
-		
+		EngineMode enginemode;
+
+		void setMode(EngineMode mode);
+		EngineMode getMode();
 	public:
 		Engine(state::LevelState& levelState);
 		~Engine();
 		void addCommand(engine::Command *cmd);
 		void update();
+
 	};
 }

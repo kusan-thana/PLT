@@ -146,11 +146,13 @@ bool SFMLClient::acquireControls() {
 			cursor.setY(sf::Mouse::getPosition(window).x * levelState.getElementGrid().getWidth() / window.getSize().x); //Merci benoit pour avoir inverser les axes x et y !
 			cursor.setX(sf::Mouse::getPosition(window).y * levelState.getElementGrid().getHeight() / window.getSize().y); //Merci benoit pour avoir inverser les axes x et y !
 		}
-		//std::cout << (sf::Mouse::getPosition().x * levelState.getElementGrid().getWidth() / window.getSize().x) << std::endl;
-		if (event.type == sf::Event::MouseButtonReleased || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space)) {
+		else if (event.type == sf::Event::MouseButtonReleased || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space)) {
 			cursor.setActive(!cursor.getActive());
 			std::cout << "active : " << cursor.getActive() << std::endl;
 			gui.commander(engine);
+		}
+		else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space) {
+
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
 			cursor.setY(cursor.getY() + 1);

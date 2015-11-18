@@ -1,5 +1,5 @@
 #include "gui.hpp"
-#include "positionCommand.hpp"
+#include "moveCommand.hpp"
 
 #include <iostream>
 
@@ -29,7 +29,7 @@ void GUI::commander(engine::Engine& engine) {
 			cursor.setcharacter(0);
 	}
 	if (!cursor.getActive() && cursor.getcharacter()){
-		engine::PositionCommand* move = new engine::PositionCommand(cursor.getX(), cursor.getY());
+		engine::MoveCommand* move = new engine::MoveCommand(cursor.getX(), cursor.getY());
 		//std::cout << move->getTypeId() << std::endl;
 		cursor.setcharacter(0);
 		engine.addCommand(move);

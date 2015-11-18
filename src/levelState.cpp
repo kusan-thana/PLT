@@ -42,3 +42,11 @@ void LevelState::loadLevel(const char* file_name){
 
 	grid.load(file_name);
 }
+int LevelState::getEpoch() {
+
+	return epoch;
+}
+void LevelState::setEpoch(int epoch) {
+
+	this->epoch = epoch;
+}
