@@ -13,7 +13,7 @@ class GUI;
 			GUI& gui;
 			int x;
 			int y;
-			int  character;
+			int character;
 			bool active;
 			state::LevelState& levelState;
 

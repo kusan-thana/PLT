@@ -32,8 +32,10 @@ void Ruler::apply(){
 	if (commands.get(POSITION)) {
 		Command* cmd = commands.get(POSITION);
 		state::Element* perso = curr_LevelState.getElementList().getElement(0);
-		MoveCharacter* movecharac = new MoveCharacter(perso,((PositionCommand*)cmd)->getPositionX(), ((PositionCommand*)cmd)->getPositionY(), curr_LevelState);
-		actions.add(movecharac);
+		if (curr_LevelState.getElementGrid().getCell(((PositionCommand*)cmd)->getPositionX(), ((PositionCommand*)cmd)->getPositionY())->getTypeID() == state::SPACE){
+			MoveCharacter* movecharac = new MoveCharacter(perso,((PositionCommand*)cmd)->getPositionX(), ((PositionCommand*)cmd)->getPositionY(), curr_LevelState);
+			actions.add(movecharac);
+		}
 	}
 
 	//std::cout << std::endl;

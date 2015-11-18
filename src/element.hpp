@@ -1,10 +1,9 @@
 #ifndef Element_H
 #define Element_H
 
-enum TypeID {SPACE=1, OBSTACLE=2, HERO=3, BRUTE=4, HEALER=5, WIZARD=6, MINION=7, BOSS=8 };
-
 namespace state {
 	enum Direction { NONE = 1, NORTH = 2, SOUTH = 3, EAST = 4, WEST = 5, NORTHEAST = 6, NORTHWEST = 7, SOUTHEAST = 8, SOUTHWEST = 9}; //SOUTH = EAST???
+	enum TypeID { SPACE = 1, OBSTACLE = 2, HERO = 3, BRUTE = 4, HEALER = 5, WIZARD = 6, MINION = 7, BOSS = 8 };
 
 class Element {
 	

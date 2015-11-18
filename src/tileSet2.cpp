@@ -30,7 +30,7 @@ const Tile* TileSet2::getElementTile(const state::Element* element) const {
 	
 	switch(element->getTypeID())
 	{
-		case(TypeID::HERO):
+	case(state::TypeID::HERO):
 		{
 			return tiles[TileID::HERO];
 		}
