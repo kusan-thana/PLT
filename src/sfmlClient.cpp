@@ -177,7 +177,8 @@ bool SFMLClient::acquireControls() {
 			cursor.setX(cursor.getX() - 1);
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) || sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-			cursor.setActive(true);
+			cursor.setActive(!cursor.getActive());
+			std::cout << "active : " << cursor.getActive() << std::endl;
 			gui.commander(engine);
 		}
 

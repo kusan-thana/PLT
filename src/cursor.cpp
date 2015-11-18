@@ -47,6 +47,17 @@ bool Cursor::getActive() {
 }
 
 void Cursor::setActive(bool active) {
-	this->active = active;
+		if (active == true && levelState.getElementList().getElement(0)->getX() == x && levelState.getElementList().getElement(0)->getY() == y)
+			this->active = active;
+		else
+			this->active = false;
 }
 
+void Cursor::setcharacter(int character) {
+	this->character = character;
+
+}
+
+int Cursor::getcharacter() {
+	return character;
+}

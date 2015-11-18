@@ -13,6 +13,7 @@ class GUI;
 			GUI& gui;
 			int x;
 			int y;
+			int  character;
 			bool active;
 			state::LevelState& levelState;
 
@@ -23,10 +24,13 @@ class GUI;
 			int getY();
 			void setX(int x);
 			void setY(int y);
+			void setcharacter(int character);
+			int getcharacter();
 			GUI& getGUI();
 			void notifyObservers(int i);
 			void setActive(bool active);
 			bool getActive();
+
 	};
 }
 #endif
