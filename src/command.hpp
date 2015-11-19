@@ -2,7 +2,7 @@
 #define Command_H
 
 namespace engine {
-	enum CommandTypeId { MAIN = 1, MODE = 2, POSITION = 3, ACTIVATE = 4};
+	enum CommandTypeId { MAIN = 1, MODE = 2, MOVE = 3};
 
 	class Command {
 	public:

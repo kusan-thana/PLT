@@ -1,4 +1,4 @@
-Ressources :
+﻿Ressources :
 
 Sprites :
 http://ffhacktics.com/sprites.php
@@ -7,21 +7,4 @@ http://pousse.rapiere.free.fr/tome/
 
 Musique : 
 http://opengameart.org/content/epic-fantasy-music
-
-
-Commandes :
-
-connexions à distance : 
-
-ssh -A -p7722 kusathan@kerosen.ensea.fr -X
-ssh -A -p7722 benolafo@kerosen.ensea.fr -X
-ssh -A -p7722 yifezhan@kerosen.ensea.fr -X
-
-git :
-
-git add -A
-git commit -a
-git push
-git checkout .      (pour annuler les modifications locales)
-
 

@@ -26,14 +26,9 @@ void CommandSet::set(Command *cmd) {
 			commandList[MODE] = cmd;
 		}
 		break;
-		case(POSITION):
+		case(MOVE):
 		{
-			commandList[POSITION] = cmd;
-		}
-		break;
-		case(ACTIVATE):
-		{
-			commandList[ACTIVATE] = cmd;	
+			commandList[MOVE] = cmd;
 		}
 		break;
 	}

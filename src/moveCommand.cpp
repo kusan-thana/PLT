@@ -14,7 +14,7 @@ MoveCommand::~MoveCommand()
 }
 
 CommandTypeId MoveCommand::getTypeId() const {
-	return POSITION;
+	return MOVE;
 }
 
 

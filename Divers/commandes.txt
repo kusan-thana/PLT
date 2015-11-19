@@ -1,4 +1,4 @@
-test3
+﻿test3
 connexions à distance : 
 
 ssh -A -p7722 kusathan@kerosen.ensea.fr -X
@@ -11,7 +11,7 @@ git pull
 git commit -a
 git push
 
-git add -A	(si présence de nouveaux fichiers, attention à ne pas push le dossier build)
+git add -A	(si présence de nouveaux fichiers)
 
 git checkout .      (pour annuler les modifications locales)
 

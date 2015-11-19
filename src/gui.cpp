@@ -1,14 +1,21 @@
 #include "gui.hpp"	
 #include "moveCommand.hpp"
 #include "modeCommand.hpp"
+#include "loadCommand.hpp"
 
 #include <iostream>
 
 using namespace gui;
 
-GUI::GUI(state::LevelState& levelState) : levelState(levelState), cursor(*this, levelState){
+GUI::GUI(state::LevelState& levelState, engine::Engine& engine) : levelState(levelState), cursor(*this, levelState), engine(engine){
+	this->init();
 }
 GUI::~GUI(){
+}
+void GUI::init() {
+	engine::LoadCommand* load = new engine::LoadCommand("level1.txt");
+	engine.addCommand(load);
+
 }
 
 Cursor& GUI::getCursor()
