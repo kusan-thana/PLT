@@ -1,4 +1,4 @@
-#include "gui.hpp"
+#include "gui.hpp"	
 #include "moveCommand.hpp"
 #include "modeCommand.hpp"
 
@@ -29,15 +29,12 @@ void gui::GUI::setEngineMode(engine::EngineMode engineMode)
 void GUI::commander(engine::Engine& engine) {
 
 	if (cursor.getActive()) {
-		if (levelState.getElementList().getElement(0)->getX() == cursor.getX() && levelState.getElementList().getElement(0)->getY() == cursor.getY())
-			cursor.setcharacter(1);
-		else
-			cursor.setcharacter(0);
+		cursor.setcharacter(levelState.getElementList().getElement(cursor.getX(), cursor.getY()));
 	}
 	if (!cursor.getActive() && cursor.getcharacter()) {
-		engine::MoveCommand* move = new engine::MoveCommand(cursor.getX(), cursor.getY());
+		engine::MoveCommand* move = new engine::MoveCommand(cursor.getX(), cursor.getY(), cursor.getcharacter());
 		//std::cout << move->getTypeId() << std::endl;
-		cursor.setcharacter(0);
+		cursor.setcharacter(levelState.getElementList().getElement(cursor.getX(), cursor.getY()));
 		engine.addCommand(move);
 		//std::cout << move->getTypeId();
 	}

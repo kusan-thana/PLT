@@ -9,9 +9,10 @@ namespace engine {
 	protected:
 		int x;
 		int y;
+		state::Element* character;
 
 	public:
-		MoveCommand(int x, int y);
+		MoveCommand(int x, int y, state::Element* character);
 		~MoveCommand();
 		virtual CommandTypeId getTypeId() const;
 		int getPositionX() const;

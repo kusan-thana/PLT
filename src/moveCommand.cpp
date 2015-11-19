@@ -3,7 +3,7 @@
 
 using namespace engine;
 
-MoveCommand::MoveCommand(int x, int y) : x(x), y(y)
+MoveCommand::MoveCommand(int x, int y, state::Element* character) : x(x), y(y), character(character)
 {
 	//std::cout << "PositionCommand bien creer ! ";
 }

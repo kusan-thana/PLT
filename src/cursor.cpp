@@ -4,7 +4,7 @@
 
 using namespace gui;
 
-Cursor::Cursor(GUI& gui,state::LevelState& levelState) : gui(gui), x(0), y(0), levelState(levelState), character(0)
+Cursor::Cursor(GUI& gui,state::LevelState& levelState) : gui(gui), x(0), y(0), levelState(levelState)
 {
 }
 Cursor::~Cursor()
@@ -53,11 +53,11 @@ void Cursor::setActive(bool active) {
 			this->active = false;
 }
 
-void Cursor::setcharacter(int character) {
+void Cursor::setcharacter(state::Element* character) {
 	this->character = character;
 
 }
 
-int Cursor::getcharacter() {
+state::Element* Cursor::getcharacter() {
 	return character;
 }

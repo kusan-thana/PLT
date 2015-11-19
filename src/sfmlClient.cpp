@@ -137,7 +137,6 @@ bool SFMLClient::acquireControls() {
 		}
 		else if (event.type == sf::Event::MouseButtonReleased || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space)) {
 			cursor.setActive(!cursor.getActive());
-			std::cout << "active : " << cursor.getActive() << std::endl;
 			gui.commander(engine);
 		}
 		else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::S) {
