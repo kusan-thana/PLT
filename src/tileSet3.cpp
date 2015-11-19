@@ -8,7 +8,7 @@
  * TileSet3 Class
 **/
 
-using namespace render;
+using namespace guiRender;
 
 TileSet3::TileSet3() : file_name("../res/images/ryg.png"), widthCell(32), heightCell(32) {
 
@@ -29,7 +29,7 @@ const char* TileSet3::getImageFile() const{
 
 	return file_name;
 }
-const Tile* TileSet3::getElementTile(const state::Element* element) const {
+const render::Tile* TileSet3::getElementTile(const state::Element* element) const {
 	
 	switch(((state::Space*)element)->getSpaceTypeID())
 	{
@@ -49,4 +49,12 @@ const Tile* TileSet3::getElementTile(const state::Element* element) const {
 		}
 		break;
 	}
+}
+const render::Tile* TileSet3::getElementTile(gui::Cursor& cursor) const{
+	
+	if(cursor.getActive())
+		return tiles[TileID::YELLOW];
+	
+	else
+		return tiles[TileID::RED];
 }

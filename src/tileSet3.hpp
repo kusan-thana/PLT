@@ -5,10 +5,11 @@
 #include "tileSet.hpp"
 #include "tile.hpp"
 #include "staticTile.hpp"
+#include "cursor.hpp"
 
-namespace render {
+namespace guiRender {
 	
-class TileSet3 : public TileSet {
+class TileSet3 : public render::TileSet {
 	
 	enum TileID { RED=0, YELLOW=1, GREEN=2 };
 
@@ -23,7 +24,8 @@ class TileSet3 : public TileSet {
 		virtual int getCellWidth() const;
 		virtual int getCellHeight() const;
 		const char* getImageFile() const;
-		const Tile* getElementTile(const state::Element* element) const;
+		const render::Tile* getElementTile(const state::Element* element) const;
+		const render::Tile* getElementTile(gui::Cursor& cursor) const;
 };
 }
 #endif

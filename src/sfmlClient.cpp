@@ -56,6 +56,7 @@ void SFMLClient::init(){
 	factory->registerType('2', new state::ElementAlloc <state::Obstacle, ObstacleTypeID>(TREE));
 	factory->registerType('3', new state::ElementAlloc <state::Obstacle, ObstacleTypeID>(FIR));
 	factory->registerType('H', new state::ElementAlloc <state::PlayerCharacter, state::TypeID>(state::HERO));
+	factory->registerType('W', new state::ElementAlloc <state::PlayerCharacter, state::TypeID>(state::WIZARD));
 	factory->registerType('R', new state::ElementAlloc <state::Space, SpaceTypeID>(RED));
 	factory->registerType('Y', new state::ElementAlloc <state::Space, SpaceTypeID>(YELLOW));
 	factory->registerType('G', new state::ElementAlloc <state::Space, SpaceTypeID>(GREEN));
@@ -75,12 +76,18 @@ void SFMLClient::init(){
 	/************************************/
 	
 	/*************CHARACTERS_LAYER*************/
+	state::ElementList& characters = levelState.getElementList();
+	
 	state::Element* hero = factory->newInstance('H');	//Instanciation d'un nouvel élément
 	hero->setX(7);
-	hero->setY(17);
-	state::ElementList& characters = levelState.getElementList();
+	hero->setY(10);
 	characters.setElement(0, hero);
-			
+	
+	state::Element* wizard = factory->newInstance('W');	//Instanciation d'un nouvel élément
+	wizard->setX(7);
+	wizard->setY(15);
+	characters.setElement(1, wizard);
+
 	render::ElementListLayer* layerCharacters = new render::ElementListLayer();
 	layerCharacters->setSurface(this->surfaces[render::CHARACTERS_LAYER]);
 	
@@ -89,20 +96,6 @@ void SFMLClient::init(){
 	scene.setLayer(render::CHARACTERS_LAYER, layerCharacters);
 	/******************************************/
 	
-	/*************CURSOR_LAYER*************/
-	//~ state::Element* red = factory->newInstance('R');
-	//~ red->setX(7);
-	//~ red->setY(19);
-	//~ state::ElementList& cursors = levelState.getElementCursors();
-	//~ cursors.setElement(0, red);
-	//~ 
-	//~ render::ElementListLayer* layerCursors = new render::ElementListLayer();
-	//~ layerCursors->setSurface(this->surfaces[render::CURSORS_LAYER]);
-	//~ 
-	//~ layerCursors->setTileSet(this->tileSets[render::CURSORS_LAYER]);
-	//~ 
-	//~ scene.setLayer(render::CURSORS_LAYER, layerCursors);
-	/**************************************/
 	/*************GUI::CURSOR_LAYER*************/
 	gui::Cursor& cursor = gui.getCursor();
 	cursor.setX(5);
@@ -123,11 +116,7 @@ void SFMLClient::init(){
 	charactersList.registerObserver(layerCharacters);
 	charactersList.notifyObservers(-1);
 	
-	//~ state::ElementList& cursorsList = levelState.getElementCursors();
-	//~ cursorsList.registerObserver(layerCursors);
-	//~ cursorsList.notifyObservers(-1);
-	
-	cursor.registerObserver(layerCursors);	//New version
+	cursor.registerObserver(layerCursors);
 	cursor.notifyObservers(-1);
 }
 bool SFMLClient::acquireControls() {

@@ -32,7 +32,7 @@ void Ruler::apply(){
 	if (commands.get(POSITION)) {
 		Command* cmd = commands.get(POSITION);
 		state::Element* perso = curr_LevelState.getElementList().getElement(0);
-		if (curr_LevelState.getElementGrid().getCell(((MoveCommand*)cmd)->getPositionX(), ((MoveCommand*)cmd)->getPositionY())->getTypeID() == state::SPACE){
+		if (curr_LevelState.getElementGrid().getCell(((MoveCommand*)cmd)->getPositionX(), ((MoveCommand*)cmd)->getPositionY())->getTypeID() == state::SPACE && curr_LevelState.getElementList().getElement(((MoveCommand*)cmd)->getPositionX(), ((MoveCommand*)cmd)->getPositionY()) == 0){
 			MoveCharacter* movecharac = new MoveCharacter(perso,((MoveCommand*)cmd)->getPositionX(), ((MoveCommand*)cmd)->getPositionY(), curr_LevelState);
 			actions.add(movecharac);
 			curr_LevelState.setEpoch(curr_LevelState.getEpoch() + 1);

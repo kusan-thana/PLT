@@ -23,6 +23,7 @@ class ElementList : public Observable {
 		const LevelState& getLevelState() const;
 		int size() const;
 		state::Element* getElement(int i) const;
+		Element* getElement(int x, int y) const;
 		void setElementFactory(state::ElementFactory* factory);
 		void setElement(int i, state::Element* element);
 		void notifyObservers(int i);

@@ -70,10 +70,17 @@ void GUILayer::guiChanged(const gui::GUIEvent& e){
 	int x = e.cursor.getX();
 	int y = e.cursor.getY();
 	
-	const render::Tile* curr_tile =	new render::StaticTile(0,0,32,32);
-	//~ const render::Tile* curr_tile = (this->tileSet)->getElementTile(curr_elem);		//Need to code TileSet class for GUI
-	//~ 
-	(this->surface)->setSpriteTexture(0, (render::StaticTile*)curr_tile);
-	(this->surface)->setSpriteLocation(0, y*widthCell, x*heigthCell);
+		if(e.cursor.getActive()){
+		const render::Tile* curr_tile = new render::StaticTile(32,0,32,32);	//YELLOW
+
+		//~ const render::Tile* curr_tile = (this->tileSet)->getElementTile(curr_elem);		//Need to code TileSet class for GUI
+		(this->surface)->setSpriteTexture(0, (render::StaticTile*)curr_tile);
+		(this->surface)->setSpriteLocation(0, y*widthCell, x*heigthCell);
+	}
+	else { 
+		const render::Tile* curr_tile =	new render::StaticTile(0,0,32,32);	//RED
+		(this->surface)->setSpriteTexture(0, (render::StaticTile*)curr_tile);
+		(this->surface)->setSpriteLocation(0, y*widthCell, x*heigthCell);
+	}
 
 }

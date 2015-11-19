@@ -22,6 +22,15 @@ Element* ElementList::getElement(int i) const{
 
 	return elements[i];
 }
+Element* ElementList::getElement(int x, int y) const{
+
+	for(int i=0; i<size(); i++){
+		
+		if(x == elements[i]->getX() && y == elements[i]->getY())
+			return elements[i];
+	}
+	return 0;
+}
 void ElementList::setElementFactory(state::ElementFactory* factory){
 
 	this->factory = factory;

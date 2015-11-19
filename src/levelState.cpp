@@ -7,7 +7,7 @@
 
 using namespace state;
 
-LevelState::LevelState() : characters(*this), grid(*this), cursors(*this) {
+LevelState::LevelState() : characters(*this), grid(*this) {
 }
 void LevelState::setElementFactory(ElementFactory* factory){
 	
@@ -29,14 +29,6 @@ const ElementList& LevelState::getElementList() const{
 ElementList& LevelState::getElementList(){
 
 	return characters;
-}
-const ElementList& LevelState::getElementCursors() const{
-	
-	return cursors;
-}
-ElementList& LevelState::getElementCursors(){
-
-	return cursors;
 }
 void LevelState::loadLevel(const char* file_name){
 
