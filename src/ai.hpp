@@ -10,7 +10,7 @@ namespace ai {
 class AI {
 	
 	protected:
-		const state::LevelState mainLevelState;
+		const state::LevelState& mainLevelState;
 
 	public:
 		AI(const state::LevelState& mainLevelState);

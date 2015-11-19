@@ -31,14 +31,16 @@ void Engine::update() {
 	/*Appeler les methodes du Ruller pour verifier les commandes*/
 
 	ruler.apply();
-	commandSet.clear();
 
 	//Gestion des tours
-	if (levelState.getTurnToPlay() == state::PLAYER) {
-		levelState.setTurnToPlay(state::OPPONENT);
+	//std::cout << "size : " << commandSet.size() << std::endl;
+	if (commandSet.size()) {
+		if (levelState.getTurnToPlay() == state::PLAYER) {
+			levelState.setTurnToPlay(state::OPPONENT);
+		}
+		else if (levelState.getTurnToPlay() == state::OPPONENT)
+			levelState.setTurnToPlay(state::PLAYER);
 	}
-	else if (levelState.getTurnToPlay() == state::OPPONENT)
-		levelState.setTurnToPlay(state::PLAYER);
-
+	commandSet.clear();
 }
 

@@ -15,7 +15,7 @@ class Client {
 		render::Scene scene;
 		engine::Engine engine; //A déplacer apres la modularisation 
 		gui::GUI gui;
-		ai::DumbAI ai;
+		ai::DumbAI dumbAI;
 
 		Client();
 		void setTileSet(render::SceneLayer sceneLayer, const render::TileSet* tileSet);

@@ -18,7 +18,6 @@ void MoveCharacter::apply(state::LevelState& levelState) {
 	character->setX(x);
 	character->setY(y);
 	levelState.getElementList().notifyObservers(-1);
-	std::cout << "benoit" << std::endl;
 }
 
 
