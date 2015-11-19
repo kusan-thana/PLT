@@ -47,7 +47,7 @@ bool Cursor::getActive() {
 }
 
 void Cursor::setActive(bool active) {
-		if (active == true && levelState.getElementList().getElement(0)->getX() == x && levelState.getElementList().getElement(0)->getY() == y)
+		if (active == true && levelState.getElementList().getElement(x,y))
 			this->active = active;
 		else
 			this->active = false;

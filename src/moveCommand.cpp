@@ -32,3 +32,8 @@ void MoveCommand::setPosition(int x, int y) {
 	this->y = y;
 }
 
+state::Element * engine::MoveCommand::getCharacter()
+{
+	return character;
+}
+

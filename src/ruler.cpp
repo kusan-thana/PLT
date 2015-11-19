@@ -25,13 +25,13 @@ Ruler::~Ruler()
 void Ruler::apply(){
 	//std::cout << "apply\n";
 
-	state::Element* perso = curr_LevelState.getElementList().getElement(0);
+	//state::Element* perso = curr_LevelState.getElementList().getElement(0);
 	//~ state::Element* redTile = curr_LevelState.getElementCursors().getElement(0);	/////////////////////
 
 
 	if (commands.get(POSITION)) {
 		Command* cmd = commands.get(POSITION);
-		state::Element* perso = curr_LevelState.getElementList().getElement(0);
+		state::Element* perso = ((MoveCommand*)cmd)->getCharacter();
 		if (curr_LevelState.getElementGrid().getCell(((MoveCommand*)cmd)->getPositionX(), ((MoveCommand*)cmd)->getPositionY())->getTypeID() == state::SPACE && curr_LevelState.getElementList().getElement(((MoveCommand*)cmd)->getPositionX(), ((MoveCommand*)cmd)->getPositionY()) == 0){
 			MoveCharacter* movecharac = new MoveCharacter(perso,((MoveCommand*)cmd)->getPositionX(), ((MoveCommand*)cmd)->getPositionY(), curr_LevelState);
 			actions.add(movecharac);

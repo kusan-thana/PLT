@@ -17,6 +17,5 @@ namespace engine {
 		MoveCharacter(state::Element* character, int x, int y, state::LevelState& levelState);
 		~MoveCharacter();
 		void apply(state::LevelState&);
-
 	};
 }

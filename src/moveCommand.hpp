@@ -18,5 +18,6 @@ namespace engine {
 		int getPositionX() const;
 		int getPositionY() const;
 		void setPosition(int x, int y);
+		state::Element* getCharacter();
 	};
 }
