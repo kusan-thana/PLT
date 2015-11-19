@@ -36,7 +36,7 @@ void Ruler::apply(){
 			MoveCharacter* movecharac = new MoveCharacter(perso,((MoveCommand*)cmd)->getPositionX(), ((MoveCommand*)cmd)->getPositionY(), curr_LevelState);
 			actions.add(movecharac);
 			curr_LevelState.setEpoch(curr_LevelState.getEpoch() + 1);
-			std::cout << "Epoch : curr_LevelState.getEpoch() << std::endl;
+			std::cout << "Epoch : " << curr_LevelState.getEpoch() << std::endl;
 		}
 	}
 
