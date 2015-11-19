@@ -7,7 +7,7 @@
 
 using namespace state;
 
-LevelState::LevelState() : characters(*this), grid(*this), turnToPlay(state::PLAYER){
+LevelState::LevelState() : characters(*this), grid(*this), turnToPlay(state::PLAYER), epoch(0){
 }
 void LevelState::setElementFactory(ElementFactory* factory){
 	
