@@ -35,7 +35,6 @@ void Engine::update() {
 		ruler.apply();
 
 	//Gestion des tours
-	//std::cout << "size : " << commandSet.size() << std::endl;
 		if (levelState.getTurnToPlay() == state::PLAYER) {
 			levelState.setTurnToPlay(state::OPPONENT);
 		}

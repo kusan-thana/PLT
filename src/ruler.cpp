@@ -35,15 +35,14 @@ void Ruler::apply(){
 		if (curr_LevelState.getElementGrid().getCell(((MoveCommand*)cmd)->getPositionX(), ((MoveCommand*)cmd)->getPositionY())->getTypeID() == state::SPACE && curr_LevelState.getElementList().getElement(((MoveCommand*)cmd)->getPositionX(), ((MoveCommand*)cmd)->getPositionY()) == 0){
 			MoveCharacter* movecharac = new MoveCharacter(perso,((MoveCommand*)cmd)->getPositionX(), ((MoveCommand*)cmd)->getPositionY(), curr_LevelState);
 			actions.add(movecharac);
-			//~ curr_LevelState.setEpoch(curr_LevelState.getEpoch() + 1);	
 		}
 	}
 	if (commands.get(MAIN)) {
 		cmd = commands.get(MAIN);
-	
-	/* Creer le niveau ici !*/
+		//curr_LevelState.loadLevel(((LoadCommand*)cmd)->getFileName());
+		//curr_LevelState.getElementGrid().notifyObservers(-1, -1);
+		//A corriger. Ajouter un notifier pour recharger toute la grille... (?)
 	}
-
 
 	//std::cout << std::endl;
 	

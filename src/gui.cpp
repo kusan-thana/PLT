@@ -13,8 +13,9 @@ GUI::GUI(state::LevelState& levelState, engine::Engine& engine) : levelState(lev
 GUI::~GUI(){
 }
 void GUI::init() {
-	engine::LoadCommand* load = new engine::LoadCommand("level1.txt");
-	engine.addCommand(load);
+	std::cout << std::endl << "Utiliser la souris ou le clavier pour jouer (espace ou clic gauche pour selectionner)" << std::endl;
+	engine::LoadCommand* load = new engine::LoadCommand("../res/level1.txt");
+	//engine.addCommand(load); //initialiser ici le 1er niveau
 
 }
 
