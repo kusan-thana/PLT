@@ -18,6 +18,7 @@ void ActionList::apply(){
 
 		actions[i]->apply(levelState);
 	}
+	actions.clear();
 }
 void ActionList::add(Action* action){
 

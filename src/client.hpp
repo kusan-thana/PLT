@@ -4,7 +4,7 @@
 #include "scene.hpp"
 #include "engine.hpp"
 #include "gui.hpp"
-#include "dumbAI.hpp"
+#include "dumbAi.hpp"
 
 namespace client {
 

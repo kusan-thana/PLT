@@ -5,7 +5,7 @@
 #include "levelState.hpp"
 #include "commandSet.hpp"
 #include "levelStateEvent.hpp"
-#include "MoveCommand.hpp"
+#include "moveCommand.hpp"
 
 namespace ai {
 	

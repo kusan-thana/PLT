@@ -2,11 +2,12 @@
 #include "ruler.hpp"
 #include <iostream>
 #include "actionList.hpp"
+#include "incEpoch.hpp"
 
 using namespace engine;
 
 
-Engine::Engine(state::LevelState& levelState) : levelState(levelState) {
+Engine::Engine(state::LevelState& levelState) : levelState(levelState), actions(levelState) {
 
 }
 
@@ -26,15 +27,15 @@ EngineMode Engine::getMode() {
 void Engine::update() {
 
 
-	Ruler ruler(this->commandSet, this->levelState);
-
+	Ruler ruler(this->actions, this->commandSet, this->levelState);
+	if (commandSet.size()) {
+		actions.add(new IncEpoch());
 	/*Appeler les methodes du Ruller pour verifier les commandes*/
 
-	ruler.apply();
+		ruler.apply();
 
 	//Gestion des tours
 	//std::cout << "size : " << commandSet.size() << std::endl;
-	if (commandSet.size()) {
 		if (levelState.getTurnToPlay() == state::PLAYER) {
 			levelState.setTurnToPlay(state::OPPONENT);
 		}

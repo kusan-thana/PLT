@@ -12,7 +12,7 @@ using namespace std;
 
 /* Suppresion des commandes manuellement à la fin - fonctionnement voulu ? */
 
-Ruler::Ruler(CommandSet& commandSet, state::LevelState& levelState) : commands(commandSet), curr_LevelState(levelState), actions(levelState)
+Ruler::Ruler(ActionList& actions, CommandSet& commandSet, state::LevelState& levelState) : commands(commandSet), curr_LevelState(levelState), actions(actions)
 {
 	
 }
@@ -35,13 +35,14 @@ void Ruler::apply(){
 		if (curr_LevelState.getElementGrid().getCell(((MoveCommand*)cmd)->getPositionX(), ((MoveCommand*)cmd)->getPositionY())->getTypeID() == state::SPACE && curr_LevelState.getElementList().getElement(((MoveCommand*)cmd)->getPositionX(), ((MoveCommand*)cmd)->getPositionY()) == 0){
 			MoveCharacter* movecharac = new MoveCharacter(perso,((MoveCommand*)cmd)->getPositionX(), ((MoveCommand*)cmd)->getPositionY(), curr_LevelState);
 			actions.add(movecharac);
-			curr_LevelState.setEpoch(curr_LevelState.getEpoch() + 1);
-			std::cout << "Epoch : " << curr_LevelState.getEpoch() << std::endl;
+			//~ curr_LevelState.setEpoch(curr_LevelState.getEpoch() + 1);
+			
 		}
 	}
 
 	//std::cout << std::endl;
 	
 	actions.apply();
+
 	
 }

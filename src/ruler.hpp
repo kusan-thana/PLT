@@ -10,10 +10,10 @@ namespace engine {
 		protected:
 			const CommandSet& commands;
 			state::LevelState& curr_LevelState;
-			ActionList actions;
+			ActionList& actions;
 			
 		public:
-			Ruler(CommandSet&, state::LevelState&);
+			Ruler(ActionList& actions, CommandSet&, state::LevelState&);
 			~Ruler();
 			void apply();
 	};

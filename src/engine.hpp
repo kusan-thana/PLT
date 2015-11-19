@@ -1,6 +1,8 @@
 #pragma once
 #include "commandSet.hpp"
 #include "levelState.hpp"
+#include "actionList.hpp"
+
 namespace engine {
 	enum EngineMode { PLAY = 0, RECORD = 1, REPLAY = 2};
 
@@ -10,6 +12,7 @@ namespace engine {
 		CommandSet commandSet;
 		state::LevelState& levelState;
 		EngineMode enginemode;
+		ActionList actions;
 
 		void setMode(EngineMode mode);
 		EngineMode getMode();
