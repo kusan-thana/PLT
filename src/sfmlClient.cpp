@@ -150,9 +150,7 @@ bool SFMLClient::acquireControls() {
 			gui.setEngineMode(engine::REPLAY);
 
 		}
-		else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space) {
 
-		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
 			cursor.setY(cursor.getY() + 1);
 			cursor.setX(cursor.getX() - 1);

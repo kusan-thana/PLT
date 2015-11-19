@@ -47,8 +47,11 @@ bool Cursor::getActive() {
 }
 
 void Cursor::setActive(bool active) {
-		if (active == true && levelState.getElementList().getElement(x,y))
-			this->active = active;
+		if (active == true && levelState.getElementList().getElement(x,y)){
+			if (levelState.getElementList().getElement(x, y)->getTypeID() == state::HERO){
+				this->active = active;
+			}
+		}
 		else
 			this->active = false;
 }
