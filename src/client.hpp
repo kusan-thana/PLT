@@ -11,6 +11,7 @@ namespace client {
 class Client {
 	
 	protected:
+		state::LevelState levelState; 
 		std::vector<const render::TileSet*> tileSets;
 		render::Scene scene;
 		engine::Engine engine; //A déplacer apres la modularisation 
@@ -25,7 +26,6 @@ class Client {
 		virtual void updateDisplay() = 0;
 		
 	public:
-		state::LevelState levelState; 
 		void run();
 
 };

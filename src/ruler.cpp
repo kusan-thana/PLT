@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <unordered_map>
-#include "moveElement.hpp"
 #include "command.hpp"
 #include "moveCommand.hpp"
 #include "moveCharacter.hpp"

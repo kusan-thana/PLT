@@ -42,10 +42,10 @@ void SFMLClient::init(){
 
 	font.loadFromFile("../res/font/theminion.otf");
 	text.setFont(font);
-	text.setString("Hello");
-	text.setCharacterSize(30);
+	text.setString("Select and move the hero with the cursor");
+	text.setCharacterSize(15);
 	text.setStyle(sf::Text::Bold);
-	text.setColor(sf::Color::Red);
+	text.setColor(sf::Color::White);
 	/*************************************/
 	
 	/*************FACTORY*************/
@@ -189,6 +189,6 @@ void SFMLClient::updateDisplay(){
 	this->window.draw(*((SFMLSurface*)surfaces[render::GRID_LAYER]));
 	this->window.draw(*((SFMLSurface*)surfaces[render::CURSORS_LAYER]));
 	this->window.draw(*((SFMLSurface*)surfaces[render::CHARACTERS_LAYER]));
-	this->window.draw(text);///////////////////////////////////////////////////////////////////////////
+	//~ this->window.draw(text);///////////////////////////////////////////////////////////////////////////
 	this->window.display();
 }
