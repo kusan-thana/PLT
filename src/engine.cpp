@@ -17,8 +17,14 @@ Engine::~Engine() {
 void Engine::addCommand(Command *cmd) {
 	commandSet.set(cmd);
 }
-
+void Engine::setMode(EngineMode mode) {
+	enginemode = mode;
+}
+EngineMode Engine::getMode() {
+	return enginemode;
+}
 void Engine::update(){
+
 
 	Ruler ruler(this->commandSet, this->levelState);
 
@@ -29,9 +35,3 @@ void Engine::update(){
 
 }
 
-void Engine::setMode(EngineMode mode) {
-	enginemode = mode;
-}
-EngineMode Engine::getMode(){
-	return enginemode;
-}
