@@ -1,5 +1,6 @@
 #include "gui.hpp"
 #include "moveCommand.hpp"
+#include "modeCommand.hpp"
 
 #include <iostream>
 
@@ -20,20 +21,30 @@ void GUI::setCursor(const Cursor& cursor)
 	//~ this->cursor = cursor;
 }
 
+void gui::GUI::setEngineMode(engine::EngineMode engineMode)
+{
+	this->engineMode = engineMode;
+}
+
 void GUI::commander(engine::Engine& engine) {
 
-	if (cursor.getActive()){
+	if (cursor.getActive()) {
 		if (levelState.getElementList().getElement(0)->getX() == cursor.getX() && levelState.getElementList().getElement(0)->getY() == cursor.getY())
 			cursor.setcharacter(1);
 		else
 			cursor.setcharacter(0);
 	}
-	if (!cursor.getActive() && cursor.getcharacter()){
+	if (!cursor.getActive() && cursor.getcharacter()) {
 		engine::MoveCommand* move = new engine::MoveCommand(cursor.getX(), cursor.getY());
 		//std::cout << move->getTypeId() << std::endl;
 		cursor.setcharacter(0);
 		engine.addCommand(move);
 		//std::cout << move->getTypeId();
+	}
+	if (engineMode) {
+		engine::ModeCommand* engineModeCommand = new engine::ModeCommand(engineMode);
+		engine.addCommand(engineModeCommand);
+		engineMode = engine::PLAY;
 	}
 
 }

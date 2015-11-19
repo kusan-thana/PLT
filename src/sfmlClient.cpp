@@ -151,6 +151,17 @@ bool SFMLClient::acquireControls() {
 			std::cout << "active : " << cursor.getActive() << std::endl;
 			gui.commander(engine);
 		}
+		else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::S) {
+
+			std::cout << "Recording started\n";
+			gui.setEngineMode(engine::RECORD);
+		}
+		else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::R) {
+
+			std::cout << "Replay\n";
+			gui.setEngineMode(engine::REPLAY);
+
+		}
 		else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space) {
 
 		}
@@ -182,11 +193,6 @@ bool SFMLClient::acquireControls() {
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
 			cursor.setX(cursor.getX() - 1);
 		}
-		//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) || sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-		//	cursor.setActive(!cursor.getActive());
-		//	std::cout << "active : " << cursor.getActive() << std::endl;
-		//	gui.commander(engine);
-		//}
 
 		cursor.notifyObservers(-1);		//On met a jour le GUI a chaque changement d etat du gui
 		
