@@ -10,4 +10,4 @@ using namespace ai;
 AI::AI(const state::LevelState& mainLevelState) : mainLevelState(mainLevelState) {
 }
 AI::~AI(){
-}
+}	

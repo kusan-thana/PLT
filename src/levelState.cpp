@@ -7,7 +7,7 @@
 
 using namespace state;
 
-LevelState::LevelState() : characters(*this), grid(*this) {
+LevelState::LevelState() : characters(*this), grid(*this), turnToPlay(state::PLAYER){
 }
 void LevelState::setElementFactory(ElementFactory* factory){
 	
@@ -41,4 +41,14 @@ int LevelState::getEpoch() {
 void LevelState::setEpoch(int epoch) {
 
 	this->epoch = epoch;
+}
+
+TurnToPlay state::LevelState::getTurnToPlay() const
+{
+	return turnToPlay;
+}
+
+void state::LevelState::setTurnToPlay(TurnToPlay turnToPlay)
+{
+	this->turnToPlay = turnToPlay;
 }

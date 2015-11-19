@@ -15,8 +15,7 @@ class DumbAI : public AI {
 
 	public:
 		DumbAI(const state::LevelState& mainLevelState);
-		void run(engine::CommandSet& commands);
-		void stateChanged(const state::LevelStateEvent& e);
+		void run(engine::Engine& engine);
 };
 }
 #endif

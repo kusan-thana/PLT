@@ -13,7 +13,7 @@ namespace gui
 	protected:
 		state::LevelState& levelState;
 		Cursor cursor;
-		 engine::EngineMode engineMode;
+		engine::EngineMode engineMode;
 		
 	public:
 		GUI(state::LevelState& levelState);

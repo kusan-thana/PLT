@@ -3,6 +3,7 @@
 
 #include "levelState.hpp"
 #include "commandSet.hpp"
+#include "engine.hpp"
 
 namespace ai {
 	
@@ -14,7 +15,7 @@ class AI {
 	public:
 		AI(const state::LevelState& mainLevelState);
 		virtual ~AI();
-		virtual void run(engine::CommandSet& commands) =0;
+		virtual void run(engine::Engine& engine) =0;
 };
 }
 #endif

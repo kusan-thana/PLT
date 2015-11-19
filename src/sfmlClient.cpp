@@ -182,10 +182,8 @@ bool SFMLClient::acquireControls() {
 			cursor.setX(cursor.getX() - 1);
 		}
 
-		cursor.notifyObservers(-1);		//On met a jour le GUI a chaque changement d etat du gui
-		
-	}
-
+		cursor.notifyObservers(-1);		//On met a jour le GUI a chaque changement d etat du gui	
+	}		
 	return this->window.isOpen();
 }
 void SFMLClient::updateDisplay(){

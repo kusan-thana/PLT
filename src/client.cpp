@@ -13,7 +13,7 @@
 
 using namespace client;
 
-Client::Client() : engine(levelState), gui(levelState) {
+Client::Client() : engine(levelState), gui(levelState),ai(levelState){
 	
 	this->tileSets.push_back(new render::TileSet1()); 	//GRID_LAYER			
 	this->tileSets.push_back(new guiRender::TileSet3());	//CURSORS_LAYER       
@@ -32,6 +32,9 @@ void Client::run(){
 	this->init();
 
 	while(acquireControls()){
+		if (levelState.getTurnToPlay() == state::OPPONENT) {
+			//ai.run();
+		}
 		engine.update();
 		updateDisplay();
 	}	

@@ -23,15 +23,22 @@ void Engine::setMode(EngineMode mode) {
 EngineMode Engine::getMode() {
 	return enginemode;
 }
-void Engine::update(){
+void Engine::update() {
 
 
 	Ruler ruler(this->commandSet, this->levelState);
 
 	/*Appeler les methodes du Ruller pour verifier les commandes*/
-	
+
 	ruler.apply();
 	commandSet.clear();
+
+	//Gestion des tours
+	if (levelState.getTurnToPlay() == state::PLAYER) {
+		levelState.setTurnToPlay(state::OPPONENT);
+	}
+	else if (levelState.getTurnToPlay() == state::OPPONENT)
+		levelState.setTurnToPlay(state::PLAYER);
 
 }
 
