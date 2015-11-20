@@ -26,8 +26,9 @@ void ElementListLayer::update(const state::ElementList& elementList, int i){
 	
 	(this->surface)->loadTexture((this->tileSet)->getImageFile());
 	(this->surface)->setSpriteCount(elementList.size());
-	
+
 	if(i<0)	{
+
 		for(int j = 0; j < elementList.size(); j++){
 			
 		state::Element* curr_elem = elementList.getElement(j);
