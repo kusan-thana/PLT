@@ -132,6 +132,7 @@ bool SFMLClient::acquireControls() {
 		gui::Cursor& cursor = gui.getCursor();
 
 		if (event.type == sf::Event::MouseMoved){
+			//std::cout << levelState.getElementGrid().getWidth() << std::endl;
 			cursor.setY(sf::Mouse::getPosition(window).x * levelState.getElementGrid().getWidth() / window.getSize().x); //Merci benoit pour avoir inverser les axes x et y !
 			cursor.setX(sf::Mouse::getPosition(window).y * levelState.getElementGrid().getHeight() / window.getSize().y); //Merci benoit pour avoir inverser les axes x et y !
 		}

@@ -32,6 +32,8 @@ void ElementGrid::load(const char* file_name){
 	std::ifstream file(file_name, std::ios::in);
 	char stateLevel[1024];	//Arbitrary size but has to be sufficiently big to contain all characteres of the read file;
 
+	this->width = 0;
+	this->height = 0;
 	if(file)
 	{
 		char buf;
