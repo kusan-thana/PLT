@@ -22,6 +22,7 @@
 
 #include "cursor.hpp"
 #include "guiLayer.hpp"
+#include "pathMap.hpp"
 
 /**
  * Client SFMLClass
@@ -87,6 +88,9 @@ void SFMLClient::init(){
 	wizard->setX(7);
 	wizard->setY(15);
 	characters.setElement(1, wizard);
+	//~ ai::PathMap pathMap;
+	//~ pathMap.computeWeights(levelState.getElementGrid(), wizard);
+	//~ pathMap.display();
 
 	render::ElementListLayer* layerCharacters = new render::ElementListLayer();
 	layerCharacters->setSurface(this->surfaces[render::CHARACTERS_LAYER]);
@@ -118,6 +122,7 @@ void SFMLClient::init(){
 	
 	cursor.registerObserver(layerCursors);
 	cursor.notifyObservers(-1);
+
 }
 bool SFMLClient::acquireControls() {
 
