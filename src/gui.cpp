@@ -14,9 +14,6 @@ GUI::~GUI(){
 }
 void GUI::init() {
 	std::cout << std::endl << "Utiliser la souris ou le clavier pour jouer (espace ou clic gauche pour selectionner)" << std::endl;
-	engine::LoadCommand* load = new engine::LoadCommand("../res/level2.txt");
-	engine.addCommand(load); //initialiser ici le 1er niveau
-
 }
 
 Cursor& GUI::getCursor()

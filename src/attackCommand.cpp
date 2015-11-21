@@ -2,10 +2,6 @@
 
 using namespace::engine;
 
-AttackCommand::AttackCommand()
-{
-}
-
 
 engine::AttackCommand::AttackCommand(state::Element* attacker, state::Element* target) : attacker(attacker), target(target)
 {
@@ -25,6 +21,6 @@ state::Element * engine::AttackCommand::getTarget()
 	return target;
 }
 
-void engine::AttackCommand::apply(state::LevelState &)
+void engine::AttackCommand::apply(state::LevelState& levelState)
 {
 }
