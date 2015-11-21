@@ -101,9 +101,9 @@ void SFMLClient::init(){
 	/******************************************/
 	
 	/*************GUI::CURSOR_LAYER*************/
-	gui::Cursor& cursor = gui.getCursor();
-	cursor.setX(5);
-	cursor.setY(5);
+	gui::Cursor* cursor = (gui::Cursor*)gui.getCursor().getGuiElement(0);
+	cursor->setX(5);
+	cursor->setY(5);
 	
 	guiRender::GUILayer* layerCursors = new guiRender::GUILayer();
 	layerCursors->setSurface(this->surfaces[render::CURSORS_LAYER]);
@@ -120,8 +120,11 @@ void SFMLClient::init(){
 	charactersList.registerObserver(layerCharacters);
 	charactersList.notifyObservers(-1);
 	
-	cursor.registerObserver(layerCursors);
-	cursor.notifyObservers(-1);
+	gui::GUIElementList& guiElementList = gui.getCursor();
+	guiElementList.registerObserver(layerCursors);
+	guiElementList.notifyObservers(-1);
+	//~ cursor.registerObserver(layerCursors);
+	//~ cursor.notifyObservers(-1);
 
 }
 bool SFMLClient::acquireControls() {
@@ -134,14 +137,16 @@ bool SFMLClient::acquireControls() {
 		if (event.type == sf::Event::Closed)
 			this->window.close();
 
-		gui::Cursor& cursor = gui.getCursor();
+		gui::Cursor* cursor = (gui::Cursor*)gui.getCursor().getGuiElement(0);
+		//~ gui::Cursor& cursor = gui.getCursor();
 
 		if (event.type == sf::Event::MouseMoved){
-			cursor.setY(sf::Mouse::getPosition(window).x * levelState.getElementGrid().getWidth() / window.getSize().x); //Merci benoit pour avoir inverser les axes x et y !
-			cursor.setX(sf::Mouse::getPosition(window).y * levelState.getElementGrid().getHeight() / window.getSize().y); //Merci benoit pour avoir inverser les axes x et y !
+			cursor->setY(sf::Mouse::getPosition(window).x * levelState.getElementGrid().getWidth() / window.getSize().x); //Merci benoit pour avoir inverser les axes x et y !
+			cursor->setX(sf::Mouse::getPosition(window).y * levelState.getElementGrid().getHeight() / window.getSize().y); //Merci benoit pour avoir inverser les axes x et y !
 		}
 		else if (event.type == sf::Event::MouseButtonReleased || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space)) {
-			cursor.setActive(!cursor.getActive());
+			cursor->setActive(!cursor->getActive());
+			//~ if(cursor->getActive()//////////
 			gui.commander(engine);
 		}
 		else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::S) {
@@ -157,35 +162,36 @@ bool SFMLClient::acquireControls() {
 		}
 
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-			cursor.setY(cursor.getY() + 1);
-			cursor.setX(cursor.getX() - 1);
+			cursor->setY(cursor->getY() + 1);
+			cursor->setX(cursor->getX() - 1);
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-			cursor.setY(cursor.getY() - 1);
-			cursor.setX(cursor.getX() - 1);
+			cursor->setY(cursor->getY() - 1);
+			cursor->setX(cursor->getX() - 1);
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-			cursor.setY(cursor.getY() + 1);
-			cursor.setX(cursor.getX() + 1);
+			cursor->setY(cursor->getY() + 1);
+			cursor->setX(cursor->getX() + 1);
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-			cursor.setY(cursor.getY() - 1);
-			cursor.setX(cursor.getX() + 1);
+			cursor->setY(cursor->getY() - 1);
+			cursor->setX(cursor->getX() + 1);
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-			cursor.setX(cursor.getX() + 1);
+			cursor->setX(cursor->getX() + 1);
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-			cursor.setY(cursor.getY() + 1);
+			cursor->setY(cursor->getY() + 1);
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-			cursor.setY(cursor.getY() - 1);
+			cursor->setY(cursor->getY() - 1);
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-			cursor.setX(cursor.getX() - 1);
+			cursor->setX(cursor->getX() - 1);
 		}
 
-		cursor.notifyObservers(-1);		//On met a jour le GUI a chaque changement d etat du gui	
+		//~ cursor->notifyObservers(-1);		//On met a jour le GUI a chaque changement d etat du gui	
+		gui.getCursor().notifyObservers(-1);
 	}		
 	return this->window.isOpen();
 }

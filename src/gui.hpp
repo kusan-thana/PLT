@@ -3,6 +3,7 @@
 
 #include "guiObservable.hpp"
 #include "levelState.hpp"
+#include "guiElementList.hpp"
 #include "cursor.hpp"
 #include "engine.hpp"
 
@@ -13,14 +14,14 @@ namespace gui
 	protected:
 		state::LevelState& levelState;
 		engine::Engine& engine;
-		Cursor cursor;
+		GUIElementList cursorList;
 		engine::EngineMode engineMode;
 		
 	public:
 		GUI(state::LevelState& levelState, engine::Engine&);
 		~GUI();
-		Cursor& getCursor();
-		void setCursor(const Cursor& cursor);
+		GUIElementList& getCursor();
+		void setCursor(const GUIElementList& cursor);
 		void commander(engine::Engine& engine); //Creer les commandes pour le moteur de jeu par rapport a l'etat gui
 		void setEngineMode(engine::EngineMode engineMode);
 		void init();

@@ -4,23 +4,12 @@
 
 using namespace gui;
 
-Cursor::Cursor(GUI& gui,state::LevelState& levelState) : gui(gui), x(0), y(0), levelState(levelState)
+Cursor::Cursor(state::LevelState& levelState) : levelState(levelState)
 {
 }
 Cursor::~Cursor()
 {					
 }
-
-int Cursor::getX()
-{
-	return x;
-}
-
-int Cursor::getY()
-{
-	return y;
-}
-
 void Cursor::setX(int x)
 {
 	if (x < levelState.getElementGrid().getHeight() && x >= 0)
@@ -32,21 +21,8 @@ void Cursor::setY(int y)
 	if (y < levelState.getElementGrid().getWidth() && y >= 0)
 		this->y = y;
 }
-GUI& Cursor::getGUI() {
-
-	return gui;
-}
-void Cursor::notifyObservers(int i) {
-	
-	GUIEvent GUIEvent(*this,i);
-	GUIObservable::notifyObservers(GUIEvent);
-}
-
-bool Cursor::getActive() {
-	return active;
-}
-
 void Cursor::setActive(bool active) {
+
 		if (active == true && levelState.getElementList().getElement(x,y)){
 			if (levelState.getElementList().getElement(x, y)->getTypeID() == state::HERO){
 				this->active = active;
@@ -55,12 +31,15 @@ void Cursor::setActive(bool active) {
 		else
 			this->active = false;
 }
-
 void Cursor::setcharacter(state::Element* character) {
+	
 	this->character = character;
-
 }
-
 state::Element* Cursor::getcharacter() {
+
 	return character;
+}
+GUITypeId Cursor::getGuiTypeId() const{
+
+	return GUITypeId::CURSOR;
 }

@@ -1,6 +1,7 @@
 #include "guiLayer.hpp"
 #include <iostream>
 #include "staticTile.hpp"
+#include "cursor.hpp"
 
 /**
  * GUILayer Class
@@ -66,11 +67,11 @@ void GUILayer::guiChanged(const gui::GUIEvent& e){
 	(this->surface)->loadTexture((this->tileSet)->getImageFile());
 	(this->surface)->setSpriteCount(1);		//size function to define ?
 	
+	gui::Cursor* cursor = (gui::Cursor*)(e.guiElementList).getGuiElement(0);
+	int x = cursor->getX();
+	int y = cursor->getY();
 	
-	int x = e.cursor.getX();
-	int y = e.cursor.getY();
-	
-		if(e.cursor.getActive()){
+		if(cursor->getActive()){
 		const render::Tile* curr_tile = new render::StaticTile(32,0,32,32);	//YELLOW
 
 		//~ const render::Tile* curr_tile = (this->tileSet)->getElementTile(curr_elem);		//Need to code TileSet class for GUI

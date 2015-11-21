@@ -1,6 +1,7 @@
 #ifndef GUIEvent_H
 #define GUIEvent_H
 #include "gui.hpp"
+#include "guiElementList.hpp"
 
 namespace gui
 {
@@ -11,10 +12,10 @@ class GUI;
 
 		public:
 			GUI& gui;
-			Cursor& cursor;
+			GUIElementList& guiElementList;
 			int idx;
 
-			GUIEvent(Cursor& cursor, int idx);
+			GUIEvent(GUIElementList& guiElementList, int idx);
 			~GUIEvent();
 		
 	};

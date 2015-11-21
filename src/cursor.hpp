@@ -1,35 +1,27 @@
 #ifndef Cursor_H
 #define Cursor_H
-#include "guiObservable.hpp"
+#include "guiElement.hpp"
 #include "levelState.hpp"
 
 namespace gui {
 	
 class GUI;
 
-	class Cursor : public GUIObservable {
+	class Cursor : public GUIElement {
 		
 		protected:
-			GUI& gui;
-			int x;
-			int y;
 			state::Element* character;
-			bool active;
 			state::LevelState& levelState;
 
 		public:
-			Cursor(GUI& gui, state::LevelState& levelState);
+			Cursor(state::LevelState& levelState);
 			~Cursor();
-			int getX();
-			int getY();
-			void setX(int x);
-			void setY(int y);
+			virtual void setX(int x);
+			virtual void setY(int y);
+			virtual void setActive(bool active);
 			void setcharacter(state::Element* character);
 			state::Element* getcharacter();
-			GUI& getGUI();
-			void notifyObservers(int i);
-			void setActive(bool active);
-			bool getActive();
+			GUITypeId getGuiTypeId() const;
 
 	};
 }
