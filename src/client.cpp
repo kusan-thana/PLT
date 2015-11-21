@@ -7,7 +7,6 @@
 #include <iostream>
 #include "engine.hpp" //A supprimer après parallélisme (?)
 #include <iostream>
-#include "loadCommand.hpp"
 /**
  * Client Class
 **/
@@ -26,8 +25,6 @@ void Client::setTileSet(render::SceneLayer sceneLayer, const render::TileSet* ti
 	this->tileSets[sceneLayer] = tileSet;
 }
 void Client::init(){
-	engine::LoadCommand* load = new engine::LoadCommand("../res/level2.txt");
-	engine.addCommand(load); //initialiser ici le 1er niveau0
 }
 void Client::run(){
 	

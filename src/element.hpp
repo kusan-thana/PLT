@@ -20,6 +20,7 @@ class Element {
 		int getX() const;
 		int getY() const;
 		TypeID getTypeID() const;
+		bool equals(const Element& other) const;
 		state::Direction getDirection() const;
 		void setX(int x);
 		void setY(int y);

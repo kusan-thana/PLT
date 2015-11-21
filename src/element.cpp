@@ -24,6 +24,14 @@ TypeID Element::getTypeID() const{
 	
 	return this->IDElement;
 }
+bool Element::equals(const Element& other) const{
+	
+	if(this->x == other.x && this->y == other.y && this->IDElement == other.IDElement && this->orientation == orientation){
+	
+		return true;
+	}
+	else return false;
+}
 state::Direction Element::getDirection() const{
 	
 	return this->orientation;

@@ -30,10 +30,11 @@ Element* ElementGrid::getCell(int i, int j) const{
 void ElementGrid::load(const char* file_name){
 	
 	std::ifstream file(file_name, std::ios::in);
-	char stateLevel[1024];	//Arbitrary size but has to be sufficiently big to contain all characteres of the read file;
-
+	char stateLevel[1024]={0};	//Arbitrary size but has to be sufficiently big to contain all characteres of the read file;
 	this->width = 0;
 	this->height = 0;
+	this->elements.clear();
+	
 	if(file)
 	{
 		char buf;
@@ -53,7 +54,7 @@ void ElementGrid::load(const char* file_name){
 	else
 		std::cerr << "Failed to open the file!" << std::endl;
 	
-
+	
 	for (unsigned int i = 0; i < height; ++i)
 	{
 		for (unsigned int j = 0; j < width; ++j)
