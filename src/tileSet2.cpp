@@ -15,6 +15,7 @@ TileSet2::TileSet2() : file_name("../res/images/characters.png"), widthCell(32),
 
 	tiles.push_back(new render::StaticTile(64,0,32,40));	//HERO
 	tiles.push_back(new render::StaticTile(64,490,32,40));	//WIZARD
+	tiles.push_back(new render::StaticTile(0,980,45,42));	//MINION
 	
 }
 int TileSet2::getCellWidth() const{
@@ -41,6 +42,11 @@ const Tile* TileSet2::getElementTile(const state::Element* element) const {
 	case(state::TypeID::WIZARD):
 		{
 			return tiles[TileID::WIZARD];
+		}
+		break;
+	case(state::TypeID::MINION):
+		{
+			return tiles[TileID::MINION];
 		}
 		break;
 	}

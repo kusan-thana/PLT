@@ -1,19 +1,14 @@
-#ifndef PlayerCharacter_H
-#define PlayerCharacter_H
+#ifndef Monster_H
+#define Monster_H
 
 #include "mobileElement.hpp"
 
 namespace state {
 
-
-
-class PlayerCharacter : public MobileElement{
-	
-	protected:
-		int mana;
+class Monster : public MobileElement{
 	
 	public:
-		PlayerCharacter(TypeID IDElement);
+		Monster(TypeID IDElement);
 		virtual bool isPlayerCharacter() const;
 		void doAction(MobileElement& target, TypeAction action);
 		Status getStatus() const;

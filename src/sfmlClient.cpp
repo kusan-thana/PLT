@@ -11,15 +11,12 @@
 #include "levelStateEvent.hpp"
 #include "layer.hpp"
 #include "surface.hpp"
-#include "tileSet1.hpp"
 #include "elementListLayer.hpp"
 #include "observable.hpp"
 #include "playerCharacter.hpp"
 #include "element.hpp"
-#include "tileSet2.hpp"
 #include "levelListEvent.hpp"
-#include "tileSet3.hpp"
-
+#include "monster.hpp"
 #include "cursor.hpp"
 #include "guiLayer.hpp"
 #include "pathMap.hpp"
@@ -58,9 +55,7 @@ void SFMLClient::init(){
 	factory->registerType('3', new state::ElementAlloc <state::Obstacle, ObstacleTypeID>(FIR));
 	factory->registerType('H', new state::ElementAlloc <state::PlayerCharacter, state::TypeID>(state::HERO));
 	factory->registerType('W', new state::ElementAlloc <state::PlayerCharacter, state::TypeID>(state::WIZARD));
-	factory->registerType('R', new state::ElementAlloc <state::Space, SpaceTypeID>(RED));
-	factory->registerType('Y', new state::ElementAlloc <state::Space, SpaceTypeID>(YELLOW));
-	factory->registerType('G', new state::ElementAlloc <state::Space, SpaceTypeID>(GREEN));
+	factory->registerType('M', new state::ElementAlloc <state::Monster, state::TypeID>(state::MINION));
 	/*********************************/
 	
 	levelState.setElementFactory(factory);
@@ -80,14 +75,35 @@ void SFMLClient::init(){
 	state::ElementList& characters = levelState.getElementList();
 	
 	state::Element* hero = factory->newInstance('H');	//Instanciation d'un nouvel élément
-	hero->setX(7);
+	hero->setX(6);
 	hero->setY(10);
 	characters.setElement(0, hero);
 	
-	state::Element* wizard = factory->newInstance('W');	//Instanciation d'un nouvel élément
-	wizard->setX(7);
-	wizard->setY(15);
-	characters.setElement(1, wizard);
+	state::Element* wizard1 = factory->newInstance('W');	//Instanciation d'un nouvel élément
+	wizard1->setX(5);
+	wizard1->setY(10);
+	characters.setElement(1, wizard1);
+		
+	state::Element* wizard2 = factory->newInstance('W');	//Instanciation d'un nouvel élément
+	wizard2->setX(7);
+	wizard2->setY(10);
+	characters.setElement(2, wizard2);
+	
+	state::Element* minion1 = factory->newInstance('M');	//Instanciation d'un nouvel élément
+	minion1->setX(5);
+	minion1->setY(19);
+	characters.setElement(3, minion1);
+	
+	state::Element* minion2 = factory->newInstance('M');	//Instanciation d'un nouvel élément
+	minion2->setX(6);
+	minion2->setY(19);
+	characters.setElement(4, minion2);
+	
+	state::Element* minion3 = factory->newInstance('M');	//Instanciation d'un nouvel élément
+	minion3->setX(7);
+	minion3->setY(19);
+	characters.setElement(5, minion3);
+
 	//~ ai::PathMap pathMap;
 	//~ pathMap.computeWeights(levelState.getElementGrid(), wizard);
 	//~ pathMap.display();

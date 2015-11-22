@@ -15,6 +15,7 @@ namespace gui
 		state::LevelState& levelState;
 		engine::Engine& engine;
 		GUIElementList cursorList;
+		GUIElementList moveRange;
 		engine::EngineMode engineMode;
 		
 	public:

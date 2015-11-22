@@ -7,7 +7,7 @@
 
 using namespace gui;
 
-GUI::GUI(state::LevelState& levelState, engine::Engine& engine) : levelState(levelState), cursorList(*this), engine(engine){
+GUI::GUI(state::LevelState& levelState, engine::Engine& engine) : levelState(levelState), cursorList(*this), moveRange(*this), engine(engine){
 	cursorList.setGuiElement(0, new Cursor(levelState));
 	this->init();
 }

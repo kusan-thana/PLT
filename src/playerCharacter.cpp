@@ -6,7 +6,7 @@
 **/
 using namespace state;
 
-PlayerCharacter::PlayerCharacter(TypeID IDElement) : mana(0), selected(false), status(NORMAL) {
+PlayerCharacter::PlayerCharacter(TypeID IDElement) : mana(0) {
 
 	this->IDElement = IDElement;
 }
@@ -19,40 +19,40 @@ void PlayerCharacter::doAction(MobileElement& target, TypeAction action){
 	switch(IDElement){
 		case HERO:
 			switch(action){
-				case PUNCH:
+				case TypeAction::PUNCH:
 					//Need to be defined
 				break;
-				case SWORDSTRIKE:
+				case TypeAction::SWORDSTRIKE:
 					//Need to be defined
 				break;
 			}
 			break;
 		case BRUTE:
 			switch(action){
-				case PUNCH:
+				case TypeAction::PUNCH:
 					//Need to be defined
 				break;
-				case HAMMERSTRIKE:
+				case TypeAction::HAMMERSTRIKE:
 					//Need to be defined
 				break;
 			}
 			break;
 		case HEALER:
 			switch(action){
-				case PUNCH:
+				case TypeAction::PUNCH:
 					//Need to be defined
 				break;
-				case HEAL:
+				case TypeAction::HEAL:
 					//Need to be defined
 				break;
 			}
 			break;
 		case WIZARD:
 			switch(action){
-				case PUNCH:
+				case TypeAction::PUNCH:
 					//Need to be defined
 				break;
-				case FIREBALL:
+				case TypeAction::FIREBALL:
 					//Need to be defined
 				break;
 				}
@@ -62,8 +62,4 @@ void PlayerCharacter::doAction(MobileElement& target, TypeAction action){
 Status PlayerCharacter::getStatus() const{
 	
 	return status;
-}
-bool PlayerCharacter::isSelected(){
-
-	return selected;
 }

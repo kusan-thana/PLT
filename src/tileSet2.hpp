@@ -10,7 +10,7 @@ namespace render {
 	
 class TileSet2 : public TileSet {
 	
-	enum TileID { HERO=0, WIZARD=1 };
+	enum TileID { HERO=0, WIZARD=1, MINION=2 };
 
 	protected:
 		std::vector<render::Tile*> tiles;

@@ -5,6 +5,9 @@
 
 namespace state {
 
+enum TypeAction{PUNCH, SWORDSTRIKE, HAMMERSTRIKE, HEAL, REINFORCEMENT, FIREBALL, BITE, POISON, SCRATCH};
+enum Status {NORMAL=1, SUPER=2, DEAD=3};
+
 class MobileElement : public Element{
 	
 	protected:
@@ -18,6 +21,9 @@ class MobileElement : public Element{
 		int experience;
 		int position;
 		bool turnPlayed;
+		bool selected;
+		Status status;
+		TypeAction action;
 		
 	public:
 		MobileElement();
@@ -26,6 +32,7 @@ class MobileElement : public Element{
 		int getNbAction() const;
 		void setNbAction(int nbAction);
 		virtual bool isPlayerCharacter() const =0;
+		bool isSelected();
 };
 }
 #endif
