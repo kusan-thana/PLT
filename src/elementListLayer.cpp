@@ -12,6 +12,7 @@
 #include "staticTile.hpp"
 #include "scene.hpp"
 #include "levelListEvent.hpp"
+#include "guiMoveRange.hpp"
 #include <iostream>
 /**
  * ElementListLayer Class
@@ -34,7 +35,7 @@ void ElementListLayer::update(const state::ElementList& elementList, int i){
 		state::Element* curr_elem = elementList.getElement(j);
 		int x = curr_elem->getX();
 		int y = curr_elem->getY();
-
+		
 		const render::Tile* curr_tile = (this->tileSet)->getElementTile(curr_elem);
 		
 		(this->surface)->setSpriteTexture(j, (StaticTile*)curr_tile);

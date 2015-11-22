@@ -20,6 +20,7 @@
 #include "cursor.hpp"
 #include "guiLayer.hpp"
 #include "pathMap.hpp"
+#include "guiMoveRange.hpp"
 
 /**
  * Client SFMLClass
@@ -117,7 +118,7 @@ void SFMLClient::init(){
 	/******************************************/
 	
 	/*************GUI::CURSOR_LAYER*************/
-	gui::Cursor* cursor = (gui::Cursor*)gui.getCursor().getGuiElement(0);
+	gui::Cursor* cursor = (gui::Cursor*)gui.getCursorList().getGuiElement(0);
 	cursor->setX(5);
 	cursor->setY(5);
 	
@@ -125,9 +126,16 @@ void SFMLClient::init(){
 	layerCursors->setSurface(this->surfaces[render::CURSORS_LAYER]);
 	
 	layerCursors->setTileSet(this->tileSets[render::CURSORS_LAYER]);
-	
 	/*******************************************/
-
+	
+	/*************GUI::RANGE_LAYER*************/
+	gui::GUIMoveRange& moveRange = gui.getMoveRange();
+	moveRange.setElement(hero);
+	moveRange.setLength(((state::MobileElement*)hero)->getNbStep());
+	moveRange.computeRange();	
+	
+	/******************************************/
+	
 	state::ElementGrid& elementGrid = levelState.getElementGrid();
 	elementGrid.registerObserver(layerGrid);
 	elementGrid.notifyObservers(-1,-1);
@@ -136,12 +144,12 @@ void SFMLClient::init(){
 	charactersList.registerObserver(layerCharacters);
 	charactersList.notifyObservers(-1);
 	
-	gui::GUIElementList& guiElementList = gui.getCursor();
+	gui::GUIElementList& guiElementList = gui.getCursorList();
 	guiElementList.registerObserver(layerCursors);
 	guiElementList.notifyObservers(-1);
-	//~ cursor.registerObserver(layerCursors);
-	//~ cursor.notifyObservers(-1);
-
+	
+	//~ moveRange.registerObserver(layerCursors);
+	//~ moveRange.notifyObservers(-1);
 }
 bool SFMLClient::acquireControls() {
 
@@ -153,7 +161,7 @@ bool SFMLClient::acquireControls() {
 		if (event.type == sf::Event::Closed)
 			this->window.close();
 
-		gui::Cursor* cursor = (gui::Cursor*)gui.getCursor().getGuiElement(0);
+		gui::Cursor* cursor = (gui::Cursor*)gui.getCursorList().getGuiElement(0);
 		//~ gui::Cursor& cursor = gui.getCursor();
 
 		if (event.type == sf::Event::MouseMoved){
@@ -164,6 +172,12 @@ bool SFMLClient::acquireControls() {
 			cursor->setActive(!cursor->getActive());
 			//~ if(cursor->getActive()//////////
 			gui.commander(engine);
+			//~ if(state::Element* elem = levelState.getElementList().getElement(sf::Mouse::getPosition(window).y * levelState.getElementGrid().getHeight() / window.getSize().y,sf::Mouse::getPosition(window).x * levelState.getElementGrid().getWidth() / window.getSize().x))
+			//~ {
+				//~ elem->setActive(true);
+				//~ std::cout << "Active" << std::endl;
+				//~ gui.getMoveRange().notifyObservers(-1);
+			//~ }
 		}
 		else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::S) {
 
@@ -206,8 +220,7 @@ bool SFMLClient::acquireControls() {
 			cursor->setX(cursor->getX() - 1);
 		}
 
-		//~ cursor->notifyObservers(-1);		//On met a jour le GUI a chaque changement d etat du gui	
-		gui.getCursor().notifyObservers(-1);
+		gui.getCursorList().notifyObservers(-1); //On met a jour le GUI a chaque changement d etat du gui
 	}		
 	return this->window.isOpen();
 }

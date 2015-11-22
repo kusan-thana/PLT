@@ -4,6 +4,7 @@
 #include "surface.hpp"
 #include "tileSet.hpp"
 #include "guiEvent.hpp"
+#include "guiElementList.hpp"
 
 namespace guiRender {
 	
@@ -20,6 +21,7 @@ class GUILayer : public gui::GUIObserver{
 		void setTileSet(const render::TileSet* tileSet);
 		void setSurface(Surface* surface);
 		virtual void guiChanged(const gui::GUIEvent& e);
+		void update(gui::GUIElementList& guiElementList, int i);
 };
 }
 #endif

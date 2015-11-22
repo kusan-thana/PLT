@@ -12,6 +12,7 @@ class GUI;
 
 		public:
 			GUI& gui;
+			state::LevelState& levelState;
 			GUIElementList& guiElementList;
 			int idx;
 

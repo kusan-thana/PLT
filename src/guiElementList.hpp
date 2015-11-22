@@ -2,13 +2,13 @@
 #define GUIElementList_H
 #include "guiObservable.hpp"
 #include "guiElement.hpp"
-
 #include <vector>
 
 namespace gui {
 
 // forward declared dependencies
 class GUI;
+
 
 class GUIElementList : public GUIObservable {
 	

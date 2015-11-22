@@ -1,5 +1,6 @@
 #include "guiElementList.hpp"
 #include "gui.hpp"
+#include "levelState.hpp"
 #include "guiEvent.hpp"
 #include <iostream>
 /**

@@ -2,7 +2,7 @@
 #include "moveCommand.hpp"
 #include "modeCommand.hpp"
 #include "loadCommand.hpp"
-
+#include "cursor.hpp"
 #include <iostream>
 
 using namespace gui;
@@ -19,13 +19,19 @@ void GUI::init() {
 	//~ engine.addCommand(load); //initialiser ici le 1er niveau
 
 }
-
-GUIElementList& GUI::getCursor()
+GUIElementList& GUI::getCursorList()
 {
 	return cursorList;
 }
+GUIMoveRange& GUI::getMoveRange(){
+	
+	return this->moveRange;
+}
+state::LevelState& GUI::getLevelState(){
 
-void GUI::setCursor(const GUIElementList& cursor)
+	return this->levelState;
+}
+void GUI::setCursorList(const GUIElementList& cursor)
 {
 	//~ this->cursor = cursor;
 }
