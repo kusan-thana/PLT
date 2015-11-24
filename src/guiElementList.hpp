@@ -9,7 +9,6 @@ namespace gui {
 // forward declared dependencies
 class GUI;
 
-
 class GUIElementList : public GUIObservable {
 	
 	protected:

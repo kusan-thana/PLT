@@ -17,7 +17,7 @@ using namespace render;
 
 Scene::Scene(){
 
-	layers.resize(3);	//Allocate an array of size 3 with initialized pointers at NULL (GRID_LAYER, CURSORS_LAYER, CHARACTERS_LAYER) 
+	layers.resize(4);	//Allocate an array of size 3 with initialized pointers at NULL (GRID_LAYER, CURSORS_LAYER, CHARACTERS_LAYER) 
 }
 Scene::~Scene(){
 }
@@ -27,11 +27,11 @@ void Scene::setLayer(int idx, Layer* layer){
 		this->layers[GRID_LAYER] = layer;				//Memory leak ??
 		//~ this->layers[GRID_LAYER].reset(layer);		
 	
+	if(idx == MOVE_RANGE_LAYER)
+		this->layers[MOVE_RANGE_LAYER] = layer;
+		
 	if(idx == CHARACTERS_LAYER)
 		this->layers[CHARACTERS_LAYER] = layer;
-	
-	if(idx == STATE_LAYER)
-		this->layers[STATE_LAYER] = layer;
 }
 void Scene::levelStateChanged(const state::LevelStateEvent& e){
 	

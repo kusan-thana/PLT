@@ -5,6 +5,8 @@
 
 namespace gui {
 
+class gui;
+
 class GUIMoveRange : public GUIElementList {
 	
 	protected:
@@ -17,6 +19,7 @@ class GUIMoveRange : public GUIElementList {
 		void setLength(int length);
 		void setElement(state::Element* element);
 		void computeRange();
+		void clear();
 };
 }
 #endif

@@ -5,6 +5,7 @@
 #include "guiMoveRange.hpp"
 #include "mobileElement.hpp"
 #include "guiElement.hpp"
+#include "elementGrid.hpp"
 
 /**
  * GUILayer Class
@@ -65,6 +66,9 @@ void GUILayer::setSurface(Surface* surface){
 
 void GUILayer::update(gui::GUIElementList& guiElementList, int i){
 	
+	state::ElementGrid grid = guiElementList.getGui().getLevelState().getElementGrid();
+	state::ElementList characters = guiElementList.getGui().getLevelState().getElementList();
+	
 	int widthCell = (this->tileSet)->getCellWidth();
 	int heigthCell = (this->tileSet)->getCellHeight();
 	
@@ -81,24 +85,32 @@ void GUILayer::update(gui::GUIElementList& guiElementList, int i){
 			if(curr_guiElem->getGuiTypeId() == gui::GUITypeId::CURSOR){
 					if(curr_guiElem->getActive()){
 						const render::Tile* curr_tile = new render::StaticTile(32,0,32,32);	//YELLOW
-						//~ const render::Tile* curr_tile = (this->tileSet)->getElementTile(curr_elem);		//Need to code TileSet class for GUI
+						//~ ////~ const render::Tile* curr_tile = (this->tileSet)->getElementTile(curr_elem);		//Need to code TileSet class for GUI
 						
-						(this->surface)->setSpriteTexture(0, (render::StaticTile*)curr_tile);
-						(this->surface)->setSpriteLocation(0, y*widthCell, x*heigthCell);
+						(this->surface)->setSpriteTexture(j, (render::StaticTile*)curr_tile);
+						(this->surface)->setSpriteLocation(j, y*widthCell, x*heigthCell);
 					}
 					else { 
 						const render::Tile* curr_tile =	new render::StaticTile(0,0,32,32);	//RED
-						(this->surface)->setSpriteTexture(0, (render::StaticTile*)curr_tile);
-						(this->surface)->setSpriteLocation(0, y*widthCell, x*heigthCell);
+						(this->surface)->setSpriteTexture(j, (render::StaticTile*)curr_tile);
+						(this->surface)->setSpriteLocation(j, y*widthCell, x*heigthCell);
 					}
 			}
 			if(curr_guiElem->getGuiTypeId() == gui::GUITypeId::TILE){
-				 //~ std::cout << "went here.." << std::endl;
-				const render::Tile* curr_tile = new render::StaticTile(32,0,32,32);	//YELLOW
-				//~ const render::Tile* curr_tile = (this->tileSet)->getElementTile(curr_elem);		//Need to code TileSet class for GUI
 				
-				(this->surface)->setSpriteTexture(j, (render::StaticTile*)curr_tile);
-				(this->surface)->setSpriteLocation(j, y*widthCell, x*heigthCell);
+				if(x < grid.getHeight() && y < grid.getWidth() && (grid.getCell(x,y)->getTypeID() == state::TypeID::OBSTACLE || characters.getElement(x,y))){
+					const render::Tile* curr_tile = new render::StaticTile(0,0,32,32);	//RED
+					
+					(this->surface)->setSpriteTexture(j, (render::StaticTile*)curr_tile);
+					(this->surface)->setSpriteLocation(j, y*widthCell, x*heigthCell);
+				}
+				else{
+					const render::Tile* curr_tile = new render::StaticTile(64,0,32,32);	//GREEN
+				//~ //	 const render::Tile* curr_tile = (this->tileSet)->getElementTile(curr_elem);		//Need to code TileSet class for GUI
+					
+					(this->surface)->setSpriteTexture(j, (render::StaticTile*)curr_tile);
+					(this->surface)->setSpriteLocation(j, y*widthCell, x*heigthCell);
+				}
 			}
 		}
 	}	

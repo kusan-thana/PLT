@@ -1,6 +1,9 @@
 #include "guiMoveRange.hpp"
 #include <iostream>
 #include "guiTile.hpp"
+#include "elementGrid.hpp"
+#include "gui.hpp"
+#include "element.hpp"
 /**
  * GUIMoveRange Class
 **/
@@ -23,18 +26,20 @@ void GUIMoveRange::setLength(int length){
 }
 void GUIMoveRange::computeRange(){
 	
+	state::ElementGrid grid = getGui().getLevelState().getElementGrid();
 	int x = this->element->getX();
 	int y = this->element->getY();
-	//~ std::cout << "x " << x << std::endl;
-	//~ std::cout << "y " << y << std::endl;
-	//~ std::cout << "llength " << length << std::endl;
+	guiElements.clear();
 
 	for(int i=0; i<2*length+1; i++){
 		for(int j=0; j<2*length+1; j++){
-		
-			guiElements.push_back(new GUITile(i+(x-length),j+(y-length)));	//Square formation around the element
-			//~ std::cout << "test " << std::endl;
+			
+			if(x != i+(x-length) || y != j+(y-length))
+				guiElements.push_back(new GUITile(i+(x-length),j+(y-length)));	//Square formation around the element
 		}
 	}
-	//~ std::cout << "size " << size() << std::endl;
+}
+void GUIMoveRange::clear(){
+	
+	guiElements.clear();
 }
