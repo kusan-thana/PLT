@@ -11,7 +11,7 @@ Monster::Monster(TypeID IDElement) {
 	this->IDElement = IDElement;
 }
 bool Monster::isPlayerCharacter() const {
-	
+	//std::cout << "here";
 	return false;
 }
 void Monster::doAction(MobileElement& target, TypeAction action){

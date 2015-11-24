@@ -27,6 +27,8 @@ class ElementList : public Observable {
 		void setElementFactory(state::ElementFactory* factory);
 		void setElement(int i, state::Element* element);
 		void notifyObservers(int i);
+		//int numberOfPlayer();
+		//int numberOfMonster();
 };
 }
 #endif

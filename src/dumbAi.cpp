@@ -1,4 +1,6 @@
 #include "dumbAi.hpp"
+#include "elementList.hpp"
+#include "mobileElement.hpp"
 #include <iostream>
 
 /**
@@ -13,19 +15,28 @@ void DumbAI::dumbMove(int idx, engine::CommandSet& commands){
 }
 void DumbAI::run(engine::Engine& engine){
 	//std::cout << mainLevelState.getElementList().getElement(0) << std::endl;
-	int x = mainLevelState.getElementList().getElement(1)->getX();
-	int y = mainLevelState.getElementList().getElement(1)->getY();
-
-	if (x > mainLevelState.getElementList().getElement(0)->getX())
-		x--;
-	else if (x < mainLevelState.getElementList().getElement(0)->getX())
-		x++;
-	if (y > mainLevelState.getElementList().getElement(0)->getY())
-		y--;
-	else if (y < mainLevelState.getElementList().getElement(0)->getY())
-		y++;
-	engine::MoveCommand* move = new engine::MoveCommand(x, y, mainLevelState.getElementList().getElement(1));
-	//std::cout << move->getTypeId() << std::endl;
-	engine.addCommand(move);
+	
+	state::ElementList elementList = mainLevelState.getElementList();
+	int x_hero = elementList.getElement(0)->getX();
+	int y_hero = elementList.getElement(0)->getY();
+	
+	for (int i = 3; i < elementList.size(); i++){
+		if (((state::MobileElement*)(elementList.getElement(i)))->getTurnPlayed() == false){
+			int x = elementList.getElement(i)->getX();
+			int y = elementList.getElement(i)->getY();
+			
+			//if (x > x_hero)
+			//	x--;
+			//else if (x < x_hero)
+			//	x++;
+			if (y > y_hero)
+				y--;
+			else if (y < y_hero)
+				y++;
+			engine::MoveCommand* move = new engine::MoveCommand(x, y, mainLevelState.getElementList().getElement(i));
+			//std::cout << move->getTypeId() << std::endl;
+			engine.addCommand(move);	
+		}	
+	}
 
 }

@@ -1,4 +1,5 @@
 #include "moveCharacter.hpp"
+#include "mobileElement.hpp"
 
 #include <iostream>
 using namespace engine;
@@ -14,6 +15,8 @@ void MoveCharacter::apply(state::LevelState& levelState) {
 	character->setX(x);
 	character->setY(y);
 	levelState.getElementList().notifyObservers(-1);
+	((state::MobileElement*)character)->setTurnPlayed(true);
+	
 }
 
 

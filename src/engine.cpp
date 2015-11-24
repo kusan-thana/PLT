@@ -3,6 +3,8 @@
 #include <iostream>
 #include "actionList.hpp"
 #include "incEpoch.hpp"
+#include "mobileElement.hpp"
+#include "elementList.hpp"
 
 using namespace engine;
 
@@ -25,6 +27,7 @@ EngineMode Engine::getMode() {
 	return enginemode;
 }
 void Engine::update() {
+	
 
 
 	Ruler ruler(this->actions, this->commandSet, this->levelState);
@@ -33,13 +36,33 @@ void Engine::update() {
 	/*Appeler les methodes du Ruller pour verifier les commandes*/
 
 		ruler.apply();
-
+			
 	//Gestion des tours
+	state::ElementList& elementList = levelState.getElementList();
+	
 		if (levelState.getTurnToPlay() == state::PLAYER) {
 			levelState.setTurnToPlay(state::OPPONENT);
+			for(int i = 0; i < levelState.getElementList().size();i++){
+				if(((state::MobileElement*)(elementList.getElement(i)))->isPlayerCharacter())
+					if (((state::MobileElement*)(elementList.getElement(i)))->getTurnPlayed() == false)
+						levelState.setTurnToPlay(state::PLAYER);
+			}
+			
 		}
-		else if (levelState.getTurnToPlay() == state::OPPONENT)
+		else if (levelState.getTurnToPlay() == state::OPPONENT){
 			levelState.setTurnToPlay(state::PLAYER);
+			for(int i = 0; i < levelState.getElementList().size();i++){
+				if(((state::MobileElement*)(elementList.getElement(i)))->isPlayerCharacter())
+					((state::MobileElement*)(elementList.getElement(i)))->setTurnPlayed(false) ;
+			}
+			for(int i = 3; i < levelState.getElementList().size();i++){
+				if(!((state::MobileElement*)(elementList.getElement(i)))->isPlayerCharacter())
+					if (((state::MobileElement*)(elementList.getElement(i)))->getTurnPlayed() == false){
+						levelState.setTurnToPlay(state::OPPONENT);
+
+					}			
+			}	
+		}	
 	}
 	commandSet.clear();
 }

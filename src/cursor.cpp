@@ -1,6 +1,7 @@
 #include "cursor.hpp"
 #include "gui.hpp"
 #include "guiEvent.hpp"
+#include "mobileElement.hpp"
 
 using namespace gui;
 
@@ -24,8 +25,9 @@ void Cursor::setY(int y)
 void Cursor::setActive(bool active) {
 
 		if (active == true && levelState.getElementList().getElement(x,y)){
-			if (levelState.getElementList().getElement(x, y)->getTypeID() == state::HERO){
-				this->active = active;
+			if (((state::MobileElement*)(levelState.getElementList().getElement(x, y)))->isPlayerCharacter() == true){
+				if (((state::MobileElement*)(levelState.getElementList().getElement(x, y)))->getTurnPlayed() == false)
+					this->active = active;
 			}
 		}
 		else

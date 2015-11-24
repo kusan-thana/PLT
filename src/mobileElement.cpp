@@ -29,3 +29,9 @@ bool MobileElement::isSelected(){
 
 	return selected;
 }
+bool MobileElement::getTurnPlayed() const{
+	return turnPlayed;
+}
+void MobileElement::setTurnPlayed(bool turnPlayed){
+	this->turnPlayed = turnPlayed;
+}

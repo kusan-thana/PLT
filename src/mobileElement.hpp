@@ -30,9 +30,13 @@ class MobileElement : public Element{
 		bool isStatic() const;
 		int getNbStep() const;
 		int getNbAction() const;
+		bool getTurnPlayed() const;
+		void setTurnPlayed(bool turnPlayed);
 		void setNbAction(int nbAction);
 		virtual bool isPlayerCharacter() const =0;
 		bool isSelected();
+		
+		
 };
 }
 #endif
