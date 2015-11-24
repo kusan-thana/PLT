@@ -19,8 +19,8 @@ class GUI;
 			virtual void setX(int x);
 			virtual void setY(int y);
 			virtual void setActive(bool active);
-			void setcharacter(state::Element* character);
-			state::Element* getcharacter();
+			void setCharacter(state::Element* character);
+			state::Element* getCharacter();
 			GUITypeId getGuiTypeId() const;
 
 	};

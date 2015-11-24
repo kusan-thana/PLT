@@ -25,7 +25,7 @@ void GUIMoveRange::setLength(int length){
 	this->length = length;
 }
 void GUIMoveRange::computeRange(){
-	
+	std::cout << "computeRange "<< std::endl;
 	state::ElementGrid grid = getGui().getLevelState().getElementGrid();
 	int x = this->element->getX();
 	int y = this->element->getY();

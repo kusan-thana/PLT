@@ -133,7 +133,6 @@ void SFMLClient::init(){
 	gui::GUIMoveRange& moveRange = gui.getMoveRange();
 	moveRange.setElement(hero);
 	moveRange.setLength(((state::MobileElement*)hero)->getNbStep());
-	moveRange.computeRange();	
 
 	guiRender::GUILayer* layerMoveRange = new guiRender::GUILayer();
 	layerMoveRange->setSurface(this->surfaces[render::MOVE_RANGE_LAYER]);
@@ -218,10 +217,10 @@ bool SFMLClient::acquireControls() {
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
 			cursor->setX(cursor->getX() - 1);
 		}
-		if(cursor->getActive())
-			moveRange.computeRange();
-		else 
-			moveRange.clear();
+		//~ if(cursor->getActive())
+			//~ moveRange.computeRange();
+		//~ else 
+			//~ moveRange.clear();
 
 		gui.getMoveRange().notifyObservers(-1);
 		gui.getCursorList().notifyObservers(-1); //On met a jour le GUI a chaque changement d etat du gui

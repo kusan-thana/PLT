@@ -46,11 +46,15 @@ void GUI::commander(engine::Engine& engine) {
 	Cursor* cursor = (Cursor*)cursorList.getGuiElement(0);
 
 	if (cursor->getActive()) {
-		cursor->setcharacter(levelState.getElementList().getElement(cursor->getX(), cursor->getY()));
+		cursor->setCharacter(levelState.getElementList().getElement(cursor->getX(), cursor->getY()));
+		moveRange.setElement(cursor->getCharacter());
+		moveRange.computeRange();
 	}
-	if (!cursor->getActive() && cursor->getcharacter()) {
-		engine::MoveCommand* move = new engine::MoveCommand(cursor->getX(), cursor->getY(), cursor->getcharacter());
-		cursor->setcharacter(levelState.getElementList().getElement(cursor->getX(), cursor->getY()));
+	else 	moveRange.clear();
+	
+	if (!cursor->getActive() && cursor->getCharacter()) {
+		engine::MoveCommand* move = new engine::MoveCommand(cursor->getX(), cursor->getY(), cursor->getCharacter());
+		cursor->setCharacter(levelState.getElementList().getElement(cursor->getX(), cursor->getY()));
 		engine.addCommand(move);
 	}
 	if (engineMode) {
@@ -58,7 +62,6 @@ void GUI::commander(engine::Engine& engine) {
 		engine.addCommand(engineModeCommand);
 		engineMode = engine::PLAY;
 	}
-
 }
 
 

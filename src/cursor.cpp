@@ -33,11 +33,11 @@ void Cursor::setActive(bool active) {
 		else
 			this->active = false;
 }
-void Cursor::setcharacter(state::Element* character) {
+void Cursor::setCharacter(state::Element* character) {
 	
 	this->character = character;
 }
-state::Element* Cursor::getcharacter() {
+state::Element* Cursor::getCharacter() {
 
 	return character;
 }
