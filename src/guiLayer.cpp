@@ -66,8 +66,11 @@ void GUILayer::setSurface(Surface* surface){
 
 void GUILayer::update(gui::GUIElementList& guiElementList, int i){
 	
-	state::ElementGrid grid = guiElementList.getGui().getLevelState().getElementGrid();
-	state::ElementList characters = guiElementList.getGui().getLevelState().getElementList();
+	gui::GUI gui = guiElementList.getGui();
+	gui::Cursor* cursor = (gui::Cursor*)gui.getCursorList().getGuiElement(0);
+	state::ElementGrid grid = gui.getLevelState().getElementGrid();
+	state::ElementList characters = gui.getLevelState().getElementList();
+	
 	
 	int widthCell = (this->tileSet)->getCellWidth();
 	int heigthCell = (this->tileSet)->getCellHeight();

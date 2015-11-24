@@ -154,8 +154,6 @@ void SFMLClient::init(){
 	guiElementList.notifyObservers(-1);
 	
 	moveRange.registerObserver(layerMoveRange);
-	//~ moveRange.computeRange();
-	//~ moveRange.notifyObservers(-1);
 }
 bool SFMLClient::acquireControls() {
 
@@ -178,15 +176,7 @@ bool SFMLClient::acquireControls() {
 		else if (event.type == sf::Event::MouseButtonReleased || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space)) {
 			cursor->setActive(!cursor->getActive());
 			//~ if(cursor->getActive()//////////
-			
 			gui.commander(engine);
-			//~ if(state::Element* elem = levelState.getElementList().getElement(sf::Mouse::getPosition(window).y * levelState.getElementGrid().getHeight() / window.getSize().y,sf::Mouse::getPosition(window).x * levelState.getElementGrid().getWidth() / window.getSize().x))
-			//~ {
-				//~ elem->setActive(!elem->isActive());
-				//~ std::cout << "Active" << std::endl;
-				//~ moveRange.computeRange();
-				//gui.getMoveRange().notifyObservers(-1);
-			//~ }
 		}
 		else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::S) {
 
