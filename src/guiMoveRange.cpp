@@ -29,10 +29,10 @@ void GUIMoveRange::computeRange(){
 	//~ std::cout << "y " << y << std::endl;
 	//~ std::cout << "llength " << length << std::endl;
 
-	for(int i=x-length; i<2*length+1; i++){
-		for(int j=y-length; j<2*length+1; j++){
+	for(int i=0; i<2*length+1; i++){
+		for(int j=0; j<2*length+1; j++){
 		
-			guiElements.push_back(new GUITile(i,j));	//Square formation around the element
+			guiElements.push_back(new GUITile(i+(x-length),j+(y-length)));	//Square formation around the element
 			//~ std::cout << "test " << std::endl;
 		}
 	}

@@ -93,7 +93,7 @@ void GUILayer::update(gui::GUIElementList& guiElementList, int i){
 					}
 			}
 			if(curr_guiElem->getGuiTypeId() == gui::GUITypeId::TILE){
-				std::cout << "went here.." << std::endl;
+				 //~ std::cout << "went here.." << std::endl;
 				const render::Tile* curr_tile = new render::StaticTile(32,0,32,32);	//YELLOW
 				//~ const render::Tile* curr_tile = (this->tileSet)->getElementTile(curr_elem);		//Need to code TileSet class for GUI
 				

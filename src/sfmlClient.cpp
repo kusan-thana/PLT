@@ -149,6 +149,7 @@ void SFMLClient::init(){
 	guiElementList.notifyObservers(-1);
 	
 	//~ moveRange.registerObserver(layerCursors);
+	//~ moveRange.computeRange();
 	//~ moveRange.notifyObservers(-1);
 }
 bool SFMLClient::acquireControls() {

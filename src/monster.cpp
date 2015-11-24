@@ -12,7 +12,7 @@ Monster::Monster(TypeID IDElement) {
 }
 bool Monster::isPlayerCharacter() const {
 	
-	return true;
+	return false;
 }
 void Monster::doAction(MobileElement& target, TypeAction action){
 	
