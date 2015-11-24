@@ -41,28 +41,36 @@ void Engine::update() {
 	state::ElementList& elementList = levelState.getElementList();
 	
 		if (levelState.getTurnToPlay() == state::PLAYER) {
-			levelState.setTurnToPlay(state::OPPONENT);
-			for(int i = 0; i < levelState.getElementList().size();i++){
-				if(((state::MobileElement*)(elementList.getElement(i)))->isPlayerCharacter())
-					if (((state::MobileElement*)(elementList.getElement(i)))->getTurnPlayed() == false)
-						levelState.setTurnToPlay(state::PLAYER);
+			for(int i = 0, count = 0; i < levelState.getElementList().size();i++){
+				if(((state::MobileElement*)(elementList.getElement(i)))->isPlayerCharacter()) //Si c'est un personnage
+					if (((state::MobileElement*)(elementList.getElement(i)))->getTurnPlayed()){ //Si ce personnage a joué
+						count++;
+						if (count == elementList.numberOfPlayer()){ //Si l'ensemble des personnage a joué - Opponent turn
+							for(int i = 0, count = 0; i < levelState.getElementList().size();i++){
+								if(!((state::MobileElement*)(elementList.getElement(i)))->isPlayerCharacter())
+									((state::MobileElement*)(elementList.getElement(i)))->setTurnPlayed(false); //Reinitialization - ce element peut jouer a nouveau
+								}
+							levelState.setTurnToPlay(state::OPPONENT); //Opponent turn
+						
+						}
+					}
 			}
-			
 		}
-		else if (levelState.getTurnToPlay() == state::OPPONENT){
-			levelState.setTurnToPlay(state::PLAYER);
-			for(int i = 0; i < levelState.getElementList().size();i++){
-				if(((state::MobileElement*)(elementList.getElement(i)))->isPlayerCharacter())
-					((state::MobileElement*)(elementList.getElement(i)))->setTurnPlayed(false) ;
+		else if (levelState.getTurnToPlay() == state::OPPONENT) {
+			for(int i = 0, count = 0; i < levelState.getElementList().size();i++){
+				if(!((state::MobileElement*)(elementList.getElement(i)))->isPlayerCharacter()) //Si c'est un personnage
+					if (((state::MobileElement*)(elementList.getElement(i)))->getTurnPlayed()){ //Si ce personnage a joué
+						count++;
+						if (count == elementList.numberOfMonster()){ //Si l'ensemble des personnage a joué - Opponent turn
+							for(int i = 0, count = 0; i < levelState.getElementList().size();i++){
+								if(((state::MobileElement*)(elementList.getElement(i)))->isPlayerCharacter())
+									((state::MobileElement*)(elementList.getElement(i)))->setTurnPlayed(false); //Reinitialization - ce element peut jouer a nouveau
+								}
+							levelState.setTurnToPlay(state::PLAYER); //Opponent turn
+						}
+					}
 			}
-			for(int i = 3; i < levelState.getElementList().size();i++){
-				if(!((state::MobileElement*)(elementList.getElement(i)))->isPlayerCharacter())
-					if (((state::MobileElement*)(elementList.getElement(i)))->getTurnPlayed() == false){
-						levelState.setTurnToPlay(state::OPPONENT);
-
-					}			
-			}	
-		}	
+		}
 	}
 	commandSet.clear();
 }

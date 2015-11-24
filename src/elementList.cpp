@@ -1,5 +1,5 @@
 #include "elementList.hpp"
-
+#include "mobileElement.hpp"
 #include "levelState.hpp"
 #include "levelListEvent.hpp"
 #include <iostream>
@@ -46,5 +46,20 @@ void ElementList::notifyObservers(int i) {
 	LevelListEvent levelListEvent(*this,i);
 	Observable::notifyObservers(levelListEvent);
 }
-
+int ElementList::numberOfPlayer(){
+	int count = 0;
+	for (int i = 0; i < size() ; i++){
+		if (((MobileElement*)elements[i])->isPlayerCharacter())
+			count++;
+	}
+	return count;
+}
+int ElementList::numberOfMonster(){
+	int count = 0;
+	for (int i = 0; i < size() ; i++){
+		if (!((MobileElement*)elements[i])->isPlayerCharacter())
+			count++;
+	}
+	return count;
+}	
 		
