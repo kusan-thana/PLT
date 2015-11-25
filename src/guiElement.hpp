@@ -3,7 +3,7 @@
 
 namespace gui {
 	
-	enum GUITypeId { CURSOR = 1, TILE = 2 };
+	enum GUITypeId { CURSOR = 1, MOVE_RANGE = 2, ACTIVE_TILE = 3 };
 
 class GUIElement {
 	

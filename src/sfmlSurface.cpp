@@ -23,7 +23,7 @@ void SFMLSurface::setSpriteCount(int n){
  *  - Quatres sommets définis à partir de l'indice i
  *  - La position du coin haut-gauche du sprite dans la fenêtre à la position (x,y) 
  **/
-void SFMLSurface::setSpriteLocation(int i, int x, int y){
+ void SFMLSurface::setSpriteLocation(int i, int x, int y){
 	
 	sf::Vertex* quad = &vertices[i * 4];
 	
@@ -31,6 +31,15 @@ void SFMLSurface::setSpriteLocation(int i, int x, int y){
 	quad[1].position = sf::Vector2f(x + 32, y);		//Value 32 fixed !!
 	quad[2].position = sf::Vector2f(x + 32, y + 32);
 	quad[3].position = sf::Vector2f(x, y + 32);
+}
+void SFMLSurface::setSpriteLocation(int i, int x, int y, int width, int heigth){
+	
+	sf::Vertex* quad = &vertices[i * 4];
+	
+	quad[0].position = sf::Vector2f(x, y);
+	quad[1].position = sf::Vector2f(x + width, y);		//Value 32 fixed !!
+	quad[2].position = sf::Vector2f(x + width, y + heigth);
+	quad[3].position = sf::Vector2f(x, y + heigth);
 }
 /** Position du sprite dans la texture.
  * 	Coordonnées des quatres sommets sur la texture 

@@ -4,6 +4,7 @@
 #include "elementGrid.hpp"
 #include "gui.hpp"
 #include "element.hpp"
+#include "mobileElement.hpp"
 /**
  * GUIMoveRange Class
 **/
@@ -16,26 +17,18 @@ void GUIMoveRange::setElement(state::Element* element){
 
 	this->element = element;
 }
-int GUIMoveRange::getLength() const{
-		
-	return this->length;
-}
-void GUIMoveRange::setLength(int length){
-
-	this->length = length;
-}
 void GUIMoveRange::computeRange(){
-	std::cout << "computeRange "<< std::endl;
-	state::ElementGrid grid = getGui().getLevelState().getElementGrid();
+
 	int x = this->element->getX();
 	int y = this->element->getY();
+	int length = ((state::MobileElement*)element)->getNbStep();
 	guiElements.clear();
 
 	for(int i=0; i<2*length+1; i++){
 		for(int j=0; j<2*length+1; j++){
 			
 			if(x != i+(x-length) || y != j+(y-length))
-				guiElements.push_back(new GUITile(i+(x-length),j+(y-length)));	//Square formation around the element
+				guiElements.push_back(new GUITile(i+(x-length),j+(y-length), MOVE_RANGE));	//Square formation around the element
 		}
 	}
 }

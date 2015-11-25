@@ -14,6 +14,7 @@ class SFMLSurface : public Surface, public sf::Drawable, public sf::Transformabl
 		virtual void loadTexture(const char* tileset);
 		virtual void setSpriteCount(int n);
 		virtual void setSpriteLocation(int i, int x, int y);
+		virtual void setSpriteLocation(int i, int x, int y, int width, int heigth);
 		virtual void setSpriteTexture(int i, const render::StaticTile* staticTile);
 	
 	private:

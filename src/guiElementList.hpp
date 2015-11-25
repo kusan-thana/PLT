@@ -23,6 +23,7 @@ class GUIElementList : public GUIObservable {
 		GUIElement* getGuiElement(int x, int y) const;
 		void setGuiElement(int i, GUIElement* guiElement);
 		void notifyObservers(int i);
+		void update();
 };
 }
 #endif

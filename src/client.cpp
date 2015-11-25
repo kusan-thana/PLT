@@ -18,6 +18,7 @@ Client::Client() : engine(levelState), gui(levelState, engine),dumbAI(levelState
 	this->tileSets.push_back(new render::TileSet1()); 	//GRID_LAYER			
 	this->tileSets.push_back(new guiRender::TileSet3());	//MOVE_RANGE_LAYER       
 	this->tileSets.push_back(new guiRender::TileSet3());	//CURSORS_LAYER       
+	this->tileSets.push_back(new guiRender::TileSet3());	//TILE_LIST_LAYER       
 	this->tileSets.push_back(new render::TileSet2());	//CHARACTERS_LAYER
 
 }

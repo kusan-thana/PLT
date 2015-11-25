@@ -7,7 +7,7 @@ namespace gui {
 class GUITile : public GUIElement {
 	
 	public:
-		GUITile(int x, int y);
+		GUITile(int x, int y, GUITypeId guiTypeId);
 		virtual GUITypeId getGuiTypeId() const;
 };
 }

@@ -17,12 +17,14 @@ namespace gui
 		GUIElementList cursorList;
 		GUIMoveRange moveRange;
 		engine::EngineMode engineMode;
+		GUIElementList tileList;
 		
 	public:
 		GUI(state::LevelState& levelState, engine::Engine&);
 		~GUI();
 		GUIElementList& getCursorList();
 		GUIMoveRange& getMoveRange();
+		GUIElementList& getTileList();
 		state::LevelState& getLevelState();
 		void setCursorList(const GUIElementList& cursor);
 		void commander(engine::Engine& engine); //Creer les commandes pour le moteur de jeu par rapport a l'etat gui

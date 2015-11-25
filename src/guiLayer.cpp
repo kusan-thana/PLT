@@ -96,11 +96,11 @@ void GUILayer::update(gui::GUIElementList& guiElementList, int i){
 						curr_tile =	new render::StaticTile(0,0,32,32);	//RED
 					}
 			}
-			if(curr_guiElem->getGuiTypeId() == gui::GUITypeId::TILE){
+			if(curr_guiElem->getGuiTypeId() == gui::GUITypeId::MOVE_RANGE){
 				
-				//std::cout << "isActive : " << cursor->getActive() << std::endl;
+				//~ std::cout << "isActive : " << cursor->getActive() << std::endl;
 				//~ std::cout << "size : " << guiElementList.size() << std::endl;
-				//~ if(cursor->getActive()){		
+				if(cursor->getActive()){		
 					if(x < grid.getHeight() && x >= 0 && y < grid.getWidth()  && y >= 0 &&
 					   (grid.getCell(x,y)->getTypeID() == state::TypeID::OBSTACLE || characters.getElement(x,y))){
 							
@@ -112,13 +112,14 @@ void GUILayer::update(gui::GUIElementList& guiElementList, int i){
 						//~ //std::cout << "isActive : " << cursor->getActive() << std::endl;
 						//~ //std::cout << "size : " << guiElementList.size() << std::endl;
 					}
-				//~ }
-				//~ else{
-					//~ int x = cursor->getCharacter()->getX();
-					//~ int y = cursor->getCharacter()->getY();
-					//~ curr_tile = new render::StaticTile(32,0,32,32);	//YELLOW
+				}
+				else{
+					std::cout << "isActive : " << cursor->getActive() << std::endl;
+					int x = cursor->getCharacter()->getX();
+					int y = cursor->getCharacter()->getY();
+					curr_tile = new render::StaticTile(32,0,32,32);	//YELLOW
 					//~ break;
-				//~ }		
+				}		
 			}
 			(this->surface)->setSpriteTexture(j, (render::StaticTile*)curr_tile);
 			(this->surface)->setSpriteLocation(j, y*widthCell, x*heigthCell);

@@ -10,7 +10,6 @@
 
 using namespace render;
 
-//~ TileSet2::TileSet2() : file_name("../res/images/samu_mask.png"), widthCell(32), heightCell(32) {
 TileSet2::TileSet2() : file_name("../res/images/characters.png"), widthCell(32), heightCell(32) {
 
 	tiles.push_back(new render::StaticTile(64,0,32,40));	//HERO
