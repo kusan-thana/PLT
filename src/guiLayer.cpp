@@ -91,9 +91,13 @@ void GUILayer::update(gui::GUIElementList& guiElementList, int i){
 					if(curr_guiElem->getActive()){
 						curr_tile = new render::StaticTile(32,0,32,32);	//YELLOW
 						//~ ////~ const render::Tile* curr_tile = (this->tileSet)->getElementTile(curr_elem);		//Need to code TileSet class for GUI
+						(this->surface)->setSpriteTexture(j, (render::StaticTile*)curr_tile);
+						(this->surface)->setSpriteLocation(j, y*widthCell, x*heigthCell);
 					}
 					else {
 						curr_tile =	new render::StaticTile(0,0,32,32);	//RED
+						(this->surface)->setSpriteTexture(j, (render::StaticTile*)curr_tile);
+						(this->surface)->setSpriteLocation(j, y*widthCell, x*heigthCell);
 					}
 			}
 			if(curr_guiElem->getGuiTypeId() == gui::GUITypeId::MOVE_RANGE){
@@ -105,24 +109,31 @@ void GUILayer::update(gui::GUIElementList& guiElementList, int i){
 					   (grid.getCell(x,y)->getTypeID() == state::TypeID::OBSTACLE || characters.getElement(x,y))){
 							
 							curr_tile = new render::StaticTile(0,0,32,32);	//RED
+							(this->surface)->setSpriteTexture(j, (render::StaticTile*)curr_tile);
+							(this->surface)->setSpriteLocation(j, y*widthCell, x*heigthCell);
 					}
 					else{
-
 						curr_tile = new render::StaticTile(64,0,32,32);	//GREEN
-						//~ //std::cout << "isActive : " << cursor->getActive() << std::endl;
-						//~ //std::cout << "size : " << guiElementList.size() << std::endl;
+						(this->surface)->setSpriteTexture(j, (render::StaticTile*)curr_tile);
+						(this->surface)->setSpriteLocation(j, y*widthCell, x*heigthCell);
 					}
 				}
 				else{
-					std::cout << "isActive : " << cursor->getActive() << std::endl;
+					//~ std::cout << "isActive : " << cursor->getActive() << std::endl;
 					int x = cursor->getCharacter()->getX();
 					int y = cursor->getCharacter()->getY();
 					curr_tile = new render::StaticTile(32,0,32,32);	//YELLOW
 					//~ break;
 				}		
 			}
-			(this->surface)->setSpriteTexture(j, (render::StaticTile*)curr_tile);
-			(this->surface)->setSpriteLocation(j, y*widthCell, x*heigthCell);
+			if(curr_guiElem->getGuiTypeId() == gui::GUITypeId::HEALTH_BAR){
+				
+				curr_tile = new render::StaticTile(0,0,32,32);	//RED
+				(this->surface)->setSpriteTexture(j, (render::StaticTile*)curr_tile);
+				(this->surface)->setSpriteLocation(j, y*widthCell, x*heigthCell,32,-2);
+			}
+			//~ (this->surface)->setSpriteTexture(j, (render::StaticTile*)curr_tile);
+			//~ (this->surface)->setSpriteLocation(j, y*widthCell, x*heigthCell);
 		}
 	}	
 }

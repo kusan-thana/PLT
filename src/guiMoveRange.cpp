@@ -32,7 +32,4 @@ void GUIMoveRange::computeRange(){
 		}
 	}
 }
-void GUIMoveRange::clear(){
-	
-	guiElements.clear();
-}
+

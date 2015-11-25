@@ -16,7 +16,6 @@ class GUIMoveRange : public GUIElementList {
 		GUIMoveRange(GUI& gui);
 		void setElement(state::Element* element);
 		void computeRange();
-		void clear();
 };
 }
 #endif
