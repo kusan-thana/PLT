@@ -4,11 +4,13 @@
 #include "loadCommand.hpp"
 #include "cursor.hpp"
 #include "guiTile.hpp"
+#include "mobileElement.hpp"
+#include "guiTile.hpp"
 #include <iostream>
 
 using namespace gui;
 
-GUI::GUI(state::LevelState& levelState, engine::Engine& engine) : levelState(levelState), cursorList(*this), moveRange(*this), engine(engine), tileList(*this){
+GUI::GUI(state::LevelState& levelState, engine::Engine& engine) : levelState(levelState), cursorList(*this), moveRange(*this), engine(engine), healthBarList(*this){
 	cursorList.setGuiElement(0, new Cursor(levelState));
 	this->init();
 }
@@ -19,10 +21,6 @@ void GUI::init() {
 	std::cout << std::endl << "Utiliser la souris ou le clavier pour jouer (espace ou clic gauche pour selectionner)" << std::endl;
 	engine::LoadCommand* load = new engine::LoadCommand("../res/level2.txt");
 	//~ engine.addCommand(load); //initialiser ici le 1er niveau
-	
-	int size = levelState.getElementList().size();
-	for(int i=0; i < size; i++)
-		tileList.setGuiElement(i, new GUITile(0,0,ACTIVE_TILE));
 }
 GUIElementList& GUI::getCursorList()
 {
@@ -32,9 +30,9 @@ GUIMoveRange& GUI::getMoveRange(){
 	
 	return this->moveRange;
 }
-GUIElementList& GUI::getTileList(){
+GUIElementList& GUI::getHealthBarList(){
 	
-	return this->tileList;
+	return this->healthBarList;
 }
 state::LevelState& GUI::getLevelState(){
 
@@ -63,13 +61,8 @@ void GUI::commander(engine::Engine& engine) {
 	else {
 		moveRange.clear();
 		moveRange.notifyObservers(-1);
-		//~ int size = levelState.getElementList().size();
-		//~ 
-		//~ for(int i=0; i<size; i++){
-			//~ Element* element = levelState.getElementList().getElement(i);
-			//~ if(
-		//~ }
-			
+		healthBarList.clear();
+		updateHealthBarList();
 	}
 	
 	if (!cursor->getActive() && cursor->getCharacter()) {
@@ -83,5 +76,19 @@ void GUI::commander(engine::Engine& engine) {
 		engineMode = engine::PLAY;
 	}
 }
+void GUI::updateHealthBarList(){
+	
+	state::ElementList characters = levelState.getElementList();
+	int size = characters.size();
+			//~ std::cout << "size : " << size << std::endl; 
+	for(int i=0; i<size; i++){
 
+		state::MobileElement* element = (state::MobileElement*)characters.getElement(i);
+
+			int x = element->getX();
+			int y = element->getY();
+			healthBarList.setGuiElement(i, new GUITile(x,y,GUITypeId::HEALTH_BAR));
+
+	}
+}
 

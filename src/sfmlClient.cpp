@@ -139,7 +139,7 @@ void SFMLClient::init(){
 	/******************************************/
 	
 	/*************GUI::ACTIVE_LAYER*************/
-	gui::GUIElementList& tileList = gui.getTileList();
+	gui::GUIElementList& healthBar = gui.getHealthBarList();
 	//~ tileList.setGuiElement(0, new gui::GUITile(0,0,gui::GUITypeId::ACTIVE_TILE));
 	//~ tileList.setGuiElement(1, new gui::GUITile(0,0,gui::GUITypeId::ACTIVE_TILE));
 	//~ tileList.setGuiElement(2, new gui::GUITile(0,0,gui::GUITypeId::ACTIVE_TILE));
@@ -163,6 +163,11 @@ void SFMLClient::init(){
 	guiElementList.notifyObservers(-1);
 	
 	moveRange.registerObserver(layerMoveRange);
+	
+	healthBar.registerObserver(layerTileList);
+	gui.updateHealthBarList();
+	//~ healthBar.update();
+	healthBar.notifyObservers(-1);
 }
 bool SFMLClient::acquireControls() {
 
@@ -225,7 +230,8 @@ bool SFMLClient::acquireControls() {
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
 			cursor->setX(cursor->getX() - 1);
 		}
-
+		
+		//~ gui.getHealthBarList().notifyObservers(-1);		
 		gui.getCursorList().notifyObservers(-1); //On met a jour le GUI a chaque changement d etat du gui
 	}		
 	return this->window.isOpen();
