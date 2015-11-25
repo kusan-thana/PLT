@@ -45,7 +45,7 @@ void GUI::setCursorList(const GUIElementList& cursor)
 	//~ this->cursor = cursor;
 }
 
-void gui::GUI::setEngineMode(engine::EngineMode engineMode)
+void GUI::setEngineMode(engine::EngineMode engineMode)
 {
 	this->engineMode = engineMode;
 }
