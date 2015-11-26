@@ -38,9 +38,16 @@ void ElementListLayer::update(const state::ElementList& elementList, int i){
 		
 		const render::Tile* curr_tile = (this->tileSet)->getElementTile(curr_elem);
 		
-		(this->surface)->setSpriteTexture(j, (StaticTile*)curr_tile);
-		(this->surface)->setSpriteLocation(j, y*widthCell, x*heigthCell);
+		if(curr_elem->isStatic()){
+			(this->surface)->setSpriteTexture(j, (StaticTile*)curr_tile);
+			(this->surface)->setSpriteLocation(j, y*widthCell, x*heigthCell);
 		}
+		if(!curr_elem->isStatic()){
+			(this->surface)->setSpriteTexture(j, (StaticTile*)curr_tile);
+			(this->surface)->setSpriteLocation(j, y*widthCell, x*heigthCell);
+			//~ (this->surface)->setSpriteLocation(j, y*widthCell, x*heigthCell,widthCell,-2);
+		}
+	}
 	}
 	if(i>=0)
 	{

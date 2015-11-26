@@ -20,8 +20,6 @@ TileSet2::TileSet2() : file_name("../res/images/characters.png"), widthCell(32),
 	tiles.push_back(new render::StaticTile(318,0,32,40));	//INACTIVE_HERO
 	tiles.push_back(new render::StaticTile(318,490,32,40));	//INACTIVE_HERO
 	tiles.push_back(new render::StaticTile(256,980,45,42));	//INACTIVE_HERO
-
-	
 }
 int TileSet2::getCellWidth() const{
 	

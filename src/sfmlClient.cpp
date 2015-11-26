@@ -114,7 +114,6 @@ void SFMLClient::init(){
 
 	render::ElementListLayer* layerCharacters = new render::ElementListLayer();
 	layerCharacters->setSurface(this->surfaces[render::CHARACTERS_LAYER]);
-	
 	layerCharacters->setTileSet(this->tileSets[render::CHARACTERS_LAYER]);
 	
 	scene.setLayer(render::CHARACTERS_LAYER, layerCharacters);
@@ -139,15 +138,16 @@ void SFMLClient::init(){
 	/******************************************/
 	
 	/*************GUI::ACTIVE_LAYER*************/
-	gui::GUIElementList& healthBar = gui.getHealthBarList();
+	render::ElementListLayer* layerHealthBar = new render::ElementListLayer();
+	//~ gui::GUIElementList& healthBar = gui.getHealthBarList();
 	//~ tileList.setGuiElement(0, new gui::GUITile(0,0,gui::GUITypeId::ACTIVE_TILE));
 	//~ tileList.setGuiElement(1, new gui::GUITile(0,0,gui::GUITypeId::ACTIVE_TILE));
 	//~ tileList.setGuiElement(2, new gui::GUITile(0,0,gui::GUITypeId::ACTIVE_TILE));
 	
-	guiRender::GUILayer* layerTileList = new guiRender::GUILayer();
-	layerTileList->setSurface(this->surfaces[render::TILE_LIST_LAYER]);
+	//~ guiRender::GUILayer* layerTileList = new guiRender::GUILayer();
+	layerHealthBar->setSurface(this->surfaces[render::TILE_LIST_LAYER]);
 	
-	layerTileList->setTileSet(this->tileSets[render::TILE_LIST_LAYER]);
+	layerHealthBar->setTileSet(this->tileSets[render::TILE_LIST_LAYER]);
 	/******************************************/
 	
 	state::ElementGrid& elementGrid = levelState.getElementGrid();
@@ -156,6 +156,7 @@ void SFMLClient::init(){
 		
 	state::ElementList& charactersList = levelState.getElementList();
 	charactersList.registerObserver(layerCharacters);
+	//~ charactersList.registerObserver(layerHealthBar);
 	charactersList.notifyObservers(-1);
 
 	gui::GUIElementList& guiElementList = gui.getCursorList();
@@ -164,10 +165,10 @@ void SFMLClient::init(){
 	
 	moveRange.registerObserver(layerMoveRange);
 	
-	healthBar.registerObserver(layerTileList);
-	gui.updateHealthBarList();
+	//~ healthBar.registerObserver(layerTileList);
+	//~ gui.updateHealthBarList();
 	//~ healthBar.update();
-	healthBar.notifyObservers(-1);
+	//~ healthBar.notifyObservers(-1);
 }
 bool SFMLClient::acquireControls() {
 
