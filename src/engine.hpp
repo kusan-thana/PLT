@@ -21,6 +21,8 @@ namespace engine {
 		~Engine();
 		void addCommand(engine::Command *cmd);
 		void update();
+		void turnGestion();
+		void deathGestion();
 
 	};
 }

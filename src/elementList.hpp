@@ -24,6 +24,8 @@ class ElementList : public Observable {
 		int size() const;
 		state::Element* getElement(int i) const;
 		Element* getElement(int x, int y) const;
+		int getIdxElement(Element* element) const;
+		std::vector<state::Element*> getElements();
 		void setElementFactory(state::ElementFactory* factory);
 		void setElement(int i, state::Element* element);
 		void notifyObservers(int i);

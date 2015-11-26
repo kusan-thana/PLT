@@ -32,6 +32,21 @@ Element* ElementList::getElement(int x, int y) const{
 	}
 	return 0;
 }
+std::vector<state::Element*> ElementList::getElements(){
+	
+	return this->elements;
+}
+int ElementList::getIdxElement(Element* element) const{
+
+	int i;
+	
+	//return distance(levelState.getElementList().getElements().begin(),find(levelState.getElementList().getElements().begin(), levelState.getElementList().getElements().end(), character))
+	for(i=0; i<size(); i++){
+		if(elements[i] == element)
+			break;
+	}
+	return i;
+} 
 void ElementList::setElementFactory(state::ElementFactory* factory){
 
 	this->factory = factory;
