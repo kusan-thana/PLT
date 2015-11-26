@@ -2,6 +2,7 @@
 #include "moveCommand.hpp"
 #include "modeCommand.hpp"
 #include "loadCommand.hpp"
+#include "attackCommand.hpp"
 #include "cursor.hpp"
 #include "guiTile.hpp"
 #include "mobileElement.hpp"
@@ -66,9 +67,15 @@ void GUI::commander(engine::Engine& engine) {
 	}
 	
 	if (!cursor->getActive() && cursor->getCharacter()) {
-		engine::MoveCommand* move = new engine::MoveCommand(cursor->getX(), cursor->getY(), cursor->getCharacter());
-		cursor->setCharacter(levelState.getElementList().getElement(cursor->getX(), cursor->getY()));
-		engine.addCommand(move);
+		if (levelState.getElementList().getElement(cursor->getX(), cursor->getY())) {
+			engine::AttackCommand* attack = new engine::AttackCommand(cursor->getCharacter(), levelState.getElementList().getElement(cursor->getX(), cursor->getY()));
+			engine.addCommand(attack);
+		}
+		else{
+			engine::MoveCommand* move = new engine::MoveCommand(cursor->getX(), cursor->getY(), cursor->getCharacter());
+			cursor->setCharacter(levelState.getElementList().getElement(cursor->getX(), cursor->getY()));
+			engine.addCommand(move);
+		}
 	}
 	if (engineMode) {
 		engine::ModeCommand* engineModeCommand = new engine::ModeCommand(engineMode);
