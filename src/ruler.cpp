@@ -51,10 +51,11 @@ void Ruler::apply(){
 		state::MobileElement* target = (state::MobileElement*)(((AttackCommand*)cmd)->getTarget());
 
 		if (attacker->isPlayerCharacter() != target->isPlayerCharacter()){
-			AttackCharacter* attackcharac = new AttackCharacter(*attacker, *target, curr_LevelState);
-			actions.add(attackcharac);
-			actions.add(new IncEpoch());
-
+			if (abs(attacker->getX() - target->getX()) <= 1 && abs(attacker->getY() - target->getY()) <= 1){
+				AttackCharacter* attackcharac = new AttackCharacter(*attacker, *target, curr_LevelState);
+				actions.add(attackcharac);
+				actions.add(new IncEpoch());
+			}
 		}
 	}
 	if (commands.get(MAIN)) {
