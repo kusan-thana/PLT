@@ -67,13 +67,14 @@ void GUI::commander(engine::Engine& engine) {
 	}
 	
 	if (!cursor->getActive() && cursor->getCharacter()) {
-		if (levelState.getElementList().getElement(cursor->getX(), cursor->getY())) {
-			engine::AttackCommand* attack = new engine::AttackCommand(cursor->getCharacter(), levelState.getElementList().getElement(cursor->getX(), cursor->getY()));
+		state::Element* elementCursorNew = levelState.getElementList().getElement(cursor->getX(), cursor->getY());
+		if (elementCursorNew && !((state::MobileElement*)elementCursorNew)->isPlayerCharacter()) {
+			engine::AttackCommand* attack = new engine::AttackCommand(cursor->getCharacter(), elementCursorNew);
 			engine.addCommand(attack);
 		}
-		else{
+		if (elementCursorNew == cursor->getCharacter() || elementCursorNew == 0){
 			engine::MoveCommand* move = new engine::MoveCommand(cursor->getX(), cursor->getY(), cursor->getCharacter());
-			cursor->setCharacter(levelState.getElementList().getElement(cursor->getX(), cursor->getY()));
+			cursor->setCharacter(0);
 			engine.addCommand(move);
 		}
 	}

@@ -6,7 +6,9 @@
 #include "moveCommand.hpp"
 #include "moveCharacter.hpp"
 #include "loadCommand.hpp"
-#include "MobileElement.hpp"
+#include "mobileElement.hpp"
+#include "attackCommand.hpp"
+#include "attackCharacter.hpp"
 
 using namespace engine;
 using namespace std;
@@ -41,7 +43,14 @@ void Ruler::apply(){
 		}
 	}
 	if (commands.get(ATTACK)) {
-		cout << "you shouldn't do your project in English class" << endl;
+		cmd = commands.get(ATTACK);
+		state::MobileElement* attacker = (state::MobileElement*)(((AttackCommand*)cmd)->getAttacker());
+		state::MobileElement* target = (state::MobileElement*)(((AttackCommand*)cmd)->getTarget());
+
+		if (attacker->isPlayerCharacter() != target->isPlayerCharacter()){
+			AttackCharacter* attackcharac = new AttackCharacter(*attacker, *target, curr_LevelState);
+			actions.add(attackcharac);
+		}
 	}
 	if (commands.get(MAIN)) {
 		cmd = commands.get(MAIN);

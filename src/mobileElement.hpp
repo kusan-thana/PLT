@@ -35,8 +35,13 @@ class MobileElement : public Element{
 		void setNbAction(int nbAction);
 		virtual bool isPlayerCharacter() const =0;
 		bool isSelected();
-		
-		
+		void setHP(int HP);
+		int getHP() const;
+		int getAttackPt() const;
+		void setAttackPt(int attackPt);
+		int getDefensePt() const;
+		void setDefensePt(int defensePt);
+
 };
 }
 #endif
