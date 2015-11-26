@@ -32,13 +32,12 @@ void Engine::update() {
 
 	Ruler ruler(this->actions, this->commandSet, this->levelState);
 	if (commandSet.size()) {
-		actions.add(new IncEpoch());
 	/*Appeler les methodes du Ruller pour verifier les commandes*/
 
 		ruler.apply();
 			
-	//Gestion des tours
-	state::ElementList& elementList = levelState.getElementList();
+		//Gestion des tours
+		state::ElementList& elementList = levelState.getElementList();
 	
 		if (levelState.getTurnToPlay() == state::PLAYER) {
 			for(int i = 0, count = 0; i < levelState.getElementList().size();i++){

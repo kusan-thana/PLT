@@ -9,6 +9,7 @@
 #include "mobileElement.hpp"
 #include "attackCommand.hpp"
 #include "attackCharacter.hpp"
+#include "incEpoch.hpp"
 
 using namespace engine;
 using namespace std;
@@ -39,6 +40,8 @@ void Ruler::apply(){
 			if (abs(((MoveCommand*)cmd)->getPositionX() - ((MoveCommand*)cmd)->getCharacter()->getX()) <= ((state::MobileElement*)((MoveCommand*)cmd)->getCharacter())->getNbStep() && abs(((MoveCommand*)cmd)->getPositionY() - ((MoveCommand*)cmd)->getCharacter()->getY()) <= ((state::MobileElement*)((MoveCommand*)cmd)->getCharacter())->getNbStep()){
 				MoveCharacter* movecharac = new MoveCharacter(perso,((MoveCommand*)cmd)->getPositionX(), ((MoveCommand*)cmd)->getPositionY(), curr_LevelState);
 				actions.add(movecharac);
+				actions.add(new IncEpoch());
+
 			}
 		}
 	}
@@ -50,6 +53,8 @@ void Ruler::apply(){
 		if (attacker->isPlayerCharacter() != target->isPlayerCharacter()){
 			AttackCharacter* attackcharac = new AttackCharacter(*attacker, *target, curr_LevelState);
 			actions.add(attackcharac);
+			actions.add(new IncEpoch());
+
 		}
 	}
 	if (commands.get(MAIN)) {
