@@ -91,7 +91,6 @@ void Engine::deathGestion() {
 	//~ for(int i=0; i< characters.size(); i++)
 		//~ if((state::MobileElement*)characters.getElement(i) == target)
 			//~ break;
-	
-	//~ if (target.getHP() < 0)
+
 			;//detruire l'element
 }
