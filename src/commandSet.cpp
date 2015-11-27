@@ -31,6 +31,11 @@ void CommandSet::set(Command *cmd) {
 			commandList[MOVE] = cmd;
 		}
 		break;
+		case(ATTACK) :
+		{
+			commandList[ATTACK] = cmd;
+		}
+		break;
 	}
 }
 Command* CommandSet::get(int category) const{

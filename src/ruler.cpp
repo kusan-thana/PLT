@@ -6,6 +6,10 @@
 #include "moveCommand.hpp"
 #include "moveCharacter.hpp"
 #include "loadCommand.hpp"
+#include "mobileElement.hpp"
+#include "attackCommand.hpp"
+#include "attackCharacter.hpp"
+#include "incEpoch.hpp"
 
 using namespace engine;
 using namespace std;
@@ -33,8 +37,25 @@ void Ruler::apply(){
 		cmd = commands.get(MOVE);
 		state::Element* perso = ((MoveCommand*)cmd)->getCharacter();
 		if (curr_LevelState.getElementGrid().getCell(((MoveCommand*)cmd)->getPositionX(), ((MoveCommand*)cmd)->getPositionY())->getTypeID() == state::SPACE && curr_LevelState.getElementList().getElement(((MoveCommand*)cmd)->getPositionX(), ((MoveCommand*)cmd)->getPositionY()) == 0){
-			MoveCharacter* movecharac = new MoveCharacter(perso,((MoveCommand*)cmd)->getPositionX(), ((MoveCommand*)cmd)->getPositionY(), curr_LevelState);
-			actions.add(movecharac);
+			if (abs(((MoveCommand*)cmd)->getPositionX() - ((MoveCommand*)cmd)->getCharacter()->getX()) <= ((state::MobileElement*)((MoveCommand*)cmd)->getCharacter())->getNbStep() && abs(((MoveCommand*)cmd)->getPositionY() - ((MoveCommand*)cmd)->getCharacter()->getY()) <= ((state::MobileElement*)((MoveCommand*)cmd)->getCharacter())->getNbStep()){
+				MoveCharacter* movecharac = new MoveCharacter(perso,((MoveCommand*)cmd)->getPositionX(), ((MoveCommand*)cmd)->getPositionY(), curr_LevelState);
+				actions.add(movecharac);
+				actions.add(new IncEpoch());
+
+			}
+		}
+	}
+	if (commands.get(ATTACK)) {
+		cmd = commands.get(ATTACK);
+		state::MobileElement* attacker = (state::MobileElement*)(((AttackCommand*)cmd)->getAttacker());
+		state::MobileElement* target = (state::MobileElement*)(((AttackCommand*)cmd)->getTarget());
+
+		if (attacker->isPlayerCharacter() != target->isPlayerCharacter()){
+			if (abs(attacker->getX() - target->getX()) <= 1 && abs(attacker->getY() - target->getY()) <= 1){
+				AttackCharacter* attackcharac = new AttackCharacter(*attacker, *target, curr_LevelState);
+				actions.add(attackcharac);
+				actions.add(new IncEpoch());
+			}
 		}
 	}
 	if (commands.get(MAIN)) {

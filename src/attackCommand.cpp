@@ -1,4 +1,5 @@
 #include "attackCommand.hpp"
+#include <iostream>
 
 using namespace::engine;
 
@@ -21,6 +22,8 @@ state::Element * engine::AttackCommand::getTarget()
 	return target;
 }
 
-void engine::AttackCommand::apply(state::LevelState& levelState)
+
+CommandTypeId engine::AttackCommand::getTypeId() const
 {
+	return ATTACK;
 }

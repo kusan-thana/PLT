@@ -6,8 +6,8 @@
 
 using namespace state;
 
-MobileElement::MobileElement() : speed(0), HP(100), attackPt(5), defensePt(0), nbAction(1), nbStep(2), level(1), 
-								 experience(0), position(0), turnPlayed(false), selected(false), status(NORMAL){
+MobileElement::MobileElement() : speed(0), HP(5), attackPt(5), defensePt(0), nbAction(1), nbStep(2), level(1), 
+								 experience(0), position(0), turnPlayed(false), status(NORMAL){
 }
 bool MobileElement::isStatic() const{
 	
@@ -25,9 +25,29 @@ void MobileElement::setNbAction(int nbAction){
 	
 	this->nbAction = nbAction;
 }
-bool MobileElement::isSelected(){
-
-	return selected;
+void state::MobileElement::setHP(int HP)
+{
+	this->HP = HP;
+}
+int state::MobileElement::getAttackPt() const
+{
+	return attackPt;
+}
+void state::MobileElement::setAttackPt(int attackPt)
+{
+	this->attackPt = attackPt;
+}
+int state::MobileElement::getDefensePt() const
+{
+	return defensePt;
+}
+void state::MobileElement::setDefensePt(int defensePt)
+{
+	this->defensePt = defensePt;
+}
+int state::MobileElement::getHP() const
+{
+	return HP;
 }
 bool MobileElement::getTurnPlayed() const{
 	return turnPlayed;

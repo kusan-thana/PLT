@@ -13,6 +13,7 @@ namespace engine {
 		~AttackCommand();
 		state::Element* getAttacker();
 		state::Element* getTarget();
-		void apply(state::LevelState& levelState);
+		virtual CommandTypeId getTypeId() const;
+
 };
 }

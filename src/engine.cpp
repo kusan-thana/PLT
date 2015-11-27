@@ -28,50 +28,72 @@ EngineMode Engine::getMode() {
 }
 void Engine::update() {
 	
-
-
 	Ruler ruler(this->actions, this->commandSet, this->levelState);
 	if (commandSet.size()) {
-		actions.add(new IncEpoch());
-	/*Appeler les methodes du Ruller pour verifier les commandes*/
+	/*Appeler les methodes du Ruler pour verifier les commandes*/
 
 		ruler.apply();
-			
-	//Gestion des tours
-	state::ElementList& elementList = levelState.getElementList();
-	
-		if (levelState.getTurnToPlay() == state::PLAYER) {
-			for(int i = 0, count = 0; i < levelState.getElementList().size();i++){
-				if(((state::MobileElement*)(elementList.getElement(i)))->isPlayerCharacter()) //Si c'est un personnage
-					if (((state::MobileElement*)(elementList.getElement(i)))->getTurnPlayed()){ //Si ce personnage a joué
-						count++;
-						if (count == elementList.numberOfPlayer()){ //Si l'ensemble des personnage a joué - Opponent turn
-							for(int i = 0, count = 0; i < levelState.getElementList().size();i++){
-								if(!((state::MobileElement*)(elementList.getElement(i)))->isPlayerCharacter())
-									((state::MobileElement*)(elementList.getElement(i)))->setTurnPlayed(false); //Reinitialization - ce element peut jouer a nouveau
-								}
-							levelState.setTurnToPlay(state::OPPONENT); //Opponent turn
-						
-						}
-					}
-			}
-		}
-		else if (levelState.getTurnToPlay() == state::OPPONENT) {
-			for(int i = 0, count = 0; i < levelState.getElementList().size();i++){
-				if(!((state::MobileElement*)(elementList.getElement(i)))->isPlayerCharacter()) //Si c'est un personnage
-					if (((state::MobileElement*)(elementList.getElement(i)))->getTurnPlayed()){ //Si ce personnage a joué
-						count++;
-						if (count == elementList.numberOfMonster()){ //Si l'ensemble des personnage a joué - Opponent turn
-							for(int i = 0, count = 0; i < levelState.getElementList().size();i++){
-								if(((state::MobileElement*)(elementList.getElement(i)))->isPlayerCharacter())
-									((state::MobileElement*)(elementList.getElement(i)))->setTurnPlayed(false); //Reinitialization - ce element peut jouer a nouveau
-								}
-							levelState.setTurnToPlay(state::PLAYER); //Opponent turn
-						}
-					}
-			}
-		}
+
+		turnGestion();
 	}
 	commandSet.clear();
 }
+void Engine::turnGestion() {
+	
+	//Gestion des tours
+	state::ElementList& elementList = levelState.getElementList();
+		
+	if (levelState.getTurnToPlay() == state::PLAYER) {
+		for(int i = 0, count = 0; i < levelState.getElementList().size();i++){
+			state::MobileElement* curr_mobileElement = (state::MobileElement*)elementList.getElement(i);
+			if(curr_mobileElement->isPlayerCharacter()){ //Si c'est un personnage
+				if (curr_mobileElement->getTurnPlayed()){ //Si ce personnage a joué
+					count++;
+					if (count == elementList.numberOfPlayer()){ //Si l'ensemble des personnage a joué - Opponent turn
+						levelState.setTurnToPlay(state::OPPONENT); //Opponent turn
+						for(int j = 0, count = 0; j < elementList.size();j++){
+							if(curr_mobileElement->isPlayerCharacter()){
+								((state::MobileElement*)(elementList.getElement(j)))->setTurnPlayed(false); //Reinitialization - ce element peut jouer a nouveau
+								levelState.getElementList().notifyObservers(j);
+							}
+						}			
+					}
+				}
+			}
+		}
+	}
+	else if (levelState.getTurnToPlay() == state::OPPONENT) {
+		for(int i = 0, count = 0; i < levelState.getElementList().size();i++){
+			state::MobileElement* curr_mobileElement = (state::MobileElement*)elementList.getElement(i);
+			if(!curr_mobileElement->isPlayerCharacter()){ //Si c'est un personnage
+				if (curr_mobileElement->getTurnPlayed()){ //Si ce personnage a joué
+					count++;
+					if (count == elementList.numberOfMonster()){ //Si l'ensemble des personnage a joué - Player turn
+
+						levelState.setTurnToPlay(state::PLAYER); //Player turn
+						for(int j = 0, count = 0; j < elementList.size();j++){
+							if(!((state::MobileElement*)(elementList.getElement(j)))->isPlayerCharacter()){
+								((state::MobileElement*)(elementList.getElement(j)))->setTurnPlayed(false); //Reinitialization - ce element peut jouer a nouveau
+									levelState.getElementList().notifyObservers(j);
+							}
+						}	
+					}
+				}
+			}
+		}
+	}
+}
+void Engine::deathManagement() {
+	
+	state::ElementList characters = levelState.getElementList();
+	
+	for(int i=0; i<characters.size(); i++){
+	
+		state::Element* curr_element = characters.getElement(i);
+	
+		if(((state::MobileElement*)curr_element)->getHP() <= 0)
+			characters.removeElement(curr_element);
+	}
+}
+
 
