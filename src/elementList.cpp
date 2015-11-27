@@ -76,5 +76,13 @@ int ElementList::numberOfMonster(){
 			count++;
 	}
 	return count;
-}	
-		
+}
+void ElementList::removeElement(int i) {
+	
+	elements.erase( elements.begin() + i );
+}
+void ElementList::removeElement(Element* element) {
+	
+	int i = this->getIdxElement(element);
+	elements.erase( elements.begin() + i );
+}

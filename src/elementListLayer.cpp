@@ -32,22 +32,22 @@ void ElementListLayer::update(const state::ElementList& elementList, int i){
 
 		for(int j = 0; j < elementList.size(); j++){
 			
-		state::Element* curr_elem = elementList.getElement(j);
-		int x = curr_elem->getX();
-		int y = curr_elem->getY();
-		
-		const render::Tile* curr_tile = (this->tileSet)->getElementTile(curr_elem);
-		
-		if(curr_elem->isStatic()){
-			(this->surface)->setSpriteTexture(j, (StaticTile*)curr_tile);
-			(this->surface)->setSpriteLocation(j, y*widthCell, x*heigthCell);
+			state::Element* curr_elem = elementList.getElement(j);
+			int x = curr_elem->getX();
+			int y = curr_elem->getY();
+			
+			const render::Tile* curr_tile = (this->tileSet)->getElementTile(curr_elem);
+			
+			if(curr_elem->isStatic()){
+				(this->surface)->setSpriteTexture(j, (StaticTile*)curr_tile);
+				(this->surface)->setSpriteLocation(j, y*widthCell, x*heigthCell);
+			}
+			if(!curr_elem->isStatic()){
+				(this->surface)->setSpriteTexture(j, (StaticTile*)curr_tile);
+				(this->surface)->setSpriteLocation(j, y*widthCell, x*heigthCell);
+				//~ (this->surface)->setSpriteLocation(j, y*widthCell, x*heigthCell,widthCell,-2);
+			}
 		}
-		if(!curr_elem->isStatic()){
-			(this->surface)->setSpriteTexture(j, (StaticTile*)curr_tile);
-			(this->surface)->setSpriteLocation(j, y*widthCell, x*heigthCell);
-			//~ (this->surface)->setSpriteLocation(j, y*widthCell, x*heigthCell,widthCell,-2);
-		}
-	}
 	}
 	if(i>=0)
 	{

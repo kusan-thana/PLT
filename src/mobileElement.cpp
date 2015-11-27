@@ -7,7 +7,7 @@
 using namespace state;
 
 MobileElement::MobileElement() : speed(0), HP(5), attackPt(5), defensePt(0), nbAction(1), nbStep(2), level(1), 
-								 experience(0), position(0), turnPlayed(false), selected(false), status(NORMAL){
+								 experience(0), position(0), turnPlayed(false), status(NORMAL){
 }
 bool MobileElement::isStatic() const{
 	
@@ -24,10 +24,6 @@ int MobileElement::getNbAction() const{
 void MobileElement::setNbAction(int nbAction){
 	
 	this->nbAction = nbAction;
-}
-bool MobileElement::isSelected(){
-
-	return selected;
 }
 void state::MobileElement::setHP(int HP)
 {

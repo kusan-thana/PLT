@@ -82,15 +82,18 @@ void Engine::turnGestion() {
 			}
 		}
 	}
-	
 }
-void Engine::deathGestion() {
+void Engine::deathManagement() {
 	
 	state::ElementList characters = levelState.getElementList();
 	
-	//~ for(int i=0; i< characters.size(); i++)
-		//~ if((state::MobileElement*)characters.getElement(i) == target)
-			//~ break;
-
-			;//detruire l'element
+	for(int i=0; i<characters.size(); i++){
+	
+		state::Element* curr_element = characters.getElement(i);
+	
+		if(((state::MobileElement*)curr_element)->getHP() <= 0)
+			characters.removeElement(curr_element);
+	}
 }
+
+

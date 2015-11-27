@@ -28,6 +28,8 @@ class ElementList : public Observable {
 		std::vector<state::Element*> getElements();
 		void setElementFactory(state::ElementFactory* factory);
 		void setElement(int i, state::Element* element);
+		void removeElement(int i);
+		void removeElement(Element* element);
 		void notifyObservers(int i);
 		int numberOfPlayer();
 		int numberOfMonster();

@@ -22,7 +22,7 @@ namespace engine {
 		void addCommand(engine::Command *cmd);
 		void update();
 		void turnGestion();
-		void deathGestion();
+		void deathManagement();
 
 	};
 }

@@ -21,7 +21,6 @@ class MobileElement : public Element{
 		int experience;
 		int position;
 		bool turnPlayed;
-		bool selected;
 		Status status;
 		TypeAction action;
 		
@@ -34,7 +33,6 @@ class MobileElement : public Element{
 		void setTurnPlayed(bool turnPlayed);
 		void setNbAction(int nbAction);
 		virtual bool isPlayerCharacter() const =0;
-		bool isSelected();
 		void setHP(int HP);
 		int getHP() const;
 		int getAttackPt() const;
