@@ -18,6 +18,7 @@ class Layer : public state::LevelStateObserver{
 		const TileSet* getTileSet() const;
 		void setTileSet(const render::TileSet* tileSet);
 		void setSurface(Surface* surface);
+		Surface* getSurface() const;
 };
 }
 #endif

@@ -21,3 +21,7 @@ void Layer::setSurface(Surface* surface){
 	
 	this->surface = surface;
 }
+::Surface* Layer::getSurface() const{
+	
+	return surface;
+}

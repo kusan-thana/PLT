@@ -126,12 +126,7 @@ void GUILayer::update(gui::GUIElementList& guiElementList, int i){
 					//~ break;
 				}		
 			}
-			if(curr_guiElem->getGuiTypeId() == gui::GUITypeId::HEALTH_BAR){
-				
-				curr_tile = new render::StaticTile(0,0,32,32);	//RED
-				(this->surface)->setSpriteTexture(j, (render::StaticTile*)curr_tile);
-				(this->surface)->setSpriteLocation(j, y*widthCell, x*heigthCell,32,-2);
-			}
+
 			//~ (this->surface)->setSpriteTexture(j, (render::StaticTile*)curr_tile);
 			//~ (this->surface)->setSpriteLocation(j, y*widthCell, x*heigthCell);
 		}

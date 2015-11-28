@@ -3,7 +3,7 @@
 
 namespace gui {
 	
-	enum GUITypeId { CURSOR = 1, MOVE_RANGE = 2, HEALTH_BAR = 3 };
+	enum GUITypeId { CURSOR = 1, MOVE_RANGE = 2 };
 
 class GUIElement {
 	
