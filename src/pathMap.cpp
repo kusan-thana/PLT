@@ -10,13 +10,19 @@
 
 using namespace ai;
 
-PathMap::PathMap(state::LevelState& levelState) : levelState(levelState), width(levelState.getElementGrid().getWidth()), height(levelState.getElementGrid().getHeight()){
+PathMap::PathMap(state::LevelState& levelState, state::Element* element) : levelState(levelState), width(levelState.getElementGrid().getWidth()), height(levelState.getElementGrid().getHeight()){
 	
+	elements.push_back(element);
 	weights = new int[width*height];
 }
 PathMap::~PathMap(){
 	
+	elements.clear();
 	delete(this->weights);
+}
+void PathMap::addElement(state::Element* element){
+	
+	elements.push_back(element);
 }
 int PathMap::getWidth() const{
 	
@@ -73,12 +79,12 @@ int PathMap::relax (int x, int y, state::Direction direction){
 	
 	state::TypeID type = levelState.getElementGrid().getElement(i,j)->getTypeID();
 
-	if ( type != state::SPACE || levelState.getElementList().getElement(i,j))
+	if ( type != state::SPACE || levelState.getElementList().getElement(i,j) && this->weights[i*width + j] !=0)
 	{
 		return false;
 	}
-		
-	int a = getMetadata(x ,y) ;
+
+	int a = getMetadata(x ,y);
 	int b = getMetadata(x, y, direction);
 	if((a+1) < b) {
 		setMetadata(x, y, a+1, direction);
@@ -86,25 +92,35 @@ int PathMap::relax (int x, int y, state::Direction direction){
 	}
 	return 0;
 }
-void PathMap::dijsktra(int x, int y){
+void PathMap::dijsktra(){
+	
 	initMetadata(999);
-	setMetadata(x,y, 0);
-	std::priority_queue<Coords> todo;
-	todo.push(Coords(x, y));
+	
+	if(!elements.empty()){
+		
+		std::priority_queue<Coords> todo;
+		
+		for (state::Element* element : elements){
+			int x = element->getX();
+			int y = element->getY();
+			setMetadata(x, y, 0);
+			todo.push(Coords(x, y));
+		}
 
-	while(!todo.empty()) {
+		while(!todo.empty()) {
 
-		Coords coords = todo.top();
-		todo.pop();
-		int i = coords.x;
-		int j = coords.y;
+			Coords coords = todo.top();
+			todo.pop();
+			int i = coords.x;
+			int j = coords.y;
 
-		for (state::Direction direction : directions) {
+			for (state::Direction direction : directions) {
 
-			if(isValid(i, j, direction)) {
-				int value = relax (i, j, direction);
-				if (value) {
-					todo.push(Coords(i, j, direction, value));
+				if(isValid(i, j, direction)) {
+					int value = relax (i, j, direction);
+					if (value) {
+						todo.push(Coords(i, j, direction, value));
+					}
 				}
 			}
 		}
@@ -113,7 +129,7 @@ void PathMap::dijsktra(int x, int y){
 void PathMap::display(){
 	std::cout << "----------------------------------------------------------------" << std::endl;
 	std::cout << "-----------ENLARGE THE BASH WINDOW BEFORE RUNNING!!-------------" << std::endl;
-	std::cout << "--Path Map using Dijkstra algorithm (hero as initial position)--" << std::endl;
+	std::cout << "--------------Path Map using Dijkstra algorithm-----------------" << std::endl;
 	std::cout << "------------------Display from SFMLClient-----------------------" << std::endl;
 	std::cout << "----------------------------------------------------------------" << std::endl;
 	

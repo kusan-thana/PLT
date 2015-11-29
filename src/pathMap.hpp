@@ -4,9 +4,9 @@
 #include <queue>
 #include <vector>
 #include "element.hpp"
-#include "elementGrid.hpp"
 #include "pathMapTarget.hpp"
 #include "coords.hpp"
+#include <vector>
 
 namespace ai {
 
@@ -17,13 +17,15 @@ class PathMap {
 	protected:
 		
 		state::LevelState& levelState;
+		std::vector<state::Element*> elements;
 		int* weights;
 		int width;
 		int height;
 		
 	public:
-		PathMap(state::LevelState& levelState);
+		PathMap(state::LevelState& levelState, state::Element* element);
 		~PathMap();
+		void addElement(state::Element* element);
 		int getWidth() const;
 		int getHeight() const;
 		int* getWeghts() const;
@@ -34,7 +36,7 @@ class PathMap {
 		void initMetadata(int defaultValue);
 		bool isValid(int x, int y, state::Direction direction) const;
 		int relax (int x, int y, state::Direction direction);
-		void dijsktra(int x, int y);
+		void dijsktra();
 		void display();
 };
 }
