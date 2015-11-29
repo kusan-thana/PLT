@@ -6,12 +6,11 @@
 
 using namespace state;
 
-Element::Element() : x(0), y(0), IDElement(SPACE), orientation(NONE), active(false){
+Element::Element() : x(0), y(0), IdElement(SPACE), orientation(NONE), active(false){
 }
 Element::~Element(){
 
 }
-
 int Element::getX() const{
 	
 	return this->x;
@@ -20,13 +19,13 @@ int Element::getY() const{
 	
 	return this->y;
 }
-TypeID Element::getTypeID() const{
+TypeId Element::getTypeId() const{
 	
-	return this->IDElement;
+	return this->IdElement;
 }
 bool Element::equals(const Element& other) const{
 	
-	if(this->x == other.x && this->y == other.y && this->IDElement == other.IDElement && this->orientation == orientation){
+	if(this->x == other.x && this->y == other.y && this->IdElement == other.IdElement && this->orientation == orientation){
 	
 		return true;
 	}

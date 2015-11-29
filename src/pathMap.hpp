@@ -23,12 +23,13 @@ class PathMap {
 		int height;
 		
 	public:
-		PathMap(state::LevelState& levelState, state::Element* element);
+		PathMap(state::LevelState& levelState);
 		~PathMap();
+		void clear();
 		void addElement(state::Element* element);
 		int getWidth() const;
 		int getHeight() const;
-		int* getWeghts() const;
+		int* getWeights() const;
 		int getMetadata(int x, int y) const;
 		int getMetadata(int x, int y, state::Direction direction) const;
 		void setMetadata(int x, int y, int value);

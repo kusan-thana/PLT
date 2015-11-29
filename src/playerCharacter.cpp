@@ -6,58 +6,13 @@
 **/
 using namespace state;
 
-PlayerCharacter::PlayerCharacter(TypeID IDElement) : mana(0) {
+PlayerCharacter::PlayerCharacter(TypeId IdElement) : mana(0) {
 
-	this->IDElement = IDElement;
+	this->IdElement = IdElement;
 }
 bool PlayerCharacter::isPlayerCharacter() const {
 	
 	return true;
-}
-void PlayerCharacter::doAction(MobileElement& target, TypeAction action){
-	
-	switch(IDElement){
-		case HERO:
-			switch(action){
-				case TypeAction::PUNCH:
-					//Need to be defined
-				break;
-				case TypeAction::SWORDSTRIKE:
-					//Need to be defined
-				break;
-			}
-			break;
-		case BRUTE:
-			switch(action){
-				case TypeAction::PUNCH:
-					//Need to be defined
-				break;
-				case TypeAction::HAMMERSTRIKE:
-					//Need to be defined
-				break;
-			}
-			break;
-		case HEALER:
-			switch(action){
-				case TypeAction::PUNCH:
-					//Need to be defined
-				break;
-				case TypeAction::HEAL:
-					//Need to be defined
-				break;
-			}
-			break;
-		case WIZARD:
-			switch(action){
-				case TypeAction::PUNCH:
-					//Need to be defined
-				break;
-				case TypeAction::FIREBALL:
-					//Need to be defined
-				break;
-				}
-			break;
-	}
 }
 Status PlayerCharacter::getStatus() const{
 	

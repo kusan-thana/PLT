@@ -13,9 +13,8 @@ class PlayerCharacter : public MobileElement{
 		int mana;
 	
 	public:
-		PlayerCharacter(TypeID IDElement);
+		PlayerCharacter(TypeId IdElement);
 		virtual bool isPlayerCharacter() const;
-		void doAction(MobileElement& target, TypeAction action);
 		Status getStatus() const;
 };
 }

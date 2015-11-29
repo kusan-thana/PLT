@@ -36,7 +36,7 @@ void Ruler::apply(){
 	if (commands.get(MOVE)) {
 		cmd = commands.get(MOVE);
 		state::Element* perso = ((MoveCommand*)cmd)->getCharacter();
-		if (curr_LevelState.getElementGrid().getCell(((MoveCommand*)cmd)->getPositionX(), ((MoveCommand*)cmd)->getPositionY())->getTypeID() == state::SPACE && curr_LevelState.getElementList().getElement(((MoveCommand*)cmd)->getPositionX(), ((MoveCommand*)cmd)->getPositionY()) == 0){
+		if (curr_LevelState.getElementGrid().getCell(((MoveCommand*)cmd)->getPositionX(), ((MoveCommand*)cmd)->getPositionY())->getTypeId() == state::SPACE && curr_LevelState.getElementList().getElement(((MoveCommand*)cmd)->getPositionX(), ((MoveCommand*)cmd)->getPositionY()) == 0){
 			if (abs(((MoveCommand*)cmd)->getPositionX() - ((MoveCommand*)cmd)->getCharacter()->getX()) <= ((state::MobileElement*)((MoveCommand*)cmd)->getCharacter())->getNbStep() && abs(((MoveCommand*)cmd)->getPositionY() - ((MoveCommand*)cmd)->getCharacter()->getY()) <= ((state::MobileElement*)((MoveCommand*)cmd)->getCharacter())->getNbStep()){
 				MoveCharacter* movecharac = new MoveCharacter(perso,((MoveCommand*)cmd)->getPositionX(), ((MoveCommand*)cmd)->getPositionY(), curr_LevelState);
 				actions.add(movecharac);

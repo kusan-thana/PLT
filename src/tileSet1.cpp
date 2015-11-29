@@ -31,7 +31,7 @@ const char* TileSet1::getImageFile() const{
 }
 const Tile* TileSet1::getElementTile(const state::Element* element) const {
 	
-	if(element->getTypeID() == state::SPACE){
+	if(element->getTypeId() == state::SPACE){
 		
 		switch(((state::Space*)element)->getSpaceTypeID())
 		{
@@ -42,7 +42,7 @@ const Tile* TileSet1::getElementTile(const state::Element* element) const {
 			break;
 		}
 	}
-	if(element->getTypeID() == state::OBSTACLE){
+	if(element->getTypeId() == state::OBSTACLE){
 		
 		switch(((state::Obstacle*)element)->getObstacleTypeID())
 		{

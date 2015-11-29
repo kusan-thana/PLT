@@ -8,7 +8,7 @@ using namespace state;
 
 Obstacle::Obstacle(ObstacleTypeID id) : IDObstacle(id){
 	
-	this->IDElement = OBSTACLE;
+	this->IdElement = OBSTACLE;
 }
 bool Obstacle::isSpace() const{
 	

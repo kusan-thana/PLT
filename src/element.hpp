@@ -3,7 +3,7 @@
 
 namespace state {
 	enum Direction { NONE = 1, NORTH = 2, SOUTH = 3, EAST = 4, WEST = 5, NORTHEAST = 6, NORTHWEST = 7, SOUTHEAST = 8, SOUTHWEST = 9}; //SOUTH = EAST???
-	enum TypeID { SPACE = 1, OBSTACLE = 2, HERO = 3, BRUTE = 4, HEALER = 5, WIZARD = 6, MINION = 7, BOSS = 8 };
+	enum TypeId { SPACE = 1, OBSTACLE = 2, HERO = 3, BRUTE = 4, HEALER = 5, WIZARD = 6, MINION = 7, BOSS = 8 };
 
 class Element {
 	
@@ -11,7 +11,7 @@ class Element {
 		int x;
 		int y;
 		bool active;
-		TypeID IDElement;
+		TypeId IdElement;
 		state::Direction orientation;
 		
 	public:
@@ -19,7 +19,7 @@ class Element {
 		virtual ~Element();
 		int getX() const;
 		int getY() const;
-		TypeID getTypeID() const;
+		TypeId getTypeId() const;
 		bool equals(const Element& other) const;
 		state::Direction getDirection() const;
 		void setX(int x);

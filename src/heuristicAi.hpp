@@ -9,11 +9,13 @@ namespace ai {
 class HeuristicAI : public DumbAI{
 
 	protected:
-		PathMap hero;
-		PathMap minions;
+		PathMap playerCharsMap;
+		PathMap monstersMap;
 		bool moveToClosest(engine::CommandSet& commands,const PathMap& path);
 		
 	public:
+		HeuristicAI(state::LevelState& mainLevelState);
+		void run(engine::CommandSet& commands);
 
 };
 }

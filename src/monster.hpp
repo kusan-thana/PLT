@@ -8,9 +8,8 @@ namespace state {
 class Monster : public MobileElement{
 	
 	public:
-		Monster(TypeID IDElement);
+		Monster(TypeId IdElement);
 		virtual bool isPlayerCharacter() const;
-		void doAction(MobileElement& target, TypeAction action);
 		Status getStatus() const;
 };
 }

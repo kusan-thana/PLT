@@ -8,7 +8,7 @@ using namespace state;
 
 Space::Space(SpaceTypeID id) : IDSpace(id){
 	
-	this->IDElement = SPACE;
+	this->IdElement = SPACE;
 }
 bool Space::isSpace() const{
 	

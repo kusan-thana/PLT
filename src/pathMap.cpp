@@ -10,15 +10,18 @@
 
 using namespace ai;
 
-PathMap::PathMap(state::LevelState& levelState, state::Element* element) : levelState(levelState), width(levelState.getElementGrid().getWidth()), height(levelState.getElementGrid().getHeight()){
+PathMap::PathMap(state::LevelState& levelState) : levelState(levelState), width(levelState.getElementGrid().getWidth()), height(levelState.getElementGrid().getHeight()){
 	
-	elements.push_back(element);
 	weights = new int[width*height];
 }
 PathMap::~PathMap(){
 	
 	elements.clear();
 	delete(this->weights);
+}
+void PathMap::clear(){
+	
+	elements.clear();
 }
 void PathMap::addElement(state::Element* element){
 	
@@ -32,7 +35,7 @@ int PathMap::getHeight() const{
 	
 	return this->height;
 }
-int* PathMap::getWeghts() const{
+int* PathMap::getWeights() const{
 	
 	return weights;
 }
@@ -77,7 +80,7 @@ int PathMap::relax (int x, int y, state::Direction direction){
 	int i = coords.x;
 	int j = coords.y;
 	
-	state::TypeID type = levelState.getElementGrid().getElement(i,j)->getTypeID();
+	state::TypeId type = levelState.getElementGrid().getElement(i,j)->getTypeId();
 
 	if ( type != state::SPACE || levelState.getElementList().getElement(i,j) && this->weights[i*width + j] !=0)
 	{

@@ -35,9 +35,9 @@ const char* TileSet2::getImageFile() const{
 }
 const Tile* TileSet2::getElementTile(const state::Element* element) const {
 	
-	switch(element->getTypeID())
+	switch(element->getTypeId())
 	{
-	case(state::TypeID::HERO):
+	case(state::TypeId::HERO):
 		{
 			if(!((state::MobileElement*)element)->getTurnPlayed())
 				return tiles[TileID::HERO];
@@ -45,7 +45,7 @@ const Tile* TileSet2::getElementTile(const state::Element* element) const {
 				return tiles[TileID::INACTIVE_HERO];
 		}
 		break;
-	case(state::TypeID::WIZARD):
+	case(state::TypeId::WIZARD):
 		{
 			if(!((state::MobileElement*)element)->getTurnPlayed())
 				return tiles[TileID::WIZARD];
@@ -53,7 +53,7 @@ const Tile* TileSet2::getElementTile(const state::Element* element) const {
 				return tiles[TileID::INACTIVE_WIZARD];
 		}
 		break;
-	case(state::TypeID::MINION):
+	case(state::TypeId::MINION):
 		{
 			if(!((state::MobileElement*)element)->getTurnPlayed())
 				return tiles[TileID::MINION];

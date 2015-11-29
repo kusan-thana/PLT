@@ -57,9 +57,9 @@ void SFMLClient::init(){
 	factory->registerType('1', new state::ElementAlloc <state::Obstacle, ObstacleTypeID>(WATER));
 	factory->registerType('2', new state::ElementAlloc <state::Obstacle, ObstacleTypeID>(TREE));
 	factory->registerType('3', new state::ElementAlloc <state::Obstacle, ObstacleTypeID>(FIR));
-	factory->registerType('H', new state::ElementAlloc <state::PlayerCharacter, state::TypeID>(state::HERO));
-	factory->registerType('W', new state::ElementAlloc <state::PlayerCharacter, state::TypeID>(state::WIZARD));
-	factory->registerType('M', new state::ElementAlloc <state::Monster, state::TypeID>(state::MINION));
+	factory->registerType('H', new state::ElementAlloc <state::PlayerCharacter, state::TypeId>(state::HERO));
+	factory->registerType('W', new state::ElementAlloc <state::PlayerCharacter, state::TypeId>(state::WIZARD));
+	factory->registerType('M', new state::ElementAlloc <state::Monster, state::TypeId>(state::MINION));
 	/*********************************/
 	
 	levelState.setElementFactory(factory);
@@ -108,7 +108,8 @@ void SFMLClient::init(){
 	minion3->setY(19);
 	characters.setElement(5, minion3);
 	
-	ai::PathMap pathMap(levelState,minion1);
+	ai::PathMap pathMap(levelState);
+	pathMap.addElement(minion1);
 	pathMap.dijsktra();
 	//~ pathMap.computeWeights(levelState.getElementGrid(), wizard);
 	pathMap.display();
