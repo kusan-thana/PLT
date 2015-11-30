@@ -15,7 +15,7 @@ MoveCharacter::~MoveCharacter()
 }
 void MoveCharacter::apply(state::LevelState& levelState) {
 	
-	((state::MobileElement*)character)->setTurnPlayed(true);
+	((state::MobileElement*)character)->setMovePlayed(true);
 	character->setX(x);
 	character->setY(y);
 	levelState.getElementList().notifyObservers(levelState.getElementList().getIdxElement(character));

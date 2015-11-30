@@ -14,6 +14,6 @@ EndTurnAction::~EndTurnAction()
 
 void EndTurnAction::apply(state::LevelState& levelState) {
 	((state::MobileElement*)character)->setTurnPlayed(true);
-	levelState.getElementList().notifyObservers(-1);
+	levelState.getElementList().notifyObservers(levelState.getElementList().getIdxElement(character));
 }
 

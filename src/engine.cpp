@@ -55,6 +55,7 @@ void Engine::turnGestion() {
 						for(int j = 0, count = 0; j < elementList.size();j++){
 							if(curr_mobileElement->isPlayerCharacter()){
 								((state::MobileElement*)(elementList.getElement(j)))->setTurnPlayed(false); //Reinitialization - ce element peut jouer a nouveau
+								((state::MobileElement*)(elementList.getElement(j)))->setMovePlayed(false); //Reinitialization - ce element peut jouer a nouveau
 								levelState.getElementList().notifyObservers(j);
 							}
 						}			
@@ -75,7 +76,8 @@ void Engine::turnGestion() {
 						for(int j = 0, count = 0; j < elementList.size();j++){
 							if(!((state::MobileElement*)(elementList.getElement(j)))->isPlayerCharacter()){
 								((state::MobileElement*)(elementList.getElement(j)))->setTurnPlayed(false); //Reinitialization - ce element peut jouer a nouveau
-									levelState.getElementList().notifyObservers(j);
+								((state::MobileElement*)(elementList.getElement(j)))->setMovePlayed(false); //Reinitialization - ce element peut jouer a nouveau
+								levelState.getElementList().notifyObservers(j);
 							}
 						}	
 					}

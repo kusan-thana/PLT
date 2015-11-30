@@ -238,7 +238,12 @@ bool SFMLClient::acquireControls() {
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
 			cursor->setX(cursor->getX() - 1);
 		}
-		
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+			cursor->setActive(false);
+			cursor->setCharacter(NULL);
+			gui.getMoveRange().clear();
+			gui.getMoveRange().notifyObservers(-1);
+		}
 		//~ gui.getHealthBarList().notifyObservers(-1);		
 		gui.getCursorList().notifyObservers(-1); //On met a jour le GUI a chaque changement d etat du gui
 	}		

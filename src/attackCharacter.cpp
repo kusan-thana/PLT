@@ -13,10 +13,11 @@ AttackCharacter::~AttackCharacter()
 
 void AttackCharacter::apply(state::LevelState&) {
 	target->setHP(target->getHP() - (attacker->getAttackPt() - target->getDefensePt()));
-	
+	attacker->setTurnPlayed(true);
+
 	state::ElementList characters = levelState.getElementList();
 
-	if (((state::MobileElement*)target)->getHP() <= 0) {
+	if (target->getHP() <= 0) {
 		levelState.getElementList().removeElement(characters.getIdxElement(target));
 		levelState.getElementList().notifyObservers(-1);
 	}

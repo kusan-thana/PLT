@@ -21,6 +21,7 @@ class MobileElement : public Element{
 		int experience;
 		int position;
 		bool turnPlayed;
+		bool movePlayed;
 		Status status;
 		TypeAction action;
 		
@@ -39,6 +40,9 @@ class MobileElement : public Element{
 		void setAttackPt(int attackPt);
 		int getDefensePt() const;
 		void setDefensePt(int defensePt);
+		void setMovePlayed(bool movePlayed);
+		bool getMovePlayed() const;
+
 
 };
 }
