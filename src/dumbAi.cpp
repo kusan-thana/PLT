@@ -27,7 +27,6 @@ void DumbAI::run(engine::Engine& engine){
 	for (int i = rand() % (elementList.size() ); i < elementList.size(); i++){ //Selection aléatoire du personnage ennemi pour éviter que le 1er soit bloqué par les autres
 		
 		if( ! ((state::MobileElement*)elementList.getElement(i))->isPlayerCharacter()){
-			
 			if (((state::MobileElement*)(elementList.getElement(i)))->getTurnPlayed() == false){
 				int x = elementList.getElement(i)->getX();
 				int y = elementList.getElement(i)->getY();
@@ -36,22 +35,28 @@ void DumbAI::run(engine::Engine& engine){
 					engine::AttackCommand* attack = new engine::AttackCommand(mainLevelState.getElementList().getElement(i), mainLevelState.getElementList().getElement(0));
 					engine.addCommand(attack);
 				}
-				if (x > x_hero)
-					x--;
-				else if (x < x_hero)
-					x++;
-				
-				if (y > y_hero)
-					y--;
-				else if (y < y_hero)
-					y++;
-				
-				if(mainLevelState.getElementList().getElement(x,y)){
-					x = elementList.getElement(i)->getX()+ rand()%3-1;
-					y = elementList.getElement(i)->getY()+ rand()%3-1;
+				if (!((state::MobileElement*)elementList.getElement(i))->getMovePlayed()) {
+					if (x > x_hero)
+						x--;
+					else if (x < x_hero)
+						x++;
+
+					if (y > y_hero)
+						y--;
+					else if (y < y_hero)
+						y++;
+
+					if (mainLevelState.getElementList().getElement(x, y)) {
+						x = elementList.getElement(i)->getX() + rand() % 3 - 1;
+						y = elementList.getElement(i)->getY() + rand() % 3 - 1;
+					}
+					engine::MoveCommand* move = new engine::MoveCommand(x, y, mainLevelState.getElementList().getElement(i));
+					engine.addCommand(move);
 				}
-				engine::MoveCommand* move = new engine::MoveCommand(x, y, mainLevelState.getElementList().getElement(i));
-				engine.addCommand(move);	
+				else {
+					engine::MoveCommand* move = new engine::MoveCommand(elementList.getElement(i)->getX(), elementList.getElement(i)->getY(), mainLevelState.getElementList().getElement(i));
+					engine.addCommand(move);
+				}
 			}	
 		}
 	}

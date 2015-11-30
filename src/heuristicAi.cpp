@@ -77,7 +77,7 @@ void HeuristicAI::run(engine::Engine& engine){
 				
 				moveToClosest(engine, playerCharsMap, curr_element);
 				
-				playerCharsMap.display();
+				//playerCharsMap.display();
 			}
 		}
 	}
