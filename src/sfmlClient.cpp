@@ -108,6 +108,8 @@ void SFMLClient::init(){
 	minion3->setY(19);
 	characters.setElement(5, minion3);
 	
+	//~ characters.removeElement(minion2);
+	
 	ai::PathMap pathMap(levelState);
 	pathMap.addElement(minion1);
 	pathMap.dijsktra();
@@ -118,7 +120,7 @@ void SFMLClient::init(){
 	pathMap.dijsktra();
 	pathMap.display();
 
-	render::ElementListLayer* layerCharacters = new render::ElementListLayer	();
+	render::ElementListLayer* layerCharacters = new render::ElementListLayer();
 	layerCharacters->setSurface(this->surfaces[render::CHARACTERS_LAYER]);
 	layerCharacters->setTileSet(this->tileSets[render::CHARACTERS_LAYER]);
 	

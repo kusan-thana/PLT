@@ -66,6 +66,12 @@ void PathMap::initMetadata(int defaultValue){
 		weights[i] = defaultValue;
 	}
 }
+bool PathMap::isValid(int x, int y) const{
+
+	if(x < width && x >= 0 && y < height && y >= 0){
+		return true;
+	}
+}
 bool PathMap::isValid(int x, int y, state::Direction direction) const{
 
 	Coords coords(x, y, direction);

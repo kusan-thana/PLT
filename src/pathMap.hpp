@@ -35,6 +35,7 @@ class PathMap {
 		void setMetadata(int x, int y, int value);
 		void setMetadata(int x, int y, int value, state::Direction direction);
 		void initMetadata(int defaultValue);
+		bool isValid(int x, int y) const;
 		bool isValid(int x, int y, state::Direction direction) const;
 		int relax (int x, int y, state::Direction direction);
 		void dijsktra();
