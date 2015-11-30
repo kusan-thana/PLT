@@ -70,8 +70,7 @@ void Ruler::apply(){
 	if (commands.get(MAIN)) {
 		cmd = commands.get(MAIN);
 		curr_LevelState.loadLevel(((LoadCommand*)cmd)->getFileName());
-		//~ curr_LevelState.getElementGrid().notifyObservers(-1, -1);
-		//A corriger. Ajouter un notifier pour recharger toute la grille... (?) --> Done!
+		curr_LevelState.getElementGrid().notifyObservers(-1, -1);
 	}
 
 	//std::cout << std::endl;

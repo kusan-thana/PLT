@@ -10,7 +10,7 @@
 
 using namespace ai;
 
-PathMap::PathMap(state::LevelState& levelState) : levelState(levelState), width(levelState.getElementGrid().getWidth()), height(levelState.getElementGrid().getHeight()){
+PathMap::PathMap(const state::LevelState& levelState) : levelState(levelState), width(levelState.getElementGrid().getWidth()), height(levelState.getElementGrid().getHeight()){
 	
 	weights = new int[width*height];
 }
@@ -136,15 +136,18 @@ void PathMap::dijsktra(){
 	}
 }
 void PathMap::display(){
-	std::cout << "----------------------------------------------------------------" << std::endl;
-	std::cout << "-----------ENLARGE THE BASH WINDOW BEFORE RUNNING!!-------------" << std::endl;
-	std::cout << "--------------Path Map using Dijkstra algorithm-----------------" << std::endl;
-	std::cout << "------------------Display from SFMLClient-----------------------" << std::endl;
-	std::cout << "----------------------------------------------------------------" << std::endl;
+	std::cout << "------------------------------------------------------------------------------------" << std::endl;
+	std::cout << "------MAY NEED TO ENLARGE THE BASH WINDOW BEFORE RUNNING FOR A BETTER DISPLAY-------" << std::endl;
+	std::cout << "---------------------Path Map using Dijkstra algorithm------------------------------" << std::endl;
+	std::cout << "------------------------------------------------------------------------------------" << std::endl;
 	
+	std::cout <<  "First row -> columns index" << std::endl;
+	for(int j=0; j<width; j++){
+			std::cout.width(4); std::cout << std::left << j;
+		}
+		std::cout << std::endl;
 	for(int i=0; i<height; i++){
 		for(int j=0; j<width; j++){
-			
 			std::cout.width(4); std::cout << std::left << weights[j + i*width];
 			
 		}

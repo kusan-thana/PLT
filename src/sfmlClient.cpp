@@ -66,6 +66,7 @@ void SFMLClient::init(){
 	
 	/*************GRID_LAYER*************/
 	levelState.loadLevel("../res/level1.txt"); 
+
 	
 	render::ElementListLayer* layerGrid = new render::ElementListLayer();
 	layerGrid->setSurface(this->surfaces[render::GRID_LAYER]);
@@ -109,15 +110,14 @@ void SFMLClient::init(){
 	characters.setElement(5, minion3);
 	
 	
-	ai::PathMap pathMap(levelState);
-	pathMap.addElement(minion1);
-	pathMap.dijsktra();
-	//~ pathMap.computeWeights(levelState.getElementGrid(), wizard);
-	pathMap.display();
-	pathMap.addElement(minion2);
-	pathMap.addElement(minion3);
-	pathMap.dijsktra();
-	pathMap.display();
+	//~ ai::PathMap pathMap(levelState);
+	//~ pathMap.addElement(hero);
+	//~ pathMap.dijsktra();
+	//~ pathMap.display();
+	//~ pathMap.addElement(wizard1);
+	//~ pathMap.addElement(wizard2);
+	//~ pathMap.dijsktra();
+	//~ pathMap.display();
 
 	render::ElementListLayer* layerCharacters = new render::ElementListLayer();
 	layerCharacters->setSurface(this->surfaces[render::CHARACTERS_LAYER]);

@@ -28,7 +28,7 @@ EngineMode Engine::getMode() {
 }
 void Engine::update() {
 	
-
+	
 	Ruler ruler(this->actions, this->commandSet, this->levelState);
 	if (commandSet.size()) {
 	/*Appeler les methodes du Ruler pour verifier les commandes*/

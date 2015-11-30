@@ -5,6 +5,7 @@
 #include "engine.hpp"
 #include "gui.hpp"
 #include "dumbAi.hpp"
+#include "heuristicAi.hpp"
 
 namespace client {
 
@@ -17,6 +18,7 @@ class Client {
 		engine::Engine engine; //A déplacer apres la modularisation 
 		gui::GUI gui;
 		ai::DumbAI dumbAI;
+		ai::HeuristicAI heuristicAi;
 
 		Client();
 		void setTileSet(render::SceneLayer sceneLayer, const render::TileSet* tileSet);
