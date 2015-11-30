@@ -35,6 +35,8 @@ void Client::run(){
 	this->init();
 
 	while(acquireControls()){
+
+
 		if (levelState.getTurnToPlay() == state::OPPONENT) {
 			dumbAI.run(engine);
 		}

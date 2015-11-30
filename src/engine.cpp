@@ -28,6 +28,7 @@ EngineMode Engine::getMode() {
 }
 void Engine::update() {
 	
+
 	Ruler ruler(this->actions, this->commandSet, this->levelState);
 	if (commandSet.size()) {
 	/*Appeler les methodes du Ruler pour verifier les commandes*/
@@ -81,18 +82,6 @@ void Engine::turnGestion() {
 				}
 			}
 		}
-	}
-}
-void Engine::deathManagement() {
-	
-	state::ElementList characters = levelState.getElementList();
-	
-	for(int i=0; i<characters.size(); i++){
-	
-		state::Element* curr_element = characters.getElement(i);
-	
-		if(((state::MobileElement*)curr_element)->getHP() <= 0)
-			characters.removeElement(curr_element);
 	}
 }
 

@@ -32,7 +32,6 @@ void Ruler::apply(){
 	//state::Element* perso = curr_LevelState.getElementList().getElement(0);
 	//~ state::Element* redTile = curr_LevelState.getElementCursors().getElement(0);	/////////////////////
 
-
 	if (commands.get(MOVE)) {
 		cmd = commands.get(MOVE);
 		state::Element* perso = ((MoveCommand*)cmd)->getCharacter();
@@ -52,7 +51,7 @@ void Ruler::apply(){
 
 		if (attacker->isPlayerCharacter() != target->isPlayerCharacter()){
 			if (abs(attacker->getX() - target->getX()) <= 1 && abs(attacker->getY() - target->getY()) <= 1){
-				AttackCharacter* attackcharac = new AttackCharacter(*attacker, *target, curr_LevelState);
+				AttackCharacter* attackcharac = new AttackCharacter(attacker, target, curr_LevelState);
 				actions.add(attackcharac);
 				actions.add(new IncEpoch());
 			}
