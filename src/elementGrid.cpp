@@ -12,7 +12,7 @@
 
 using namespace state;
 
-ElementGrid::ElementGrid(LevelState& levelState) : ElementList(levelState), width(0), height(0) {
+ElementGrid::ElementGrid(LevelState& levelState) : ElementList(levelState), width(5), height(5) {
 }
 int ElementGrid::getWidth() const{
 		

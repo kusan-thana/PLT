@@ -1,6 +1,7 @@
 #include "heuristicAi.hpp"
 #include "elementList.hpp"
 #include "mobileElement.hpp"
+#include <iostream>
 
 /**
  * HeuristicAI Class
@@ -8,20 +9,11 @@
 
 using namespace ai;
 
-HeuristicAI::HeuristicAI(state::LevelState& mainLevelState) : DumbAI(mainLevelState), playerCharsMap(mainLevelState), monstersMap(mainLevelState){
-	
-	state::ElementList characters = mainLevelState.getElementList();
-	
-	for(int i=0; i<characters.size(); i++){
-		
-		if( ! ((state::MobileElement*)characters.getElement(i))->isPlayerCharacter()){		//on récupère un personnage du joueur 
-			playerCharsMap.clear();
-			playerCharsMap.addElement(characters.getElement(i));						//on l'ajoute sur la carte des distances
-		}
-	}
+HeuristicAI::HeuristicAI(state::LevelState& mainLevelState) : DumbAI(mainLevelState){
 }
 bool HeuristicAI::moveToClosest(engine::Engine& engine,const PathMap& path, state::Element* element){
 	
+	std::cout << "moveToClosest\n";
 	int width = path.getWidth();
 	
 	int x_elem = element->getX();
@@ -52,25 +44,49 @@ bool HeuristicAI::moveToClosest(engine::Engine& engine,const PathMap& path, stat
 	}
 	if(value<999){		//si un déplacement est réalisable, on met à jour les coordonnées de l'élément
 		
+		std::cout << "value inf 999\n";
 		element->setX(x_move);
 		element->setY(y_move);
 		return true;
 	}
 	return false;
 }
-void HeuristicAI::run(engine::Engine& engine, state::Element* element){
+void HeuristicAI::run(engine::Engine& engine){
 
+	PathMap playerCharsMap(mainLevelState);
 	state::ElementList characters = mainLevelState.getElementList();
 	
-	if (((state::MobileElement*)element)->getTurnPlayed() == false){		//on s'assure qu'il peut jouer
+	playerCharsMap.clear();																//on réinitialise les éléments de la carte de distance
+	
+	for(int i=0; i<characters.size(); i++){												//on calcul la carte de distance des personnages du joueurs
 		
-		if(moveToClosest(engine, playerCharsMap, element)){
+		if(((state::MobileElement*)characters.getElement(i))->isPlayerCharacter()){		//on récupère un personnage du joueur 
+			
+			std::cout << "addElement\n";
+			playerCharsMap.addElement(characters.getElement(i));						//on l'ajoute sur la carte des distances
+		}
+	}
+	playerCharsMap.dijsktra();
+	playerCharsMap.display();
+	
+	for(int i=0; i<characters.size(); i++){												//on détermine le prochain mouvement des monstres
 		
-			int x = element->getX();
-			int y = element->getY();
+		state::Element* curr_element = characters.getElement(i);
 		
-			engine::MoveCommand* move = new engine::MoveCommand(x, y, element);
-			engine.addCommand(move);
+		if( ! ((state::MobileElement*)curr_element)->isPlayerCharacter()){				//on récupère un monstre 
+			if (((state::MobileElement*)curr_element)->getTurnPlayed() == false){		//on s'assure qu'il peut jouer
+				
+				if(moveToClosest(engine, playerCharsMap, curr_element)){
+				
+					int x = curr_element->getX();
+					int y = curr_element->getY();
+					std::cout << "x " << x << std::endl;
+					std::cout << "y " << y << std::endl;
+				
+					engine::MoveCommand* move = new engine::MoveCommand(x, y, curr_element);
+					engine.addCommand(move);
+				}
+			}
 		}
 	}
 }

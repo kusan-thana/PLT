@@ -13,7 +13,7 @@
 
 using namespace client;
 
-Client::Client() : engine(levelState), gui(levelState, engine),dumbAI(levelState){
+Client::Client() : engine(levelState), gui(levelState, engine),dumbAI(levelState), heuristicAi(levelState){
 	
 	this->tileSets.push_back(new render::TileSet1()); 	//GRID_LAYER			
 	this->tileSets.push_back(new guiRender::TileSet3());	//MOVE_RANGE_LAYER       
@@ -38,7 +38,8 @@ void Client::run(){
 
 
 		if (levelState.getTurnToPlay() == state::OPPONENT) {
-			dumbAI.run(engine);
+			//~ dumbAI.run(engine);
+			heuristicAi.run(engine);
 		}
 		engine.update();
 		updateDisplay();

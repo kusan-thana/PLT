@@ -16,14 +16,14 @@ class PathMap {
 
 	protected:
 		
-		state::LevelState& levelState;
+		const state::LevelState& levelState;
 		std::vector<state::Element*> elements;
 		int* weights;
 		int width;
 		int height;
 		
 	public:
-		PathMap(state::LevelState& levelState);
+		PathMap(const state::LevelState& levelState);
 		~PathMap();
 		void clear();
 		void addElement(state::Element* element);

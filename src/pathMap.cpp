@@ -10,7 +10,7 @@
 
 using namespace ai;
 
-PathMap::PathMap(state::LevelState& levelState) : levelState(levelState), width(levelState.getElementGrid().getWidth()), height(levelState.getElementGrid().getHeight()){
+PathMap::PathMap(const state::LevelState& levelState) : levelState(levelState), width(levelState.getElementGrid().getWidth()), height(levelState.getElementGrid().getHeight()){
 	
 	weights = new int[width*height];
 }
@@ -144,7 +144,6 @@ void PathMap::display(){
 	
 	for(int i=0; i<height; i++){
 		for(int j=0; j<width; j++){
-			
 			std::cout.width(4); std::cout << std::left << weights[j + i*width];
 			
 		}
