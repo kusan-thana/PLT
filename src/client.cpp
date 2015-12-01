@@ -38,9 +38,14 @@ void Client::run(){
 
 
 		if (levelState.getTurnToPlay() == state::OPPONENT) {
-			 dumbAI.run(engine);
+			dumbAI.run(engine);
 			//heuristicAi.run(engine);
 		}
+		else if(levelState.getTurnToPlay() == state::PLAYER) {
+			dumbAI.run(engine);
+		}
+
+		
 		engine.update();
 		updateDisplay();
 	}	

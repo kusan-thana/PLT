@@ -81,17 +81,17 @@ void SFMLClient::init(){
 	
 	state::Element* hero = factory->newInstance('H');	//Instanciation d'un nouvel élément
 	hero->setX(6);
-	hero->setY(15);
+	hero->setY(10);
 	characters.setElement(0, hero);
 	
 	state::Element* wizard1 = factory->newInstance('W');	//Instanciation d'un nouvel élément
 	wizard1->setX(5);
-	wizard1->setY(15);
+	wizard1->setY(10);
 	characters.setElement(1, wizard1);
 		
 	state::Element* wizard2 = factory->newInstance('W');	//Instanciation d'un nouvel élément
 	wizard2->setX(7);
-	wizard2->setY(15);
+	wizard2->setY(10);
 	characters.setElement(2, wizard2);
 	
 	state::Element* minion1 = factory->newInstance('M');	//Instanciation d'un nouvel élément

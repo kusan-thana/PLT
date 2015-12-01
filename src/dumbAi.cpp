@@ -6,8 +6,9 @@
 #include <time.h>
 /**
  * DumbAI Class
-
- *Les ennemies se dirigent vers le héros et l'attaque. Si ils sont bloqués dans leur mouvements, ils vont autre part aléatoirement
+ * If character find an ennemy charac one step from him, it attacks it
+ *Les personnages se dirigent vers le héros.
+ et l'attaque. Si ils sont bloqués dans leur mouvements, ils vont autre part aléatoirement
 **/
 
 using namespace ai;
@@ -26,16 +27,25 @@ void DumbAI::run(engine::Engine& engine){
 	
 	for (int i = rand() % (elementList.size() ); i < elementList.size(); i++){ //Selection aléatoire du personnage ennemi pour éviter que le 1er soit bloqué par les autres
 		
-		if( ! ((state::MobileElement*)elementList.getElement(i))->isPlayerCharacter()){
 			if (((state::MobileElement*)(elementList.getElement(i)))->getTurnPlayed() == false){
 				int x = elementList.getElement(i)->getX();
 				int y = elementList.getElement(i)->getY();
 				
-				if (abs (x- x_hero) <= 1 && abs(y - y_hero) <= 1){ //Le personnage attaque le héros si il est suffisamment proche
-					engine::AttackCommand* attack = new engine::AttackCommand(mainLevelState.getElementList().getElement(i), mainLevelState.getElementList().getElement(0));
-					engine.addCommand(attack);
+				for (int k = 0; k < 9; k++) { //Dumb Attack only one case
+					state::MobileElement* element = (state::MobileElement*) mainLevelState.getElementList().getElement(x + (k / 3) - 1, y + (k % 3) - 1);
+					if (element){
+						if (!element->isPlayerCharacter() && mainLevelState.getTurnToPlay() == state::PLAYER) {
+							engine::AttackCommand* attack = new engine::AttackCommand(elementList.getElement(i), mainLevelState.getElementList().getElement(x + (k / 3) - 1, y + (k % 3) - 1));
+							engine.addCommand(attack);
+
+						}
+						else if (element->isPlayerCharacter() && mainLevelState.getTurnToPlay() == state::OPPONENT) {
+							engine::AttackCommand* attack = new engine::AttackCommand(elementList.getElement(i), mainLevelState.getElementList().getElement(x + (k / 3) - 1, y + (k % 3) - 1));
+							engine.addCommand(attack);
+						}
+					}
 				}
-				if (!((state::MobileElement*)elementList.getElement(i))->getMovePlayed()) {
+				if (!((state::MobileElement*)elementList.getElement(i))->getMovePlayed()) { //DumbMobe Only one case
 					if (x > x_hero)
 						x--;
 					else if (x < x_hero)
@@ -59,6 +69,5 @@ void DumbAI::run(engine::Engine& engine){
 				}
 			}	
 		}
-	}
 
 }
