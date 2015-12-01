@@ -36,7 +36,6 @@ void Client::run(){
 
 	while(acquireControls()){
 
-
 		if (levelState.getTurnToPlay() == state::OPPONENT) {
 			dumbAI.run(engine);
 			//heuristicAi.run(engine);

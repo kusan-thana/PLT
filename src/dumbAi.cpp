@@ -45,7 +45,7 @@ void DumbAI::run(engine::Engine& engine){
 						}
 					}
 				}
-				if (!((state::MobileElement*)elementList.getElement(i))->getMovePlayed()) { //DumbMobe Only one case
+				if (!((state::MobileElement*)elementList.getElement(i))->getMovePlayed()) { //DumbMove Only one case
 					if (x > x_hero)
 						x--;
 					else if (x < x_hero)

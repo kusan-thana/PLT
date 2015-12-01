@@ -9,6 +9,6 @@ using namespace engine;
 IncEpoch::IncEpoch(){
 }
 void IncEpoch::apply(state::LevelState& levelState){
-	std::cout << "Epoch : " << levelState.getEpoch() << std::endl;
+	//std::cout << "Epoch : " << levelState.getEpoch() << std::endl;
 	levelState.setEpoch(levelState.getEpoch()+1);
 }
