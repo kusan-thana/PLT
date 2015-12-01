@@ -8,7 +8,7 @@
  * DumbAI Class
  * If character find an ennemy charac one step from him, it attacks it
  *Les personnages se dirigent vers le héros.
- et l'attaque. Si ils sont bloqués dans leur mouvements, ils vont autre part aléatoirement
+ *Si ils sont bloqués dans leur mouvements, ils vont autre part aléatoirement
 **/
 
 using namespace ai;
@@ -56,7 +56,7 @@ void DumbAI::run(engine::Engine& engine){
 					else if (y < y_hero)
 						y++;
 
-					if (mainLevelState.getElementList().getElement(x, y)) {
+					if (mainLevelState.getElementList().getElement(x, y) || mainLevelState.getElementGrid().getCell(x,y)->getTypeId() != state::SPACE) {
 						x = elementList.getElement(i)->getX() + rand() % 3 - 1;
 						y = elementList.getElement(i)->getY() + rand() % 3 - 1;
 					}
