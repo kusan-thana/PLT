@@ -145,12 +145,12 @@ void PathMap::display(){
 	
 	std::cout <<  "First row -> columns index" << std::endl;
 	for(int j=0; j<width; j++){
-			std::cout.width(5); std::cout << std::left << j;
+			std::cout.width(4); std::cout << std::left << j;
 		}
 		std::cout << std::endl;
 	for(int i=0; i<height; i++){
 		for(int j=0; j<width; j++){
-			std::cout.width(5); std::cout << std::left << weights[j + i*width];
+			std::cout.width(4); std::cout << std::left << weights[j + i*width];
 			
 		}
 		std::cout << std::endl;
