@@ -48,18 +48,18 @@ void Ruler::apply(){
 	}
 
 	if (commands.get(MOVE)) {
-		cmd = commands.get(MOVE);
-		state::Element* perso = ((MoveCommand*)cmd)->getCharacter();
-		if (curr_LevelState.getElementList().getElement(((MoveCommand*)cmd)->getPositionX(), ((MoveCommand*)cmd)->getPositionY()) == ((MoveCommand*)cmd)->getCharacter()) {
+		MoveCommand* cmd = (MoveCommand*)commands.get(MOVE);
+		state::Element* perso = cmd->getCharacter();
+		if (curr_LevelState.getElementList().getElement(cmd->getPositionX(), cmd->getPositionY()) == cmd->getCharacter()) {
 			//std::cout << "BENOIT C'EST LE MEILLEUR" << std::endl;
 			EndTurnAction* endTurncharac = new EndTurnAction(perso);
 			actions.add(endTurncharac);
 			actions.add(new IncEpoch());
 		}
-		if (!((state::MobileElement*)((MoveCommand*)cmd)->getCharacter())->getMovePlayed()) { //Le personnage peut jouer
-			if (curr_LevelState.getElementGrid().getCell(((MoveCommand*)cmd)->getPositionX(), ((MoveCommand*)cmd)->getPositionY())->getTypeId() == state::SPACE && curr_LevelState.getElementList().getElement(((MoveCommand*)cmd)->getPositionX(), ((MoveCommand*)cmd)->getPositionY()) == 0) { //Space non occupe 
-				if (abs(((MoveCommand*)cmd)->getPositionX() - ((MoveCommand*)cmd)->getCharacter()->getX()) <= ((state::MobileElement*)((MoveCommand*)cmd)->getCharacter())->getNbStep() && abs(((MoveCommand*)cmd)->getPositionY() - ((MoveCommand*)cmd)->getCharacter()->getY()) <= ((state::MobileElement*)((MoveCommand*)cmd)->getCharacter())->getNbStep()) { //movement < nbStep
-					MoveCharacter* movecharac = new MoveCharacter(perso, ((MoveCommand*)cmd)->getPositionX(), ((MoveCommand*)cmd)->getPositionY(), curr_LevelState);
+		if (!((state::MobileElement*)cmd->getCharacter())->getMovePlayed()) { //Le personnage peut jouer
+			if (curr_LevelState.getElementGrid().getCell(cmd->getPositionX(), cmd->getPositionY())->getTypeId() == state::SPACE && curr_LevelState.getElementList().getElement(cmd->getPositionX(), cmd->getPositionY()) == 0) { //Space non occupe 
+				if (abs(cmd->getPositionX() - cmd->getCharacter()->getX()) <= ((state::MobileElement*)cmd->getCharacter())->getNbStep() && abs(cmd->getPositionY() - cmd->getCharacter()->getY()) <= ((state::MobileElement*)cmd->getCharacter())->getNbStep()) { //movement < nbStep
+					MoveCharacter* movecharac = new MoveCharacter(perso, cmd->getPositionX(), cmd->getPositionY(), curr_LevelState);
 					actions.add(movecharac);
 					actions.add(new IncEpoch());
 				}

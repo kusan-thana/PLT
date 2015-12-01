@@ -3,7 +3,7 @@
 #include <queue>
 #include <cmath>
 #include "coords.hpp"
-
+#include "mobileElement.hpp" 
 /**
  * PathMap Class
 **/
@@ -61,22 +61,24 @@ void PathMap::setMetadata(int x, int y, int value, state::Direction direction){
 }
 void PathMap::initMetadata(int defaultValue){
 	
-	for(int i=0; i<width*height; i++){
-		
+	for(int i=0; i<height*width; i++){
+			
 		weights[i] = defaultValue;
 	}
 }
 bool PathMap::isValid(int x, int y) const{
-
-	if(x < width && x >= 0 && y < height && y >= 0){
+	
+	if(x < height && x >= 0 && y < width && y >= 0){
+	
 		return true;
 	}
+	return false;
 }
 bool PathMap::isValid(int x, int y, state::Direction direction) const{
 
 	Coords coords(x, y, direction);
 	
-	if(coords.x < width && coords.x >= 0 && coords.y < height && coords.y >= 0){
+	if(coords.x < height && coords.x >= 0 && coords.y < width && coords.y >= 0){
 		return true;
 	}
 }
@@ -143,12 +145,12 @@ void PathMap::display(){
 	
 	std::cout <<  "First row -> columns index" << std::endl;
 	for(int j=0; j<width; j++){
-			std::cout.width(4); std::cout << std::left << j;
+			std::cout.width(5); std::cout << std::left << j;
 		}
 		std::cout << std::endl;
 	for(int i=0; i<height; i++){
 		for(int j=0; j<width; j++){
-			std::cout.width(4); std::cout << std::left << weights[j + i*width];
+			std::cout.width(5); std::cout << std::left << weights[j + i*width];
 			
 		}
 		std::cout << std::endl;

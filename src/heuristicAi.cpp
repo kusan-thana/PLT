@@ -1,6 +1,7 @@
 #include "heuristicAi.hpp"
 #include "elementList.hpp"
 #include "mobileElement.hpp"
+#include "attackCommand.hpp"
 #include <iostream>
 
 /**
@@ -25,6 +26,21 @@ bool HeuristicAI::moveToClosest(engine::Engine& engine,const PathMap& path, stat
 	
 	int value = 999;
 	
+	for(int i=0; i<2*1+1; i++){		//Chercher si un ennemi est à porté
+		for(int j=0; j<2*1+1; j++){
+			
+			int x_move = x_elem - 1 + i;
+			int y_move = y_elem - 1 + j;
+			
+			if(weights[x_move * width + y_move] == 0){	//si un ennemi est a porté, on ne se déplace pas
+
+				engine::MoveCommand* move = new engine::MoveCommand(x_elem, y_elem, element);
+				engine.addCommand(move);
+				return true;
+			}
+		}
+	}
+	
 	for(int i=0; i<2*nbStep+1; i++){
 		for(int j=0; j<2*nbStep+1; j++){
 			
@@ -41,45 +57,106 @@ bool HeuristicAI::moveToClosest(engine::Engine& engine,const PathMap& path, stat
 			}
 		}
 	}
+
 	if(value<999){		//si un déplacement est réalisable, on créée une commande de déplacement
-		std::cout << "x_elem " << x_elem << std::endl;
-		std::cout << "y_elem " << y_elem << std::endl;
-		std::cout << "x " << x_move << std::endl;
-		std::cout << "y " << y_move << std::endl;
 		engine::MoveCommand* move = new engine::MoveCommand(x_move, y_move, element);
 		engine.addCommand(move);
 		return true;
 	}
 	return false;
 }
+bool HeuristicAI::attackToClosest(engine::Engine& engine,const PathMap& path, state::Element* element){
+	
+	int x_elem = element->getX();
+	int y_elem = element->getY();
+	
+	int width = path.getWidth();
+	int* weights = path.getWeights();
+	
+	for(int i=0; i<2*1+1; i++){		//Chercher si un ennemi est à porté
+		for(int j=0; j<2*1+1; j++){
+			
+			int x_attack = x_elem - 1 + i;
+			int y_attack = y_elem - 1 + j;
+			
+			if(weights[x_attack * width + y_attack] == 0){	//si un ennemi est a porté, on ne se déplace pas
+
+				engine::AttackCommand* attack = new engine::AttackCommand(element, mainLevelState.getElementList().getElement(x_attack, y_attack));
+				engine.addCommand(attack);
+				return true;
+			}			
+		}
+	}
+	return false;
+	
+}
 void HeuristicAI::run(engine::Engine& engine){
 
 	PathMap playerCharsMap(mainLevelState);
 	state::ElementList characters = mainLevelState.getElementList();
 	
-	playerCharsMap.clear();																//on réinitialise les éléments de la carte de distance
-	
 	for(int i=0; i<characters.size(); i++){												//on détermine le prochain mouvement des monstres
 		
 		state::Element* curr_element = characters.getElement(i);
 		
-		if( ! ((state::MobileElement*)curr_element)->isPlayerCharacter()){				//on récupère un monstre 
+		//~ if( ! ((state::MobileElement*)curr_element)->isPlayerCharacter()){				//on récupère un monstre 
 			if (((state::MobileElement*)curr_element)->getTurnPlayed() == false){		//on s'assure qu'il peut jouer
 				
+				playerCharsMap.clear();																//on réinitialise les éléments de la carte de distance
 				for(int j=0; j<characters.size(); j++){												//on calcul la carte de distance des personnages du joueurs
 		
-					if(((state::MobileElement*)characters.getElement(j))->isPlayerCharacter()){		//on récupère un personnage du joueur 
-			
-						playerCharsMap.addElement(characters.getElement(j));						//on l'ajoute sur la carte des distances
+					if(mainLevelState.getTurnToPlay() == state::OPPONENT){
+						if(((state::MobileElement*)characters.getElement(j))->isPlayerCharacter()){		//on récupère un personnage du joueur 
+				
+							playerCharsMap.addElement(characters.getElement(j));						//on l'ajoute sur la carte des distances
+						}
+					}
+					else if(mainLevelState.getTurnToPlay() == state::PLAYER){
+						if( ! ((state::MobileElement*)characters.getElement(j))->isPlayerCharacter()){		//on récupère un personnage du joueur 
+				
+							playerCharsMap.addElement(characters.getElement(j));						//on l'ajoute sur la carte des distances
+						}
 					}
 				}
 				playerCharsMap.dijsktra();
+					
+				attackToClosest(engine, playerCharsMap, curr_element);
 				
-				moveToClosest(engine, playerCharsMap, curr_element);
 				
-				//playerCharsMap.display();
+				if ( ! ((state::MobileElement*)curr_element)->getMovePlayed()) {
+					
+					playerCharsMap.clear();																//on réinitialise les éléments de la carte de distance
+					for(int j=0; j<characters.size(); j++){												//on calcul la carte de distance des personnages du joueurs
+			
+						if(mainLevelState.getTurnToPlay() == state::OPPONENT){
+							if(((state::MobileElement*)characters.getElement(j))->isPlayerCharacter()){		//on récupère un personnage du joueur 
+					
+								playerCharsMap.addElement(characters.getElement(j));						//on l'ajoute sur la carte des distances
+							}
+						}
+						else if(mainLevelState.getTurnToPlay() == state::PLAYER){
+							if( ! ((state::MobileElement*)characters.getElement(j))->isPlayerCharacter()){		//on récupère un personnage du joueur 
+					
+								playerCharsMap.addElement(characters.getElement(j));						//on l'ajoute sur la carte des distances
+							}
+						}
+					}
+					playerCharsMap.dijsktra();
+					
+					moveToClosest(engine, playerCharsMap, curr_element);
+					playerCharsMap.display();
+					break;
+				}
+				else {
+					
+					
+																						//si un joueur a déjà effectué un mouvement, il termine son tour à la position où il se situe
+					engine::MoveCommand* move = new engine::MoveCommand(curr_element->getX(), curr_element->getY(), curr_element);
+					engine.addCommand(move);
+					break;
+				}
 			}
-		}
+		//~ }
 	}
 }
 

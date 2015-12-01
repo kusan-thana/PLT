@@ -20,8 +20,10 @@ int ElementList::size() const{
 	return elements.size();
 }
 Element* ElementList::getElement(int i) const{
-
-	return elements[i];
+	
+	if(i < size())
+		return elements[i];
+	else return 0;
 }
 Element* ElementList::getElement(int x, int y) const{
 
