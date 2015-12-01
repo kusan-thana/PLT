@@ -193,7 +193,7 @@ bool SFMLClient::acquireControls() {
 			cursor->setY(sf::Mouse::getPosition(window).x * levelState.getElementGrid().getWidth() / window.getSize().x); //Merci benoit pour avoir inverser les axes x et y !
 			cursor->setX(sf::Mouse::getPosition(window).y * levelState.getElementGrid().getHeight() / window.getSize().y); //Merci benoit pour avoir inverser les axes x et y !
 		}
-		else if (event.type == sf::Event::MouseButtonReleased || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space)) {
+		else if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space)) {
 			cursor->setActive(!cursor->getActive());
 			//~ if(cursor->getActive()//////////	
 			gui.commander(engine);
@@ -207,9 +207,10 @@ bool SFMLClient::acquireControls() {
 
 			std::cout << "Replay\n";
 			gui.setEngineMode(engine::REPLAY);
-
 		}
-
+		else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return) {
+			gui.setStartPlayerAI(!gui.getStartPlayerAI());
+		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
 			cursor->setY(cursor->getY() + 1);
 			cursor->setX(cursor->getX() - 1);
@@ -238,7 +239,7 @@ bool SFMLClient::acquireControls() {
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
 			cursor->setX(cursor->getX() - 1);
 		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) || event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Right) {
 			cursor->setActive(false);
 			cursor->setCharacter(NULL);
 			gui.getMoveRange().clear();

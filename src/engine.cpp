@@ -85,11 +85,6 @@ void Engine::turnGestion() {
 			}
 		}
 	}
-
-	if (elementList.numberOfPlayer() == 0)
-		std::cout << "PERDU";
-	else if (elementList.numberOfMonster() == 0)
-		std::cout << "GAGNE";
 }
 
 

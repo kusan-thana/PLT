@@ -11,7 +11,7 @@
 
 using namespace gui;
 
-GUI::GUI(state::LevelState& levelState, engine::Engine& engine) : levelState(levelState), cursorList(*this), moveRange(*this), engine(engine){
+GUI::GUI(state::LevelState& levelState, engine::Engine& engine) : levelState(levelState), cursorList(*this), moveRange(*this), engine(engine),startPlayerAI(false){
 	cursorList.setGuiElement(0, new Cursor(levelState));
 	this->init();
 }
@@ -19,9 +19,17 @@ GUI::~GUI(){
 }
 void GUI::init() {
 
-	std::cout << std::endl << "Utiliser la souris ou le clavier pour jouer (espace ou clic gauche pour selectionner)" << std::endl;
+	std::cout << std::endl << "Manuel de jeu : \nSelection : espace ou clic gauche\nDeselectionner: Echap ou clic droit\nDouble selectionner un personnage pour terminer son tour\n\nMODE AUTO (Commandes Player : dumbIA) : ENTREE" << std::endl;
 	engine::LoadCommand* load = new engine::LoadCommand("../res/level2.txt");
 	//~ engine.addCommand(load); //initialiser ici le 1er niveau
+}
+void GUI::setStartPlayerAI(bool startPlayerAI)
+{
+	this->startPlayerAI = startPlayerAI;
+}
+bool GUI::getStartPlayerAI()
+{
+	return startPlayerAI;
 }
 GUIElementList& GUI::getCursorList()
 {

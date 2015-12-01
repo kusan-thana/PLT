@@ -17,6 +17,7 @@ namespace gui
 		GUIElementList cursorList;
 		GUIMoveRange moveRange;
 		engine::EngineMode engineMode;
+		bool startPlayerAI;
 		
 	public:
 		GUI(state::LevelState& levelState, engine::Engine&);
@@ -28,6 +29,8 @@ namespace gui
 		void commander(engine::Engine& engine); //Creer les commandes pour le moteur de jeu par rapport a l'etat gui
 		void setEngineMode(engine::EngineMode engineMode);
 		void init();
+		void setStartPlayerAI(bool startPlayerAI);
+		bool getStartPlayerAI();
 	};
 }
 #endif

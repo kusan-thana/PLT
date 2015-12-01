@@ -41,7 +41,8 @@ void Client::run(){
 			//heuristicAi.run(engine);
 		}
 		else if(levelState.getTurnToPlay() == state::PLAYER) {
-			dumbAI.run(engine);
+			if(gui.getStartPlayerAI())
+				dumbAI.run(engine);
 		}
 
 		
