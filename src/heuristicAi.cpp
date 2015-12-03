@@ -150,7 +150,7 @@ void HeuristicAI::run(engine::Engine& engine){
 				playerCharsMap.dijsktra();
 				
 				moveToClosest(engine, playerCharsMap, curr_element);
-				playerCharsMap.display();
+				//~ playerCharsMap.display();
 				break;
 			}
 		}
