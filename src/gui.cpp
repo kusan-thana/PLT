@@ -19,7 +19,7 @@ GUI::~GUI(){
 }
 void GUI::init() {
 
-	std::cout << std::endl << "Manuel de jeu : \nSelection : espace ou clic gauche\nDeselectionner: Echap ou clic droit\nDouble selectionner un personnage pour terminer son tour\n\nMODE AUTO (Commandes Player : dumbIA) : ENTREE" << std::endl;
+	std::cout << std::endl << "Manuel de jeu : \nSelection : espace ou clic gauche\nDeselectionner: Echap ou clic droit\nDouble selectionner un personnage pour terminer son tour\n\nMODE AUTO (Commandes Player : HeuristicAI) : ENTREE" << std::endl;
 	engine::LoadCommand* load = new engine::LoadCommand("../res/level2.txt");
 	//~ engine.addCommand(load); //initialiser ici le 1er niveau
 }
