@@ -10,7 +10,7 @@ namespace engine {
 	public:
 
 		AttackCommand(state::Element* attacker, state::Element* target);
-		~AttackCommand();
+		~AttackCommand();	
 		state::Element* getAttacker();
 		state::Element* getTarget();
 		virtual CommandTypeId getTypeId() const;

@@ -15,14 +15,13 @@ namespace engine {
 		ActionList actions;
 
 		void setMode(EngineMode mode);
-		EngineMode getMode();
 	public:
 		Engine(state::LevelState& levelState);
 		~Engine();
 		void addCommand(engine::Command *cmd);
 		void update();
 		void turnGestion();
-		void deathManagement();
+		EngineMode getMode();
 
 	};
 }

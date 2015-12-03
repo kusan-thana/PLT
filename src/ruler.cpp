@@ -39,7 +39,7 @@ void Ruler::apply(){
 		if (!((state::MobileElement*)((AttackCommand*)cmd)->getAttacker())->getTurnPlayed()) { //Le personnage peut attaquer
 			if (attacker->isPlayerCharacter() != target->isPlayerCharacter()) {
 				if (abs(attacker->getX() - target->getX()) <= 1 && abs(attacker->getY() - target->getY()) <= 1) {
-					AttackCharacter* attackcharac = new AttackCharacter(attacker, target, curr_LevelState);
+					AttackCharacter* attackcharac = new AttackCharacter(attacker, target);
 					actions.add(attackcharac);
 					actions.add(new IncEpoch());
 				}

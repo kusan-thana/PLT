@@ -6,10 +6,9 @@ namespace engine{
 	{
 		state::MobileElement* attacker;
 		state::MobileElement* target;
-		state::LevelState& levelState;
 
 	public:
-		AttackCharacter(state::MobileElement* attacker, state::MobileElement* target, state::LevelState& levelState);
+		AttackCharacter(state::MobileElement* attacker, state::MobileElement* target);
 		~AttackCharacter();
 		void apply(state::LevelState&);
 	};
