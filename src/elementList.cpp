@@ -11,6 +11,11 @@ using namespace state;
 
 ElementList::ElementList(LevelState& levelState): levelState(levelState){
 }
+ElementList::~ElementList(){
+
+	elements.clear();
+}
+
 const LevelState& ElementList::getLevelState() const{
 	
 	return levelState;
@@ -87,4 +92,10 @@ void ElementList::removeElement(Element* element) {
 	
 	int i = this->getIdxElement(element);
 	elements.erase( elements.begin() + i );
+}
+ElementList* ElementList::clone() const{
+	
+	ElementList* clone = new ElementList(levelState);
+	
+	clone->factory = this->factory;
 }

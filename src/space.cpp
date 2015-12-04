@@ -22,3 +22,15 @@ void Space::setSpaceTypeID(SpaceTypeID id){
 
 	this->IDSpace = id;
 }
+Element* Space::clone() const{
+	
+	Element* clone = new Space(IDSpace);
+	
+	((Space*)clone)->IdElement = IdElement;
+	((Space*)clone)->x = x;
+	((Space*)clone)->y = y;
+	((Space*)clone)->active = active;
+	((Space*)clone)->orientation = orientation;
+	
+	return clone;
+}

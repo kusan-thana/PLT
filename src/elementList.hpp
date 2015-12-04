@@ -20,6 +20,7 @@ class ElementList : public Observable {
 
 	public:
 		ElementList(state::LevelState& levelState);
+		~ElementList();
 		const LevelState& getLevelState() const;
 		int size() const;
 		state::Element* getElement(int i) const;
@@ -33,6 +34,7 @@ class ElementList : public Observable {
 		void notifyObservers(int i);
 		int numberOfPlayer();
 		int numberOfMonster();
+		ElementList* clone() const;
 };
 }
 #endif

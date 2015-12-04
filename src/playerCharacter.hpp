@@ -16,6 +16,7 @@ class PlayerCharacter : public MobileElement{
 		PlayerCharacter(TypeId IdElement);
 		virtual bool isPlayerCharacter() const;
 		Status getStatus() const;
+		virtual Element* clone() const; 
 };
 }
 #endif

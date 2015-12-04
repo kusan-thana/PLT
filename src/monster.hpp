@@ -11,6 +11,7 @@ class Monster : public MobileElement{
 		Monster(TypeId IdElement);
 		virtual bool isPlayerCharacter() const;
 		Status getStatus() const;
+		virtual Element* clone() const;
 };
 }
 #endif

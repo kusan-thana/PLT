@@ -16,6 +16,7 @@ class Space : public StaticElement {
 		virtual bool isSpace() const;
 		SpaceTypeID getSpaceTypeID() const;
 		void setSpaceTypeID(SpaceTypeID id);
+		virtual Element* clone() const;
 
 };
 }

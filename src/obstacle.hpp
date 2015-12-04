@@ -16,6 +16,7 @@ class Obstacle : public StaticElement {
 		virtual bool isSpace() const;
 		ObstacleTypeID getObstacleTypeID() const;
 		void setObstacleTypeID(ObstacleTypeID id);
+		virtual Element* clone() const;
 
 };
 }

@@ -28,6 +28,7 @@ class Element {
 		void setDirection(state::Direction orientation);
 		bool isActive() const;
 		virtual bool isStatic() const =0;
+		virtual Element* clone() const =0; 
 };
 }
 #endif
