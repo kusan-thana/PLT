@@ -102,3 +102,29 @@ void ElementGrid::notifyObservers(int i, int j) {
 	LevelListEvent levelListEvent(*this,i*(this->width)+j);
 	Observable::notifyObservers(levelListEvent);
 }
+ElementGrid* ElementGrid::clone() const{
+	
+	ElementGrid* clone = new ElementGrid(levelState);
+	
+	clone->factory = this->factory;
+	for(int i=0; i<size(); i++){
+		
+		clone->elements.push_back(this->elements[i]->clone());
+	}
+	clone->width = this->width;
+	clone->height = this->height;
+}
+void ElementGrid::copy(const ElementGrid& grid){
+	
+	//this->levelState.copy(grid.levelState);
+	//~ this->levelState
+	this->factory = grid.factory;
+	
+	this->elements.clear();
+	for(int i=0; i<size(); i++){
+		
+		this->elements.push_back(grid.elements[i]->clone());
+	}
+	this->width = width;
+	this->height = height;
+}

@@ -100,11 +100,20 @@ ElementList* ElementList::clone() const{
 	clone->factory = this->factory;
 	for(int i=0; i<size(); i++){
 		
-		
+		clone->elements.push_back(this->elements[i]->clone());
 	}
+}
+void ElementList::copy(const ElementList& list){
+	
+	//this->levelState.copy(list.levelState);
+	//this->levelState = const_cast<LevelState>(list.levelState);
+	//&(this->levelState)(list.levelState);
 		
-	//~ second_vector.resize(first_vector.size());
-
-		//~ for(unsigned i = 0; i < first_vector.size(); ++i)
-		//~ second_vector[i] = first_vector[i]->clone();
+	this->factory = list.factory;
+	
+	this->elements.clear();
+	for(int i=0; i<size(); i++){
+		
+		this->elements.push_back(list.elements[i]->clone());
+	}
 }

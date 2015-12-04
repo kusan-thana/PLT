@@ -48,7 +48,24 @@ TurnToPlay state::LevelState::getTurnToPlay() const
 	return turnToPlay;
 }
 
-void state::LevelState::setTurnToPlay(TurnToPlay turnToPlay)
+void LevelState::setTurnToPlay(TurnToPlay turnToPlay)
 {
 	this->turnToPlay = turnToPlay;
+}
+LevelState* LevelState::clone() const{
+
+	LevelState* clone = new LevelState();
+	
+	clone->characters.copy(this->characters);
+	clone->grid.copy(this->grid);
+	clone->epoch = this->epoch;
+	clone->turnToPlay = this->turnToPlay;
+}
+void LevelState::copy(const LevelState& levelState){
+	
+	this->characters.copy(levelState.characters);
+	this->grid.copy(levelState.grid);
+	
+	this->epoch = levelState.epoch;
+	this->turnToPlay = levelState.turnToPlay;
 }

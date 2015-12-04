@@ -28,6 +28,8 @@ class LevelState : public Observable {
 		void setEpoch(int epoch);
 		TurnToPlay getTurnToPlay() const;
 		void setTurnToPlay(TurnToPlay turnToPlay);
+		LevelState* clone() const;
+		void copy(const LevelState& levelState);
 };
 }
 #endif

@@ -22,6 +22,8 @@ class ElementGrid : public ElementList{
 		Element* getCell(int i, int j) const;
 		void load(const char* file_name);
 		void notifyObservers(int i, int j);
+		ElementGrid* clone() const;
+		void copy(const ElementGrid& grid);
 };
 }
 #endif
