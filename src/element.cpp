@@ -9,7 +9,8 @@ using namespace state;
 Element::Element() : x(0), y(0), IdElement(SPACE), orientation(NONE), active(false){
 }
 Element::~Element(){
-
+	
+	delete(this);
 }
 int Element::getX() const{
 	

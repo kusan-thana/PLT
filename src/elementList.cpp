@@ -98,4 +98,13 @@ ElementList* ElementList::clone() const{
 	ElementList* clone = new ElementList(levelState);
 	
 	clone->factory = this->factory;
+	for(int i=0; i<size(); i++){
+		
+		
+	}
+		
+	//~ second_vector.resize(first_vector.size());
+
+		//~ for(unsigned i = 0; i < first_vector.size(); ++i)
+		//~ second_vector[i] = first_vector[i]->clone();
 }
