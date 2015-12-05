@@ -12,7 +12,11 @@ using namespace state;
 ElementList::ElementList(LevelState& levelState): levelState(levelState){
 }
 ElementList::~ElementList(){
-
+	
+	for (std::vector< Element*>::iterator it = elements.begin() ; it != elements.end(); ++it)
+   {
+     //~ delete (*it);
+   } 
 	elements.clear();
 }
 
@@ -102,13 +106,11 @@ ElementList* ElementList::clone() const{
 		
 		clone->elements.push_back(this->elements[i]->clone());
 	}
+	
+	return clone;
 }
 void ElementList::copy(const ElementList& list){
 	
-	//this->levelState.copy(list.levelState);
-	//this->levelState = const_cast<LevelState>(list.levelState);
-	//&(this->levelState)(list.levelState);
-		
 	this->factory = list.factory;
 	
 	this->elements.clear();
@@ -116,4 +118,12 @@ void ElementList::copy(const ElementList& list){
 		
 		this->elements.push_back(list.elements[i]->clone());
 	}
+}
+void ElementList::clear(){
+	
+	for (std::vector< Element*>::iterator it = elements.begin() ; it != elements.end(); ++it)
+   {
+     delete (*it);
+   } 
+	elements.clear();	
 }

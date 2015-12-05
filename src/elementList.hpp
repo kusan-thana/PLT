@@ -36,6 +36,7 @@ class ElementList : public Observable {
 		int numberOfMonster();
 		ElementList* clone() const;
 		void copy(const ElementList& list);
+		void clear();
 };
 }
 #endif

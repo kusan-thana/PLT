@@ -42,9 +42,6 @@ class MobileElement : public Element{
 		void setDefensePt(int defensePt);
 		void setMovePlayed(bool movePlayed);
 		bool getMovePlayed() const;
-		virtual Element* clone() const =0;
-
-
 };
 }
 #endif

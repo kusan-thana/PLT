@@ -13,6 +13,7 @@ class Observable {
 		std::vector<state::LevelStateObserver*> observers;		//Mutable???
 		
 	public:
+		virtual ~Observable();
 		void registerObserver(LevelStateObserver* o);			//const??
 		void notifyObservers(const LevelStateEvent& e);			//const??
 

@@ -60,12 +60,13 @@ LevelState* LevelState::clone() const{
 	clone->grid.copy(this->grid);
 	clone->epoch = this->epoch;
 	clone->turnToPlay = this->turnToPlay;
+	
+	return clone;
 }
 void LevelState::copy(const LevelState& levelState){
 	
 	this->characters.copy(levelState.characters);
 	this->grid.copy(levelState.grid);
-	
 	this->epoch = levelState.epoch;
 	this->turnToPlay = levelState.turnToPlay;
 }

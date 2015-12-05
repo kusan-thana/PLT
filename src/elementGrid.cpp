@@ -33,7 +33,8 @@ void ElementGrid::load(const char* file_name){
 	char stateLevel[1024]={0};	//Arbitrary size but has to be sufficiently big to contain all characteres of the read file;
 	this->width = 0;
 	this->height = 0;
-	this->elements.clear();
+	clear();
+	//~ this->elements.clear();
 	
 	if(file)
 	{
@@ -113,11 +114,11 @@ ElementGrid* ElementGrid::clone() const{
 	}
 	clone->width = this->width;
 	clone->height = this->height;
+	
+	return clone;
 }
 void ElementGrid::copy(const ElementGrid& grid){
 	
-	//this->levelState.copy(grid.levelState);
-	//~ this->levelState
 	this->factory = grid.factory;
 	
 	this->elements.clear();

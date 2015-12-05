@@ -7,6 +7,10 @@
 
 using namespace state;
 
+Observable::~Observable(){
+
+	observers.clear();
+}
 void Observable::registerObserver(LevelStateObserver* o){
 
 	observers.push_back(o);
