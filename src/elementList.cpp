@@ -112,18 +112,18 @@ ElementList* ElementList::clone() const{
 void ElementList::copy(const ElementList& list){
 	
 	this->factory = list.factory;
-	
+
 	this->elements.clear();
-	for(int i=0; i<size(); i++){
+	for(int i=0; i<list.size(); i++){
 		
 		this->elements.push_back(list.elements[i]->clone());
 	}
 }
 void ElementList::clear(){
-	
+
 	for (std::vector< Element*>::iterator it = elements.begin() ; it != elements.end(); ++it)
    {
-     delete (*it);
-   } 
-	elements.clear();	
+		delete (*it);
+   }
+	elements.clear();
 }

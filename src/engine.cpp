@@ -32,20 +32,26 @@ void Engine::update() {
 	Ruler ruler(this->actions, this->commandSet, this->levelState);
 	if (commandSet.size()) {
 		if (commandSet.get(MODE)) {
+
 			setMode(((ModeCommand*)commandSet.get(MODE))->getMode());
 		}
 		if (engineMode == PLAY)
 			ruler.apply();
+
 		else if (engineMode == SAVE){
+
 			levelStateSave =levelState.clone();
 			engineMode = PLAY;
 		}
 		else if (engineMode == LOADSAVE) {
+
 			levelState.copy(*levelStateSave);
+
 			levelState.getElementList().notifyObservers(-1);
+			levelState.getElementGrid().notifyObservers(-1,-1);
+			engineMode = PLAY;
 
 		}
-
 		turnGestion();
 	}
 	commandSet.clear();
