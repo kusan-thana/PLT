@@ -34,19 +34,23 @@ void Engine::update() {
 		if (commandSet.get(MODE)) {
 			setMode(((ModeCommand*)commandSet.get(MODE))->getMode());
 		}
-		if (engineMode == PLAY)
+		if (engineMode == PLAY){
 			ruler.apply();
+			turnGestion();
+		}
 		else if (engineMode == SAVE){
-			levelStateSave =levelState.clone();
+			levelStateSave =levelState.clone();	
 			engineMode = PLAY;
 		}
 		else if (engineMode == LOADSAVE) {
 			levelState.copy(*levelStateSave);
 			levelState.getElementList().notifyObservers(-1);
-
+			levelState.getElementGrid().notifyObservers(-1,-1);
 		}
-
-		turnGestion();
+		else if (engineMode == ROLLBACK) {
+			
+			engineMode = PLAY;
+		}
 	}
 	commandSet.clear();
 }

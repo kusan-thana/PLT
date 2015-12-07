@@ -13,7 +13,7 @@ namespace engine {
 		Record();
 		~Record();
 		
-		void startRecord();
-		void stopRecord();
+		void save();
+		void loadSave();
 	};
 }
