@@ -5,7 +5,7 @@
 #include "incEpoch.hpp"
 #include "mobileElement.hpp"
 #include "elementList.hpp"
-
+#include "modeCommand.hpp"
 using namespace engine;
 
 
@@ -31,7 +31,9 @@ void Engine::update() {
 	
 	Ruler ruler(this->actions, this->commandSet, this->levelState);
 	if (commandSet.size()) {
-	/*Appeler les methodes du Ruler pour verifier les commandes*/
+		if (commandSet.get(MODE)) {
+			setMode(((ModeCommand*)commandSet.get(MODE))->getMode());
+		}
 
 		ruler.apply();
 

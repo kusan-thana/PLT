@@ -200,13 +200,14 @@ bool SFMLClient::acquireControls() {
 		}
 		else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::S) {
 
-			std::cout << "Recording started\n";
 			gui.setEngineMode(engine::RECORD);
+			gui.commander(engine);
+
 		}
 		else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::R) {
 
-			std::cout << "Replay\n";
 			gui.setEngineMode(engine::REPLAY);
+			gui.commander(engine);
 		}
 		else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return) {
 			gui.setStartPlayerAI(!gui.getStartPlayerAI());

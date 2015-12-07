@@ -73,8 +73,9 @@ void GUI::commander(engine::Engine& engine) {
 		if (elementCursorNew && !((state::MobileElement*)elementCursorNew)->isPlayerCharacter()) {
 			engine::AttackCommand* attack = new engine::AttackCommand(cursor->getCharacter(), elementCursorNew);
 			engine.addCommand(attack);
+	
 		}
-		if (elementCursorNew == cursor->getCharacter() || elementCursorNew == 0){
+		if ((elementCursorNew == cursor->getCharacter() || elementCursorNew == 0 && cursor->getCharacter())){
 			engine::MoveCommand* move = new engine::MoveCommand(cursor->getX(), cursor->getY(), cursor->getCharacter());
 			cursor->setCharacter(0);
 			engine.addCommand(move);

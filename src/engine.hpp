@@ -4,7 +4,7 @@
 #include "actionList.hpp"
 
 namespace engine {
-	enum EngineMode { PLAY = 0, RECORD = 1, REPLAY = 2};
+	enum EngineMode { PLAY = 0, RECORD = 1, REPLAY = 2, ROLLBACK = 3};
 
 	class Engine {
 		
@@ -22,6 +22,5 @@ namespace engine {
 		void update();
 		void turnGestion();
 		EngineMode getMode();
-
 	};
 }
