@@ -198,15 +198,15 @@ bool SFMLClient::acquireControls() {
 			//~ if(cursor->getActive()//////////	
 			gui.commander(engine);
 		}
-		else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::S) {
+		else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::S) { //SAVE STATE
 
-			gui.setEngineMode(engine::RECORD);
+			gui.setEngineMode(engine::SAVE);
 			gui.commander(engine);
 
 		}
-		else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::R) {
+		else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::L) { //LOAD STATE
 
-			gui.setEngineMode(engine::REPLAY);
+			gui.setEngineMode(engine::LOADSAVE);
 			gui.commander(engine);
 		}
 		else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return) {

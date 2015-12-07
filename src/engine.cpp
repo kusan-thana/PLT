@@ -21,10 +21,10 @@ void Engine::addCommand(Command *cmd) {
 	commandSet.set(cmd);
 }
 void Engine::setMode(EngineMode mode) {
-	enginemode = mode;
+	engineMode = mode;
 }
 EngineMode Engine::getMode() {
-	return enginemode;
+	return engineMode;
 }
 void Engine::update() {
 	
@@ -34,8 +34,17 @@ void Engine::update() {
 		if (commandSet.get(MODE)) {
 			setMode(((ModeCommand*)commandSet.get(MODE))->getMode());
 		}
+		if (engineMode == PLAY)
+			ruler.apply();
+		else if (engineMode == SAVE){
+			levelStateSave =levelState.clone();
+			engineMode = PLAY;
+		}
+		else if (engineMode == LOADSAVE) {
+			levelState.copy(*levelStateSave);
+			levelState.getElementList().notifyObservers(-1);
 
-		ruler.apply();
+		}
 
 		turnGestion();
 	}
