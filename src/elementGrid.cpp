@@ -120,9 +120,9 @@ ElementGrid* ElementGrid::clone() const{
 void ElementGrid::copy(const ElementGrid& grid){
 	
 	this->factory = grid.factory;
-	
+
 	this->elements.clear();
-	for(int i=0; i<size(); i++){
+	for(int i=0; i<grid.size(); i++){
 		
 		this->elements.push_back(grid.elements[i]->clone());
 	}
