@@ -37,37 +37,21 @@ void Engine::update() {
 		}
 		if (engineMode == PLAY){
 			ruler.apply();
-<<<<<<< HEAD
-			turnGestion();
 		}
 		else if (engineMode == SAVE){
 			levelStateSave =levelState.clone();	
-=======
-
-		else if (engineMode == SAVE){
-
-			levelStateSave =levelState.clone();
->>>>>>> 1bb97c7fba71470ab6c1fe89c0f00f599618eb3a
 			engineMode = PLAY;
 		}
 		else if (engineMode == LOADSAVE) {
-
 			levelState.copy(*levelStateSave);
 
 			levelState.getElementList().notifyObservers(-1);
 			levelState.getElementGrid().notifyObservers(-1,-1);
-<<<<<<< HEAD
 		}
 		else if (engineMode == ROLLBACK) {
-			
 			engineMode = PLAY;
-		}
-=======
-			engineMode = PLAY;
-
 		}
 		turnGestion();
->>>>>>> 1bb97c7fba71470ab6c1fe89c0f00f599618eb3a
 	}
 	commandSet.clear();
 }
