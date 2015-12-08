@@ -1,6 +1,8 @@
 #ifndef SFMLClient_H
 #define SFMLClient_H
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+
 #include <vector>
 #include "client.hpp"
 #include "sfmlSurface.hpp"
@@ -12,9 +14,10 @@ class SFMLClient : public Client {
 
 	protected:
 		sf::RenderWindow window;
-		std::vector<render::Surface*> surfaces;
+		std::vector<Surface*> surfaces;
 		sf::Text text;
 		sf::Font font;
+		sf::Music music;
 		
 		void init();
 		virtual bool acquireControls();
