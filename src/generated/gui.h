@@ -95,11 +95,11 @@ namespace gui {
   public:
     GUIElementList (GUI& gui);
     GUI& getGui ();
-    int const size ();
-    GUIElement* const getGuiELement (int i);
-    GUIElement* const getGuiElement (int x, int y);
+    int size () const;
+    GUIElement* getGuiELement (int i) const;
+    GUIElement* getGuiElement (int x, int y) const;
     void setGuiElement (int i, GUIElement* guiElement);
-    void const notifyObservers (int i = -1);
+    void notifyObservers (int i = -1) const;
     void clear ();
   };
 
@@ -112,7 +112,7 @@ namespace gui {
     // Operations
   public:
     GUIElementGrid (GUI& gui, length int, state::Element* element);
-    bool const getActive ();
+    bool getActive () const;
     void setActive (bool active);
     void setElement (state::Element* elemnt);
     void computeRange ();
@@ -134,7 +134,7 @@ namespace gui {
     ~GUI ();
     GUIElementList& getCursorList ();
     GUIMoveRange& getMoveRange ();
-    const state::LevelState& const getLevelState ();
+    const state::LevelState& getLevelState () const;
     void setCursorList (GUIElementList& const cursor);
     void setMoveRange (GUIMoveRange& const moveRange);
     void commander (engine::Engine& engine);

@@ -4,17 +4,6 @@
 
 namespace engine {
 
-  /// class Command - 
-  class Command {
-    // Attributes
-  public:
-     ;
-    // Operations
-  public:
-    virtual ~Command ();
-    virtual CommandTypeId const getTypeId () = 0;
-  };
-
   /// class CommandTypeId - 
   class CommandTypeId {
     // Associations
@@ -24,6 +13,17 @@ namespace engine {
      Mode;
      Selection;
      Actif;
+  };
+
+  /// class Command - 
+  class Command {
+    // Attributes
+  public:
+     ;
+    // Operations
+  public:
+    virtual ~Command ();
+    virtual CommandTypeId getTypeId () const = 0;
   };
 
   /// class MoveCommand - 
@@ -37,9 +37,9 @@ namespace engine {
   public:
     MoveCommand (int x, int y, state::Element* character);
     ~MoveCommand ();
-    CommandTypeId const getTypeId ();
-    int const getPositionX ();
-    int getPositionY ();
+    CommandTypeId getTypeId () const;
+    int getPositionX () const;
+    int getPositionY () const;
     void setPosition (int x, int y);
     state::Element* getCharacter ();
   };
@@ -52,8 +52,8 @@ namespace engine {
     // Operations
   public:
     LoadCommand (const char* f);
-    CommandTypeId const getTypeId ();
-    const char* const getFileName ();
+    CommandTypeId getTypeId () const;
+    const char* getFileName () const;
   };
 
   enum EngineMode {
@@ -71,8 +71,8 @@ namespace engine {
     // Operations
   public:
     ModeCommand (EngineMode mode);
-    CommandTypeId const getTypeId ();
-    EngineMode const getMode ();
+    CommandTypeId getTypeId () const;
+    EngineMode getMode () const;
   };
 
   enum modeActivate {
@@ -89,8 +89,8 @@ namespace engine {
     // Operations
   public:
     ~CommandSet ();
-    int const size ();
-    Command* const get (int category);
+    int size () const;
+    Command* get (int category) const;
     void set (Command* cmd);
     void clear ();
   };
@@ -114,8 +114,8 @@ namespace engine {
     // Operations
   public:
     ActionList (state::LevelState& levelState);
-    int const size ();
-    Action* const get (int i);
+    int size () const;
+    Action* get (int i) const;
     void apply ();
     void add (Action* action);
   };
@@ -213,7 +213,7 @@ namespace engine {
     ~AttackCommand ();
     state::Element* getAttacker ();
     state::Element* getTarget ();
-    commandTypeId const getTypeId ();
+    commandTypeId getTypeId () const;
   };
 
   /// class AttackCharacter - 

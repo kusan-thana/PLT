@@ -17,7 +17,7 @@ namespace guiRender {
   public:
     GUILayer ();
     virtual ~GUILayer ();
-    const TileSet* const getTileSet ();
+    const TileSet* getTileSet () const;
     void setTileSet (const TileSet* tileSet);
     void setSurface (render::Surface* surface);
     void guiChanged (const gui::GUIEvent& e);

@@ -8,10 +8,10 @@ namespace render {
     // Operations
   public:
     virtual ~TileSet ();
-    virtual int const getCellWidth () = 0;
-    virtual int const getCellHeight () = 0;
-    virtual const char* const getImageFile () = 0;
-    virtual const render::Tile* const getCursorTile () = 0;
+    virtual int getCellWidth () const = 0;
+    virtual int getCellHeight () const = 0;
+    virtual const char* getImageFile () const = 0;
+    virtual const render::Tile* getCursorTile () const = 0;
   };
 
   /// class Surface - 

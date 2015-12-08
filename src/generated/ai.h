@@ -38,35 +38,37 @@ namespace ai {
     Coords (int x, int y);
     Coords (int x, int y, state::Direction direction);
     Coords (int x, int y, state::Direction direction, int value);
-    bool const operator< (const Coords&  coords);
+    bool operator< (const Coords&  coords) const;
   };
 
   /// class PathMap - 
   class PathMap {
     // Attributes
-  public:
-    state::LevelState& levelState;
+  protected:
+    const state::LevelState& levelState;
     int* weights;
     int width;
     int height;
-    std::vector<Element*> elements;
+    std::vector<state::Element*> elements;
     // Operations
   public:
     PathMap (state::LevelState& levelState);
     ~PathMap ();
     void clear ();
     void addElement (state::Element* element);
-    int const getWidth ();
-    int const getHeight ();
-    int* const getWeights ();
-    int const getMetadata (int x, int y);
-    int const getMetadata (int x, int y, state::Direction direction);
+    int getWidth () const;
+    int getHeight () const;
+    int* getWeights () const;
+    int getMetadata (int x, int y) const;
+    int getMetadata (int x, int y, state::Direction direction) const;
     void setMetadata (int x, int y, int value);
     void setMetadata (int x, int y, int value, state::Direction direction);
     void initMetadata (int defaultValue);
-    bool const isValid (int x, int y, state::Direction direction);
+    bool isValid (int x, int y) const;
+    bool isValid (int x, int y, state::Direction direction) const;
     int relax (int x, int y, state::Direction direction);
     void dijsktra ();
+    void display ();
   };
 
   /// class HeuristicAI - 
