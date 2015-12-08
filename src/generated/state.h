@@ -43,16 +43,16 @@ namespace state {
     Element ();
     /// Destructeur
     virtual ~Element ();
-    virtual bool const isStatic () = 0;
-    virtual Element* const clone () = 0;
-    virtual TypeID const getTypeID ();
-    int const getX ();
-    int const getY ();
-    Direction const getDirection ();
+    virtual bool isStatic () const = 0;
+    virtual Element* clone () const = 0;
+    virtual TypeID getTypeID () const;
+    int getX () const;
+    int getY () const;
+    Direction getDirection () const;
     void setX (int x);
     void setY (int y);
     void setDirection (Direction orientation);
-    bool const isActive ();
+    bool isActive () const;
     void setActive (bool active);
   };
 
@@ -88,20 +88,20 @@ namespace state {
   public:
     MobileElement ();
     /// Renvoi "false"
-    bool const isStatic ();
-    virtual bool const isPlayerCharacter () = 0;
-    int const getNbStep ();
-    int const getNbAction ();
-    bool const getTurnPlayed ();
+    bool isStatic () const;
+    virtual bool isPlayerCharacter () const = 0;
+    int getNbStep () const;
+    int getNbAction () const;
+    bool getTurnPlayed () const;
     void setTurnPlayed (bool turnPlayed);
     void setNbAction (int nbAction);
     void setHP (int HP);
-    int const getHP ();
-    int const getAttackPt ();
+    int getHP () const;
+    int getAttackPt () const;
     void setAttackPt (int attackPt);
-    void const getDefensePt ();
+    int  getDefensePt () const;
     void setDefensePt (int defensePt);
-    bool const getMovePlayed ();
+    bool getMovePlayed () const;
     void setMovePlayed (bool attackPlayed);
   };
 
@@ -110,8 +110,8 @@ namespace state {
     // Operations
   public:
     /// Renvoi "true"
-    bool const isStatic ();
-    virtual bool const isSpace ();
+    bool isStatic () const;
+    virtual bool isSpace () const;
   };
 
   /// class PlayerCharacter - 
@@ -123,9 +123,9 @@ namespace state {
     // Operations
   public:
     PlayerCharacter (TypeID id);
-    Element* const clone ();
-    Status const getStatus ();
-    bool const isPlayerCharacter ();
+    Element* clone () const;
+    Status getStatus () const;
+    bool isPlayerCharacter () const;
   };
 
   /// class Monster - 
@@ -133,9 +133,9 @@ namespace state {
     // Operations
   public:
     Monster (TypeID id);
-    Element* const clone ();
-    Status const getStatus ();
-    bool const isPlayerCharacter ();
+    Element* clone () const;
+    Status getStatus () const;
+    bool isPlayerCharacter () const;
   };
 
   enum ObstacleTypeID {
@@ -154,9 +154,9 @@ namespace state {
   public:
     Obstacle (ObstacleTypeID id);
     /// Renvoi false
-    bool const isSpace ();
-    Element* const clone ();
-    ObstacleTypeID const getObstableTypeID ();
+    bool isSpace () const;
+    Element* clone () const;
+    ObstacleTypeID getObstableTypeID () const;
     void setObstacleTypeID (ObstacleTypeID id);
   };
 
@@ -174,9 +174,9 @@ namespace state {
   public:
     Space (SpaceTypeID id);
     /// Renvoi "true"
-    bool const isSpace ();
-    Element* const clone ();
-    SpaceTypeID const getSpaceTypeID ();
+    bool isSpace () const;
+    Element* clone () const;
+    SpaceTypeID getSpaceTypeID () const;
     void setSpaceTypeID (SpaceTypeID id);
   };
 
@@ -197,8 +197,8 @@ namespace state {
     // Operations
   public:
     LevelStateEvent (const LevelState&  levelState, LevelStateEventID id);
-    bool const operator== (LevelStateEventID id);
-    bool const operator!= (LevelStateEventID id);
+    bool operator== (LevelStateEventID id) const;
+    bool operator!= (LevelStateEventID id) const;
   };
 
   /// class LevelStateObserver - 
@@ -229,7 +229,7 @@ namespace state {
     // Operations
   public:
     ~ElementFactory ();
-    Element* const newInstance (char id);
+    Element* newInstance (char id) const;
     void registerType (char id, AElementAlloc* a);
   };
 
@@ -245,11 +245,11 @@ namespace state {
   public:
     ElementList (LevelState& levelState);
     ~ElementList ();
-    ElementList* const clone ();
+    ElementList* clone () const;
     void copy (const ElementList& list);
-    const LevelState& const getLevelState ();
-    int const size ();
-    Element* const getElement (int i);
+    const LevelState& getLevelState () const;
+    int size () const;
+    Element* getElement (int i) const;
     state::Element* getElement (int x, int y);
     void clear ();
     void setElementFactory (ElementFactory* factory);
@@ -269,14 +269,14 @@ namespace state {
     // Operations
   public:
     ElementGrid (LevelState& levelState);
-    ElementGrid* const clone ();
+    ElementGrid* clone () const;
     void copy (const ElementGrid& grid);
-    int const getWidth ();
-    int const getHeight ();
+    int getWidth () const;
+    int getHeight () const;
     /// Renvoi l'élément de la cellule selectionnee
     /// @param i		(???) 
     /// @param j		(???) 
-    Element* const getCell (int i, int j);
+    Element* getCell (int i, int j) const;
     /// Place l'element sur la cellule selectionnee
     /// @param i		(???) 
     /// @param j		(???) 
@@ -381,16 +381,16 @@ namespace state {
     // Operations
   public:
     LevelState ();
-    LevelState* const clone ();
+    LevelState* clone () const;
     void copy (const LevelState& levelState);
-    int const getEpoch ();
-    float const getEpochRate ();
-    const ElementGrid& const getElementGrid ();
+    int getEpoch () const;
+    float getEpochRate () const;
+    const ElementGrid& getElementGrid () const;
     ElementGrid& getElementGrid ();
-    const ElementList& const getElementList ();
+    const ElementList& getElementList () const;
     ElementList& getElementList ();
     MobileElement* getMobileElem ();
-    TurnToPlay const getTurnToPlay ();
+    TurnToPlay getTurnToPlay () const;
     void setElementFactory (ElementFactory* factory);
     void setEpoch (int epoch);
     void setEpochrate (float rate);
