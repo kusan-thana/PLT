@@ -1,7 +1,18 @@
+cd src
+rm -rf generated
+mkdir -p generated
+cd ../dia
+for f in *.dia;
+do
+dia2code $f -d ../src/generated
+done
+
+cd ..
+
 rm -rf bin
 rm -rf build
 mkdir -p bin
 mkdir -p build
 cd build
-cmake .. -G"CodeBlocks - Unix Makefiles"
+cmake ..
 
