@@ -1,9 +1,11 @@
-#include "pathMap.hpp"
+#include "ai.hpp"
 #include <iostream>
 #include <queue>
 #include <cmath>
 #include "coords.hpp"
 #include "mobileElement.hpp" 
+#include "element.hpp"
+
 /**
  * PathMap Class
 **/

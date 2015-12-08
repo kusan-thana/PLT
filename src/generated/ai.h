@@ -2,6 +2,7 @@
 #define AI__H
 
 
+
 namespace ai {
 
   /// class AI - 
@@ -20,7 +21,7 @@ namespace ai {
   class DumbAI : public ai::AI {
     // Operations
   public:
-    DumbAI (state::LevelState& mainLevelState);
+    DumbAI (const state::LevelState& mainLevelState);
     void run (engine::Engine& engine);
   protected:
     void dumbMove (int idx, engine::CommandSet& command);
@@ -52,7 +53,7 @@ namespace ai {
     std::vector<state::Element*> elements;
     // Operations
   public:
-    PathMap (state::LevelState& levelState);
+    PathMap (const state::LevelState& levelState);
     ~PathMap ();
     void clear ();
     void addElement (state::Element* element);

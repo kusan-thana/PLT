@@ -1,9 +1,15 @@
-#include "dumbAi.hpp"
+#include "ai.hpp"
 #include "elementList.hpp"
 #include "mobileElement.hpp"
 #include "attackCommand.hpp"
 #include <iostream>
 #include <time.h>
+
+#include "levelState.hpp"
+#include "commandSet.hpp"
+#include "levelStateEvent.hpp"
+#include "moveCommand.hpp"
+
 /**
  * DumbAI Class
  * If character find an ennemy charac one step from him, it attacks it
