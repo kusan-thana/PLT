@@ -14,7 +14,7 @@ class SFMLClient : public Client {
 
 	protected:
 		sf::RenderWindow window;
-		std::vector<Surface*> surfaces;
+		std::vector<render::Surface*> surfaces;
 		sf::Text text;
 		sf::Font font;
 		sf::Music music;
