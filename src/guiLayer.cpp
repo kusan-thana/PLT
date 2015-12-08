@@ -25,7 +25,7 @@ void GUILayer::setTileSet(const render::TileSet* tileSet){
 	
 	this->tileSet = tileSet;
 }
-void GUILayer::setSurface(Surface* surface){
+void GUILayer::setSurface(render::Surface* surface){
 	
 	this->surface = surface;
 }

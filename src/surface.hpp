@@ -2,6 +2,8 @@
 #define Surface_H
 #include "staticTile.hpp"
 
+namespace render {
+	
 class Surface {
 	
 	public:
@@ -12,5 +14,5 @@ class Surface {
 		virtual void setSpriteTexture(int i, const render::StaticTile* staticTile) =0; 
 		Surface* getSurface();
 };
-
+}
 #endif

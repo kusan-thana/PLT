@@ -4,6 +4,8 @@
 /**
  * SFMLSurface Class
 **/
+using namespace render;
+
 SFMLSurface::SFMLSurface() : widthSprite(32), heigthSprite(32){
 }
 void SFMLSurface::clear(){
