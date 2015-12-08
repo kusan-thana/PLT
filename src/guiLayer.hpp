@@ -11,7 +11,7 @@ namespace guiRender {
 class GUILayer : public gui::GUIObserver{
 	
 	protected:
-		Surface* surface;
+		render::Surface* surface;
 		const render::TileSet* tileSet;
 		
 	public:
@@ -19,7 +19,7 @@ class GUILayer : public gui::GUIObserver{
 		virtual ~GUILayer();
 		const render::TileSet* getTileSet() const;
 		void setTileSet(const render::TileSet* tileSet);
-		void setSurface(Surface* surface);
+		void setSurface(render::Surface* surface);
 		virtual void guiChanged(const gui::GUIEvent& e);
 		void update(gui::GUIElementList& guiElementList, int i);
 };

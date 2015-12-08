@@ -31,11 +31,11 @@ using namespace client;
 
 SFMLClient::SFMLClient() : window(sf::VideoMode(1024, 512), "Fantasy World!") {
 	
-	this->surfaces.push_back(new SFMLSurface());	//GRID_LAYER
-	this->surfaces.push_back(new SFMLSurface());	//MOVE_RANGE_LAYER
-	this->surfaces.push_back(new SFMLSurface());	//CURSORS_LAYER
-	this->surfaces.push_back(new SFMLSurface());	//TILE_LIST_LAYER
-	this->surfaces.push_back(new SFMLSurface());	//CHARACTERS_LAYER
+	this->surfaces.push_back(new render::SFMLSurface());	//GRID_LAYER
+	this->surfaces.push_back(new render::SFMLSurface());	//MOVE_RANGE_LAYER
+	this->surfaces.push_back(new render::SFMLSurface());	//CURSORS_LAYER
+	this->surfaces.push_back(new render::SFMLSurface());	//TILE_LIST_LAYER
+	this->surfaces.push_back(new render::SFMLSurface());	//CHARACTERS_LAYER
 }
 void SFMLClient::init(){
 	
@@ -253,11 +253,11 @@ bool SFMLClient::acquireControls() {
 }
 void SFMLClient::updateDisplay(){
 	this->window.clear();
-	this->window.draw(*((SFMLSurface*)surfaces[render::GRID_LAYER]));
-	this->window.draw(*((SFMLSurface*)surfaces[render::MOVE_RANGE_LAYER]));
-	this->window.draw(*((SFMLSurface*)surfaces[render::CURSORS_LAYER]));
-	this->window.draw(*((SFMLSurface*)surfaces[render::TILE_LIST_LAYER]));
-	this->window.draw(*((SFMLSurface*)surfaces[render::CHARACTERS_LAYER]));
+	this->window.draw(*((render::SFMLSurface*)surfaces[render::GRID_LAYER]));
+	this->window.draw(*((render::SFMLSurface*)surfaces[render::MOVE_RANGE_LAYER]));
+	this->window.draw(*((render::SFMLSurface*)surfaces[render::CURSORS_LAYER]));
+	this->window.draw(*((render::SFMLSurface*)surfaces[render::TILE_LIST_LAYER]));
+	this->window.draw(*((render::SFMLSurface*)surfaces[render::CHARACTERS_LAYER]));
 	//~ this->window.draw(text);///////////////////////////////////////////////////////////////////////////
 	this->window.display();
 }

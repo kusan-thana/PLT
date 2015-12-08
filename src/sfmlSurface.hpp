@@ -3,6 +3,8 @@
 #include <SFML/Graphics.hpp>
 #include "surface.hpp"
 
+namespace render {
+	
 class SFMLSurface : public Surface, public sf::Drawable, public sf::Transformable {
 	
 	protected:
@@ -25,5 +27,5 @@ class SFMLSurface : public Surface, public sf::Drawable, public sf::Transformabl
 	private:
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 };
-
+}
 #endif
