@@ -4,5 +4,6 @@ bin/
 Kusan/
 *~
 ~*
+*.autosave
 res/images/psd
-~src/generated
+#src/generated
