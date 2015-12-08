@@ -28,8 +28,8 @@ EngineMode Engine::getMode() {
 }
 void Engine::update() {
 	
-	
 	Ruler ruler(this->actions, this->commandSet, this->levelState);
+	
 	if (commandSet.size()) {
 		if (commandSet.get(MODE)) {
 
@@ -37,6 +37,7 @@ void Engine::update() {
 		}
 		if (engineMode == PLAY){
 			ruler.apply();
+			turnGestion();
 		}
 		else if (engineMode == SAVE){
 			levelStateSave =levelState.clone();	
@@ -51,7 +52,6 @@ void Engine::update() {
 		else if (engineMode == ROLLBACK) {
 			engineMode = PLAY;
 		}
-		turnGestion();
 	}
 	commandSet.clear();
 }

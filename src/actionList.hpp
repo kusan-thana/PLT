@@ -18,6 +18,6 @@ namespace engine {
 			Action* get(int i) const;
 			void apply();
 			void add(Action* action);
-			
+			void ActionList::clear();
 		};
 }
