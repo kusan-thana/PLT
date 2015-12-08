@@ -19,7 +19,7 @@ namespace guiRender {
     virtual ~GUILayer ();
     const TileSet* const getTileSet ();
     void setTileSet (const TileSet* tileSet);
-    void setSurface (Surface* surface);
+    void setSurface (render::Surface* surface);
     void guiChanged (const gui::GUIEvent& e);
     void update (gui::GUIElementList& guiElementList, int i);
   };

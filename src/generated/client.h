@@ -31,7 +31,7 @@ namespace client {
     // Attributes
   protected:
     sf::RenderWindow window;
-    std::vector<Surface*> surfaces;
+    std::vector<render::Surface*> surfaces;
     // Operations
   public:
     SFMLClient ();

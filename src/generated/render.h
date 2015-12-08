@@ -137,6 +137,27 @@ namespace render {
     void setRate (float rate);
   };
 
+  /// class SFMLSurface - 
+  class SFMLSurface : public render::Surface {
+    // Attributes
+  protected:
+    sf::VertexArray vertices;
+    sf::Texture tileSet;
+    int widthSprite;
+    int heigthSprite;
+    // Operations
+  public:
+    void clear ();
+    void loadTexture (const char* tileset);
+    void setSpriteCount (int n);
+    void setSpriteLocation (int i, int x, int y);
+    void setSpriteTexture (int i, const StaticTile* staticTile);
+    void setSpriteWidth (int widthSprite, int heightSprite);
+    SFMLSurface& getSfmlSurface ();
+  private:
+    void const draw (sf::RenderTarget& target, sf::RenderStates states);
+  };
+
 };
 
 #endif
