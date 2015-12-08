@@ -2,12 +2,13 @@ cd src
 rm -rf generated
 mkdir -p generated
 cd ../dia
+
 for f in *.dia;
 do
-dia2code $f -d ../src/generated
+dia2code $f -d ../src/generated -nc
 done
 
-cd ..
+cd ..	
 
 rm -rf bin
 rm -rf build
