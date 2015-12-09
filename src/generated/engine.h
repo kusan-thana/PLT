@@ -97,7 +97,7 @@ namespace engine {
     // Operations
   public:
     virtual ~Action ();
-    apply (state::LevelState& levelState);
+    void apply (state::LevelState& levelState);
     void undo ();
   };
 
@@ -154,7 +154,7 @@ namespace engine {
     EngineMode getMode ();
     void turnGestion ();
   protected:
-    setMode (EngineMode mode);
+    void setMode (EngineMode mode);
   };
 
   /// class Ruler - 
@@ -178,11 +178,11 @@ namespace engine {
     // Attributes
   protected:
     state::Element* character;
-     x;
-     y;
+    int x;
+    int y;
     // Operations
   public:
-    void MoveCharacter (state::Element* character, int x, int y, state::LevelState& levelState);
+    MoveCharacter (state::Element* character, int x, int y, state::LevelState& levelState);
     void apply (state::LevelState& levelState);
     /// 	
     /// @param levelState		(???) 
@@ -210,7 +210,7 @@ namespace engine {
     ~AttackCommand ();
     state::Element* getAttacker ();
     state::Element* getTarget ();
-    commandTypeId getTypeId () const;
+    CommandTypeId getTypeId () const;
   };
 
   /// class AttackCharacter - 
@@ -245,7 +245,7 @@ namespace engine {
     // Attributes
   protected:
     /// 				
-    TurnToPlay lastTurnToPlay;
+    state::TurnToPlay lastTurnToPlay;
     // Operations
   public:
     EndTeamTurn ();
