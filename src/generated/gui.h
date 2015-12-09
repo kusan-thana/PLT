@@ -139,6 +139,7 @@ namespace gui {
     void setEngineMode (engine::EngineMode engineMode);
     void setStartPlayerAI (bool startPlayerAI);
     bool getStartPlayerAI ();
+    void init ();
   };
 
   /// class GUITile - 
@@ -146,7 +147,7 @@ namespace gui {
     // Operations
   public:
     GUITile (int x, int y, GUITypeId guiTypeId);
-    GUITypeId getGuiTypeId ();
+    virtual GUITypeId getGuiTypeId () const;
   };
 
 };
