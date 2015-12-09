@@ -120,14 +120,13 @@ namespace gui {
   class GUI : public gui::GUIObservable {
     // Associations
     // Attributes
-  public:
-    engine::EngineMode engineMode;
   protected:
     state::LevelState& levelState;
     GUIElementList cursorList;
     GUIMoveRange moveRange;
     engine::Engine& engine;
     bool startPlayerAI;
+    engine::EngineMode engineMode;
     // Operations
   public:
     GUI (state::LevelState& levelState, engine::Engine& );
@@ -136,12 +135,10 @@ namespace gui {
     GUIMoveRange& getMoveRange ();
     state::LevelState& getLevelState ();
     void setCursorList (const GUIElementList& cursor);
-    void setMoveRange (GUIMoveRange& const moveRange);
     void commander (engine::Engine& engine);
     void setEngineMode (engine::EngineMode engineMode);
     void setStartPlayerAI (bool startPlayerAI);
     bool getStartPlayerAI ();
-    void init ();
   };
 
   /// class GUITile - 
