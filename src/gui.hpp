@@ -17,6 +17,6 @@ namespace gui {
 	class GUIObserver;
 }
 
-#include "generated\gui.h"
+#include "generated/gui.h"
 
 #endif
