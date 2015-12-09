@@ -26,7 +26,6 @@ EngineMode Engine::getMode() {
 void Engine::update() {
 	
 	Ruler ruler(this->actions, this->commandSet, this->levelState);
-	std::cout << std::endl << engineMode << std::endl;
 	if (commandSet.size()) {
 		if (commandSet.get(MODE)) {
 

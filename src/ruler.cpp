@@ -8,7 +8,6 @@
 using namespace engine;
 using namespace std;
 
-/* Suppresion des commandes manuellement à la fin - fonctionnement voulu ? */
 
 Ruler::Ruler(ActionList& actions, CommandSet& commandSet, state::LevelState& levelState) : commands(commandSet), curr_LevelState(levelState), actions(actions)
 {
@@ -46,7 +45,6 @@ void Ruler::apply(){
 		MoveCommand* cmd = (MoveCommand*)commands.get(MOVE);
 		state::Element* perso = cmd->getCharacter();
 		if (curr_LevelState.getElementList().getElement(cmd->getPositionX(), cmd->getPositionY()) == cmd->getCharacter()) {
-			//std::cout << "BENOIT C'EST LE MEILLEUR" << std::endl;
 			EndTurnAction* endTurncharac = new EndTurnAction(perso);
 			actions.add(endTurncharac);
 			actions.add(new IncEpoch());
@@ -68,7 +66,6 @@ void Ruler::apply(){
 		curr_LevelState.getElementGrid().notifyObservers(-1, -1);
 	}
 
-	//std::cout << std::endl;
 	
 	actions.apply();
 

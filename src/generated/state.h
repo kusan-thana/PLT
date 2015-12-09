@@ -63,9 +63,9 @@ namespace state {
   /// class MobileElement - 
   class MobileElement : public state::Element {
     // Associations
-    state::Status status;
     // Attributes
   protected:
+    Status status;
     int speed;
     /// Health Point : Nombre de point de vie
     int HP;
@@ -148,7 +148,9 @@ namespace state {
   /// class Obstacle - 
   class Obstacle : public state::StaticElement {
     // Associations
-    state::ObstacleTypeID IDObstacle;
+    // Attributes
+  protected:
+    ObstacleTypeID IDObstacle;
     // Operations
   public:
     Obstacle (ObstacleTypeID id);
@@ -168,7 +170,9 @@ namespace state {
   /// class Space - 
   class Space : public state::StaticElement {
     // Associations
-    state::SpaceTypeID IDSpace;
+    // Attributes
+  protected:
+    SpaceTypeID IDSpace;
     // Operations
   public:
     Space (SpaceTypeID id);
@@ -189,10 +193,11 @@ namespace state {
   /// class LevelStateEvent - 
   class LevelStateEvent {
     // Associations
-    state::LevelStateEventID id;
     // Attributes
   public:
     const LevelState& levelState;
+  protected:
+    LevelStateEventID id;
     // Operations
   public:
     LevelStateEvent (const LevelState&  levelState, LevelStateEventID id);

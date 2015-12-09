@@ -5,9 +5,8 @@
 namespace gui {
 
   enum GUITypeId {
-    CURSOR,
-    MOVE_RANGE,
-    ACTIVE_TILE     = 3
+    CURSOR     = 1,
+    MOVE_RANGE     = 2
   };
 
   /// class GUIElement - 
@@ -21,12 +20,13 @@ namespace gui {
     // Operations
   public:
     GUIElement ();
-    int getX ();
-    int getY ();
-    bool getActive ();
-    virtual GUITypeId getGuiTypeId () = 0;
-    virtual void setX ();
-    virtual void setY ();
+    virtual ~GUIElement ();
+    int getX () const;
+    int getY () const;
+    bool getActive () const;
+    virtual GUITypeId getGuiTypeId () const = 0;
+    virtual void setX (int x);
+    virtual void setY (int y);
     virtual void setActive (bool active);
   };
 
@@ -41,10 +41,10 @@ namespace gui {
     Cursor (state::LevelState& levelState);
     ~Cursor ();
     state::Element*  getcharacter ();
-    GUITypeId getGuiTypeId ();
-    void setX (int x);
-    setY (int y);
-    void setActive (bool active);
+    GUITypeId getGuiTypeId () const;
+    virtual void setX (int x);
+    virtual setY (int y);
+    virtual void setActive (bool active);
     void setcharacter (state::Element* character);
   };
 
@@ -53,7 +53,7 @@ namespace gui {
     // Attributes
   public:
     GUI& gui;
-    const GUIElementList& guiElementList;
+    GUIElementList& guiElementList;
     int idx;
     state::LevelState& levelState;
     // Operations
@@ -66,6 +66,7 @@ namespace gui {
   class GUIObserver {
     // Operations
   public:
+    ~GuiObserver ();
     virtual void guiChanged (const GUIEvent& e) = 0;
   };
 
@@ -81,7 +82,7 @@ namespace gui {
     ~GUIObservable ();
     void registerObserver (GUIObserver* o);
     void unregisterObserver (GUIObserver* o);
-    void notifyObserver (const GUIEvent& e);
+    void notifyObserver (const GUIEvent& o);
   };
 
   /// class GUIElementList - 
@@ -107,13 +108,10 @@ namespace gui {
   class GUIMoveRange : public gui::GUIElementList {
     // Attributes
   protected:
-    bool active;
     state::Element* element;
     // Operations
   public:
-    GUIElementGrid (GUI& gui, length int, state::Element* element);
-    bool getActive () const;
-    void setActive (bool active);
+    GUIMoveRange (GUI& gui);
     void setElement (state::Element* elemnt);
     void computeRange ();
   };
@@ -122,25 +120,28 @@ namespace gui {
   class GUI : public gui::GUIObservable {
     // Associations
     // Attributes
+  public:
+    engine::EngineMode engineMode;
   protected:
     state::LevelState& levelState;
-    GUIElementList cursor;
+    GUIElementList cursorList;
     GUIMoveRange moveRange;
     engine::Engine& engine;
     bool startPlayerAI;
     // Operations
   public:
-    GUI (state::LevelState& levelState);
+    GUI (state::LevelState& levelState, engine::Engine& );
     ~GUI ();
     GUIElementList& getCursorList ();
     GUIMoveRange& getMoveRange ();
-    const state::LevelState& getLevelState () const;
+    state::LevelState& getLevelState ();
     void setCursorList (GUIElementList& const cursor);
     void setMoveRange (GUIMoveRange& const moveRange);
     void commander (engine::Engine& engine);
     void setEngineMode (engine::EngineMode engineMode);
     void setStartPlayerAI (bool startPlayerAI);
     bool getStartPlayerAI ();
+    void init ();
   };
 
   /// class GUITile - 
