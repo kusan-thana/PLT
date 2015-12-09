@@ -1,10 +1,13 @@
-#include "tileSet3.hpp"
+#include "gui.hpp"
+#include "guiLayer.hpp"
 #include <iostream>
 
 #include "staticTile.hpp"
 #include "obstacle.hpp"
 #include "space.hpp"
 #include "mobileElement.hpp"
+#include "gui.hpp"
+#include "tileSet3.hpp"
 /**
  * TileSet3 Class
 **/
@@ -57,9 +60,10 @@ const render::Tile* TileSet3::getElementTile(const state::Element* element) cons
 		if(((state::MobileElement*)element)->getHP()>=50)
 			return tiles[TileID::RED];
 		
-		if(((state::MobileElement*)element)->getHP()<50)
+		else if(((state::MobileElement*)element)->getHP()<50)
 			return tiles[TileID::RED];
 	}
+	return 0;
 }
 const render::Tile* TileSet3::getElementTile(gui::Cursor& cursor) const{
 	

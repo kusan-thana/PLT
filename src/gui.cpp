@@ -1,9 +1,7 @@
 #include "gui.hpp"	
 #include "engine.hpp"
-#include "cursor.hpp"
-#include "guiTile.hpp"
+#include "gui.hpp"
 #include "mobileElement.hpp"
-#include "guiTile.hpp"
 #include <iostream>
 
 using namespace gui;
@@ -40,6 +38,7 @@ state::LevelState& GUI::getLevelState(){
 
 	return this->levelState;
 }
+
 void GUI::setCursorList(const GUIElementList& cursor)
 {
 	//~ this->cursor = cursor;

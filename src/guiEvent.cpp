@@ -1,4 +1,4 @@
-#include "guiEvent.hpp"
+#include "gui.hpp"
 
 using namespace gui;
 

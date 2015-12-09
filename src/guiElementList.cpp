@@ -1,7 +1,6 @@
-#include "guiElementList.hpp"
+#include "gui.hpp"
 #include "gui.hpp"
 #include "levelState.hpp"
-#include "guiEvent.hpp"
 #include "elementList.hpp"
 #include "mobileElement.hpp"
 #include <iostream>
@@ -21,6 +20,7 @@ int GUIElementList::size() const{
 
 	return guiElements.size();
 }
+
 GUIElement* GUIElementList::getGuiElement(int i) const{
 
 	return guiElements[i];
@@ -39,7 +39,7 @@ void GUIElementList::setGuiElement(int i, GUIElement* guiElement){
 	std::vector<GUIElement*>::iterator it = guiElements.begin();
 	guiElements.insert (it+i,guiElement);
 }
-void GUIElementList::notifyObservers(int i) {
+void GUIElementList::notifyObservers(int i){
 	
 	GUIEvent guiEvent(*this,i);
 	GUIObservable::notifyObservers(guiEvent);

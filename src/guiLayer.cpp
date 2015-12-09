@@ -1,10 +1,8 @@
 #include "guiLayer.hpp"
 #include <iostream>
 #include "staticTile.hpp"
-#include "cursor.hpp"
-#include "guiMoveRange.hpp"
 #include "mobileElement.hpp"
-#include "guiElement.hpp"
+#include "gui.hpp"
 #include "elementGrid.hpp"
 #include <cmath>
 /**

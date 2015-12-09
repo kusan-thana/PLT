@@ -1,4 +1,4 @@
-#include "guiTile.hpp"
+#include "gui.hpp"
 #include <iostream>
 /**
  * GUITile Class

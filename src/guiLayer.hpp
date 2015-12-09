@@ -1,10 +1,8 @@
 #ifndef GUILayer_H
 #define GUILayer_H
-#include "guiObserver.hpp"
 #include "surface.hpp"
 #include "tileSet.hpp"
-#include "guiEvent.hpp"
-#include "guiElementList.hpp"
+#include "gui.hpp"
 
 namespace guiRender {
 	

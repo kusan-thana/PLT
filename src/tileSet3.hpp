@@ -5,7 +5,7 @@
 #include "tileSet.hpp"
 #include "tile.hpp"
 #include "staticTile.hpp"
-#include "cursor.hpp"
+#include "gui.hpp"
 
 namespace guiRender {
 	

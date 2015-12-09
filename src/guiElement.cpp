@@ -1,4 +1,4 @@
-#include "guiElement.hpp"
+#include "gui.hpp"
 
 /**
  * GUIElement Class

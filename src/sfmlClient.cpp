@@ -18,11 +18,9 @@
 #include "element.hpp"
 #include "levelListEvent.hpp"
 #include "monster.hpp"
-#include "cursor.hpp"
 #include "guiLayer.hpp"
 #include "ai.hpp"
-#include "guiMoveRange.hpp"
-#include "guiTile.hpp"
+#include "gui.hpp"
 
 /**
  * Client SFMLClass

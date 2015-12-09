@@ -1,5 +1,4 @@
-#include "guiObservable.hpp"
-#include "guiEvent.hpp"
+#include "gui.hpp"
 
 using namespace gui;
 

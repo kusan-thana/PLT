@@ -1,6 +1,4 @@
-#include "cursor.hpp"
 #include "gui.hpp"
-#include "guiEvent.hpp"
 #include "mobileElement.hpp"
 
 using namespace gui;
