@@ -82,7 +82,7 @@ namespace gui {
     ~GUIObservable ();
     void registerObserver (GUIObserver* o);
     void unregisterObserver (GUIObserver* o);
-    void notifyObserver (const GUIEvent& o);
+    void notifyObservers (const GUIEvent& e);
   };
 
   /// class GUIElementList - 
@@ -100,7 +100,7 @@ namespace gui {
     GUIElement* getGuiElement (int i) const;
     GUIElement* getGuiElement (int x, int y) const;
     void setGuiElement (int i, GUIElement* guiElement);
-    void notifyObservers (int i = -1) const;
+    void notifyObservers (int i);
     void clear ();
   };
 
