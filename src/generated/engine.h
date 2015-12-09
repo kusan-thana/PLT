@@ -126,9 +126,8 @@ namespace engine {
     // Associations
     // Attributes
   public:
+    EngineMode engineMode;
   protected:
-	EngineMode engineMode;
-
     state::LevelState& levelState;
     CommandSet commandSet;
     ActionList actions;
