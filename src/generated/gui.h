@@ -91,7 +91,7 @@ namespace gui {
     // Attributes
   protected:
     GUI& gui;
-    std::vector<GUIELement*> guiElements;
+    std::vector<GUIElement*> guiElements;
     // Operations
   public:
     GUIElementList (GUI& gui);

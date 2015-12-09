@@ -222,14 +222,14 @@ namespace state {
   public:
     virtual ~Observable ();
     void registerObserver (LevelStateObserver* o);
-    void notifyObservers (const LevelStateEvent& e e);
+    void notifyObservers (const LevelStateEvent& e);
   };
 
   /// class ElementFactory - 
   class ElementFactory {
     // Attributes
   protected:
-    std::map<char,AElementAlloc*> list;
+    std::unordered_map<char,AElementAlloc*> list;
     // Operations
   public:
     ~ElementFactory ();
@@ -305,7 +305,7 @@ namespace state {
   protected:
     int x;
     int y;
-     IDWorldElement;
+    WorldTypeID IDWorldElement;
     bool active;
     // Operations
   public:
@@ -325,9 +325,9 @@ namespace state {
     // Operations
   public:
     ElementListWorld (WorldState& worldState);
-    WorldState& const getWorldState ();
+    WorldState& getWorldState () const;
     int const size ();
-    ElementWorld* const getElement (int i);
+    ElementWorld* getElement (int i) const;
     void clear ();
     void setElement (int i, ElementWorld* element);
   };
@@ -337,13 +337,13 @@ namespace state {
     // Associations
     // Attributes
   protected:
-    WorldElementList worldElementList;
+    ElementWorldList elementListWorld;
     int epoch;
     float epochRate;
-     nbLockedLevelLeft;
+    int nbLockedLevelLeft;
     // Operations
   public:
-    worldState ();
+    WorldState ();
     int const getEpoch ();
     float const getEpochRate ();
     void setEpoch (int time);
@@ -365,7 +365,7 @@ namespace state {
     StateType currentState;
     // Operations
   public:
-    ~State State ();
+    ~State ();
   };
 
   /// class LevelState - 
@@ -407,11 +407,11 @@ namespace state {
     // Operations
   public:
     virtual ~AElementAlloc ();
-    virtual Element* newInstance ();
+    virtual Element* newInstance () = 0;
   };
 
   /// class ElementAlloc - 
-  template <  classe E,   typename ID>
+  template <  class E,   typename ID>
   class ElementAlloc : public state::AElementAlloc {
     // Attributes
   protected:
@@ -420,11 +420,6 @@ namespace state {
   public:
     ElementAlloc (ID id);
     Element* newInstance ();
-  };
-
-  enum LevelType {
-    NORMAL     = 1,
-    BOSS     = 2
   };
 
   enum DifficultyLevel {
@@ -438,7 +433,6 @@ namespace state {
     // Associations
     // Attributes
   protected:
-    LevelType levelType;
     DifficultyLevel difficultyLevel;
     bool locked;
     // Operations
