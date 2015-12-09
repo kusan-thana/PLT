@@ -10,7 +10,7 @@ namespace render {
     // Operations
   public:
     virtual ~Tile ();
-    virtual bool isAnimated () const;
+    virtual bool isAnimated () const = 0;
   };
 
   /// class TileSet - Stocke un ensemble de tuiles et animations possibles pour plan donnée
@@ -22,7 +22,7 @@ namespace render {
     virtual int getCellWidth () const = 0;
     virtual int getCellWidth () const = 0;
     virtual const char* getImageFile () const = 0;
-    virtual const Tile* getElementTile (const Element* element) = 0;
+    virtual const Tile* getElementTile (const Element* element) const = 0;
   };
 
   /// class Animation - 
@@ -50,10 +50,11 @@ namespace render {
     virtual void setSpriteCount (int n) = 0;
     virtual void setSpriteLocation (int i, int x, int y) = 0;
     virtual void setSpriteTexture (int i, const StaticTile* staticTile) = 0;
+    Surface* getSurface ();
   };
 
   /// class Layer - 
-  class Layer {
+  class Layer : public state::LevelStateObserver {
     // Associations
     // Attributes
   protected:
@@ -67,13 +68,15 @@ namespace render {
     const TileSet* getTileSet () const;
     void setTileSet (const TileSet* tileSet);
     void setSurface (Surface* surface);
+    Surface* getSurface () const;
   };
 
   enum SceneLayer {
-    GRID_LAYER,
-    CURSORS_LAYER,
-    CHARACTERS_LAYER,
-    STATE_LAYER
+    GRID_LAYER     = 0,
+    MOVE_RANGE     = 1,
+    CURSORS_LAYER     = 2,
+    TILE_LIST_LAYER     = 3,
+    CHARACTERS_LAYER     = 4
   };
 
   /// class ElementListLayer - 
@@ -81,6 +84,8 @@ namespace render {
     // Operations
   public:
     void levelStateChanged (const state::LevelStateEvent& e);
+  protected:
+    void update (const state::ElementList& elementList, int i);
   };
 
   /// class Scene - 
@@ -96,7 +101,7 @@ namespace render {
     Scene ();
     ~Scene ();
     void setLayer (int idx, Layer* layer);
-    void levelStateChanged (const state::LevelStateChanged& e);
+    void levelStateChanged (const state::LevelStateEvent& e);
   };
 
   /// class StaticTile - 
@@ -109,7 +114,7 @@ namespace render {
     int height;
     // Operations
   public:
-    StaticTile (int x, int y, int width, int heigth);
+    StaticTile (int x, int y, int width, int height);
     bool isAnimated () const;
     int getX () const;
     int getY () const;

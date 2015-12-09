@@ -68,6 +68,7 @@ namespace engine {
     EngineMode mode;
     // Operations
   public:
+    ~ModeCommand ();
     ModeCommand (EngineMode mode);
     CommandTypeId getTypeId () const;
     EngineMode getMode () const;
