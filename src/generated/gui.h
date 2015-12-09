@@ -40,12 +40,12 @@ namespace gui {
   public:
     Cursor (state::LevelState& levelState);
     ~Cursor ();
-    state::Element*  getcharacter ();
+    state::Element*  getCharacter ();
     GUITypeId getGuiTypeId () const;
     virtual void setX (int x);
-    virtual setY (int y);
+    virtual void setY (int y);
     virtual void setActive (bool active);
-    void setcharacter (state::Element* character);
+    void setCharacter (state::Element* character);
   };
 
   /// class GUIEvent - 
