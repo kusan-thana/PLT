@@ -337,7 +337,7 @@ namespace state {
     // Associations
     // Attributes
   protected:
-    ElementWorldList elementListWorld;
+    ElementListWorld elementListWorld;
     int epoch;
     float epochRate;
     int nbLockedLevelLeft;
