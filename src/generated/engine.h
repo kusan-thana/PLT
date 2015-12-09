@@ -5,10 +5,10 @@
 namespace engine {
 
   enum CommandTypeId {
-    Main,
-    Mode,
-    Selection,
-    Actif
+    MAIN     = 1,
+    MODE     = 2,
+    MOVE     = 3,
+    ATTACK     = 4
   };
 
   /// class Command - 
@@ -54,8 +54,9 @@ namespace engine {
 
   enum EngineMode {
     PLAY,
-    RECORD,
-    REPLAY
+    SAVE,
+    LOADSAVE,
+    ROLLBACK
   };
 
   /// class ModeCommand - 
