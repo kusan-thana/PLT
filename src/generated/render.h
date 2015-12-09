@@ -50,7 +50,6 @@ namespace render {
     virtual void setSpriteCount (int n) = 0;
     virtual void setSpriteLocation (int i, int x, int y) = 0;
     virtual void setSpriteTexture (int i, const StaticTile* staticTile) = 0;
-    Surface* getSurface ();
   };
 
   /// class Layer - 
@@ -138,7 +137,7 @@ namespace render {
     bool isAnimated () const;
     float getRate () const;
     const Tile* getTile (int i) const;
-    void addTile (Tile* tle);
+    void addTile (Tile* tile);
     void setRate (float rate);
   };
 
@@ -147,7 +146,7 @@ namespace render {
     // Attributes
   protected:
     sf::VertexArray vertices;
-    sf::Texture tileSet;
+    sf::Texture tileset;
     int widthSprite;
     int heigthSprite;
     // Operations
@@ -161,6 +160,49 @@ namespace render {
     SFMLSurface& getSfmlSurface ();
   private:
     void draw (sf::RenderTarget& target, sf::RenderStates states) const;
+  };
+
+  enum TileID {
+    TREE     = 0,
+    WATER     = 1,
+    GRASS     = 2,
+    FIR     = 3
+  };
+
+  /// class TileSet1 - 
+  class TileSet1 : public render::TileSet {
+    // Associations
+    // Attributes
+  protected:
+    std::vector<Tile*> tiles;
+    const char* file_name;
+    int widthCell;
+    int heigthCell;
+    // Operations
+  public:
+    TileSet1 ();
+    int getCellWidth () const;
+    int getCellHeight () const;
+    const char* getImageFile () const;
+    const Tile* getElementTile (const state::Element* element) const;
+  };
+
+  /// class TileSet2 - 
+  class TileSet2 : public render::TileSet {
+    // Associations
+    // Attributes
+  protected:
+    tiles std::vector<Tile*>;
+    const char* file_name;
+    int widthCell;
+    int heightCell;
+    // Operations
+  public:
+    TileSet2 ();
+    int getCellWidth () const;
+    int getCellHeight () const;
+    const char* getImageFile () const;
+    const Tile* getElementTile (const state::Element* element) const;
   };
 
 };
