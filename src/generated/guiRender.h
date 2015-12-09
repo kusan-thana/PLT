@@ -1,13 +1,13 @@
 #ifndef GUIRENDER__H
 #define GUIRENDER__H
 
-#include "gui_state.h"
+#include "gui.h"
 #include "render.h"
 
 namespace guiRender {
 
   /// class GUILayer - 
-  class GUILayer : public gui_state::GUIObserver {
+  class GUILayer : public gui::GUIObserver {
     // Associations
     // Attributes
   protected:
