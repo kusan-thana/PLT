@@ -26,17 +26,16 @@ namespace state {
   /// class Element - 
   class Element {
     // Associations
-    state::TypeID IDElement;
     // Attributes
-  public:
-    int x_origin;
-    int y_origin;
   protected:
     int x;
     int y;
+    TypeID IDElement;
     Direction orientation;
     /// "True" quand l'element est survole
     bool active;
+    int x_origin;
+    int y_origin;
     // Operations
   public:
     /// Constructeur
