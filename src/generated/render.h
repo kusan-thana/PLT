@@ -162,7 +162,7 @@ namespace render {
     void draw (sf::RenderTarget& target, sf::RenderStates states) const;
   };
 
-  enum TileID {
+  enum TileID1 {
     TREE     = 0,
     WATER     = 1,
     GRASS     = 2,
@@ -185,6 +185,15 @@ namespace render {
     int getCellHeight () const;
     const char* getImageFile () const;
     const Tile* getElementTile (const state::Element* element) const;
+  };
+
+  enum TileID2 {
+    HERO     = 0,
+    WIZARD     = 1,
+    MINION     = 2,
+    INACTIVE_HERO     = 3,
+    INACTIVE_WIZARD     = 4,
+    INACTIVE_MINION     = 5
   };
 
   /// class TileSet2 - 
