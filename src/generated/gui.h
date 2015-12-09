@@ -66,7 +66,7 @@ namespace gui {
   class GUIObserver {
     // Operations
   public:
-    ~GuiObserver ();
+    virtual ~GUIObserver ();
     virtual void guiChanged (const GUIEvent& e) = 0;
   };
 
@@ -75,7 +75,7 @@ namespace gui {
     // Associations
     // Attributes
   protected:
-    std::vector<GUIObservers* o> observers;
+    std::vector<GUIObservers> observers;
     // Operations
   public:
     GUIObservable ();
@@ -97,7 +97,7 @@ namespace gui {
     GUIElementList (GUI& gui);
     GUI& getGui ();
     int size () const;
-    GUIElement* getGuiELement (int i) const;
+    GUIElement* getGuiElement (int i) const;
     GUIElement* getGuiElement (int x, int y) const;
     void setGuiElement (int i, GUIElement* guiElement);
     void notifyObservers (int i = -1) const;
@@ -135,7 +135,7 @@ namespace gui {
     GUIElementList& getCursorList ();
     GUIMoveRange& getMoveRange ();
     state::LevelState& getLevelState ();
-    void setCursorList (GUIElementList& const cursor);
+    void setCursorList (const GUIElementList& cursor);
     void setMoveRange (GUIMoveRange& const moveRange);
     void commander (engine::Engine& engine);
     void setEngineMode (engine::EngineMode engineMode);
@@ -148,7 +148,7 @@ namespace gui {
   class GUITile : public gui::GUIElement {
     // Operations
   public:
-    Tile (int x, int y, GUITypeId guiTypeId);
+    GUITile (int x, int y, GUITypeId guiTypeId);
     GUITypeId getGuiTypeId ();
   };
 
