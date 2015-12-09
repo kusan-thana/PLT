@@ -33,7 +33,7 @@ namespace engine {
   public:
     MoveCommand (int x, int y, state::Element* character);
     ~MoveCommand ();
-    CommandTypeId getTypeId () const;
+    virtual CommandTypeId getTypeId () const;
     int getPositionX () const;
     int getPositionY () const;
     void setPosition (int x, int y);
@@ -50,6 +50,7 @@ namespace engine {
     LoadCommand (const char* f);
     CommandTypeId getTypeId () const;
     const char* getFileName () const;
+    ~LoadCommand ();
   };
 
   enum EngineMode {
@@ -85,6 +86,7 @@ namespace engine {
     std::unordered_map<int, Command*> commandList;
     // Operations
   public:
+    CommandSet ();
     ~CommandSet ();
     int size () const;
     Command* get (int category) const;
@@ -115,6 +117,7 @@ namespace engine {
     Action* get (int i) const;
     void apply ();
     void add (Action* action);
+    void clear ();
   };
 
   /// class Record - 
@@ -139,17 +142,16 @@ namespace engine {
     engine::EngineMode mode;
     engine::Record record;
     // Attributes
-  public:
+  protected:
+    state::LevelState& levelState;
+    CommandSet commandSet;
     EngineMode engineMode;
     ActionList actions;
-  protected:
-    state::LevelState levelState;
-    CommandSet commandSet;
     // Operations
   public:
-    Engine ();
+    Engine (state::LevelState& levelState);
     ~Engine ();
-    void addCommand (engine::Command cmd);
+    void addCommand (engine::Command* cmd);
     void update ();
     EngineMode getMode ();
     void turnGestion ();
@@ -161,14 +163,13 @@ namespace engine {
   class Ruler {
     // Associations
     // Attributes
-  public:
-    ActionList& actions;
   protected:
     const CommandSet& commands;
     const state::LevelState& curr_LevelState;
+    ActionList& actions;
     // Operations
   public:
-    Ruler (CommandSet& , state::LevelState& );
+    Ruler (ActionList& actions, CommandSet& , state::LevelState& );
     ~Ruler ();
     void apply ();
   };
@@ -180,13 +181,11 @@ namespace engine {
     state::Element* character;
     int x;
     int y;
+    state::LevelState& levelState;
     // Operations
   public:
     MoveCharacter (state::Element* character, int x, int y, state::LevelState& levelState);
-    void apply (state::LevelState& levelState);
-    /// 	
-    /// @param levelState		(???) 
-    void undo (state::LevelState& levelState);
+    void apply (state::LevelState& );
   };
 
   /// class IncEpoch - 
@@ -202,15 +201,15 @@ namespace engine {
   class AttackCommand : public engine::Command {
     // Attributes
   public:
-    state::MobileElement* attacker;
-    state::MobileElement* target;
+    state::Element* attacker;
+    state::Element* target;
     // Operations
   public:
     AttackCommand (state::Element* attacker, state::Element* target);
     ~AttackCommand ();
     state::Element* getAttacker ();
     state::Element* getTarget ();
-    CommandTypeId getTypeId () const;
+    virtual CommandTypeId getTypeId () const;
   };
 
   /// class AttackCharacter - 
@@ -221,7 +220,7 @@ namespace engine {
     state::MobileElement* target;
     // Operations
   public:
-    AttackCharacter (state::MobileElement* attacker, state::MobileElement* target, state::LevelState& levelState);
+    AttackCharacter (state::MobileElement* attacker, state::MobileElement* target);
     ~AttackCharacter ();
     void apply (state::LevelState& levelState);
     void undo (state::LevelState& levelState);
@@ -241,7 +240,7 @@ namespace engine {
   };
 
   /// class EndTeamTurn - 
-  class EndTeamTurn {
+  class EndTeamTurn : public engine::Action {
     // Attributes
   protected:
     /// 				
