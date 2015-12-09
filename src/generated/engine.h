@@ -100,8 +100,8 @@ namespace engine {
     // Operations
   public:
     virtual ~Action ();
-    void apply (state::LevelState& levelState);
-    void undo ();
+    virtual void apply (state::LevelState& levelState) = 0;
+    virtual void undo ();
   };
 
   /// class ActionList - 
