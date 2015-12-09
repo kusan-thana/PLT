@@ -1,11 +1,8 @@
 #include "engine.hpp"
-#include "ruler.hpp"
 #include <iostream>
-#include "actionList.hpp"
-#include "incEpoch.hpp"
 #include "mobileElement.hpp"
 #include "elementList.hpp"
-#include "modeCommand.hpp"
+#include "engine.hpp"
 using namespace engine;
 
 
@@ -29,13 +26,15 @@ EngineMode Engine::getMode() {
 void Engine::update() {
 	
 	Ruler ruler(this->actions, this->commandSet, this->levelState);
-	
+
 	if (commandSet.size()) {
 		if (commandSet.get(MODE)) {
 
 			setMode(((ModeCommand*)commandSet.get(MODE))->getMode());
 		}
 		if (engineMode == PLAY){
+			std::cout << "TEST" << std::endl;
+
 			ruler.apply();
 			turnGestion();
 		}

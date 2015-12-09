@@ -1,5 +1,5 @@
-#include "moveCharacter.hpp"
 #include "mobileElement.hpp"
+#include "engine.hpp"
 
 #include <iostream>
 #include <vector>
@@ -22,4 +22,6 @@ void MoveCharacter::apply(state::LevelState& levelState) {
 	
 }
 
+void MoveCharacter::undo(state::LevelState& levelState) {
 
+}

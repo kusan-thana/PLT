@@ -1,13 +1,7 @@
 #include "ai.hpp"
 #include "elementList.hpp"
 #include "mobileElement.hpp"
-#include "attackCommand.hpp"
 #include <iostream>
-
-#include "dumbAi.hpp"
-#include "pathMap.hpp"
-#include "commandSet.hpp"
-#include "moveCommand.hpp"
 
 
 /**

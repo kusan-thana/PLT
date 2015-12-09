@@ -1,4 +1,4 @@
-#include "endTurnAction.hpp"
+#include "engine.hpp"
 #include "mobileElement.hpp"
 
 using namespace engine;
@@ -17,3 +17,5 @@ void EndTurnAction::apply(state::LevelState& levelState) {
 	levelState.getElementList().notifyObservers(levelState.getElementList().getIdxElement(character));
 }
 
+void EndTurnAction::undo(state::LevelState& levelState) {
+}

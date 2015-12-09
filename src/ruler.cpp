@@ -1,16 +1,9 @@
-#include "ruler.hpp"
 
 #include <iostream>
 #include <unordered_map>
-#include "command.hpp"
-#include "moveCommand.hpp"
-#include "moveCharacter.hpp"
-#include "loadCommand.hpp"
 #include "mobileElement.hpp"
-#include "attackCommand.hpp"
-#include "attackCharacter.hpp"
-#include "incEpoch.hpp"
-#include "endTurnAction.hpp"
+#include "engine.hpp"
+
 
 using namespace engine;
 using namespace std;

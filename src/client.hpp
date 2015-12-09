@@ -4,8 +4,7 @@
 #include "scene.hpp"
 #include "engine.hpp"
 #include "gui.hpp"
-#include "dumbAi.hpp"
-#include "heuristicAi.hpp"
+#include "ai.hpp"
 
 namespace client {
 

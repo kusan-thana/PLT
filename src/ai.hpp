@@ -2,7 +2,6 @@
 #define AI_H
 
 #include "levelState.hpp"
-#include "commandSet.hpp"
 #include "engine.hpp"
 
 namespace ai {

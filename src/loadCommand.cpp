@@ -1,9 +1,9 @@
-#include "loadCommand.hpp"
+#include "engine.hpp"
 
 using namespace engine;
 
 
-LoadCommand::LoadCommand(const char* f):fileName(f)
+LoadCommand::LoadCommand(const char* f):file_name(f)
 {
 }
 
@@ -18,5 +18,5 @@ CommandTypeId LoadCommand::getTypeId() const{
 
 const char * engine::LoadCommand::getFileName() const
 {
-	return fileName.data();
+	return file_name.data();
 }	

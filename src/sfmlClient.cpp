@@ -20,7 +20,7 @@
 #include "monster.hpp"
 #include "cursor.hpp"
 #include "guiLayer.hpp"
-#include "pathMap.hpp"
+#include "ai.hpp"
 #include "guiMoveRange.hpp"
 #include "guiTile.hpp"
 
