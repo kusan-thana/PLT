@@ -11,7 +11,7 @@ namespace guiRender {
 	
 class TileSet3 : public render::TileSet {
 	
-	enum TileID { RED=0, YELLOW=1, GREEN=2, HEALTH_BAR_RED = 3, HEALTH_BAR_GREEN = 4 };
+	enum TileID3 { RED=0, YELLOW=1, GREEN=2, HEALTH_BAR_RED = 3, HEALTH_BAR_GREEN = 4 };
 
 	protected:
 		std::vector<render::Tile*> tiles;

@@ -40,25 +40,25 @@ const Tile* TileSet2::getElementTile(const state::Element* element) const {
 	case(state::TypeId::HERO):
 		{
 			if(!((state::MobileElement*)element)->getTurnPlayed())
-				return tiles[TileID::HERO];
+				return tiles[TileID2::HERO];
 			else
-				return tiles[TileID::INACTIVE_HERO];
+				return tiles[TileID2::INACTIVE_HERO];
 		}
 		break;
 	case(state::TypeId::WIZARD):
 		{
 			if(!((state::MobileElement*)element)->getTurnPlayed())
-				return tiles[TileID::WIZARD];
+				return tiles[TileID2::WIZARD];
 			else
-				return tiles[TileID::INACTIVE_WIZARD];
+				return tiles[TileID2::INACTIVE_WIZARD];
 		}
 		break;
 	case(state::TypeId::MINION):
 		{
 			if(!((state::MobileElement*)element)->getTurnPlayed())
-				return tiles[TileID::MINION];
+				return tiles[TileID2::MINION];
 			else
-				return tiles[TileID::INACTIVE_MINION];
+				return tiles[TileID2::INACTIVE_MINION];
 		}
 		break;
 	}

@@ -37,7 +37,7 @@ const Tile* TileSet1::getElementTile(const state::Element* element) const {
 		{
 			case(SpaceTypeID::GRASS):
 			{
-				return tiles[TileID::GRASS];
+				return tiles[TileID1::GRASS];
 			}
 			break;
 		}
@@ -48,17 +48,17 @@ const Tile* TileSet1::getElementTile(const state::Element* element) const {
 		{
 			case(ObstacleTypeID::TREE):
 			{
-				return tiles[TileID::TREE];
+				return tiles[TileID1::TREE];
 			}
 			break;
 			case(ObstacleTypeID::WATER):
 			{
-				return tiles[TileID::WATER];
+				return tiles[TileID1::WATER];
 			}
 			break;
 			case(ObstacleTypeID::FIR):
 			{
-				return tiles[TileID::FIR];
+				return tiles[TileID1::FIR];
 			}
 			break;
 		}

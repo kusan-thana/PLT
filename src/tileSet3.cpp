@@ -58,18 +58,18 @@ const render::Tile* TileSet3::getElementTile(const state::Element* element) cons
 	//~ }
 	if(!element->isStatic()){
 		if(((state::MobileElement*)element)->getHP()>=50)
-			return tiles[TileID::RED];
+			return tiles[TileID3::RED];
 		
 		else if(((state::MobileElement*)element)->getHP()<50)
-			return tiles[TileID::RED];
+			return tiles[TileID3::RED];
 	}
 	return 0;
 }
 const render::Tile* TileSet3::getElementTile(gui::Cursor& cursor) const{
 	
 	if(cursor.getActive())
-		return tiles[TileID::YELLOW];
+		return tiles[TileID3::YELLOW];
 	
 	else
-		return tiles[TileID::RED];
+		return tiles[TileID3::RED];
 }
