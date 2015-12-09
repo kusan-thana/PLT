@@ -6,7 +6,7 @@
 
 using namespace gui;
 
-GUI::GUI(state::LevelState& levelState, engine::Engine& engine) : levelState(levelState), cursorList(*this), moveRange(*this), engine(engine),startPlayerAI(false){
+GUI::GUI(state::LevelState& levelState, engine::Engine& engine) : levelState(levelState), cursorList(*this), moveRange(*this), engine(engine),startPlayerAI(false), engineMode(engine::PLAY){
 	cursorList.setGuiElement(0, new Cursor(levelState));
 	this->init();
 }

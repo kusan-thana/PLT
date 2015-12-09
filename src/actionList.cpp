@@ -13,7 +13,6 @@ Action* ActionList::get(int i) const{
 	return actions[i];
 }
 void ActionList::apply(){
-	std::cout << "TEST" << std::endl;
 
 	for(int i=0; i<size(); i++){
 		actions[i]->apply(levelState);
