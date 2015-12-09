@@ -121,32 +121,14 @@ namespace engine {
     void clear ();
   };
 
-  /// class Record - 
-  class Record {
-    // Attributes
-  protected:
-    state::LevelState& mainLevelState;
-    state::LevelState* initLevelState;
-    state::LevelState* lastLevelState;
-    std::vector<ActionList*> actions;
-    // Operations
-  public:
-    Record (state::LevelState& levelState);
-    ~Record ();
-    void startRecord ();
-    void stopRecord ();
-  };
-
   /// class Engine - 
   class Engine {
     // Associations
-    engine::EngineMode mode;
-    engine::Record record;
+    engine::EngineMode engineMode;
     // Attributes
   protected:
     state::LevelState& levelState;
     CommandSet commandSet;
-    EngineMode engineMode;
     ActionList actions;
     // Operations
   public:
@@ -186,6 +168,7 @@ namespace engine {
     // Operations
   public:
     MoveCharacter (state::Element* character, int x, int y, state::LevelState& levelState);
+    ~MoveCharacter ();
     void apply (state::LevelState& );
   };
 
