@@ -130,6 +130,7 @@ namespace engine {
     state::LevelState& levelState;
     CommandSet commandSet;
     ActionList actions;
+    state::LevelState* levelStateSave;
     // Operations
   public:
     Engine (state::LevelState& levelState);
@@ -148,7 +149,7 @@ namespace engine {
     // Attributes
   protected:
     const CommandSet& commands;
-    const state::LevelState& curr_LevelState;
+    state::LevelState& curr_LevelState;
     ActionList& actions;
     // Operations
   public:
