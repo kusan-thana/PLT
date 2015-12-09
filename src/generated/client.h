@@ -8,6 +8,7 @@ namespace client {
   class Client {
     // Attributes
   protected:
+	state::LevelState levelState;
     std::vector<const render::TileSet*> tileSets;
     render::Scene scene;
     engine::Engine engine;
@@ -22,7 +23,6 @@ namespace client {
     void setTileSet (render::SceneLayer sceneLayer, const render::TileSet* tileSet);
     virtual void init ();
     virtual bool acquireControls () = 0;
-    virtual void stateChanged () = 0;
     virtual void updateDisplay () = 0;
   };
 
@@ -32,14 +32,16 @@ namespace client {
   protected:
     sf::RenderWindow window;
     std::vector<render::Surface*> surfaces;
+    sf::Text text;
+    sf::Font font;
+    sf::Music music;
     // Operations
   public:
     SFMLClient ();
   protected:
     void init ();
     bool acquireControls ();
-    void stateChanged ();
-    void updateChanged ();
+    void updateDisplay ();
   };
 
 };

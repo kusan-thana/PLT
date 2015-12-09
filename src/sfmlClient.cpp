@@ -1,4 +1,4 @@
-#include "sfmlClient.hpp"
+#include "client.hpp"
 #include <iostream>
 #include <fstream>
 

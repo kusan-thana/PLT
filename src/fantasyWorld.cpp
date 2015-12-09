@@ -4,7 +4,6 @@
 //#include <vector>
 
 #include "client.hpp"
-#include "sfmlClient.hpp"
 #include "server.hpp"
 #include "localServer.hpp"
 

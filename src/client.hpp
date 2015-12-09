@@ -1,34 +1,24 @@
 #ifndef Client_H
 #define Client_H
-#include "tileSet.hpp"
-#include "scene.hpp"
+#include <vector>
+#include "ai.hpp"
 #include "engine.hpp"
 #include "gui.hpp"
-#include "ai.hpp"
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+
+#include "tileSet.hpp"
+#include "scene.hpp"
+#include "sfmlSurface.hpp"
+#include "levelState.hpp"
 
 namespace client {
-
-class Client {
-	
-	protected:
-		state::LevelState levelState; 
-		std::vector<const render::TileSet*> tileSets;
-		render::Scene scene;
-		engine::Engine engine; //A déplacer apres la modularisation 
-		gui::GUI gui;
-		ai::DumbAI dumbAI;
-		ai::HeuristicAI heuristicAi;
-
-		Client();
-		void setTileSet(render::SceneLayer sceneLayer, const render::TileSet* tileSet);
-		virtual void init();
-		virtual bool acquireControls() = 0;
-		//virtual void stateChanged() = 0;
-		virtual void updateDisplay() = 0;
-		
-	public:
-		void run();
-
-};
+	class Client;
+	class SFMLClient;
 }
+
+#include "generated/client.h"
+
+
+
 #endif
