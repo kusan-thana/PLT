@@ -2,7 +2,6 @@
 #define AI__H
 
 
-
 namespace ai {
 
   /// class AI - 
