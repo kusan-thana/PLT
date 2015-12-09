@@ -20,9 +20,9 @@ namespace render {
   public:
     virtual ~TileSet ();
     virtual int getCellWidth () const = 0;
-    virtual int getCellWidth () const = 0;
+    virtual int getCellHeight () const = 0;
     virtual const char* getImageFile () const = 0;
-    virtual const Tile* getElementTile (const Element* element) const = 0;
+    virtual const Tile* getElementTile (const state::Element* element) const = 0;
   };
 
   /// class Animation - 
@@ -37,7 +37,7 @@ namespace render {
     const Tile* tile;
     // Operations
   public:
-    void Animation (int i, int x, int y, Tile* tile);
+    Animation (int i, int x, int y, Tile* tile);
   };
 
   /// class Surface - 
@@ -59,7 +59,7 @@ namespace render {
   protected:
     Surface* surface;
     const TileSet* tileSet;
-    std::map<int,Animation*> animations;
+    std::unordered_map<int,Animation*> animations;
     // Operations
   public:
     Layer ();
@@ -201,7 +201,7 @@ namespace render {
     // Associations
     // Attributes
   protected:
-    tiles std::vector<Tile*>;
+    std::vector<Tile*> tiles;
     const char* file_name;
     int widthCell;
     int heightCell;

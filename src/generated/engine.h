@@ -101,7 +101,7 @@ namespace engine {
   public:
     virtual ~Action ();
     virtual void apply (state::LevelState& levelState) = 0;
-    virtual void undo ();
+    virtual void undo (state::LevelState& levelState);
   };
 
   /// class ActionList - 
@@ -171,6 +171,9 @@ namespace engine {
     MoveCharacter (state::Element* character, int x, int y, state::LevelState& levelState);
     ~MoveCharacter ();
     void apply (state::LevelState& );
+    /// 	
+    /// @param levelState		(???) 
+    void undo (state::LevelState& levelState);
   };
 
   /// class IncEpoch - 
@@ -179,7 +182,7 @@ namespace engine {
   public:
     IncEpoch ();
     void apply (state::LevelState& levelState);
-    void undo (state::LevelState levelState);
+    void undo (state::LevelState& levelState);
   };
 
   /// class AttackCommand - 
@@ -221,7 +224,7 @@ namespace engine {
     EndTurnAction (state::Element* character);
     ~EndTurnAction ();
     void apply (state::LevelState& levelState);
-    void undo (state::LevelState levelState);
+    void undo (state::LevelState& levelState);
   };
 
   /// class EndTeamTurn - 
