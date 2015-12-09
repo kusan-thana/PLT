@@ -75,7 +75,7 @@ namespace gui {
     // Associations
     // Attributes
   protected:
-    std::vector<GUIObservers> observers;
+    std::vector<GUIObserver> observers;
     // Operations
   public:
     GUIObservable ();
