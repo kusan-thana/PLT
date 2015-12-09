@@ -6,7 +6,7 @@
 using namespace engine;
 
 
-Engine::Engine(state::LevelState& levelState) : levelState(levelState), actions(levelState) {
+Engine::Engine(state::LevelState& levelState) : levelState(levelState), actions(levelState), engineMode(PLAY) {
 
 }
 
@@ -26,14 +26,13 @@ EngineMode Engine::getMode() {
 void Engine::update() {
 	
 	Ruler ruler(this->actions, this->commandSet, this->levelState);
-
+	std::cout << std::endl << engineMode << std::endl;
 	if (commandSet.size()) {
 		if (commandSet.get(MODE)) {
 
 			setMode(((ModeCommand*)commandSet.get(MODE))->getMode());
 		}
 		if (engineMode == PLAY){
-			std::cout << "TEST" << std::endl;
 
 			ruler.apply();
 			turnGestion();
