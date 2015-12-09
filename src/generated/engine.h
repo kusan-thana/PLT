@@ -101,7 +101,7 @@ namespace engine {
   public:
     virtual ~Action ();
     virtual void apply (state::LevelState& levelState) = 0;
-    virtual void undo (state::LevelState& levelState);
+    virtual void undo (state::LevelState& levelState) = 0;
   };
 
   /// class ActionList - 
