@@ -11,8 +11,8 @@ cd ../dia
 dia2code state.dia -d ../src/generated -nc
 dia2code render.dia -d ../src/generated -nc
 sed -i '/#include "state.h/d' ../src/generated/render.h #ligne à supprimer lorsque la generation de state.h sera correct
-sed -i '/#include "sf.h/d' ../src/generated/render.h #ligne à supprimer lorsque la generation de state.h sera correct
-rm ../src/generated/sf.h
+sed -i '/#include "sf.h/d' ../src/generated/render.h #Suppression de l'include de sf.h dans le render.h (heritage des classes sf::Drawable et sff::Transformable)
+rm ../src/generated/sf.h #ligne
 dia2code gui.dia -d ../src/generated -nc
 dia2code guiRender.dia -d ../src/generated -nc
 dia2code engine.dia -d ../src/generated -nc
