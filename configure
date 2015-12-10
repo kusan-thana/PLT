@@ -14,7 +14,7 @@ dia2code gui.dia -d ../src/generated -nc
 dia2code guiRender.dia -d ../src/generated -nc
 dia2code engine.dia -d ../src/generated -nc
 dia2code ai.dia -d ../src/generated -nc
-dia2code modularisation.dia -d ../src/generated -nc
+dia2code client.dia -d ../src/generated -nc
 
 cd ..	
 
