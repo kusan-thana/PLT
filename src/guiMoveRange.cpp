@@ -1,9 +1,6 @@
 #include <iostream>
 #include "gui.hpp"
-#include "elementGrid.hpp"
 #include "gui.hpp"
-#include "element.hpp"
-#include "mobileElement.hpp"
 /**
  * GUIMoveRange Class
 **/

@@ -1,5 +1,4 @@
-#include "levelStateEvent.hpp"
-#include "levelState.hpp"
+#include "state.hpp"
 
 /**
  * LevelStateEvent Class

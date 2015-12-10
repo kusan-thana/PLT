@@ -1,7 +1,7 @@
 #ifndef GUI_H
 #define GUI_H
 
-#include "levelState.hpp"
+#include "state.hpp"
 #include "engine.hpp"
 #include <vector>
 

@@ -1,12 +1,12 @@
 #include <iostream>
-#include "playerCharacter.hpp"
+#include "state.hpp"
 
 /**
  * PlayerCharacter Class
 **/
 using namespace state;
 
-PlayerCharacter::PlayerCharacter(TypeId IdElement) : mana(0) {
+PlayerCharacter::PlayerCharacter(TypeID IdElement) : mana(0) {
 
 	this->IdElement = IdElement;
 }

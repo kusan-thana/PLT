@@ -1,12 +1,12 @@
 #include <iostream>
-#include "monster.hpp"
+#include "state.hpp"
 
 /**
  * Monster Class
 **/
 using namespace state;
 
-Monster::Monster(TypeId IdElement) {
+Monster::Monster(TypeID IdElement) {
 
 	this->IdElement = IdElement;
 }

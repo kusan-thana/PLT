@@ -1,9 +1,6 @@
 #ifndef ElementGrid_H
 #define ElementGrid_H
 
-#include "elementList.hpp"
-#include "element.hpp"
-
 namespace state {
 
 // forward declared dependencies

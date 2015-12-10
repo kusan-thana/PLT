@@ -1,11 +1,6 @@
 #include "ai.hpp"
-#include "elementList.hpp"
-#include "mobileElement.hpp"
 #include <iostream>
 #include <time.h>
-
-#include "levelState.hpp"
-#include "levelStateEvent.hpp"
 
 /**
  * DumbAI Class
@@ -59,7 +54,7 @@ void DumbAI::run(engine::Engine& engine){
 					else if (y < y_hero)
 						y++;
 
-					if (mainLevelState.getElementList().getElement(x, y) || mainLevelState.getElementGrid().getCell(x,y)->getTypeId() != state::SPACE) {
+					if (mainLevelState.getElementList().getElement(x, y) || mainLevelState.getElementGrid().getCell(x,y)->getTypeID() != state::SPACE) {
 						x = elementList.getElement(i)->getX() + rand() % 3 - 1;
 						y = elementList.getElement(i)->getY() + rand() % 3 - 1;
 					}

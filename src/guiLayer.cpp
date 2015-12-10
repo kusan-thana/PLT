@@ -1,9 +1,8 @@
 #include "guiRender.hpp"
 #include <iostream>
 #include "render.hpp"
-#include "mobileElement.hpp"
+#include "state.hpp"
 #include "gui.hpp"
-#include "elementGrid.hpp"
 #include <cmath>
 /**
  * GUILayer Class
@@ -104,7 +103,7 @@ void GUILayer::update(gui::GUIElementList& guiElementList, int i){
 				//~ std::cout << "size : " << guiElementList.size() << std::endl;
 				if(cursor->getActive()){		
 					if(x < grid.getHeight() && x >= 0 && y < grid.getWidth()  && y >= 0 &&
-					   (grid.getCell(x,y)->getTypeId() == state::TypeId::OBSTACLE || characters.getElement(x,y))){
+					   (grid.getCell(x,y)->getTypeID() == state::TypeID::OBSTACLE || characters.getElement(x,y))){
 							
 							curr_tile = new render::StaticTile(0,0,32,32);	//RED
 							(this->surface)->setSpriteTexture(j, (render::StaticTile*)curr_tile);

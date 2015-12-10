@@ -2,20 +2,8 @@
 #include <iostream>
 #include <fstream>
 
-
-#include "elementFactory.hpp"
-#include "elementAlloc.hpp"
-#include "elementList.hpp"
-#include "space.hpp"
-#include "obstacle.hpp"
-#include "levelState.hpp"
-#include "levelStateEvent.hpp"
+#include "state.hpp"
 #include "render.hpp"
-#include "observable.hpp"
-#include "playerCharacter.hpp"
-#include "element.hpp"
-#include "levelListEvent.hpp"
-#include "monster.hpp"
 #include "guiRender.hpp"
 #include "ai.hpp"
 #include "gui.hpp"
@@ -58,13 +46,13 @@ void SFMLClient::init(){
 	/*************FACTORY*************/
 	state::ElementFactory* factory = new state::ElementFactory();
 
-	factory->registerType('0', new state::ElementAlloc <state::Space, SpaceTypeID>(GRASS));
-	factory->registerType('1', new state::ElementAlloc <state::Obstacle, ObstacleTypeID>(WATER));
-	factory->registerType('2', new state::ElementAlloc <state::Obstacle, ObstacleTypeID>(TREE));
-	factory->registerType('3', new state::ElementAlloc <state::Obstacle, ObstacleTypeID>(FIR));
-	factory->registerType('H', new state::ElementAlloc <state::PlayerCharacter, state::TypeId>(state::HERO));
-	factory->registerType('W', new state::ElementAlloc <state::PlayerCharacter, state::TypeId>(state::WIZARD));
-	factory->registerType('M', new state::ElementAlloc <state::Monster, state::TypeId>(state::MINION));
+	factory->registerType('0', new state::ElementAlloc <state::Space, state::SpaceTypeID>(state::GRASS));
+	factory->registerType('1', new state::ElementAlloc <state::Obstacle, state::ObstacleTypeID>(state::WATER));
+	factory->registerType('2', new state::ElementAlloc <state::Obstacle, state::ObstacleTypeID>(state::TREE));
+	factory->registerType('3', new state::ElementAlloc <state::Obstacle, state::ObstacleTypeID>(state::FIR));
+	factory->registerType('H', new state::ElementAlloc <state::PlayerCharacter, state::TypeID>(state::HERO));
+	factory->registerType('W', new state::ElementAlloc <state::PlayerCharacter, state::TypeID>(state::WIZARD));
+	factory->registerType('M', new state::ElementAlloc <state::Monster, state::TypeID>(state::MINION));
 	/*********************************/
 	
 	levelState.setElementFactory(factory);

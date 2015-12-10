@@ -1,8 +1,6 @@
 #include "render.hpp"
 #include <iostream>
 
-#include "obstacle.hpp"
-#include "space.hpp"
 /**
  * TileSet1 Class
 **/
@@ -30,32 +28,32 @@ const char* TileSet1::getImageFile() const{
 }
 const Tile* TileSet1::getElementTile(const state::Element* element) const {
 	
-	if(element->getTypeId() == state::SPACE){
+	if(element->getTypeID() == state::SPACE){
 		
 		switch(((state::Space*)element)->getSpaceTypeID())
 		{
-			case(SpaceTypeID::GRASS):
+			case(state::SpaceTypeID::GRASS):
 			{
 				return tiles[TileID1::GRASS];
 			}
 			break;
 		}
 	}
-	if(element->getTypeId() == state::OBSTACLE){
+	if(element->getTypeID() == state::OBSTACLE){
 		
 		switch(((state::Obstacle*)element)->getObstacleTypeID())
 		{
-			case(ObstacleTypeID::TREE):
+			case(state::ObstacleTypeID::TREE):
 			{
 				return tiles[TileID1::TREE];
 			}
 			break;
-			case(ObstacleTypeID::WATER):
+			case(state::ObstacleTypeID::WATER):
 			{
 				return tiles[TileID1::WATER];
 			}
 			break;
-			case(ObstacleTypeID::FIR):
+			case(state::ObstacleTypeID::FIR):
 			{
 				return tiles[TileID1::FIR];
 			}

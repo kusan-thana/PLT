@@ -1,11 +1,8 @@
-#include "elementGrid.hpp"
-#include "levelState.hpp"
-#include "levelListEvent.hpp"
+#include "state.hpp"
 
 #include <iostream>
 #include <fstream>
 
-#include "space.hpp"
 /**
  * ElementGrid Class
 **/

@@ -1,11 +1,4 @@
 #include "render.hpp"
-
-#include "levelState.hpp"
-#include "elementGrid.hpp"
-#include "element.hpp"
-#include "obstacle.hpp"
-#include "levelListEvent.hpp"
-
 #include <iostream>
 /**
  * Scene Class
@@ -35,7 +28,7 @@ void Scene::levelStateChanged(const state::LevelStateEvent& e){
 	
 	//~ ((ElementListLayer*)layers[GRID_LAYER])->levelStateChanged(e);
 	//~ ((ElementListLayer*)layers[CHARACTERS_LAYER])->levelStateChanged(e);
-	if(e == ALL_CHANGED)
+	if(e == state::ALL_CHANGED)
 	{
 		//~ ((ElementListLayer*)layers[GRID_LAYER])->levelStateChanged(e);
 		//((ElementListLayer*)layers[CHARACTERS_LAYER])->levelStateChanged(e);

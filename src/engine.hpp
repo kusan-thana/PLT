@@ -1,4 +1,3 @@
 #pragma once
-#include "levelState.hpp"
-#include "mobileElement.hpp"
+#include "state.hpp"
 #include "generated/engine.h"

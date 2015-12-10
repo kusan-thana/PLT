@@ -1,5 +1,4 @@
-#include "observable.hpp"
-#include "levelStateEvent.hpp"
+#include "state.hpp"
 #include <iostream>
 /**
  * Observable Class

@@ -1,4 +1,4 @@
-#include "element.hpp"
+#include "state.hpp"
 
 /**
  * Element Class
@@ -20,7 +20,7 @@ int Element::getY() const{
 	
 	return this->y;
 }
-TypeId Element::getTypeId() const{
+TypeID Element::getTypeID() const{
 	
 	return this->IdElement;
 }

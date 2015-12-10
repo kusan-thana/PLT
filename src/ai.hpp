@@ -1,7 +1,7 @@
 #ifndef AI_H
 #define AI_H
 
-#include "levelState.hpp"
+#include "state.hpp"
 #include "engine.hpp"
 
 namespace ai {

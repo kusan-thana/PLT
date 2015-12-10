@@ -2,9 +2,7 @@
 #include <iostream>
 
 #include "render.hpp"
-#include "obstacle.hpp"
-#include "space.hpp"
-#include "mobileElement.hpp"
+#include "state.hpp"
 #include "gui.hpp"
 #include "guiRender.hpp"
 /**

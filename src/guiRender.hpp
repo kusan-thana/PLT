@@ -1,8 +1,8 @@
 #ifndef GuiRender_H
 #define GuiRender_H
 
-#include "element.hpp"
-#include "levelState.hpp"
+
+#include "state.hpp"
 #include "gui.hpp"
 #include "render.hpp"
 

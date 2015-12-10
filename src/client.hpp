@@ -8,7 +8,7 @@
 #include <SFML/Audio.hpp>
 
 #include "render.hpp"
-#include "levelState.hpp"
+#include "state.hpp"
 
 namespace client {
 	class Client;

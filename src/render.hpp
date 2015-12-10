@@ -1,8 +1,7 @@
 #ifndef render_H
 #define render_H
-#include "element.hpp"
-#include "levelStateObserver.hpp"
-#include "elementList.hpp"
+
+#include "state.hpp"
 #include <SFML/Graphics.hpp>
 #include <unordered_map>
 

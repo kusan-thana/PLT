@@ -1,7 +1,4 @@
-#include "elementList.hpp"
-#include "mobileElement.hpp"
-#include "levelState.hpp"
-#include "levelListEvent.hpp"
+#include "state.hpp"
 #include <iostream>
 /**
  * ElementList Class

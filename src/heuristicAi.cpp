@@ -1,6 +1,4 @@
 #include "ai.hpp"
-#include "elementList.hpp"
-#include "mobileElement.hpp"
 #include <iostream>
 
 

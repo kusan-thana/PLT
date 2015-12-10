@@ -7,10 +7,7 @@
 #include "server.hpp"
 #include "localServer.hpp"
 
-#include "element.hpp"
-#include "obstacle.hpp"
-
-#include "levelState.hpp"
+#include "state.hpp"
 #include "render.hpp"
 
 

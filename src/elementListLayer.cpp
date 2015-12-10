@@ -1,11 +1,5 @@
-#include "levelState.hpp" //forward dependency
-#include "elementGrid.hpp"
-#include "elementList.hpp"
-#include "element.hpp"
-#include "obstacle.hpp"
-
+#include "state.hpp"
 #include "render.hpp"
-#include "levelListEvent.hpp"
 #include "gui.hpp"
 #include <iostream>
 /**

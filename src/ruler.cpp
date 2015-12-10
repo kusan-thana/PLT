@@ -1,7 +1,6 @@
 
 #include <iostream>
 #include <unordered_map>
-#include "mobileElement.hpp"
 #include "engine.hpp"
 
 
@@ -50,7 +49,7 @@ void Ruler::apply(){
 			actions.add(new IncEpoch());
 		}
 		if (!((state::MobileElement*)cmd->getCharacter())->getMovePlayed()) { //Le personnage peut jouer
-			if (curr_LevelState.getElementGrid().getCell(cmd->getPositionX(), cmd->getPositionY())->getTypeId() == state::SPACE && curr_LevelState.getElementList().getElement(cmd->getPositionX(), cmd->getPositionY()) == 0) { //Space non occupe 
+			if (curr_LevelState.getElementGrid().getCell(cmd->getPositionX(), cmd->getPositionY())->getTypeID() == state::SPACE && curr_LevelState.getElementList().getElement(cmd->getPositionX(), cmd->getPositionY()) == 0) { //Space non occupe 
 				if (abs(cmd->getPositionX() - cmd->getCharacter()->getX()) <= ((state::MobileElement*)cmd->getCharacter())->getNbStep() && abs(cmd->getPositionY() - cmd->getCharacter()->getY()) <= ((state::MobileElement*)cmd->getCharacter())->getNbStep()) { //movement < nbStep
 					MoveCharacter* movecharac = new MoveCharacter(perso, cmd->getPositionX(), cmd->getPositionY(), curr_LevelState);
 					actions.add(movecharac);

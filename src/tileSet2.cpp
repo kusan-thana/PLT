@@ -1,9 +1,7 @@
 #include "render.hpp"
 #include <iostream>
 
-#include "obstacle.hpp"
-#include "space.hpp"
-#include "mobileElement.hpp"
+#include "state.hpp"
 
 /**
  * TileSet2 Class
@@ -34,9 +32,9 @@ const char* TileSet2::getImageFile() const{
 }
 const Tile* TileSet2::getElementTile(const state::Element* element) const {
 	
-	switch(element->getTypeId())
+	switch(element->getTypeID())
 	{
-	case(state::TypeId::HERO):
+	case(state::TypeID::HERO):
 		{
 			if(!((state::MobileElement*)element)->getTurnPlayed())
 				return tiles[TileID2::HERO];
@@ -44,7 +42,7 @@ const Tile* TileSet2::getElementTile(const state::Element* element) const {
 				return tiles[TileID2::INACTIVE_HERO];
 		}
 		break;
-	case(state::TypeId::WIZARD):
+	case(state::TypeID::WIZARD):
 		{
 			if(!((state::MobileElement*)element)->getTurnPlayed())
 				return tiles[TileID2::WIZARD];
@@ -52,7 +50,7 @@ const Tile* TileSet2::getElementTile(const state::Element* element) const {
 				return tiles[TileID2::INACTIVE_WIZARD];
 		}
 		break;
-	case(state::TypeId::MINION):
+	case(state::TypeID::MINION):
 		{
 			if(!((state::MobileElement*)element)->getTurnPlayed())
 				return tiles[TileID2::MINION];

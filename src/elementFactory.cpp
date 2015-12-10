@@ -1,11 +1,11 @@
-#include "elementFactory.hpp"
+#include "state.hpp"
 
 /**
  * ElementFactory Class
 **/
 using namespace state;
 
-Element* const ElementFactory::newInstance(char id){
+Element* ElementFactory::newInstance(char id){
 	
 	return ( list[id]->newInstance() );
 }

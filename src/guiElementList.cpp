@@ -1,8 +1,6 @@
 #include "gui.hpp"
 #include "gui.hpp"
-#include "levelState.hpp"
-#include "elementList.hpp"
-#include "mobileElement.hpp"
+#include "state.hpp"
 #include <iostream>
 /**
  * guiElementList Class

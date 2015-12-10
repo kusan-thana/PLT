@@ -2,8 +2,6 @@
 #include <iostream>
 #include <queue>
 #include <cmath>
-#include "mobileElement.hpp" 
-#include "element.hpp"
 
 /**
  * PathMap Class
@@ -89,7 +87,7 @@ int PathMap::relax (int x, int y, state::Direction direction){
 	int i = coords.x;
 	int j = coords.y;
 	
-	state::TypeId type = levelState.getElementGrid().getElement(i,j)->getTypeId();
+	state::TypeID type = levelState.getElementGrid().getElement(i,j)->getTypeID();
 
 	if ( type != state::SPACE || levelState.getElementList().getElement(i,j) && this->weights[i*width + j] !=0)
 	{
