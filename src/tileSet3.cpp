@@ -1,5 +1,4 @@
 #include "gui.hpp"
-#include "guiLayer.hpp"
 #include <iostream>
 
 #include "staticTile.hpp"
@@ -7,7 +6,7 @@
 #include "space.hpp"
 #include "mobileElement.hpp"
 #include "gui.hpp"
-#include "tileSet3.hpp"
+#include "guiRender.hpp"
 /**
  * TileSet3 Class
 **/

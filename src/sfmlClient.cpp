@@ -18,13 +18,13 @@
 #include "element.hpp"
 #include "levelListEvent.hpp"
 #include "monster.hpp"
-#include "guiLayer.hpp"
+#include "guiRender.hpp"
 #include "ai.hpp"
 #include "gui.hpp"
 
 /**
  * Client SFMLClass
-**/
+**/	
 
 using namespace client;
 

@@ -7,7 +7,7 @@
 #include "surface.hpp"
 #include "tileSet.hpp"
 
-namespace giRender {
+namespace guiRender {
 	class GUILayer;
 	class TileSet3;
 }
