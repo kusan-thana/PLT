@@ -141,7 +141,8 @@ namespace render {
   };
 
   /// class SFMLSurface - 
-  class SFMLSurface : public render::Surface {
+  template <   test>
+  class SFMLSurface : public render::Surface, public sf::Drawable, public sf::Transformable {
     // Attributes
   protected:
     sf::VertexArray vertices;
@@ -150,6 +151,7 @@ namespace render {
     int heightSprite;
     // Operations
   public:
+    SFMLSurface ();
     void clear ();
     void loadTexture (const char* tileset);
     void setSpriteCount (int n);
