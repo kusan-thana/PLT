@@ -30,7 +30,7 @@ namespace state {
   protected:
     int x;
     int y;
-    TypeID IDElement;
+    TypeID IdElement;
     Direction orientation;
     /// "True" quand l'element est survole
     bool active;
@@ -44,6 +44,7 @@ namespace state {
     virtual ~Element ();
     virtual bool isStatic () const = 0;
     virtual Element* clone () const = 0;
+    bool equals (const Element& other) const;
     virtual TypeID getTypeID () const;
     int getX () const;
     int getY () const;
@@ -138,11 +139,11 @@ namespace state {
   };
 
   enum ObstacleTypeID {
-    WALL,
-    STONE,
-    TREE,
-    FIR,
-    WATER
+    WALL     = 1,
+    STONE     = 2,
+    TREE     = 3,
+    FIR     = 4,
+    WATER     = 5
   };
 
   /// class Obstacle - 
@@ -157,14 +158,14 @@ namespace state {
     /// Renvoi false
     bool isSpace () const;
     Element* clone () const;
-    ObstacleTypeID getObstableTypeID () const;
+    ObstacleTypeID getObstacleTypeID () const;
     void setObstacleTypeID (ObstacleTypeID id);
   };
 
   enum SpaceTypeID {
-    GRASS,
-    START,
-    ENERGY
+    GRASS     = 1,
+    START     = 2,
+    ENERGY     = 3
   };
 
   /// class Space - 
@@ -184,10 +185,10 @@ namespace state {
   };
 
   enum LevelStateEventID {
-    ALL_CHANGED,
-    LEVEL_CHANGED,
-    EPOCH_CHANGED,
-    LIST_CHANGED
+    ALL_CHANGED     = 1,
+    LEVEL_CHANGED     = 2,
+    EPOCH_CHANGED     = 3,
+    LIST_CHANGED     = 4
   };
 
   /// class LevelStateEvent - 
@@ -233,7 +234,7 @@ namespace state {
     // Operations
   public:
     ~ElementFactory ();
-    Element* newInstance (char id) const;
+    Element* newInstance (char id);
     void registerType (char id, AElementAlloc* a);
   };
 
@@ -254,7 +255,9 @@ namespace state {
     const LevelState& getLevelState () const;
     int size () const;
     Element* getElement (int i) const;
-    state::Element* getElement (int x, int y);
+    Element* getElement (int x, int y) const;
+    std::vector<Element*> getElements ();
+    int getIdxElement (Element* element) const;
     void clear ();
     void setElementFactory (ElementFactory* factory);
     void setElement (int i, Element* element);
@@ -262,6 +265,7 @@ namespace state {
     void removeElement (Element* element);
     int numberOfPlayer ();
     int numberOfMonster ();
+    void notifyObservers (int i);
   };
 
   /// class ElementGrid - Gère l'emplacement des éléments sur la grille
@@ -287,6 +291,7 @@ namespace state {
     /// @param e		(???) 
     void setCell (int i, int j, Element* e);
     void load (const char* file_name);
+    void notifyObservers (int i, int j);
   };
 
   enum TurnToPlay {
@@ -360,7 +365,7 @@ namespace state {
     // Associations
     // Attributes
   protected:
-    LevelState levelState;
+    LevelState& levelState;
     WorldState worldState;
     StateType currentState;
     // Operations
@@ -398,6 +403,7 @@ namespace state {
     void setElementFactory (ElementFactory* factory);
     void setEpoch (int epoch);
     void setEpochrate (float rate);
+    void setTurnToPlay (TurnToPlay turnToPlay);
     void loadLevel (const char* file_name);
   };
 
@@ -445,7 +451,7 @@ namespace state {
   class LevelListEvent : public state::LevelStateEvent {
     // Attributes
   public:
-    const Element& list;
+    const ElementList& list;
     int idx;
     // Operations
   public:

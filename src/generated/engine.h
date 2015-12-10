@@ -54,10 +54,10 @@ namespace engine {
   };
 
   enum EngineMode {
-    PLAY,
-    SAVE,
-    LOADSAVE,
-    ROLLBACK
+    PLAY     = 0,
+    SAVE     = 1,
+    LOADSAVE     = 2,
+    ROLLBACK     = 3
   };
 
   /// class ModeCommand - 

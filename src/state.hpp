@@ -13,7 +13,7 @@ namespace state {
 	class Space;
 	class ElementFactory;
 	class AElementAlloc;
-	//template<class E, typename ID>
+	template<class E, typename ID>
 	class ElementAlloc;
 	class Observable;
 	class LevelStateObserver;
