@@ -74,11 +74,6 @@ namespace engine {
     EngineMode getMode () const;
   };
 
-  enum modeActivate {
-    DIRECTION     = 1,
-    POSITION     = 2
-  };
-
   /// class CommandSet - 
   class CommandSet {
     // Associations

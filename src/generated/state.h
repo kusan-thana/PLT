@@ -111,7 +111,7 @@ namespace state {
   public:
     /// Renvoi "true"
     bool isStatic () const;
-    virtual bool isSpace () const;
+    virtual bool isSpace () const = 0;
   };
 
   /// class PlayerCharacter - 
@@ -392,7 +392,7 @@ namespace state {
     LevelState ();
     LevelState* clone () const;
     void copy (const LevelState& levelState);
-    int getEpoch () const;
+    int getEpoch ();
     float getEpochRate () const;
     const ElementGrid& getElementGrid () const;
     ElementGrid& getElementGrid ();
