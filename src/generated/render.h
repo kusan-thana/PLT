@@ -147,7 +147,7 @@ namespace render {
     sf::VertexArray vertices;
     sf::Texture tileset;
     int widthSprite;
-    int heigthSprite;
+    int heightSprite;
     // Operations
   public:
     void clear ();
@@ -155,7 +155,8 @@ namespace render {
     void setSpriteCount (int n);
     void setSpriteLocation (int i, int x, int y);
     void setSpriteTexture (int i, const StaticTile* staticTile);
-    void setSpriteWidth (int widthSprite, int heightSprite);
+    void setSpriteWidth (int spriteWidth);
+    void setSpriteHeight (int spriteHeight);
     SFMLSurface& getSfmlSurface ();
   private:
     void draw (sf::RenderTarget& target, sf::RenderStates states) const;
