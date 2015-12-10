@@ -43,6 +43,7 @@ void Engine::update() {
 
 			levelState.getElementList().notifyObservers(-1);
 			levelState.getElementGrid().notifyObservers(-1,-1);
+			engineMode = PLAY;
 		}
 		else if (engineMode == ROLLBACK) {
 			engineMode = PLAY;
