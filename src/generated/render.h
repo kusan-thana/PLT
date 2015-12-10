@@ -1,7 +1,6 @@
 #ifndef RENDER__H
 #define RENDER__H
 
-#include "state.h"
 
 namespace render {
 

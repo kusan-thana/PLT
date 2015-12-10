@@ -10,6 +10,7 @@ cd ../dia
 
 dia2code state.dia -d ../src/generated -nc
 dia2code render.dia -d ../src/generated -nc
+sed -i '/#include "state.h/d' ../src/generated/render.h #ligne à supprimer lorsque la generation de state.h sera correct
 dia2code gui.dia -d ../src/generated -nc
 dia2code guiRender.dia -d ../src/generated -nc
 sed -i '/#include "render.h/d' ../src/generated/guiRender.h #ligne à supprimer lorsque la generation de render.h sera correct
