@@ -141,7 +141,6 @@ namespace render {
   };
 
   /// class SFMLSurface - 
-  template <   test>
   class SFMLSurface : public render::Surface, public sf::Drawable, public sf::Transformable {
     // Attributes
   protected:
