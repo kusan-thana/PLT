@@ -2,7 +2,6 @@
 #define GUIRENDER__H
 
 #include "gui.h"
-#include "render.h"
 
 namespace guiRender {
 
@@ -17,8 +16,8 @@ namespace guiRender {
   public:
     GUILayer ();
     virtual ~GUILayer ();
-    const TileSet* getTileSet () const;
-    void setTileSet (const TileSet* tileSet);
+    const render::TileSet* getTileSet () const;
+    void setTileSet (const render::TileSet* tileSet);
     void setSurface (render::Surface* surface);
     void guiChanged (const gui::GUIEvent& e);
     void update (gui::GUIElementList& guiElementList, int i);

@@ -22,7 +22,7 @@ namespace render {
     virtual int getCellWidth () const = 0;
     virtual int getCellHeight () const = 0;
     virtual const char* getImageFile () const = 0;
-    virtual const Tile* getElementTile (const state::Element* element) const = 0;
+    virtual const render::Tile* getElementTile (const state::Element* element) const = 0;
   };
 
   /// class Animation - 
