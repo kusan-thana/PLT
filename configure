@@ -15,7 +15,6 @@ sed -i '/#include "sf.h/d' ../src/generated/render.h #ligne à supprimer lorsque
 rm ../src/generated/sf.h
 dia2code gui.dia -d ../src/generated -nc
 dia2code guiRender.dia -d ../src/generated -nc
-sed -i '/#include "render.h/d' ../src/generated/guiRender.h #ligne à supprimer lorsque la generation de render.h sera correct
 dia2code engine.dia -d ../src/generated -nc
 dia2code ai.dia -d ../src/generated -nc
 dia2code client.dia -d ../src/generated -nc

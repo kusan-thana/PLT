@@ -2,6 +2,7 @@
 #define GUIRENDER__H
 
 #include "gui.h"
+#include "render.h"
 
 namespace guiRender {
 
