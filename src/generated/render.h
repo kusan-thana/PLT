@@ -177,7 +177,7 @@ namespace render {
     std::vector<Tile*> tiles;
     const char* file_name;
     int widthCell;
-    int heigthCell;
+    int heightCell;
     // Operations
   public:
     TileSet1 ();
