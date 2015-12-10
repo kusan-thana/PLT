@@ -4,8 +4,6 @@
 //#include <vector>
 
 #include "client.hpp"
-#include "server.hpp"
-#include "localServer.hpp"
 
 #include "state.hpp"
 #include "render.hpp"
