@@ -71,7 +71,7 @@ namespace render {
 
   enum SceneLayer {
     GRID_LAYER     = 0,
-    MOVE_RANGE     = 1,
+    MOVE_RANGE_LAYER     = 1,
     CURSORS_LAYER     = 2,
     TILE_LIST_LAYER     = 3,
     CHARACTERS_LAYER     = 4
