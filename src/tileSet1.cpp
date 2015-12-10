@@ -1,7 +1,6 @@
-#include "tileSet1.hpp"
+#include "render.hpp"
 #include <iostream>
 
-#include "staticTile.hpp"
 #include "obstacle.hpp"
 #include "space.hpp"
 /**

@@ -1,16 +1,10 @@
 #include "levelState.hpp" //forward dependency
-#include "elementListLayer.hpp"
 #include "elementGrid.hpp"
 #include "elementList.hpp"
 #include "element.hpp"
 #include "obstacle.hpp"
-#include "sfmlSurface.hpp"
 
-#include "tileSet1.hpp"
-#include "tileSet2.hpp"
-#include "tile.hpp"
-#include "staticTile.hpp"
-#include "scene.hpp"
+#include "render.hpp"
 #include "levelListEvent.hpp"
 #include "gui.hpp"
 #include <iostream>

@@ -1,12 +1,13 @@
 #include "client.hpp"
-
+#include "render.hpp"
 #include <iostream>
+#include <SFML/Graphics.hpp>
 /**
  * SFMLSurface Class
 **/
 using namespace render;
 
-SFMLSurface::SFMLSurface() : widthSprite(32), heigthSprite(32){
+SFMLSurface::SFMLSurface() : widthSprite(32), heightSprite(32){
 }
 void SFMLSurface::clear(){
 	
@@ -33,8 +34,8 @@ void SFMLSurface::setSpriteCount(int n){
 	
 	quad[0].position = sf::Vector2f(x, y);
 	quad[1].position = sf::Vector2f(x + widthSprite, y);		//Value 32 fixed !!
-	quad[2].position = sf::Vector2f(x + widthSprite, y + heigthSprite);
-	quad[3].position = sf::Vector2f(x, y + heigthSprite);
+	quad[2].position = sf::Vector2f(x + widthSprite, y + heightSprite);
+	quad[3].position = sf::Vector2f(x, y + heightSprite);
 }
 /** Position du sprite dans la texture.
  * 	Coordonnées des quatres sommets sur la texture 
@@ -64,16 +65,17 @@ void SFMLSurface::draw(sf::RenderTarget& target, sf::RenderStates states) const{
 	// et on dessine enfin le tableau de vertex
 	target.draw(this->vertices, states);
 }
+void setSpriteWidth(int widthSprite, int heightSprite);
+
 void SFMLSurface::setSpriteWidth(int spriteWidth){
 	
 	this->widthSprite = widthSprite;
 }
 void SFMLSurface::setSpriteHeight(int spriteHeight){
 	
-	this->heigthSprite = heigthSprite;
+	this->heightSprite = heightSprite;
 }
 SFMLSurface& SFMLSurface::getSfmlSurface(){
 
 	return *this;
 }
-

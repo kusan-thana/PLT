@@ -1,6 +1,6 @@
 #include "guiRender.hpp"
 #include <iostream>
-#include "staticTile.hpp"
+#include "render.hpp"
 #include "mobileElement.hpp"
 #include "gui.hpp"
 #include "elementGrid.hpp"

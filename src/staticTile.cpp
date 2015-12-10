@@ -1,4 +1,4 @@
-#include "staticTile.hpp"
+#include "render.hpp"
 
 /**
  * StaticTile Class

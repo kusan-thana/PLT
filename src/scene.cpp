@@ -1,11 +1,9 @@
-#include "scene.hpp"
+#include "render.hpp"
 
 #include "levelState.hpp"
-#include "tileSet.hpp"
 #include "elementGrid.hpp"
 #include "element.hpp"
 #include "obstacle.hpp"
-#include "elementListLayer.hpp"
 #include "levelListEvent.hpp"
 
 #include <iostream>

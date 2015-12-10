@@ -11,7 +11,7 @@
 #include "obstacle.hpp"
 
 #include "levelState.hpp"
-#include "tileSet1.hpp"
+#include "render.hpp"
 
 
 using namespace std;

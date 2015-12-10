@@ -7,9 +7,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 
-#include "tileSet.hpp"
-#include "scene.hpp"
-#include "sfmlSurface.hpp"
+#include "render.hpp"
 #include "levelState.hpp"
 
 namespace client {

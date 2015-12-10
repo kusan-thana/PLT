@@ -1,7 +1,6 @@
 #include "client.hpp"
 
-#include "tileSet1.hpp"
-#include "tileSet2.hpp"
+#include "render.hpp"
 #include "guiRender.hpp"
 
 #include <iostream>

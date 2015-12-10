@@ -4,8 +4,7 @@
 #include "element.hpp"
 #include "levelState.hpp"
 #include "gui.hpp"
-#include "surface.hpp"
-#include "tileSet.hpp"
+#include "render.hpp"
 
 namespace guiRender {
 	class GUILayer;

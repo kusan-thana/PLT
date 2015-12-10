@@ -1,7 +1,7 @@
 #include "gui.hpp"
 #include <iostream>
 
-#include "staticTile.hpp"
+#include "render.hpp"
 #include "obstacle.hpp"
 #include "space.hpp"
 #include "mobileElement.hpp"
