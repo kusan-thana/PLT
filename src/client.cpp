@@ -2,11 +2,12 @@
 
 #include "tileSet1.hpp"
 #include "tileSet2.hpp"
-#include "tileSet3.hpp"
+#include "guiRender.hpp"
 
 #include <iostream>
 #include "engine.hpp" //A supprimer après parallélisme (?)
 #include <iostream>
+#include "levelState.hpp"
 /**
  * Client Class
 **/
