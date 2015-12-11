@@ -1,24 +1,15 @@
-cd src
-rm -rf generated
-mkdir -p generated
-cd ../dia
+rm -rf src/generated
+mkdir -p src/generated
 
-#for f in *.dia;
-#do
-#dia2code $f -d ../src/generated -nc
-#done
-
-dia2code state.dia -d ../src/generated -nc
-dia2code render.dia -d ../src/generated -nc
-sed -i '/#include "sf.h/d' ../src/generated/render.h #Suppression de "include "sf.h"" dans le render.h (heritage des classes sf::Drawable et sf::Transformable)
-rm ../src/generated/sf.h #Suppression du fichier sf.h
-dia2code gui.dia -d ../src/generated -nc
-dia2code guiRender.dia -d ../src/generated -nc
-dia2code engine.dia -d ../src/generated -nc
-dia2code ai.dia -d ../src/generated -nc
-dia2code client.dia -d ../src/generated -nc
-
-cd ..	
+dia2code dia/state.dia -d src/generated -nc
+dia2code dia/render.dia -d src/generated -nc
+sed -i '/#include "sf.h/d' src/generated/render.h #Suppression de "include "sf.h"" dans le render.h (heritage des classes sf::Drawable et sf::Transformable)
+rm src/generated/sf.h #Suppression du fichier sf.h
+dia2code dia/gui.dia -d src/generated -nc
+dia2code dia/guiRender.dia -d src/generated -nc
+dia2code dia/engine.dia -d src/generated -nc
+dia2code dia/ai.dia -d src/generated -nc
+dia2code dia/modularisation.dia -d src/generated -nc
 
 rm -rf bin
 rm -rf build
