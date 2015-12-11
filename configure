@@ -11,10 +11,7 @@ dia2code dia/engine.dia -d src/generated -nc
 dia2code dia/ai.dia -d src/generated -nc
 dia2code dia/modularisation.dia -d src/generated -nc
 
-rm -rf bin
-rm -rf build
-mkdir -p bin
-mkdir -p build
+rm -rf bin build
+mkdir -p bin build
 cd build
 cmake ..
-
