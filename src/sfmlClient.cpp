@@ -7,6 +7,7 @@
 #include "guiRender.hpp"
 #include "ai.hpp"
 #include "gui.hpp"
+#include "server.hpp"
 
 /**
  * Client SFMLClass
@@ -14,8 +15,8 @@
 
 using namespace client;
 
-SFMLClient::SFMLClient() : window(sf::VideoMode(1024, 512), "Fantasy World!") {
-	
+SFMLClient::SFMLClient(server::Server& serv) : Client(serv), window(sf::VideoMode(1024, 512), "Fantasy World!") {
+
 	this->surfaces.push_back(new render::SFMLSurface());	//GRID_LAYER
 	this->surfaces.push_back(new render::SFMLSurface());	//MOVE_RANGE_LAYER
 	this->surfaces.push_back(new render::SFMLSurface());	//CURSORS_LAYER

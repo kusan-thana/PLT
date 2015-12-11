@@ -4,6 +4,7 @@
 #include "ai.hpp"
 #include "engine.hpp"
 #include "gui.hpp"
+#include "server.hpp"
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 

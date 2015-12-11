@@ -13,7 +13,8 @@ using namespace std;
 
 int main()
 {	
-	client::Client* client = new client::SFMLClient();
+	server::Server* server = new server::LocalServer();
+	client::Client* client = new client::SFMLClient(*server);
 	//server::Server* server = new server::LocalServer(); //Pas de parallélisme encore - moteur de jeu instancié dans le client temporairement
 
 	client->run();
