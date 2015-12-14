@@ -51,3 +51,14 @@ void Client::run(){
 		updateDisplay();
 	}	
 }
+void Client::serverChanged(const server::ServerEvent& e){
+	
+	if(e == server::STATE_CHANGED){
+		
+		//process....
+	}
+	else if(e == server::INVALID){
+		
+		//process....
+	}	
+}
