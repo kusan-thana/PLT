@@ -12,18 +12,22 @@ add_executable (FantasyWorld ${mainSources})
 
 
 # SFML
-IF(EXISTS "${/usr/lsa}/")
-set(SFML_ROOT "/usr/lsa")
-ELSE(EXISTS "${/usr/lsa}/")
 set(SFML_ROOT "/usr")
-ENDIF(EXISTS "${/usr/lsa}/")
+IF(EXISTS "${/usr/lsa}" AND IS_DIRECTORY "${/usr/lsa}")
+set(SFML_ROOT "/usr/lsa")
+ENDIF()
 
 set(CMAKE_MODULE_PATH "${SFML_ROOT}/share/SFML/cmake/Modules" ${CMAKE_MODULE_PATH})
 
 find_package(SFML 2 COMPONENTS graphics window system audio)
+find_package (Threads)
 if(SFML_FOUND)
   include_directories(${SFML_INCLUDE_DIR})
   target_link_libraries(FantasyWorld ${SFML_LIBRARIES})
+	target_link_libraries (FantasyWorld ${CMAKE_THREAD_LIBS_INIT})
 endif()
+
+
+
 
 
