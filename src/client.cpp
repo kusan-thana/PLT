@@ -32,7 +32,7 @@ void Client::init(){
 }
 void Client::run(){
 	
-        Client::init();
+	Client::init();
 	this->init();
 
 	while(acquireControls()){
@@ -47,10 +47,17 @@ void Client::run(){
 				//dumbAI.run(engine);
 			}	
 		}
-        serv.run();
+        //serv.run();
 		engine.update();
 		updateDisplay();
 	}	
+	//~ while(acquireControls()){
+
+		//~ serv.runBackground();
+		//~ //engine.update();
+		//~ updateDisplay();
+	//~ }		
+	//~ serv.join();	
 }
 void Client::serverChanged(const server::ServerEvent& e){
 	
