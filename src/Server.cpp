@@ -2,8 +2,8 @@
 
 using namespace server;
 
-Server::Server() : engine(levelState){	
-	
+Server::Server() : engine(levelState){
+    
 }
 Server::~Server(){
 

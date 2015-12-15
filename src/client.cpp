@@ -4,7 +4,7 @@
 #include "guiRender.hpp"
 
 #include <iostream>
-#include "engine.hpp" //A supprimer après parallélisme (?)
+#include "engine.hpp" //A supprimer apres parallelisme (?)
 #include <iostream>
 #include "server.hpp"
 /**
@@ -27,11 +27,12 @@ void Client::setTileSet(render::SceneLayer sceneLayer, const render::TileSet* ti
 	this->tileSets[sceneLayer] = tileSet;
 }
 void Client::init(){
-
+    std::cout << "Enregistrement Observer" << std::endl;
+    serv.registerObserver(this); 
 }
 void Client::run(){
 	
-
+        Client::init();
 	this->init();
 
 	while(acquireControls()){
@@ -47,6 +48,7 @@ void Client::run(){
 			}
 			
 		}
+                serv.run();
 		engine.update();
 		updateDisplay();
 	}	
