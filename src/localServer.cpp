@@ -1,6 +1,6 @@
 #include "server.hpp"
 #include <iostream>
-
+#include <mutex>
 using namespace server;
 
 LocalServer::LocalServer(){
@@ -15,10 +15,11 @@ LocalServer::~LocalServer(){
 
 void LocalServer::run(){
 
-	//~ while(1){
-		std::cout << "localServer running\n";
-	//~ }
-
+	// while(1){
+		//~ std::cout << "localServer running\n";
+	// }
+	std::mutex mut;
+	//~ mut.lock();
 	if (engine.getLevelState().getTurnToPlay() == state::OPPONENT) {
 		((ai::HeuristicAI*)ais)->run(engine);
 	}
@@ -29,4 +30,5 @@ void LocalServer::run(){
 		//~ }	
 	//~ }
 	engine.update();
+	//~ mut.unlock();
 }

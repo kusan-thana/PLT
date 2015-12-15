@@ -1,11 +1,9 @@
 #include "client.hpp"
+#include <iostream>
 
 #include "render.hpp"
 #include "guiRender.hpp"
-
-#include <iostream>
 #include "engine.hpp" //A supprimer apres parallelisme (?)
-#include <iostream>
 #include "server.hpp"
 /**
  * Client Class
@@ -35,29 +33,30 @@ void Client::run(){
 	Client::init();
 	this->init();
 
-	while(acquireControls()){
-
-		if (levelState.getTurnToPlay() == state::OPPONENT) {
-			//dumbAI.run(engine);
-			heuristicAi.run(engine);
-		}
-		else if(levelState.getTurnToPlay() == state::PLAYER) {
-			if(gui.getStartPlayerAI()){
-				heuristicAi.run(engine);
-				//dumbAI.run(engine);
-			}	
-		}
-        //serv.run();
-		engine.update();
-		updateDisplay();
-	}	
 	//~ while(acquireControls()){
-
-		//~ serv.runBackground();
-		//~ //engine.update();
+//~ 
+		//~ if (levelState.getTurnToPlay() == state::OPPONENT) {
+			//~ //dumbAI.run(engine);
+			//~ heuristicAi.run(engine);
+		//~ }
+		//~ else if(levelState.getTurnToPlay() == state::PLAYER) {
+			//~ if(gui.getStartPlayerAI()){
+				//~ heuristicAi.run(engine);
+				//~ //dumbAI.run(engine);
+			//~ }	
+		//~ }
+        //~ //serv.run();
+		//~ engine.update();
 		//~ updateDisplay();
-	//~ }		
-	//~ serv.join();	
+	//~ }	
+	while(acquireControls()){
+		
+		serv.runBackground();
+		serv.join();
+		//cache_mutex.lock();
+		updateDisplay();
+		//cache_mutex.unlock();
+	}
 }
 void Client::serverChanged(const server::ServerEvent& e){
 	
