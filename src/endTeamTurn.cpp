@@ -2,7 +2,7 @@
 
 using namespace engine;
 
-EndTeamTurn::EndTeamTurn()
+EndTeamTurn::EndTeamTurn(state::TurnToPlay team) : team(team)
 {
 }
 
