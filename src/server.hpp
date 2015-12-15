@@ -3,6 +3,7 @@
 #include <thread> 
 #include "engine.hpp"
 #include "state.hpp"
+#include "ai.hpp"
 
 namespace server {
 	class Server;

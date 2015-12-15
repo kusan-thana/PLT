@@ -18,6 +18,10 @@ void Engine::addCommand(Command *cmd) {
 void Engine::setMode(EngineMode mode) {
 	engineMode = mode;
 }
+state::LevelState& Engine::getLevelState() const{
+
+	return this->levelState;
+}
 EngineMode Engine::getMode() {
 	return engineMode;
 }

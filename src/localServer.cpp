@@ -4,6 +4,7 @@ using namespace server;
 
 LocalServer::LocalServer(){
 
+	this->ais = new ai::HeuristicAI(engine.getLevelState());
 }
 
 

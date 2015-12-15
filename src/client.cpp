@@ -45,10 +45,9 @@ void Client::run(){
 			if(gui.getStartPlayerAI()){
 				heuristicAi.run(engine);
 				//dumbAI.run(engine);
-			}
-			
+			}	
 		}
-                serv.run();
+        serv.run();
 		engine.update();
 		updateDisplay();
 	}	
