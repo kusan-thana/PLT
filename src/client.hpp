@@ -5,6 +5,7 @@
 #include "engine.hpp"
 #include "gui.hpp"
 #include "server.hpp"
+#include <mutex>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 
