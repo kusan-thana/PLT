@@ -81,15 +81,8 @@ void Engine::turnGestion() {
 				if (curr_mobileElement->getTurnPlayed()){ //Si ce personnage a joué
 					count++;
 					if (count == elementList.numberOfMonster()){ //Si l'ensemble des personnage a joué - Player turn
-
-						levelState.setTurnToPlay(state::PLAYER); //Player turn
-						for(int j = 0, count = 0; j < elementList.size();j++){
-							if(!((state::MobileElement*)(elementList.getElement(j)))->isPlayerCharacter()){
-								((state::MobileElement*)(elementList.getElement(j)))->setTurnPlayed(false); //Reinitialization - ce element peut jouer a nouveau
-								((state::MobileElement*)(elementList.getElement(j)))->setMovePlayed(false); //Reinitialization - ce element peut jouer a nouveau
-								levelState.getElementList().notifyObservers(j);
-							}
-						}	
+						actions.add(new EndTeamTurn(state::OPPONENT));
+						actions.apply();
 					}
 				}
 			}
