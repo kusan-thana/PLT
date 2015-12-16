@@ -26,7 +26,6 @@ EngineMode Engine::getMode() {
 	return engineMode;
 }
 void Engine::update() {
-	
 	Ruler ruler(this->actions, this->commandSet, this->levelState);
 	if (commandSet.size()) {
 		if (commandSet.get(MODE)) {
@@ -35,9 +34,17 @@ void Engine::update() {
 		}
 		if (engineMode == PLAY){
 
+			//MODIFICATION ETAT
 			ruler.apply();
-			commandSet.clear();
+			//FIN MODIFICATION ETAT
+
 			turnGestion();
+
+			//MODIFICATION ETAT
+			actions.apply();
+			//FIN MODIFICATION ETAT
+			actions.clear();
+
 		}
 		else if (engineMode == SAVE){
 			levelStateSave =levelState.clone();	
@@ -54,6 +61,7 @@ void Engine::update() {
 			engineMode = PLAY;
 		}
 	}
+	commandSet.clear();
 }
 void Engine::turnGestion() {
 	
@@ -68,7 +76,6 @@ void Engine::turnGestion() {
 					count++;
 					if (count == elementList.numberOfPlayer()){ //Si l'ensemble des personnage a joué - Opponent turn
 						actions.add(new EndTeamTurn(state::PLAYER));
-						actions.apply();
 					}
 				}
 			}
@@ -82,7 +89,6 @@ void Engine::turnGestion() {
 					count++;
 					if (count == elementList.numberOfMonster()){ //Si l'ensemble des personnage a joué - Player turn
 						actions.add(new EndTeamTurn(state::OPPONENT));
-						actions.apply();
 					}
 				}
 			}

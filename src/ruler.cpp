@@ -21,8 +21,6 @@ Ruler::~Ruler()
 void Ruler::apply(){
 	Command* cmd;
 
-	actions.clear();
-
 	//state::Element* perso = curr_LevelState.getElementList().getElement(0);
 	//~ state::Element* redTile = curr_LevelState.getElementCursors().getElement(0);	/////////////////////
 	if (commands.get(ATTACK)) {
@@ -66,5 +64,6 @@ void Ruler::apply(){
 	}
 	
 	actions.apply();
-	
+	actions.clear();
+
 }
