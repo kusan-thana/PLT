@@ -7,19 +7,15 @@ LocalServer::LocalServer(){
 
 	this->ais = new ai::HeuristicAI(engine.getLevelState());
 }
-
-
 LocalServer::~LocalServer(){
-
 }
-
 void LocalServer::run(){
 
 	// while(1){
 		//~ std::cout << "localServer running\n";
 	// }
-	std::mutex mut;
-	//~ mut.lock();
+	
+	mutex.lock();
 	if (engine.getLevelState().getTurnToPlay() == state::OPPONENT) {
 		((ai::HeuristicAI*)ais)->run(engine);
 	}
@@ -30,5 +26,5 @@ void LocalServer::run(){
 		//~ }	
 	//~ }
 	engine.update();
-	//~ mut.unlock();
+	mutex.unlock();
 }

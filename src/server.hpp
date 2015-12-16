@@ -1,6 +1,7 @@
 #ifndef Server_H
 #define Server_H
-#include <thread> 
+#include <thread>
+#include <mutex>
 #include "engine.hpp"
 #include "state.hpp"
 #include "ai.hpp"

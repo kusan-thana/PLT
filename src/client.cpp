@@ -5,6 +5,7 @@
 #include "guiRender.hpp"
 #include "engine.hpp" //A supprimer apres parallelisme (?)
 #include "server.hpp"
+//~ #include <X11/Xlib.h>
 /**
  * Client Class
 **/
@@ -52,11 +53,12 @@ void Client::run(){
 	while(acquireControls()){
 		
 		serv.runBackground();
-		serv.join();
-		//cache_mutex.lock();
+		//serv.join();
+		serv.mutex.lock();
 		updateDisplay();
-		//cache_mutex.unlock();
+		serv.mutex.unlock();
 	}
+	serv.join();
 }
 void Client::serverChanged(const server::ServerEvent& e){
 	
