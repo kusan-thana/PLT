@@ -51,7 +51,12 @@ void Client::run(){
 		//~ updateDisplay();
 	//~ }	
 	while(acquireControls()){
-		
+		if(levelState.getTurnToPlay() == state::PLAYER) {
+			if (gui.getStartPlayerAI()) {
+				heuristicAi.run(engine);
+				//dumbAI.run(engine);
+			}
+		}	
 		serv.runBackground();
 		//serv.join();
 		serv.mutex.lock();
