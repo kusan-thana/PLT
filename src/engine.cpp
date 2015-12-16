@@ -36,6 +36,7 @@ void Engine::update() {
 		if (engineMode == PLAY){
 
 			ruler.apply();
+			commandSet.clear();
 			turnGestion();
 		}
 		else if (engineMode == SAVE){
@@ -53,7 +54,6 @@ void Engine::update() {
 			engineMode = PLAY;
 		}
 	}
-	commandSet.clear();
 }
 void Engine::turnGestion() {
 	
@@ -67,14 +67,8 @@ void Engine::turnGestion() {
 				if (curr_mobileElement->getTurnPlayed()){ //Si ce personnage a joué
 					count++;
 					if (count == elementList.numberOfPlayer()){ //Si l'ensemble des personnage a joué - Opponent turn
-						levelState.setTurnToPlay(state::OPPONENT); //Opponent turn
-						for(int j = 0, count = 0; j < elementList.size();j++){
-							if(curr_mobileElement->isPlayerCharacter()){
-								((state::MobileElement*)(elementList.getElement(j)))->setTurnPlayed(false); //Reinitialization - ce element peut jouer a nouveau
-								((state::MobileElement*)(elementList.getElement(j)))->setMovePlayed(false); //Reinitialization - ce element peut jouer a nouveau
-								levelState.getElementList().notifyObservers(j);
-							}
-						}			
+						actions.add(new EndTeamTurn(state::PLAYER));
+						actions.apply();
 					}
 				}
 			}

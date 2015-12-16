@@ -64,9 +64,7 @@ void Ruler::apply(){
 		curr_LevelState.loadLevel(((LoadCommand*)cmd)->getFileName());
 		curr_LevelState.getElementGrid().notifyObservers(-1, -1);
 	}
-
 	
 	actions.apply();
-
 	
 }
