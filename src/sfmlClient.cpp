@@ -184,8 +184,8 @@ bool SFMLClient::acquireControls() {
 		gui::Cursor* cursor = (gui::Cursor*)gui.getCursorList().getGuiElement(0);
 
 		if (event.type == sf::Event::MouseMoved){
-			cursor->setY(sf::Mouse::getPosition(window).x * levelState.getElementGrid().getWidth() / window.getSize().x); //Merci benoit pour avoir inverser les axes x et y !
-			cursor->setX(sf::Mouse::getPosition(window).y * levelState.getElementGrid().getHeight() / window.getSize().y); //Merci benoit pour avoir inverser les axes x et y !
+			cursor->setY(sf::Mouse::getPosition(window).x * levelState.getElementGrid().getWidth() / window.getSize().x);
+			cursor->setX(sf::Mouse::getPosition(window).y * levelState.getElementGrid().getHeight() / window.getSize().y);
 		}
 		else if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space)) {
 			cursor->setActive(!cursor->getActive());
@@ -255,3 +255,9 @@ void SFMLClient::updateDisplay(){
 	//~ this->window.draw(text);///////////////////////////////////////////////////////////////////////////
 	this->window.display();
 }
+
+
+
+
+
+

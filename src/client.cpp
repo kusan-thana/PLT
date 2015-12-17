@@ -41,13 +41,7 @@ void Client::run(){
 				//dumbAI.run(engine);
 			}
 		}
-		else if (levelState.getTurnToPlay() == state::OPPONENT) {
-			heuristicAi.run(engine);
-		}
-
-		
 		serv.getEngine().getUpdateMutex().lock();
-		//serv.join();
 		updateDisplay();
 		serv.getEngine().getUpdateMutex().unlock();
 	}

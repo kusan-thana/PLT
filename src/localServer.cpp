@@ -13,6 +13,9 @@ void LocalServer::run(){
 
 	while(!quit)
 	{
+		if (levelState.getTurnToPlay() == state::OPPONENT) {
+			ais->run(engine);
+		}
 		engine.update();
 	}
 }
