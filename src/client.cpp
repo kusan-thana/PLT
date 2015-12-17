@@ -34,7 +34,7 @@ void Client::run(){
 	Client::init();
 	this->init();
 
-
+	serv.runBackground();
 	while(acquireControls()){
 		if(levelState.getTurnToPlay() == state::PLAYER) {
 			if (gui.getStartPlayerAI()) {
@@ -42,10 +42,14 @@ void Client::run(){
 				//dumbAI.run(engine);
 			}
 		}
-			
-		serv.runBackground();
-		//serv.join();
+		else if (levelState.getTurnToPlay() == state::OPPONENT) {
+			heuristicAi.run(engine);
+		}
+
+		
 		serv.mutex.lock();
+
+		//serv.join();
 		updateDisplay();
 		serv.mutex.unlock();
 	}

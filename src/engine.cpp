@@ -60,8 +60,8 @@ void Engine::update() {
 		else if (engineMode == ROLLBACK) {
 			engineMode = PLAY;
 		}
+		commandSet.clear();
 	}
-	commandSet.clear();
 }
 void Engine::turnGestion() {
 	

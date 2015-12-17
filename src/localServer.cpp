@@ -14,17 +14,10 @@ void LocalServer::run(){
 	// while(1){
 		//~ std::cout << "localServer running\n";
 	// }
-	
-	mutex.lock();
-	if (engine.getLevelState().getTurnToPlay() == state::OPPONENT) {
-		((ai::HeuristicAI*)ais)->run(engine);
+	while(1)
+	{
+		mutex.lock();
+		engine.update();
+		mutex.unlock();
 	}
-	//~ else if(levelState.getTurnToPlay() == state::PLAYER) {
-		//~ if(gui.getStartPlayerAI()){
-			//~ heuristicAi.run(engine);
-
-		//~ }	
-	//~ }
-	engine.update();
-	mutex.unlock();
 }
