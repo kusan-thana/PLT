@@ -35,14 +35,19 @@ void Engine::update() {
 		if (engineMode == PLAY){
 
 			//MODIFICATION ETAT
+			update_mutex.lock();
 			ruler.apply();
+			update_mutex.unlock();
 			//FIN MODIFICATION ETAT
 
 			turnGestion();
-
+			
 			//MODIFICATION ETAT
+			update_mutex.lock();
 			actions.apply();
+			update_mutex.unlock();
 			//FIN MODIFICATION ETAT
+			
 			actions.clear();
 
 		}
@@ -95,5 +100,8 @@ void Engine::turnGestion() {
 		}
 	}
 }
-
+std::mutex& Engine::getUpdateMutex() const{
+		
+	return update_mutex;
+}
 

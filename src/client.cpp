@@ -46,11 +46,10 @@ void Client::run(){
 		}
 
 		
-		serv.mutex.lock();
-
+		serv.getEngine().getUpdateMutex().lock();
 		//serv.join();
 		updateDisplay();
-		serv.mutex.unlock();
+		serv.getEngine().getUpdateMutex().unlock();
 	}
 	serv.join();
 }
