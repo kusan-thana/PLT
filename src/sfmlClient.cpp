@@ -205,6 +205,7 @@ bool SFMLClient::acquireControls() {
 		}
 		else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return) {
 			gui.setStartPlayerAI(!gui.getStartPlayerAI());
+			serv.setIaAutoMode(!serv.getIaAutoMode());
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
 			cursor->setY(cursor->getY() + 1);

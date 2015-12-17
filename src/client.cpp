@@ -35,12 +35,6 @@ void Client::run(){
 	this->init();
 
 	while(acquireControls()){
-		if(levelState.getTurnToPlay() == state::PLAYER) {
-			if (gui.getStartPlayerAI()) {
-				heuristicAi.run(engine);
-				//dumbAI.run(engine);
-			}
-		}
 		serv.getEngine().getUpdateMutex().lock();
 		updateDisplay();
 		serv.getEngine().getUpdateMutex().unlock();

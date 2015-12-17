@@ -25,3 +25,10 @@ void Server::join (){
 	mainThread->join();
 	//~ mainThread->detach();
 }
+void Server::setIaAutoMode (bool iaAutoMode) {
+	this->iaAutoMode = iaAutoMode;
+	
+}
+bool Server::getIaAutoMode () const {
+	return iaAutoMode;
+}
