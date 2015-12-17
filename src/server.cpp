@@ -2,7 +2,7 @@
 
 using namespace server;
 
-Server::Server() : engine(levelState){	
+Server::Server() : engine(levelState),quit(false){	
 	
 }
 Server::~Server(){
@@ -21,7 +21,7 @@ void Server::runBackground (){
 	mainThread = new std::thread(&Server::run, this);
 }
 void Server::join (){
-
+	quit = true;
 	mainThread->join();
 	//~ mainThread->detach();
 }

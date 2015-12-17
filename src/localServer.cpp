@@ -14,7 +14,7 @@ void LocalServer::run(){
 	// while(1){
 		//~ std::cout << "localServer running\n";
 	// }
-	while(1)
+	while(!quit)
 	{
 		mutex.lock();
 		engine.update();

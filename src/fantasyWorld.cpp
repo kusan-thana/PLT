@@ -17,7 +17,7 @@ int main()
 	client::Client* client = new client::SFMLClient(*server);
 	//server::Server* server = new server::LocalServer(); //Pas de parallélisme encore - moteur de jeu instancié dans le client temporairement
 	
-	//~ server->runBackground();
+	server->runBackground();
 	client->run();
 	//~ server->join();
 	

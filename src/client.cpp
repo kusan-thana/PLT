@@ -34,7 +34,6 @@ void Client::run(){
 	Client::init();
 	this->init();
 
-	serv.runBackground();
 	while(acquireControls()){
 		if(levelState.getTurnToPlay() == state::PLAYER) {
 			if (gui.getStartPlayerAI()) {
