@@ -7,15 +7,17 @@ using namespace engine;
 Engine::Engine(state::LevelState& levelState) : levelState(levelState), actions(levelState), engineMode(PLAY) {
 	
 	commandSet = new engine::CommandSet();
+	commandSet2 = new engine::CommandSet();
 }
 
 
 Engine::~Engine() {
 	free(commandSet);
+	free(commandSet2);
 }
 
 void Engine::addCommand(Command *cmd) {
-	commandSet->set(cmd);
+	commandSet2->set(cmd);
 }
 void Engine::setMode(EngineMode mode) {
 	engineMode = mode;
@@ -28,6 +30,9 @@ EngineMode Engine::getMode() {
 	return engineMode;
 }
 void Engine::update() {
+	
+	swapCommands();
+	
 	Ruler ruler(this->actions, *commandSet, this->levelState);
 	if (commandSet->size()) {
 		if (commandSet->get(MODE)) {
@@ -106,4 +111,14 @@ std::mutex& Engine::getUpdateMutex() const{
 		
 	return update_mutex;
 }
+
+void Engine::swapCommands(){
+	CommandSet* tmp;
+	
+	tmp = commandSet;
+	commandSet = commandSet2;
+	commandSet2 = tmp;
+	
+}
+
 
