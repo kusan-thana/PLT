@@ -1,6 +1,7 @@
 #ifndef AI_H
 #define AI_H
 
+#include <thread>
 #include "state.hpp"
 #include "engine.hpp"
 
