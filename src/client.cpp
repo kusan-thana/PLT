@@ -34,29 +34,15 @@ void Client::run(){
 	Client::init();
 	this->init();
 
-	//~ while(acquireControls()){
-//~ 
-		//~ if (levelState.getTurnToPlay() == state::OPPONENT) {
-			//~ //dumbAI.run(engine);
-			//~ heuristicAi.run(engine);
-		//~ }
-		//~ else if(levelState.getTurnToPlay() == state::PLAYER) {
-			//~ if(gui.getStartPlayerAI()){
-				//~ heuristicAi.run(engine);
-				//~ //dumbAI.run(engine);
-			//~ }	
-		//~ }
-        //~ //serv.run();
-		//~ engine.update();
-		//~ updateDisplay();
-	//~ }	
+
 	while(acquireControls()){
 		if(levelState.getTurnToPlay() == state::PLAYER) {
 			if (gui.getStartPlayerAI()) {
 				heuristicAi.run(engine);
 				//dumbAI.run(engine);
 			}
-		}	
+		}
+			
 		serv.runBackground();
 		//serv.join();
 		serv.mutex.lock();
