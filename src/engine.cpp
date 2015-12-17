@@ -5,15 +5,17 @@ using namespace engine;
 
 
 Engine::Engine(state::LevelState& levelState) : levelState(levelState), actions(levelState), engineMode(PLAY) {
-
+	
+	commandSet = new engine::CommandSet();
 }
 
 
 Engine::~Engine() {
+	free(commandSet);
 }
 
 void Engine::addCommand(Command *cmd) {
-	commandSet.set(cmd);
+	commandSet->set(cmd);
 }
 void Engine::setMode(EngineMode mode) {
 	engineMode = mode;
@@ -26,11 +28,11 @@ EngineMode Engine::getMode() {
 	return engineMode;
 }
 void Engine::update() {
-	Ruler ruler(this->actions, this->commandSet, this->levelState);
-	if (commandSet.size()) {
-		if (commandSet.get(MODE)) {
+	Ruler ruler(this->actions, *commandSet, this->levelState);
+	if (commandSet->size()) {
+		if (commandSet->get(MODE)) {
 
-			setMode(((ModeCommand*)commandSet.get(MODE))->getMode());
+			setMode(((ModeCommand*)commandSet->get(MODE))->getMode());
 		}
 		if (engineMode == PLAY){
 
@@ -65,7 +67,7 @@ void Engine::update() {
 		else if (engineMode == ROLLBACK) {
 			engineMode = PLAY;
 		}
-		commandSet.clear();
+		commandSet->clear();
 	}
 }
 void Engine::turnGestion() {
