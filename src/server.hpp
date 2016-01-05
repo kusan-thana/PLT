@@ -5,6 +5,7 @@
 #include "engine.hpp"
 #include "state.hpp"
 #include "ai.hpp"
+#include <json/json.h>
 
 namespace server {
 	class Server;
