@@ -9,3 +9,6 @@ res/images/psd
 src/generated
 nbproject/
 move
+lib/extern/jsoncpp-0.10.5
+lib/extern/libmicrohttpd
+lib/extern/libmicrohttpd-0.9.46

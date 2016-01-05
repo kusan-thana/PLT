@@ -1,5 +1,18 @@
 #!/bin/bash
 
+MAIN_DIR=$PWD
+
+if [ "$1" == "clean" ]; then
+    rm -rf build bin lib/extern/libmicrohttpd lib/extern/libmicrohttpd-0.9.46 lib/extern/jsoncpp-0.10.5
+    exit 2	
+fi
+
+if [ "$1" == "-h" ] || [ "$1" == "--help" ] ; then
+	echo "configure clean  : clean lib/extern files"
+    exit 2	
+fi
+
+#dia
 rm -rf src/generated
 mkdir -p src/generated
 
@@ -13,7 +26,27 @@ dia2code dia/engine.dia -d src/generated -nc
 dia2code dia/ai.dia -d src/generated -nc
 dia2code dia/modularisation.dia -d src/generated -nc
 
-rm -rf bin build
-mkdir -p bin build
-cd build
-cmake ..
+
+# jsoncpp
+if [ ! -d "$MAIN_DIR/lib/extern/jsoncpp-0.10.5" ]; then
+    cd "$MAIN_DIR/lib/extern" || exit 2
+    tar -xzf jsoncpp-0.10.5.tar.gz || exit 2
+    cd jsoncpp-0.10.5 || exit 2
+    python amalgamate.py || exit 2
+fi
+
+# libmicrohttpd
+if [ ! -d "$MAIN_DIR/lib/extern/libmicrohttpd" ]; then
+   cd "$MAIN_DIR/lib/extern" || exit 2
+   tar -xzf libmicrohttpd-0.9.46.tar.gz || exit 2
+   cd libmicrohttpd-0.9.46 || exit 2
+   ./configure --prefix="$MAIN_DIR/lib/extern/libmicrohttpd" || exit 2
+   make -j5 install || exit 2
+fi
+
+
+# Cmake
+rm -rf "$MAIN_DIR/build" || exit 2
+mkdir -p "$MAIN_DIR/build" || exit 2
+cd "$MAIN_DIR/build" || exit 2
+cmake .. || exit 2
