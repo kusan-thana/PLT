@@ -13,14 +13,12 @@ using namespace std;
 
 int main()
 {	
-	cout << "main1\n";
-	server::Server* server = new server::LocalServer();
+	cout << "--------Client--------\n";
+	server::Server* server = new server::RemoteServerSFML();
 	client::Client* client = new client::SFMLClient(*server);
-	//server::Server* server = new server::LocalServer(); //Pas de parallélisme encore - moteur de jeu instancié dans le client temporairement
 	
 	server->runBackground();
 	client->run();
-	//~ server->join();
 	
     return 0;
 }

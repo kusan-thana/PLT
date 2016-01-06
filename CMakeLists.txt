@@ -34,8 +34,9 @@ target_link_libraries(FantasyWorldClient "${PROJECT_SOURCE_DIR}/lib/extern/libmi
 target_link_libraries(FantasyWorldServer "${PROJECT_SOURCE_DIR}/lib/extern/libmicrohttpd/lib/libmicrohttpd.so")
 
 
-#find_package (Threads)
-#target_link_libraries (FantasyWorld ${CMAKE_THREAD_LIBS_INIT})
+find_package (Threads)
+target_link_libraries (FantasyWorldClient ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries (FantasyWorldServer ${CMAKE_THREAD_LIBS_INIT})
 
 # SFML
 set(SFML_ROOT "/usr")

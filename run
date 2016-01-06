@@ -1,6 +1,21 @@
 #!/bin/bash
 
+if [ "$1" == "-h" ] || [ "$1" == "--help" ] ; then
+	echo "run : run client"
+	echo "run server : run server"
+    exit 2	
+fi
+
 LD_LIBRARY_PATH=
 cd bin
 #valgrind --leak-check=full   --show-leak-kinds=all  ./FantasyWorld
-./FantasyWorldServer
+if [ "$1" == "server" ]; then
+	./FantasyWorldServer
+else
+	./FantasyWorldClient	
+fi
+
+
+
+
+
