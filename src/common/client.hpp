@@ -17,7 +17,7 @@ namespace client {
 	class SFMLClient;
 }
 
-#include "generated/client.h"
+#include "../generated/client.h"
 
 
 

@@ -3,7 +3,7 @@
 MAIN_DIR=$PWD
 
 if [ "$1" == "clean" ]; then
-    rm -rf build bin lib/extern/libmicrohttpd lib/extern libmicrohttpd-0.9.46 lib/extern/jsoncpp-0.10.5
+    rm -rf build bin lib/extern/libmicrohttpd lib/externlibmicrohttpd-0.9.46 lib/extern/jsoncpp-0.10.5
     exit 2	
 fi
 

@@ -29,7 +29,7 @@ namespace state {
 	class ElementLevel;
 }
 
-#include "generated/state.h"
+#include "../generated/state.h"
 #include "elementAlloc.tpp"		//Implementation file
 
 

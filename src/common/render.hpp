@@ -20,7 +20,7 @@ namespace render {
 	class TileSet2;
 }
 
-#include "generated/render.h"
+#include "../generated/render.h"
 
 
 

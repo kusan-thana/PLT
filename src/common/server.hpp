@@ -15,6 +15,6 @@ namespace server {
 	enum ServerEvent : unsigned int;
 }
 
-#include "generated/server.h"
+#include "../generated/server.h"
 
 #endif

@@ -3,6 +3,7 @@
 
 #include <mutex>
 #include "state.hpp"
-#include "generated/engine.h"
+
+#include "../generated/engine.h"
 
 #endif

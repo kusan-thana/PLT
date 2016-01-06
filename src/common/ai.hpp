@@ -12,7 +12,7 @@ namespace ai {
 
 static const std::vector<state::Direction> directions{ state::Direction::NONE, state::Direction::NORTH, state::Direction::SOUTH, state::Direction::EAST, state::Direction::WEST };
 
-#include "generated/ai.h"
+#include "../generated/ai.h"
 
 
 

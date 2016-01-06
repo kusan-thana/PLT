@@ -11,7 +11,7 @@ namespace guiRender {
 	class TileSet3;
 }
 
-#include "generated/guiRender.h"
+#include "../generated/guiRender.h"
 
 #endif
 
