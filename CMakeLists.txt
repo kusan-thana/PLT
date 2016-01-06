@@ -17,14 +17,21 @@ include_directories ("${PROJECT_SOURCE_DIR}/lib/extern/jsoncpp-0.10.5/dist")
 file(GLOB jsoncpp_sources "${PROJECT_SOURCE_DIR}/lib/extern/jsoncpp-0.10.5/dist/jsoncpp.cpp")
 
 # Main
-file(GLOB_RECURSE mainSources src/*.cpp)
+file(GLOB_RECURSE mainSourcesClient src/common/*.cpp src/client/*.cpp)
 
 # add the executable
-add_executable (FantasyWorld ${mainSources})
+add_executable (FantasyWorldClient ${mainSourcesClient})
+
+# Main
+file(GLOB_RECURSE mainSourcesServer src/common/*.cpp src/server/*.cpp)
+
+# add the executable
+add_executable (FantasyWorldServer ${mainSourcesServer})
 
 #libmicrohttpd
 include_directories ("${PROJECT_SOURCE_DIR}/lib/extern/libmicrohttpd/include")
-target_link_libraries(FantasyWorld "${PROJECT_SOURCE_DIR}/lib/extern/libmicrohttpd/lib/libmicrohttpd.so")
+target_link_libraries(FantasyWorldClient "${PROJECT_SOURCE_DIR}/lib/extern/libmicrohttpd/lib/libmicrohttpd.so")
+target_link_libraries(FantasyWorldServer "${PROJECT_SOURCE_DIR}/lib/extern/libmicrohttpd/lib/libmicrohttpd.so")
 
 
 #find_package (Threads)
@@ -36,7 +43,8 @@ set(CMAKE_MODULE_PATH "${SFML_ROOT}/share/SFML/cmake/Modules" ${CMAKE_MODULE_PAT
 find_package(SFML 2 COMPONENTS ./ru./rungraphics window system audio)
 if(SFML_FOUND)
   include_directories(${SFML_INCLUDE_DIR})
-  target_link_libraries(FantasyWorld ${SFML_LIBRARIES})
+  target_link_libraries(FantasyWorldClient ${SFML_LIBRARIES})
+  target_link_libraries(FantasyWorldServer ${SFML_LIBRARIES})
 endif()
 
 set(SFML_ROOT "/usr/lsa")
@@ -44,7 +52,8 @@ set(CMAKE_MODULE_PATH "${SFML_ROOT}/share/SFML/cmake/Modules" ${CMAKE_MODULE_PAT
 find_package(SFML 2 COMPONENTS graphics window system audio)
 if(SFML_FOUND)
   include_directories(${SFML_INCLUDE_DIR})
-  target_link_libraries(FantasyWorld ${SFML_LIBRARIES})
+  target_link_libraries(FantasyWorldClient ${SFML_LIBRARIES})
+  target_link_libraries(FantasyWorldServer ${SFML_LIBRARIES})
 endif()
 
 
