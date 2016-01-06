@@ -12,6 +12,7 @@ namespace server {
 	class LocalServer;
 	class Observable;
 	class ServerObserver;
+	class RemoteServer;
 	enum ServerEvent : unsigned int;
 }
 
