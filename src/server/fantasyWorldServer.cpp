@@ -128,7 +128,6 @@ int main(int argc, char *const *argv)
 	//~ 
 	//~ server->runBackground();
 
-
 	    try {
         ServicesManager servicesManager;
 //        servicesManager.registerService(make_unique<VersionService>());
@@ -136,11 +135,9 @@ int main(int argc, char *const *argv)
         UserDB userDB;
         userDB.addUser(make_unique<User>("Paul",23));
         //~ cout << userDB.getUser(1)->name << endl;
-        cout << "test1" << endl;
         
         servicesManager.registerService(make_unique<UserService>(std::ref(userDB)));
         
-cout << "test2" << endl; 
         struct MHD_Daemon *d;
         //~ if (argc != 2) {
             //~ printf("%s PORT\n", argv[0]);
