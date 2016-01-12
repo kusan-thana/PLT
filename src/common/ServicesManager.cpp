@@ -4,7 +4,7 @@
  * @date 9 décembre 2015
  * @copyright CNRS
  */
-
+#include <iostream>
 #include "server.hpp"
 
 using namespace server;
@@ -17,6 +17,7 @@ void ServicesManager::registerService (std::unique_ptr<AbstractService> service)
 AbstractService* ServicesManager::findService (const std::string& url) const {
     for (auto& service : services) {
         const string& pattern(service->getPattern());
+        std::cout << pattern << std::endl;
         if (url.find(pattern) != 0)
             continue;
         if (url.size() > pattern.size() && url[pattern.size()] != '/')

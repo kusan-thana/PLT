@@ -136,7 +136,10 @@ int main(int argc, char *const *argv)
         userDB.addUser(make_unique<User>("Paul",23));
         //~ cout << userDB.getUser(1)->name << endl;
         
+        CommandDB commandDB;
+        
         servicesManager.registerService(make_unique<UserService>(std::ref(userDB)));
+        servicesManager.registerService(make_unique<CommandService>(std::ref(commandDB)));
         
         struct MHD_Daemon *d;
         //~ if (argc != 2) {
