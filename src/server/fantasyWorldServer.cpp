@@ -136,7 +136,10 @@ int main(int argc, char *const *argv)
         userDB.addUser(make_unique<User>("Paul",23));
         //~ cout << userDB.getUser(1)->name << endl;
         
+        unique_ptr<engine::Command> command = make_unique<engine::ModeCommand>(engine::EngineMode::PLAY);
+        
         CommandDB commandDB;
+        commandDB.setCommand(std::move(command));
         
         servicesManager.registerService(make_unique<UserService>(std::ref(userDB)));
         servicesManager.registerService(make_unique<CommandService>(std::ref(commandDB)));
@@ -156,7 +159,7 @@ int main(int argc, char *const *argv)
                 &main_handler, (void*) &servicesManager,
                 MHD_OPTION_NOTIFY_COMPLETED, request_completed, NULL,
                 MHD_OPTION_END);
-        cout << "d " << d << endl; 
+  
         if (d == NULL)
             return 1;
         cout << "Pressez <entrée> pour arrêter le serveur" << endl;
