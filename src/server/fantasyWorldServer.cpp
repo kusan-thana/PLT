@@ -124,9 +124,9 @@ main_handler (void *cls,
 int main(int argc, char *const *argv)
 {	
 	cout << "---------SERVER----------\n";
-	//~ server::Server* server = new server::LocalServer();
-	//~ 
-	//~ server->runBackground();
+	server::Server* server = new server::LocalServer();
+	
+	server->runBackground();
 
 	    try {
         ServicesManager servicesManager;
@@ -153,7 +153,7 @@ int main(int argc, char *const *argv)
                 &main_handler, (void*) &servicesManager,
                 MHD_OPTION_NOTIFY_COMPLETED, request_completed, NULL,
                 MHD_OPTION_END);
-        cout << "d " << d << endl; 
+
         if (d == NULL)
             return 1;
         cout << "Pressez <entrée> pour arrêter le serveur" << endl;
