@@ -9,6 +9,6 @@
 
 using namespace server;
 
-User::User (std::string name, int age) : name(name),age(age) {
+User::User (string name, int age) : name(name),age(age) {
     
 }

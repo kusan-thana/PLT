@@ -20,13 +20,13 @@ const User* UserDB::getUser (int id) const {
     return ite->second.get();
 }
 
-int UserDB::addUser (std::unique_ptr<User> user) {
+int UserDB::addUser (unique_ptr<User> user) {
     int id = idseq++;
     users.insert(std::make_pair(id,std::move(user)));
     return id;
 }
 
-void UserDB::setUser (int id, std::unique_ptr<User> user) {
+void UserDB::setUser (int id, unique_ptr<User> user) {
     users[id] = std::move(user);
     if (id > idseq) {
         idseq = id;

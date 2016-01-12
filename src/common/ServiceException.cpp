@@ -9,7 +9,7 @@
 
 using namespace server;
 
-ServiceException::ServiceException (HttpStatus status, std::string msg) 
+ServiceException::ServiceException (HttpStatus status, string msg) 
     : httpStatus(status),msg(msg) {    
 }
 
