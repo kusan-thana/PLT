@@ -137,9 +137,9 @@ int main(int argc, char *const *argv)
         //~ cout << userDB.getUser(1)->name << endl;
         
         unique_ptr<engine::Command> command = make_unique<engine::ModeCommand>(engine::EngineMode::PLAY);
-        
+  
         CommandDB commandDB;
-        commandDB.setCommand(std::move(command));
+        commandDB.setCommand(std::move(make_unique<engine::ModeCommand>(engine::EngineMode::SAVE)));		//COMMAND TEST
         
         servicesManager.registerService(make_unique<UserService>(std::ref(userDB)));
         servicesManager.registerService(make_unique<CommandService>(std::ref(commandDB)));
