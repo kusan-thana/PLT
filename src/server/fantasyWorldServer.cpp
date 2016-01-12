@@ -129,7 +129,7 @@ int main(int argc, char *const *argv)
 	//~ server->runBackground();
 
 
-	    //~ try {
+	    try {
         ServicesManager servicesManager;
 //        servicesManager.registerService(make_unique<VersionService>());
 
@@ -162,10 +162,10 @@ cout << "test2" << endl;
         cout << "Pressez <entrée> pour arrêter le serveur" << endl;
         (void) getc(stdin);
         MHD_stop_daemon(d);
-    //~ }
-    //~ catch(exception& e) {
-        //~ cerr << "Exception: " << e.what() << endl;
-    //~ }
+    }
+    catch(exception& e) {
+        cerr << "Exception: " << e.what() << endl;
+    }
     
     return 0;
 }

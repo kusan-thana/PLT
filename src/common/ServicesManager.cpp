@@ -10,11 +10,11 @@
 using namespace server;
 using namespace std;
 
-void ServicesManager::registerService (unique_ptr<AbstractService> service) {
+void ServicesManager::registerService (std::unique_ptr<AbstractService> service) {
     services.push_back(std::move(service));
 }
 
-AbstractService* ServicesManager::findService (const string& url) const {
+AbstractService* ServicesManager::findService (const std::string& url) const {
     for (auto& service : services) {
         const string& pattern(service->getPattern());
         if (url.find(pattern) != 0)
@@ -26,7 +26,7 @@ AbstractService* ServicesManager::findService (const string& url) const {
     return nullptr;
 }
 
-HttpStatus ServicesManager::queryService (string& out, const string& in, const string& url, const string& method) { 
+HttpStatus ServicesManager::queryService (std::string& out, const std::string& in, const std::string& url, const std::string& method) { 
     AbstractService* service = findService(url);
     if (!service)
         throw ServiceException(HttpStatus::NOT_FOUND,"Service "+url+" non trouvé");

@@ -20,13 +20,13 @@ file(GLOB jsoncpp_sources "${PROJECT_SOURCE_DIR}/lib/extern/jsoncpp-0.10.5/dist/
 file(GLOB_RECURSE mainSourcesClient src/common/*.cpp src/client/*.cpp)
 
 # add the executable
-add_executable (FantasyWorldClient ${mainSourcesClient})
+add_executable (FantasyWorldClient ${mainSourcesClient} ${jsoncpp_sources})
 
 # Main
 file(GLOB_RECURSE mainSourcesServer src/common/*.cpp src/server/*.cpp)
 
 # add the executable
-add_executable (FantasyWorldServer ${mainSourcesServer})
+add_executable (FantasyWorldServer ${mainSourcesServer} ${jsoncpp_sources})
 
 #libmicrohttpd
 include_directories ("${PROJECT_SOURCE_DIR}/lib/extern/libmicrohttpd/include")

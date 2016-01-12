@@ -1,12 +1,12 @@
 #ifndef Server_H
 #define Server_H
+#include <json/json.h>
 #include <iostream>
 #include <thread>
 #include <mutex>
 #include "engine.hpp"
 #include "state.hpp"
 #include "ai.hpp"
-#include <json/json.h>
 #include <memory>
 #include <unordered_map>
 #include <stdexcept>
