@@ -1,4 +1,4 @@
-#include "server.hpp"
+#include "../common/server.hpp"
 #include <iostream>
 /**
  * Observable Class
