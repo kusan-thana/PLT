@@ -77,14 +77,14 @@ void GUI::commander(engine::Engine& engine) {
 			engine::MoveCommand* move = new engine::MoveCommand(cursor->getX(), cursor->getY(), cursor->getCharacter());
 			cursor->setCharacter(0);
 			engine.addCommand(move);
-			engine.addCommand(move);
+			server.addCommand(move);
 
 		}
 	}
 	if (engineMode) {
 		engine::ModeCommand* engineModeCommand = new engine::ModeCommand(engineMode);
 		engine.addCommand(engineModeCommand);
-		engine.addCommand(engineModeCommand);
+		server.addCommand(engineModeCommand);
 		engineMode = engine::PLAY;
 	}
 }

@@ -29,28 +29,28 @@ void RemoteServerSFML::run(){
 	
 	while(!quit)
 	{
-		if (t.milliseconds_elapsed() > 400){		    
-			sf::Http::Request request("/user/1", sf::Http::Request::Get);
-			sf::Http http("http://localhost/", 8080);
-			sf::Http::Response response = http.sendRequest(request);
+		if (t.milliseconds_elapsed() > 200){		    
+			//~ sf::Http::Request request("/user/1", sf::Http::Request::Get);
+			//~ sf::Http http("http://localhost/", 8080);
+			//~ sf::Http::Response response = http.sendRequest(request);
 			
-			std::cout << "REPONSE : " << response.getStatus();
-			if (response.getStatus() == sf::Http::Response::Ok)
-			{
-				// affichage de la réponse du serveur
-				std::cout << response.getBody() << std::endl;
-			}
-			else
-			{
-				std::cout << "request failed" << std::endl;
-			}
-			if(levelState.getTurnToPlay() == state::PLAYER) {
-				if (iaAutoMode) {
-					//dumbAI.run(engine);
-				}
-			}
-			else if (levelState.getTurnToPlay() == state::OPPONENT) {
-			}
+			//~ std::cout << "REPONSE : " << response.getStatus();
+			//~ if (response.getStatus() == sf::Http::Response::Ok)
+			//~ {
+				//~ // affichage de la réponse du serveur
+				//~ std::cout << response.getBody() << std::endl;
+			//~ }
+			//~ else
+			//~ {
+				//~ std::cout << "request failed" << std::endl;
+			//~ }
+			//~ if(levelState.getTurnToPlay() == state::PLAYER) {
+				//~ if (iaAutoMode) {
+					//~ //dumbAI.run(engine);
+				//~ }
+			//~ }
+			//~ else if (levelState.getTurnToPlay() == state::OPPONENT) {
+			//~ }
 			
 			engine.update();
 			t.reset();
@@ -58,5 +58,26 @@ void RemoteServerSFML::run(){
 	}
 }
 void RemoteServerSFML::addCommand(engine::Command *cmd) {
-	commandSet->set(cmd);
+	sf::Http::Request request("/command", sf::Http::Request::Get);
+	sf::Http http("http://localhost/", 8080);
+	sf::Http::Response response = http.sendRequest(request);
+	
+	std::cout << "REPONSE : " << response.getStatus();
+	if (response.getStatus() == sf::Http::Response::Ok)
+	{
+		// affichage de la réponse du serveur
+		std::cout << response.getBody() << std::endl;
+	}
+	else
+	{
+		std::cout << "request failed" << std::endl;
+	}
+	if(levelState.getTurnToPlay() == state::PLAYER) {
+		if (iaAutoMode) {
+			//dumbAI.run(engine);
+		}
+	}
+	else if (levelState.getTurnToPlay() == state::OPPONENT) {
+	}
+
 }

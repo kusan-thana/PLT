@@ -10,6 +10,8 @@ HttpStatus CommandService::get (Json::Value& out, int id) const {
     if (!command)
         throw ServiceException(HttpStatus::NOT_FOUND,"No command");
     
+    out["type"] = command->getTypeId();
+    
     switch(command->getTypeId()){
 		case engine::CommandTypeId::MAIN :
 			out["file_name"] = ((engine::LoadCommand*)command)->getFileName();
