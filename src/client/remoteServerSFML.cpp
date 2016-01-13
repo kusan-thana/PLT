@@ -53,9 +53,8 @@ void RemoteServerSFML::run(){
 			}
 			else if (levelState.getTurnToPlay() == state::OPPONENT) {
 			}
-
+			engine.update();
 			t.reset();
 		}
-		engine.update();
 	}
 }
