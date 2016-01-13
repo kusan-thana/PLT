@@ -3,6 +3,7 @@
 
 #include "state.hpp"
 #include "engine.hpp"
+#include "server.hpp"
 #include <vector>
 
 namespace gui {

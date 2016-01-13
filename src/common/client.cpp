@@ -12,7 +12,7 @@
 
 using namespace client;
 
-Client::Client(server::Server& serv) :serv(serv), engine(serv.getEngine()), levelState(serv.getLevelState()), gui(levelState, engine),dumbAI(levelState), heuristicAi(levelState){
+Client::Client(server::Server& serv) :serv(serv), engine(serv.getEngine()), levelState(serv.getLevelState()), gui(levelState, engine, serv),dumbAI(levelState), heuristicAi(levelState){
 	
 	this->tileSets.push_back(new render::TileSet1()); 	//GRID_LAYER			
 	this->tileSets.push_back(new guiRender::TileSet3());	//MOVE_RANGE_LAYER       

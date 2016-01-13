@@ -27,3 +27,8 @@ void LocalServer::run(){
 	}
 	
 }
+
+void LocalServer::addCommand(engine::Command *cmd) {
+	commandSet->set(cmd);
+}
+

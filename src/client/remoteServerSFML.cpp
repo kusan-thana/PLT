@@ -2,18 +2,18 @@
 #include <iostream>
 #include <SFML/Network.hpp>
 #include <chrono>
-
+#include "../common/engine.hpp"
 using namespace server;
 
 struct timer
 {
     typedef std::chrono::steady_clock clock ;
-    typedef std::chrono::seconds seconds ;
+    typedef std::chrono::milliseconds milliseconds ;
 
     void reset() { start = clock::now() ; }
 
-    unsigned long long seconds_elapsed() const
-    { return std::chrono::duration_cast<seconds>( clock::now() - start ).count() ; }
+    unsigned long long milliseconds_elapsed() const
+    { return std::chrono::duration_cast<milliseconds>( clock::now() - start ).count() ; }
 
     private: clock::time_point start = clock::now() ;
 };
@@ -27,11 +27,9 @@ void RemoteServerSFML::run(){
 	
 	timer t ;
 	
-
-	
 	while(!quit)
 	{
-		if (t.seconds_elapsed() > 1){		    
+		if (t.milliseconds_elapsed() > 400){		    
 			sf::Http::Request request("/user/1", sf::Http::Request::Get);
 			sf::Http http("http://localhost/", 8080);
 			sf::Http::Response response = http.sendRequest(request);
@@ -53,8 +51,12 @@ void RemoteServerSFML::run(){
 			}
 			else if (levelState.getTurnToPlay() == state::OPPONENT) {
 			}
+			
 			engine.update();
 			t.reset();
 		}
 	}
+}
+void RemoteServerSFML::addCommand(engine::Command *cmd) {
+	commandSet->set(cmd);
 }

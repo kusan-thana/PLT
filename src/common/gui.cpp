@@ -2,10 +2,10 @@
 #include "engine.hpp"
 #include "gui.hpp"
 #include <iostream>
-
+#include "server.hpp"
 using namespace gui;
 
-GUI::GUI(state::LevelState& levelState, engine::Engine& engine) : levelState(levelState), cursorList(*this), moveRange(*this), engine(engine),startPlayerAI(false), engineMode(engine::PLAY){
+GUI::GUI(state::LevelState& levelState, engine::Engine& engine, server::Server& server) : levelState(levelState), cursorList(*this), moveRange(*this), engine(engine),startPlayerAI(false), engineMode(engine::PLAY), server(server){
 	cursorList.setGuiElement(0, new Cursor(levelState));
 	this->init();
 }
@@ -70,16 +70,20 @@ void GUI::commander(engine::Engine& engine) {
 		if (elementCursorNew && !((state::MobileElement*)elementCursorNew)->isPlayerCharacter()) {
 			engine::AttackCommand* attack = new engine::AttackCommand(cursor->getCharacter(), elementCursorNew);
 			engine.addCommand(attack);
+			server.addCommand(attack);
 	
 		}
 		if ((elementCursorNew == cursor->getCharacter() || elementCursorNew == 0 && cursor->getCharacter())){
 			engine::MoveCommand* move = new engine::MoveCommand(cursor->getX(), cursor->getY(), cursor->getCharacter());
 			cursor->setCharacter(0);
 			engine.addCommand(move);
+			engine.addCommand(move);
+
 		}
 	}
 	if (engineMode) {
 		engine::ModeCommand* engineModeCommand = new engine::ModeCommand(engineMode);
+		engine.addCommand(engineModeCommand);
 		engine.addCommand(engineModeCommand);
 		engineMode = engine::PLAY;
 	}
