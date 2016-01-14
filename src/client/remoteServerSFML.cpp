@@ -46,12 +46,14 @@ void RemoteServerSFML::run(){
 					
 				int type = jsonIn["type"].asInt();
 				if(type == 1){
-				//~ string file_name = jsonIn["file_name"].asString();
-				//	engine.addCommand(std::move(make_unique<engine::LoadCommand>(file_name.c_str())));
+					string file_name = jsonIn["file_name"].asString();
+					engine::LoadCommand* load = new engine::LoadCommand(file_name.c_str());
+					engine.addCommand(load);	
 				}
 				else if (type == 2){
-				//	int mode = jsonIn["mode"].asInt();
-				//	engine.addCommand(std::move(make_unique<engine::ModeCommand>(static_cast<engine::EngineMode>(mode))));
+					int mode = jsonIn["mode"].asInt();
+					engine::ModeCommand* engineModeCommand = new engine::ModeCommand(static_cast<engine::EngineMode>(mode));
+					engine.addCommand(engineModeCommand);				
 				}
 				else if (type == 3){
 					int x = jsonIn["x"].asInt();
@@ -61,11 +63,11 @@ void RemoteServerSFML::run(){
 					engine.addCommand(move);
 				}
 				else if (type == 4){
-					//~ state::Element* attacker = in["attacker"].asInt();
-					//~ string target = in["target"].asString();
-					//state::Element* attacker = (state::Element*) (intptr_t) jsonIn["attacker"].asInt();
-					//state::Element* target = (state::Element*) (intptr_t) jsonIn["target"].asInt();
-					//engine.addCommand(std::move(make_unique<engine::AttackCommand>(attacker,target)));
+					state::Element* attacker = (state::Element*) (intptr_t) jsonIn["attacker"].asInt();
+					state::Element* target = (state::Element*) (intptr_t) jsonIn["target"].asInt();
+					
+					engine::AttackCommand* attack = new engine::AttackCommand(attacker, target);
+					engine.addCommand(attack);
 				}
 			}
 			else
