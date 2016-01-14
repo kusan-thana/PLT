@@ -58,8 +58,15 @@ void RemoteServerSFML::run(){
 	}
 }
 void RemoteServerSFML::addCommand(engine::Command *cmd) {
-	sf::Http::Request request("/command", sf::Http::Request::Get);
-	sf::Http http("http://localhost/", 8080);
+	sf::Http::Request request("user/1", sf::Http::Request::Put);
+    
+    Json::Value jason;
+	jason["name"] = "test";
+	jason["age"] = 22;
+    request.setBody(jason.toStyledString());
+    std::cout << jason.toStyledString();
+	sf::Http http("http://localhost", 8080);
+	
 	sf::Http::Response response = http.sendRequest(request);
 	
 	std::cout << "REPONSE : " << response.getStatus();
