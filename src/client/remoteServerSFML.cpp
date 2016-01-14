@@ -58,12 +58,29 @@ void RemoteServerSFML::run(){
 	}
 }
 void RemoteServerSFML::addCommand(engine::Command *cmd) {
-	sf::Http::Request request("/user", sf::Http::Request::Put);
+	sf::Http::Request request("/command/1", sf::Http::Request::Post);
     
     Json::Value jason;
-	jason["name"] = "test";
-	jason["age"] = 22;
+		
+	jason["type"] = cmd->getTypeId();
+    if (cmd->getTypeId() == 1){
+		jason["file_name"] = ((engine::LoadCommand*)cmd)->getFileName();
+	}
+	else if(cmd->getTypeId() == 2){
+		jason["mode"] = ((engine::ModeCommand*)cmd)->getMode();
+	}
+	else if(cmd->getTypeId() == 3){
+		jason["x"] = ((engine::MoveCommand*)cmd)->getPositionX();
+		jason["y"] = ((engine::MoveCommand*)cmd)->getPositionY();
+		jason["character"] = ((engine::MoveCommand*)cmd)->getCharacter();
+	}
+	else if(cmd->getTypeId() == 4){
+		jason["attacker"] = ((engine::AttackCommand*)cmd)->getAttacker();
+		jason["target"] = ((engine::AttackCommand*)cmd)->getTarget();
+	}
+  
     request.setBody(jason.toStyledString());
+    
     std::cout << jason.toStyledString();
 	sf::Http http("http://localhost", 8080);
 	
