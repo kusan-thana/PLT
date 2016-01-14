@@ -20,6 +20,7 @@ struct timer
 
 
 RemoteServerSFML::RemoteServerSFML(){
+	this->ais = new ai::HeuristicAI(engine.getLevelState());
 }
 RemoteServerSFML::~RemoteServerSFML(){
 }
@@ -29,6 +30,15 @@ void RemoteServerSFML::run(){
 	
 	while(!quit)
 	{
+		if(levelState.getTurnToPlay() == state::PLAYER) {
+			if (iaAutoMode) {
+				ais->run(engine, *this);
+				//dumbAI.run(engine);
+			}
+		}
+		else if (levelState.getTurnToPlay() == state::OPPONENT) {
+			ais->run(engine, *this);
+		}
 		if (t.milliseconds_elapsed() > 200){		    
 			sf::Http::Request request("/command", sf::Http::Request::Get);
 			sf::Http http("http://localhost/", 8080);
@@ -70,10 +80,7 @@ void RemoteServerSFML::run(){
 					engine.addCommand(attack);
 				}
 			}
-			else
-			{
-				std::cout << "request failed" << std::endl;
-			}
+			
 			if(levelState.getTurnToPlay() == state::PLAYER) {
 				if (iaAutoMode) {
 					//dumbAI.run(engine);
