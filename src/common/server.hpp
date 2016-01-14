@@ -6,7 +6,7 @@
 #include <mutex>
 #include "engine.hpp"
 #include "state.hpp"
-#include "ai.hpp"
+
 #include <memory>
 #include <unordered_map>
 #include <stdexcept>
@@ -22,7 +22,7 @@ namespace server {
 	class RemoteServer;
 	enum ServerEvent : unsigned int;
 }
-
+#include "ai.hpp"
 #include "../generated/server.h"
 
 namespace server {

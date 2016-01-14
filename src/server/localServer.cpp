@@ -15,12 +15,12 @@ void LocalServer::run(){
 	{
 		if(levelState.getTurnToPlay() == state::PLAYER) {
 			if (iaAutoMode) {
-				ais->run(engine);
+				ais->run(engine, *this);
 				//dumbAI.run(engine);
 			}
 		}
 		else if (levelState.getTurnToPlay() == state::OPPONENT) {
-			ais->run(engine);
+			ais->run(engine, *this);
 		}
 
 		engine.update();

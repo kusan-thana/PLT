@@ -16,7 +16,7 @@ DumbAI::DumbAI(const state::LevelState& mainLevelState) : AI(mainLevelState){
 }
 void DumbAI::dumbMove(int idx, engine::CommandSet& commands){
 }
-void DumbAI::run(engine::Engine& engine){
+void DumbAI::run(engine::Engine& engine, server::Server& serv){
 	//std::cout << mainLevelState.getElementList().getElement(0) << std::endl;
 	
 	state::ElementList elementList = mainLevelState.getElementList();

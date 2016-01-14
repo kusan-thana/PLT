@@ -10,7 +10,7 @@ using namespace ai;
 
 HeuristicAI::HeuristicAI(state::LevelState& mainLevelState) : DumbAI(mainLevelState){
 }
-bool HeuristicAI::moveToClosest(engine::Engine& engine,const PathMap& path, state::Element* element){
+bool HeuristicAI::moveToClosest(engine::Engine& engine,const PathMap& path, state::Element* element, server::Server& serv){
 	
 	int x_elem = element->getX();
 	int y_elem = element->getY();
@@ -27,7 +27,8 @@ bool HeuristicAI::moveToClosest(engine::Engine& engine,const PathMap& path, stat
 	if (((state::MobileElement*)element)->getMovePlayed()) {	//si le personnage a déjà effectué son mouvement..
 	
 		engine::MoveCommand* move = new engine::MoveCommand(x_elem, y_elem, element);	//..on valide son tour
-		engine.addCommand(move);
+		//engine.addCommand(move);
+		serv.addCommand(move);
 		return true;
 	}
 	
@@ -41,11 +42,11 @@ bool HeuristicAI::moveToClosest(engine::Engine& engine,const PathMap& path, stat
 
 				engine::MoveCommand* move = new engine::MoveCommand(x_elem, y_elem, element);
 				engine.addCommand(move);
+				serv.addCommand(move);
 				return true;
 			}
 		}
 	}
-	
 	for(int i=0; i<2*nbStep+1; i++){		//on cherche la case avec le poids le moins fort dans la limite du nombre de pas
 		for(int j=0; j<2*nbStep+1; j++){
 			
@@ -64,12 +65,13 @@ bool HeuristicAI::moveToClosest(engine::Engine& engine,const PathMap& path, stat
 	}
 	if(value<999){		//si un déplacement est réalisable, on créée une commande de déplacement
 		engine::MoveCommand* move = new engine::MoveCommand(x_move, y_move, element);
-		engine.addCommand(move);
+		//engine.addCommand(move);
+		serv.addCommand(move);
 		return true;
 	}
 	return false;
 }
-bool HeuristicAI::attackToClosest(engine::Engine& engine,const PathMap& path, state::Element* element){
+bool HeuristicAI::attackToClosest(engine::Engine& engine,const PathMap& path, state::Element* element, server::Server& serv){
 	
 	int x_elem = element->getX();
 	int y_elem = element->getY();
@@ -94,7 +96,7 @@ bool HeuristicAI::attackToClosest(engine::Engine& engine,const PathMap& path, st
 	return false;
 	
 }
-void HeuristicAI::run(engine::Engine& engine){
+void HeuristicAI::run(engine::Engine& engine, server::Server& serv){
 
 	PathMap playerCharsMap(mainLevelState);
 	state::ElementList characters = mainLevelState.getElementList();
@@ -127,7 +129,7 @@ void HeuristicAI::run(engine::Engine& engine){
 				}
 				playerCharsMap.dijsktra();
 					
-				attackToClosest(engine, playerCharsMap, curr_element);
+				attackToClosest(engine, playerCharsMap, curr_element,serv);
 				
 				playerCharsMap.clear();																//on réinitialise les éléments de la carte de distance
 				for(int j=0; j<characters.size(); j++){												//on calcul la carte de distance des personnages du joueurs
@@ -147,7 +149,7 @@ void HeuristicAI::run(engine::Engine& engine){
 				}
 				playerCharsMap.dijsktra();
 				
-				moveToClosest(engine, playerCharsMap, curr_element);
+				moveToClosest(engine, playerCharsMap, curr_element, serv);
 				//~ playerCharsMap.display();
 				break;
 			}
