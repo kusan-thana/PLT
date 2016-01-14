@@ -29,7 +29,7 @@ void RemoteServerSFML::run(){
 	
 	while(!quit)
 	{
-		if (t.milliseconds_elapsed() > 2000){		    
+		if (t.milliseconds_elapsed() > 200){		    
 			sf::Http::Request request("/command", sf::Http::Request::Get);
 			sf::Http http("http://localhost/", 8080);
 			sf::Http::Response response = http.sendRequest(request);
@@ -38,7 +38,35 @@ void RemoteServerSFML::run(){
 			if (response.getStatus() == sf::Http::Response::Ok)
 			{
 				// affichage de la réponse du serveur
-				std::cout << response.getBody() << std::endl;
+				//std::cout << response.getBody() << std::endl;
+				
+				Json::Reader jsonReader;
+				Json::Value jsonIn;
+				jsonReader.parse(response.getBody(),jsonIn);
+					
+				int type = jsonIn["type"].asInt();
+				if(type == 1){
+				//~ string file_name = jsonIn["file_name"].asString();
+				//	engine.addCommand(std::move(make_unique<engine::LoadCommand>(file_name.c_str())));
+				}
+				else if (type == 2){
+				//	int mode = jsonIn["mode"].asInt();
+				//	engine.addCommand(std::move(make_unique<engine::ModeCommand>(static_cast<engine::EngineMode>(mode))));
+				}
+				else if (type == 3){
+					int x = jsonIn["x"].asInt();
+					int y = jsonIn["y"].asInt();
+					state::Element* character = (state::Element*) (intptr_t) jsonIn["character"].asInt();
+					engine::MoveCommand* move = new engine::MoveCommand(x, y, character);
+					engine.addCommand(move);
+				}
+				else if (type == 4){
+					//~ state::Element* attacker = in["attacker"].asInt();
+					//~ string target = in["target"].asString();
+					//state::Element* attacker = (state::Element*) (intptr_t) jsonIn["attacker"].asInt();
+					//state::Element* target = (state::Element*) (intptr_t) jsonIn["target"].asInt();
+					//engine.addCommand(std::move(make_unique<engine::AttackCommand>(attacker,target)));
+				}
 			}
 			else
 			{
@@ -60,28 +88,29 @@ void RemoteServerSFML::run(){
 void RemoteServerSFML::addCommand(engine::Command *cmd) {
 	sf::Http::Request request("/command/1", sf::Http::Request::Post);
     
-    Json::Value jason;
+    Json::Value json;
 		
-	jason["type"] = cmd->getTypeId();
+	json["type"] = cmd->getTypeId();
     if (cmd->getTypeId() == 1){
-		jason["file_name"] = ((engine::LoadCommand*)cmd)->getFileName();
+		json["file_name"] = ((engine::LoadCommand*)cmd)->getFileName();
 	}
 	else if(cmd->getTypeId() == 2){
-		jason["mode"] = ((engine::ModeCommand*)cmd)->getMode();
+		json["mode"] = ((engine::ModeCommand*)cmd)->getMode();
 	}
 	else if(cmd->getTypeId() == 3){
-		jason["x"] = ((engine::MoveCommand*)cmd)->getPositionX();
-		jason["y"] = ((engine::MoveCommand*)cmd)->getPositionY();
-		jason["character"] = ((engine::MoveCommand*)cmd)->getCharacter();		
+		json["x"] = ((engine::MoveCommand*)cmd)->getPositionX();
+		json["y"] = ((engine::MoveCommand*)cmd)->getPositionY();
+		json["character"] = (int)(intptr_t)((engine::MoveCommand*)cmd)->getCharacter();
+		//std::cout << "CHARACTER" << ((engine::MoveCommand*)cmd)->getCharacter(); 		
 	}
 	else if(cmd->getTypeId() == 4){
-		jason["attacker"] = ((engine::AttackCommand*)cmd)->getAttacker();
-		jason["target"] = ((engine::AttackCommand*)cmd)->getTarget();
+		json["attacker"] = ((engine::AttackCommand*)cmd)->getAttacker();
+		json["target"] = ((engine::AttackCommand*)cmd)->getTarget();
 	}
   
-    request.setBody(jason.toStyledString());
+    request.setBody(json.toStyledString());
     
-    std::cout << jason.toStyledString();
+    std::cout << json.toStyledString();
 	sf::Http http("http://localhost", 8080);
 	
 	sf::Http::Response response = http.sendRequest(request);

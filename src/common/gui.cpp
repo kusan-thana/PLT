@@ -69,21 +69,21 @@ void GUI::commander(engine::Engine& engine) {
 		state::Element* elementCursorNew = levelState.getElementList().getElement(cursor->getX(), cursor->getY());
 		if (elementCursorNew && !((state::MobileElement*)elementCursorNew)->isPlayerCharacter()) {
 			engine::AttackCommand* attack = new engine::AttackCommand(cursor->getCharacter(), elementCursorNew);
-			engine.addCommand(attack);
+			//engine.addCommand(attack);
 			server.addCommand(attack);
 	
 		}
 		if ((elementCursorNew == cursor->getCharacter() || elementCursorNew == 0 && cursor->getCharacter())){
 			engine::MoveCommand* move = new engine::MoveCommand(cursor->getX(), cursor->getY(), cursor->getCharacter());
 			cursor->setCharacter(0);
-			engine.addCommand(move);
+			//engine.addCommand(move);
 			server.addCommand(move);
 
 		}
 	}
 	if (engineMode) {
 		engine::ModeCommand* engineModeCommand = new engine::ModeCommand(engineMode);
-		engine.addCommand(engineModeCommand);
+		//engine.addCommand(engineModeCommand);
 		server.addCommand(engineModeCommand);
 		engineMode = engine::PLAY;
 	}
