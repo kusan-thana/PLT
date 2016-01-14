@@ -1,5 +1,5 @@
 #include "../common/server.hpp"
-
+#include <iostream>
 using namespace server;
 
 CommandService::CommandService (CommandDB& commandDB) : AbstractService("/command"), commandDB(commandDB) {
@@ -38,64 +38,52 @@ HttpStatus CommandService::put (Json::Value& out,const Json::Value& in) {
     //~ int age = in["age"].asInt();
     //~ out["id"] = userDB.addUser(make_unique<User>(name,age));
     
-    string type = in["type"].asString();
+    int type = in["type"].asInt();
     
-    if(type == "MAIN"){
+    if(type == 1){
 		string file_name = in["file_name"].asString();
 		commandDB.setCommand(std::move(make_unique<engine::LoadCommand>(file_name.c_str())));
 	}
-	else if (type == "MODE"){
+	else if (type == 2){
 		int mode = in["mode"].asInt();
 		commandDB.setCommand(std::move(make_unique<engine::ModeCommand>(static_cast<engine::EngineMode>(mode))));
 	}
-	else if (type == "MOVE"){
+	else if (type == 3){
 		int x = in["x"].asInt();
 		int y = in["y"].asInt();
 		state::Element* character = (state::Element*) (intptr_t) in["character"].asInt();
 		commandDB.setCommand(std::move(make_unique<engine::MoveCommand>(x,y,character)));
 	}
-	else if (type == "ATTACK"){
+	else if (type == 4){
 		//~ state::Element* attacker = in["attacker"].asInt();
 		//~ string target = in["target"].asString();
 		state::Element* attacker = (state::Element*) (intptr_t) in["attacker"].asInt();
 		state::Element* target = (state::Element*) (intptr_t) in["target"].asInt();
 		commandDB.setCommand(std::move(make_unique<engine::AttackCommand>(attacker,target)));
 	}
-		
-		//~ case engine::CommandTypeId::MODE :
-			//~ out["mode"] = ((engine::ModeCommand*)command)->getMode();
-		//~ break;
-		//~ case engine::CommandTypeId::MOVE :
-			//~ out["x"] = ((engine::MoveCommand*)command)->getPositionX();
-			//~ out["y"] = ((engine::MoveCommand*)command)->getPositionY();
-		//~ break;
-		//~ case engine::CommandTypeId::ATTACK :
-			//~ out["attacker"] = ((engine::AttackCommand*)command)->getAttacker();
-			//~ out["target"] = ((engine::AttackCommand*)command)->getTarget();
-		//~ break;
 
     return HttpStatus::CREATED;
 }
 HttpStatus CommandService::post (const Json::Value& in, int id) {
- 
+	
     if(in.isMember("type")){
-		string type = in["type"].asString();
+		int type = in["type"].asInt();
 		
-		if(type == "MAIN"){
+		if(type == 1){
 			string file_name = in["file_name"].asString();
 			commandDB.setCommand(std::move(make_unique<engine::LoadCommand>(file_name.c_str())));
 		}
-		else if (type == "MODE"){
+		else if (type == 2){
 			int mode = in["mode"].asInt();
 			commandDB.setCommand(std::move(make_unique<engine::ModeCommand>(static_cast<engine::EngineMode>(mode))));
 		}
-		else if (type == "MOVE"){
+		else if (type == 3){
 			int x = in["x"].asInt();
 			int y = in["y"].asInt();
 			state::Element* character = (state::Element*) (intptr_t) in["character"].asInt();
 			commandDB.setCommand(std::move(make_unique<engine::MoveCommand>(x,y,character)));
 		}
-		else if (type == "ATTACK"){
+		else if (type == 4){
 			//~ state::Element* attacker = in["attacker"].asInt();
 			//~ string target = in["target"].asString();
 			state::Element* attacker = (state::Element*) (intptr_t) in["attacker"].asInt();
