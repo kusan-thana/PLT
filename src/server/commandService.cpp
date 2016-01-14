@@ -22,6 +22,7 @@ HttpStatus CommandService::get (Json::Value& out, int id) const {
 		case engine::CommandTypeId::MOVE :
 			out["x"] = ((engine::MoveCommand*)command)->getPositionX();
 			out["y"] = ((engine::MoveCommand*)command)->getPositionY();
+			out["character"] = ((engine::MoveCommand*)command)->getCharacter();
 		break;
 		case engine::CommandTypeId::ATTACK :
 			out["attacker"] = ((engine::AttackCommand*)command)->getAttacker();
@@ -50,12 +51,15 @@ HttpStatus CommandService::put (Json::Value& out,const Json::Value& in) {
 	else if (type == "MOVE"){
 		int x = in["x"].asInt();
 		int y = in["y"].asInt();
-		//~ commandDB.setCommand(std::move(make_unique<engine::MoveCommand>(x,y)));
+		state::Element* character = (state::Element*) (intptr_t) in["character"].asInt();
+		commandDB.setCommand(std::move(make_unique<engine::MoveCommand>(x,y,character)));
 	}
 	else if (type == "ATTACK"){
 		//~ state::Element* attacker = in["attacker"].asInt();
 		//~ string target = in["target"].asString();
-		//~ commandDB.setCommand(std::move(make_unique<engine::AttackCommand>(attacker.c_str(),target.c_str())));
+		state::Element* attacker = (state::Element*) (intptr_t) in["attacker"].asInt();
+		state::Element* target = (state::Element*) (intptr_t) in["target"].asInt();
+		commandDB.setCommand(std::move(make_unique<engine::AttackCommand>(attacker,target)));
 	}
 		
 		//~ case engine::CommandTypeId::MODE :
