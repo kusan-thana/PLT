@@ -43,10 +43,9 @@ void RemoteServerSFML::run(){
 			sf::Http::Request request("/command", sf::Http::Request::Get);
 			sf::Http http("http://localhost/", 8080);
 			sf::Http::Response response = http.sendRequest(request);
-			
-			std::cout << "REPONSE : " << response.getStatus();
 			if (response.getStatus() == sf::Http::Response::Ok)
 			{
+				std::cout << "REPONSE : " << response.getStatus();
 				// affichage de la réponse du serveur
 				//std::cout << response.getBody() << std::endl;
 				
@@ -123,10 +122,9 @@ void RemoteServerSFML::addCommand(engine::Command *cmd) {
 	sf::Http http("http://localhost", 8080);
 	
 	sf::Http::Response response = http.sendRequest(request);
-	
-	std::cout << "REPONSE : " << response.getStatus();
 	if (response.getStatus() == sf::Http::Response::NoContent)
 	{
+		std::cout << "REPONSE : " << response.getStatus();
 		// affichage de la réponse du serveur
 		std::cout << response.getBody() << std::endl;
 	}
