@@ -27,6 +27,7 @@ void CommandDB::removeCommand () {
     //~ if (ite == users.end())
         //~ return;
     //~ users.erase(ite);
+    command = NULL;
 }
 
 

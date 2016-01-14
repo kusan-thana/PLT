@@ -29,7 +29,7 @@ HttpStatus CommandService::get (Json::Value& out, int id) const {
 			out["target"] = (int)(intptr_t)((engine::AttackCommand*)command)->getTarget();
 		break;
 	}
-  
+	commandDB.removeCommand();
     return HttpStatus::OK;
 }
 
