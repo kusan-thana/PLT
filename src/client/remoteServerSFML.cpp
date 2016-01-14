@@ -58,7 +58,7 @@ void RemoteServerSFML::run(){
 	}
 }
 void RemoteServerSFML::addCommand(engine::Command *cmd) {
-	sf::Http::Request request("user/1", sf::Http::Request::Put);
+	sf::Http::Request request("/user", sf::Http::Request::Put);
     
     Json::Value jason;
 	jason["name"] = "test";
